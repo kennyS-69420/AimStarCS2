@@ -184,7 +184,6 @@
     <ResourceCompile Include="CS2_External.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\DEFAULT_ICON.ico" />
     <Image Include="icon.ico" />
   </ItemGroup>
 </Project>
