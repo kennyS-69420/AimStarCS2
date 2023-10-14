@@ -31,9 +31,6 @@
     <Filter Include="Cheats\Radar">
       <UniqueIdentifier>{e372b7a9-eba4-42de-9802-b1368314d465}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utils\ConfigSaver">
-      <UniqueIdentifier>{aa25e002-e95d-4db7-a900-3cd9edf6338f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OS-ImGui\imgui\imconfig.h">
@@ -96,7 +93,7 @@
     <ClInclude Include="Render.hpp">
       <Filter>Cheats</Filter>
     </ClInclude>
-    <ClInclude Include="Bunnyhop.hpp">
+    <ClInclude Include="AimBot.hpp">
       <Filter>Cheats</Filter>
     </ClInclude>
     <ClInclude Include="Offsets.h">
@@ -111,24 +108,16 @@
     <ClInclude Include="TriggerBot.h">
       <Filter>Cheats</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Utils\ConfigMenu.hpp">
-      <Filter>Utils\ConfigSaver</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils\ConfigSaver.hpp">
-      <Filter>Utils\ConfigSaver</Filter>
-    </ClInclude>
-    <ClInclude Include="Aimbot.hpp">
-      <Filter>Cheats</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils\Format.hpp">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalVars.h">
-      <Filter>Cheats\Data</Filter>
+    <ClInclude Include="Utils\ConfigSaver.hpp">
+      <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Globals.hpp">
-      <Filter>Cheats</Filter>
-    </ClInclude>
+    <ClInclude Include="Utils\GlobalVars.hpp" />
+    <ClInclude Include="Bunnyhop.h" />
+    <ClInclude Include="Utils\Format.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
@@ -188,14 +177,14 @@
     <ClCompile Include="TriggerBot.cpp">
       <Filter>Cheats</Filter>
     </ClCompile>
-    <ClCompile Include="Utils\ConfigMenu.cpp">
-      <Filter>Utils\ConfigSaver</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils\ConfigSaver.cpp">
-      <Filter>Utils\ConfigSaver</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalVars.cpp">
-      <Filter>Cheats\Data</Filter>
-    </ClCompile>
+    <ClCompile Include="Utils\ConfigMenu.cpp" />
+    <ClCompile Include="Utils\ConfigSaver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CS2_External.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\DEFAULT_ICON.ico" />
+    <Image Include="icon.ico" />
   </ItemGroup>
 </Project>

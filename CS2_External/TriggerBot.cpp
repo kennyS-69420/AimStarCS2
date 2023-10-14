@@ -1,27 +1,27 @@
 #include "TriggerBot.h"
 
+DWORD uHandle = 0;
+DWORD64 ListEntry = 0;
+DWORD64 PawnAddress = 0;
+CEntity Entity;
+bool AllowShoot = false;
+
 void TriggerBot::Run(const CEntity& LocalEntity)
 {
-	DWORD uHandle = 0;
 	if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset::Pawn.iIDEntIndex, uHandle))
 		return;
 	if (uHandle == -1)
 		return;
 
-	DWORD64 ListEntry = 0;
 	ListEntry = ProcessMgr.TraceAddress(gGame.GetEntityListAddress(), { 0x8 * (uHandle >> 9) + 0x10,0x0 });
 	if (ListEntry == 0)
 		return;
 
-	DWORD64 PawnAddress = 0;
 	if (!ProcessMgr.ReadMemory<DWORD64>(ListEntry + 0x78 * (uHandle & 0x1FF), PawnAddress))
 		return;
 
-	CEntity Entity;
 	if (!Entity.UpdatePawn(PawnAddress))
 		return;
-
-	bool AllowShoot = false;
 
 	if (MenuConfig::TeamCheck)
 		AllowShoot = LocalEntity.Pawn.TeamID != Entity.Pawn.TeamID && Entity.Pawn.Health > 0;
@@ -41,7 +41,17 @@ void TriggerBot::Run(const CEntity& LocalEntity)
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 		}
-
 		LastTimePoint = CurTimePoint;
 	}
+}
+
+void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept
+{
+	if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset::Pawn.iIDEntIndex, uHandle)
+		|| uHandle == -1)
+	{
+		CrosshairConfig::isAim = false;
+	}
+	else
+		CrosshairConfig::isAim = true;
 }

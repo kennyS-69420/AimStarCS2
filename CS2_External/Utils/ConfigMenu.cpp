@@ -4,29 +4,26 @@
 #include "../TriggerBot.h"
 #include "../AimBot.hpp"
 #include <filesystem>
+#include <string>
 
 namespace ConfigMenu {
 
-    void RenderConfigMenu() {
+	void RenderConfigMenu() {
 		// Config
-		if (ImGui::BeginTabItem("Config "))
+		if (ImGui::BeginTabItem("Config"))
 		{
-			static char configNameBuffer[128] = "";
+			ImGui::Columns(2, nullptr, false);
+			ImGui::SetColumnOffset(1, 170.0f);
 
-			ImGui::InputText("New Config Name", configNameBuffer, sizeof(configNameBuffer));
+			ImGui::PushItemWidth(160.0f);
 
-			if (ImGui::Button("Create Config"))
-			{
-				std::string configFileName = std::string(configNameBuffer) + ".config";
-				MyConfigSaver::SaveConfig(configFileName);
-			}
-
-			ImGui::Separator();
+			static char configNameBuffer[128] = "NewConfig";
 
 			static int selectedConfig = -1;
 
 			const std::string configDir = std::filesystem::current_path().string();
 			static std::vector<std::string> configFiles;
+			std::vector<const char*> configFilesCStr;
 
 			configFiles.clear();
 			for (const auto& entry : std::filesystem::directory_iterator(configDir))
@@ -37,85 +34,121 @@ namespace ConfigMenu {
 				}
 			}
 
-			for (int i = 0; i < configFiles.size(); ++i)
+			// 将vector转到const char*数组
+			for (const auto& file : configFiles)
 			{
-				if (ImGui::Selectable(configFiles[i].c_str(), selectedConfig == i))
-				{
-					selectedConfig = i;
-				}
+				configFilesCStr.push_back(file.c_str());
 			}
 
-			if (selectedConfig != -1)
-			{
-				ImGui::Text("Selected Config: %s", configFiles[selectedConfig].c_str());
-			}
+			// 创建列表框并载入配置文件数组
+			ImGui::ListBox("##ConfigFiles", &selectedConfig, configFilesCStr.data(), configFilesCStr.size());
 
-			if (ImGui::Button("Load Selected") && selectedConfig >= 0 && selectedConfig < configFiles.size())
+			ImGui::NextColumn();
+			ImGui::PushItemWidth(100.0f);
+
+			if (ImGui::Button("Load Selected", { 100.0f, 25.0f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 			{
 				std::string selectedConfigFile = configFiles[selectedConfig];
 				MyConfigSaver::LoadConfig(selectedConfigFile);
+				// Because the style is switched when Combo is activated, the style should be manually updated here
+				// Render::UpdateStyle(MenuConfig::MenuStyle);
+				// Umm...Some problem occured
 			}
 
-			if (ImGui::Button("Save Selected") && selectedConfig >= 0 && selectedConfig < configFiles.size())
+			if (ImGui::Button("Save Selected", { 100.0f, 25.0f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 			{
 				std::string selectedConfigFile = configFiles[selectedConfig];
 				MyConfigSaver::SaveConfig(selectedConfigFile);
 			}
 
-			ImGui::Separator();
+			if (ImGui::Button("Delete Selected", { 100.0f, 25.0f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
+				ImGui::OpenPopup("##reallyDelete");
 
-			if (ImGui::Button("Delete Selected") && selectedConfig >= 0 && selectedConfig < configFiles.size())
+			if (ImGui::BeginPopup("##reallyDelete"))
 			{
-				std::string selectedConfigFile = configFiles[selectedConfig];
-				std::string fullPath = configDir + "/" + selectedConfigFile;
-				if (std::remove(fullPath.c_str()) == 0)
+				ImGui::TextUnformatted("Are you sure?");
+				if (ImGui::Button("No", { 45.0f, 0.0f }))
+					ImGui::CloseCurrentPopup();
+				ImGui::SameLine();
+				if (ImGui::Button("Yes", { 45.0f, 0.0f }))
 				{
-					configFiles.erase(configFiles.begin() + selectedConfig);
-					selectedConfig = -1;
+					// Delete
+					std::string selectedConfigFile = configFiles[selectedConfig];
+					std::string fullPath = configDir + "/" + selectedConfigFile;
+					if (std::remove(fullPath.c_str()) == 0)
+					{
+						configFiles.erase(configFiles.begin() + selectedConfig);
+						selectedConfig = -1;
+					}
+					else
+					{
+					}
+					ImGui::CloseCurrentPopup();
 				}
-				else
-				{
-				}
+			ImGui::EndPopup();
 			}
 
-			if (ImGui::Button("Reset to Default"))
+			if (ImGui::Button("Reset Config", { 100.0f, 25.0f }))
+				ImGui::OpenPopup("##reallyReset");
+			if (ImGui::BeginPopup("##reallyReset"))
 			{
-				ConfigMenu::ResetToDefault();
+				ImGui::TextUnformatted("Are you sure?");
+				if (ImGui::Button("No", { 45.0f, 0.0f }))
+					ImGui::CloseCurrentPopup();
+				ImGui::SameLine();
+				if (ImGui::Button("Yes", { 45.0f, 0.0f }))
+				{
+					ConfigMenu::ResetToDefault();
+					ImGui::CloseCurrentPopup();
+				}	
+				ImGui::EndPopup();
+			}
+			ImGui::Columns(1);
+
+			ImGui::Separator();
+			ImGui::InputText(" ", configNameBuffer, sizeof(configNameBuffer));
+			ImGui::SameLine();
+			if (ImGui::Button("Create Config", { 100.0f, 25.0f }))
+			{
+				std::string configFileName = std::string(configNameBuffer) + ".config";
+				MyConfigSaver::SaveConfig(configFileName);
 			}
 
 			ImGui::EndTabItem();
 		}
-    }
+	}
 
-    void ResetToDefault() {
+	void ResetToDefault() {
 		MenuConfig::ShowBoneESP = true;
 		MenuConfig::ShowBoxESP = true;
 		MenuConfig::ShowHealthBar = true;
-		MenuConfig::ShowWeaponESP = true;
-		MenuConfig::ShowDistance = true;
-		MenuConfig::ShowEyeRay = true;
+		MenuConfig::ShowWeaponESP = false;
+		MenuConfig::ShowEyeRay = false;
 		MenuConfig::ShowPlayerName = true;
-		MenuConfig::AimBot = true;
+		MenuConfig::AimBot = false;
 		MenuConfig::AimPosition = 0;
 		MenuConfig::AimPositionIndex = BONEINDEX::head;
 		MenuConfig::BoxType = 0;
 		MenuConfig::HealthBarType = 0;
-		MenuConfig::BoneColor = ImVec4(255, 255, 255, 255);
-		MenuConfig::BoxColor = ImVec4(255, 255, 255, 255);
+		MenuConfig::BoneColor = ImColor(0, 255, 255, 255);
+		MenuConfig::BoxColor = ImColor(255, 80, 0, 255);
 		MenuConfig::EyeRayColor = ImVec4(255, 0, 0, 255);
 		MenuConfig::ShowMenu = true;
-		MenuConfig::ShowRadar = true;
+		MenuConfig::ShowRadar = false;
 		MenuConfig::RadarRange = 150;
 		MenuConfig::ShowRadarCrossLine = true;
-		MenuConfig::RadarCrossLineColor = ImVec4(34, 34, 34, 180);
+		MenuConfig::RadarCrossLineColor = ImColor(220, 220, 220, 255);
 		MenuConfig::RadarType = 2;
 		MenuConfig::RadarPointSizeProportion = 1.f;
-		MenuConfig::Proportion = 2230;
-		MenuConfig::TriggerBot = true;
+		MenuConfig::RadarBgAlpha = 0.1f;
+		MenuConfig::Proportion = 3300;
+		MenuConfig::TriggerBot = false;
+		MenuConfig::TriggerAlways = false;
 		MenuConfig::TeamCheck = true;
+		MenuConfig::BypassOBS = false;
 		MenuConfig::VisibleCheck = true;
-		MenuConfig::ShowHeadShootLine = true;
-		MenuConfig::HeadShootLineColor = ImVec4(255, 255, 255, 255);
+		MenuConfig::ShowHeadShootLine = false;
+		MenuConfig::HeadShootLineColor = ImColor(255, 255, 255, 200);
 		MenuConfig::AimBotHotKey = 0;
 		AimControl::SetHotKey(MenuConfig::AimBotHotKey);
 		MenuConfig::ShowLineToEnemy = false;
@@ -127,13 +160,33 @@ namespace ConfigMenu {
 		AimControl::RCSScale = ImVec2(1.2f, 1.4f);
 		MenuConfig::FovLineColor = ImVec4(55, 55, 55, 220);
 		MenuConfig::LineToEnemyColor = ImVec4(255, 255, 255, 220);
-		MenuConfig::ShowCrossHair = true;
-		MenuConfig::CrossHairColor = ImColor(45, 45, 45, 255);
-		MenuConfig::CrossHairSize = 150;
-		MenuConfig::ShowAimFovRange = true;
-		MenuConfig::AimFovRangeColor= ImColor(230, 230, 230, 255);
-		MenuConfig::OBSBypass = true;
+		CrosshairConfig::ShowCrossHair = false;
+		CrosshairConfig::CrossHairColor = ImColor(0, 255, 0, 255);
+		CrosshairConfig::CrossHairSize = 75;
+		CrosshairConfig::drawDot = true;
+		CrosshairConfig::tStyle = false;
+		CrosshairConfig::HorizontalLength = 6;
+		CrosshairConfig::VerticalLength = 6;
+		CrosshairConfig::drawOutLine = true;
+		CrosshairConfig::Gap = 8;
+		CrosshairConfig::drawCrossline = true;
+		CrosshairConfig::drawCircle = false;
+		CrosshairConfig::showTargeting = false;
+		CrosshairConfig::TargetedColor = ImColor(255, 0, 0, 255);
+		CrosshairConfig::CircleRadius = 3.f;
+		CrosshairConfig::DynamicGap = false;
+		CrosshairConfig::DotSize = 1.0f;
 		MenuConfig::BunnyHop = false;
-		MenuConfig::ShowWhenSpec = true;
-    }
+		MenuConfig::WorkInSpec = true;
+
+		MenuConfig::ESPenbled = false;
+
+		MenuConfig::ShowPenis = false;
+		MenuConfig::PenisLength = 15.f;
+		MenuConfig::PenisSize = 1.3f;
+		MenuConfig::PenisColor = ImColor(255, 0, 0, 200);
+
+		MenuConfig::DrawFov = false;
+		MenuConfig::FovCircleColor = ImColor(255, 255, 255, 255);
+	}
 }

@@ -3,32 +3,130 @@
 #include <math.h>
 #include <chrono>
 #include <map>
+#include <Windows.h>
 #include "Entity.h"
-#include "Utils/Format.hpp"
+#include "OS-ImGui/imgui/imgui.h"
+#define IMGUI_DEFINE_MATH_OPERATORS
+#include "OS-ImGui/imgui/imgui_internal.h"
+
+
+class GUI {
+public:
+	GUI() noexcept;
+	[[nodiscard]] bool isOpen() const noexcept { return open; }
+
+private:
+	bool open = true;
+};
+inline std::optional<GUI> gui;
+
 
 namespace Render
 {
 	void DrawFovCircle(const CEntity& LocalEntity)
 	{
+		if (!MenuConfig::DrawFov)
+			return;
+
 		Vec2 CenterPoint = Gui.Window.Size / 2;
 		float Radius = tan(AimControl::AimFov / 180.f * M_PI / 2.f) / tan(LocalEntity.Pawn.Fov / 180.f * M_PI / 2.f) * Gui.Window.Size.x;
-		Gui.Circle(CenterPoint, Radius, MenuConfig::AimFovRangeColor, 1);
+		Gui.Circle(CenterPoint, Radius, MenuConfig::FovCircleColor, 1);
 	}
 
-	void DrawCrossHair()
-	{ 
+	void DrawCrossHair(ImDrawList* drawList, const ImVec2& pos, ImU32 color) noexcept
+	{
+		int BorderWidth = 2;
+		int DotSize = 1;
+		int gap = CrosshairConfig::Gap / 2;
+
+		int outlineGap = gap - 1;
+
+		ImVec2 offset1{ CrosshairConfig::DotSize,CrosshairConfig::DotSize };
+		ImVec2 offset2{ CrosshairConfig::DotSize + 1,CrosshairConfig::DotSize + 1 };
+
+		/*
+		===== Outline =====
+		*/
+		if (CrosshairConfig::drawOutLine)
+		{
+			//dot
+			if (CrosshairConfig::drawDot)
+				drawList->AddRectFilled(ImVec2(pos.x - offset1.x, pos.y - offset1.y), ImVec2(pos.x + offset2.x, pos.y + offset2.y), color & IM_COL32_A_MASK);
+
+			if (CrosshairConfig::drawCrossline)
+			{
+				//left
+				drawList->AddRectFilled(ImVec2(pos.x - (outlineGap + BorderWidth + CrosshairConfig::HorizontalLength), pos.y - 1), ImVec2(pos.x - outlineGap, pos.y + 2), color & IM_COL32_A_MASK);
+				//right
+				drawList->AddRectFilled(ImVec2(pos.x + (outlineGap + DotSize), pos.y - 1), ImVec2(pos.x + (outlineGap + DotSize + BorderWidth + CrosshairConfig::HorizontalLength), pos.y + 2), color & IM_COL32_A_MASK);
+				//top
+				if (!CrosshairConfig::tStyle)
+					drawList->AddRectFilled(ImVec2(pos.x - 1, pos.y - (outlineGap + BorderWidth + CrosshairConfig::VerticalLength)), ImVec2(pos.x + 2, pos.y - outlineGap), color & IM_COL32_A_MASK);
+				//bottom
+				drawList->AddRectFilled(ImVec2(pos.x - 1, pos.y + outlineGap + DotSize), ImVec2(pos.x + 2, pos.y + (outlineGap + DotSize + BorderWidth + CrosshairConfig::VerticalLength)), color & IM_COL32_A_MASK);
+			}
+						
+			//circle
+			if (CrosshairConfig::drawCircle)
+				drawList->AddCircle(ImVec2(pos.x, pos.y), CrosshairConfig::CircleRadius, color & IM_COL32_A_MASK, 0, 3.0f);
+		}
+
+		/*
+		===== Crosshair =====
+		*/
+		// dot
+		if (CrosshairConfig::drawDot)
+			drawList->AddRectFilled(ImVec2(pos.x - offset1.x + DotSize, pos.y - offset1.y + DotSize), ImVec2(pos.x + offset1.x, pos.y + offset1.y), color);
+
+		if (CrosshairConfig::drawCrossline)
+		{
+			// left
+			drawList->AddRectFilled(ImVec2(pos.x - (gap + CrosshairConfig::HorizontalLength), pos.y), ImVec2(pos.x - gap, pos.y + 1), color);
+			// right
+			drawList->AddRectFilled(ImVec2(pos.x + gap + DotSize, pos.y), ImVec2(pos.x + (gap + DotSize + CrosshairConfig::HorizontalLength), pos.y + 1), color);
+			// top
+			if (!CrosshairConfig::tStyle)
+				drawList->AddRectFilled(ImVec2(pos.x, pos.y - (gap + CrosshairConfig::VerticalLength)), ImVec2(pos.x + 1, pos.y - gap), color);
+			// bottom
+			drawList->AddRectFilled(ImVec2(pos.x, pos.y + gap + DotSize), ImVec2(pos.x + 1, pos.y + (gap + DotSize + CrosshairConfig::VerticalLength)), color);
+		}
+		
+		// circle
+		if (CrosshairConfig::drawCircle)
+			drawList->AddCircle(ImVec2(pos.x, pos.y), CrosshairConfig::CircleRadius, color, 0, 1.0f);
+	}
+
+	void DrawCrossHair2D()
+	{
 		Vec2 SightPos = Gui.Window.Size / 2;
-		Gui.Line({ SightPos.x - MenuConfig::CrossHairSize,SightPos.y }, { SightPos.x + MenuConfig::CrossHairSize,SightPos.y }, MenuConfig::CrossHairColor, 1);
-		Gui.Line({ SightPos.x,SightPos.y - MenuConfig::CrossHairSize }, { SightPos.x ,SightPos.y + MenuConfig::CrossHairSize }, MenuConfig::CrossHairColor, 1);
+		Gui.Line({ SightPos.x - CrosshairConfig::CrossHairSize,SightPos.y }, { SightPos.x + CrosshairConfig::CrossHairSize,SightPos.y }, CrosshairConfig::CrossHairColor, 1);
+		Gui.Line({ SightPos.x,SightPos.y - CrosshairConfig::CrossHairSize }, { SightPos.x ,SightPos.y + CrosshairConfig::CrossHairSize }, CrosshairConfig::CrossHairColor, 1);
 	}
 
 	void LineToEnemy(ImVec4 Rect, ImColor Color, float Thickness)
 	{
-		Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2,0 }, Color, Thickness);
+		switch (MenuConfig::LinePos)
+		{
+		case 0:
+			Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2,0 }, Color, Thickness);
+			break;
+		case 1:
+			Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2, Gui.Window.Size.y/2 }, Color, Thickness);
+			break;
+		case 2:
+			Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2, Gui.Window.Size.y }, Color, Thickness);
+			break;
+		default:
+			break;
+		}
+		
 	}
 
 	void DrawFov(const CEntity& LocalEntity, float Size, ImColor Color, float Thickness)
 	{
+		if (!MenuConfig::ShowFovLine)
+			return;
+
 		float Length;
 		float radian;
 		Vec2 LineEndPoint[2];
@@ -48,15 +146,11 @@ namespace Render
 		Gui.Line(Pos, LineEndPoint[1], Color, 1.5);
 	}
 
-	void DrawDistance(const CEntity& LocalEntity, CEntity& Entity, ImVec4 Rect)
-	{
-		int distance = static_cast<int>(Entity.Pawn.Pos.DistanceTo(LocalEntity.Pawn.Pos) / 100);
-		std::string dis_str = Format("%im", distance);
-		Gui.StrokeText(dis_str, { Rect.x + Rect.z + 4, Rect.y }, ImColor(255, 255, 255, 255), 14, false);
-	}
-
 	void HeadShootLine(const CEntity& LocalEntity, ImColor Color)
 	{
+		if (!MenuConfig::ShowHeadShootLine)
+			return;
+
 		Vec2 Pos;
 		Pos.x = Gui.Window.Size.x / 2;
 		Pos.y = Gui.Window.Size.y / 2.0f - Gui.Window.Size.y / (2.0f * std::sin(LocalEntity.Pawn.Fov * M_PI / 180.0f) / std::sin(90.0f * M_PI / 180.0f)) * std::sin(LocalEntity.Pawn.ViewAngle.x * M_PI / 180.0f) / std::sin(90.0f * M_PI / 180.0f);
@@ -87,6 +181,9 @@ namespace Render
 	// ¹Ç÷À»æÖÆ
 	void DrawBone(const CEntity& Entity, ImColor Color, float Thickness)
 	{
+		if (!MenuConfig::ShowBoneESP)
+			return;
+
 		BoneJointPos Previous, Current;
 		for (auto i : BoneJointList::List)
 		{
@@ -113,9 +210,36 @@ namespace Render
 	// ³¯Ïò»æÖÆ
 	void ShowLosLine(const CEntity& Entity, const float Length, ImColor Color, float Thickness)
 	{
+		if (!MenuConfig::ShowEyeRay)
+			return;
+
 		Vec2 StartPoint, EndPoint;
 		Vec3 Temp;
 		BoneJointPos Head = Entity.GetBone().BonePosList[BONEINDEX::head];
+
+		StartPoint = Head.ScreenPos;
+
+		float LineLength = cos(Entity.Pawn.ViewAngle.x * M_PI / 180) * Length;
+
+		Temp.x = Head.Pos.x + cos(Entity.Pawn.ViewAngle.y * M_PI / 180) * LineLength;
+		Temp.y = Head.Pos.y + sin(Entity.Pawn.ViewAngle.y * M_PI / 180) * LineLength;
+		Temp.z = Head.Pos.z - sin(Entity.Pawn.ViewAngle.x * M_PI / 180) * Length;
+
+		if (!gGame.View.WorldToScreen(Temp, EndPoint))
+			return;
+
+		Gui.Line(StartPoint, EndPoint, Color, Thickness);
+	}
+
+	//Å£Å£»æÖÆ
+	void ShowPenis(const CEntity& Entity, const float Length, ImColor Color, float Thickness)
+	{
+		if (!MenuConfig::ShowPenis)
+			return;
+
+		Vec2 StartPoint, EndPoint;
+		Vec3 Temp;
+		BoneJointPos Head = Entity.GetBone().BonePosList[BONEINDEX::pelvis];
 
 		StartPoint = Head.ScreenPos;
 
@@ -391,4 +515,118 @@ namespace Render
 		}
 	}
 
+	// Update window style color
+	void UpdateStyle(int Style)
+	{
+		switch (Style) {
+		case 0:
+			ImGui::StyleColorsDark();
+			break;
+		case 1:
+			ImGui::StyleColorsEnemyMouse();
+			break;
+		case 2:
+			ImGui::StyleColorsClassic();
+			break;
+		}
+	}
+
+	// Update crosshair preset
+	void UpdateCrosshairPreset(int style)
+	{
+		switch (style) {
+		case 1:
+			CrosshairConfig::drawDot = true;
+			CrosshairConfig::DotSize = 2;
+			CrosshairConfig::drawOutLine = true;
+			CrosshairConfig::drawCrossline = false;
+			CrosshairConfig::drawCircle = false;
+			CrosshairConfig::showTargeting = true;
+			break;
+		case 2:
+			CrosshairConfig::drawDot = true;
+			CrosshairConfig::DotSize = 2;
+			CrosshairConfig::drawOutLine = true;
+			CrosshairConfig::drawCrossline = false;
+			CrosshairConfig::drawCircle = true;
+			CrosshairConfig::CircleRadius = 10.f;
+			CrosshairConfig::showTargeting = true;
+			break;
+		case 3:
+			CrosshairConfig::drawDot = true;
+			CrosshairConfig::DotSize = 1;
+			CrosshairConfig::drawOutLine = true;
+			CrosshairConfig::drawCrossline = true;
+			CrosshairConfig::HorizontalLength = 5;
+			CrosshairConfig::VerticalLength = 5;
+			CrosshairConfig::Gap = 18;
+			CrosshairConfig::tStyle = false;
+			CrosshairConfig::drawCircle = true;
+			CrosshairConfig::CircleRadius = 10.f;
+			CrosshairConfig::showTargeting = true;
+			break;
+		case 4:
+			CrosshairConfig::drawDot = true;
+			CrosshairConfig::DotSize = 1;
+			CrosshairConfig::drawOutLine = true;
+			CrosshairConfig::drawCrossline = true;
+			CrosshairConfig::HorizontalLength = 5;
+			CrosshairConfig::VerticalLength = 5;
+			CrosshairConfig::Gap = 1;
+			CrosshairConfig::tStyle = false;
+			CrosshairConfig::drawCircle = false;
+			CrosshairConfig::showTargeting = true;
+			break;
+		case 5:
+			CrosshairConfig::drawDot = false;
+			CrosshairConfig::drawOutLine = true;
+			CrosshairConfig::drawCrossline = true;
+			CrosshairConfig::HorizontalLength = 7;
+			CrosshairConfig::VerticalLength = 7;
+			CrosshairConfig::Gap = 10;
+			CrosshairConfig::tStyle = false;
+			CrosshairConfig::drawCircle = false;
+			CrosshairConfig::showTargeting = true;
+			break;
+		case 6:
+			CrosshairConfig::drawDot = true;
+			CrosshairConfig::DotSize = 2;
+			CrosshairConfig::drawOutLine = true;
+			CrosshairConfig::drawCrossline = true;
+			CrosshairConfig::HorizontalLength = 8;
+			CrosshairConfig::VerticalLength = 8;
+			CrosshairConfig::Gap = 20;
+			CrosshairConfig::tStyle = false;
+			CrosshairConfig::drawCircle = false;
+			CrosshairConfig::showTargeting = true;
+			break;
+		default:
+			break;
+		}
+	}
+
+	// Get the center pos of screen
+	ImVec2 GetScreenCenterImVec2()
+	{
+		int W = GetSystemMetrics(SM_CXSCREEN);
+		int H = GetSystemMetrics(SM_CYSCREEN);
+
+		float CenterX = static_cast<float>(W) / 2;
+		float CenterY = static_cast<float>(H) / 2;
+
+		return ImVec2(CenterX, CenterY);
+	}
+
+	// Convert RGBA to ImVec4
+	// Why not use "ImColor()"? Because I forgot about this.
+	ImVec4 rgba2ImVec(int r, int g, int b, int a)
+	{
+		ImVec4 color;
+		color.x = static_cast<float>(r) / 255.0f;
+		color.y = static_cast<float>(g) / 255.0f;
+		color.z = static_cast<float>(b) / 255.0f;
+		color.w = static_cast<float>(a) / 255.0f;
+
+		return color;
+	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "OS-ImGui.h"
+#include <Shellapi.h>
 
 /****************************************************
 * Copyright (C)	: Liv
@@ -13,6 +14,17 @@
 // OS-ImGui Draw »æÖÆ¹¦ÄÜ
 namespace OSImGui
 {
+    void OSImGui::OpenWebpage(const char* url)
+    {
+        ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWNORMAL);
+    }
+
+    void OSImGui::OpenWebpageButton(const char* label, const char* url)
+    {
+        if (ImGui::Button(label))
+            OpenWebpage(url);
+    }
+
     void OSImGui::Text(std::string Text, Vec2 Pos, ImColor Color, float FontSize, bool KeepCenter)
     {
         if (!KeepCenter)

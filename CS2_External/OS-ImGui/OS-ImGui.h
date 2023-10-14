@@ -46,6 +46,10 @@ namespace OSImGui
 		void ShadowCircle(Vec2 Pos, float Radius, ImColor CircleColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, int Num = 30);
 		// Ô²Í·»¬¶¯Ìõ
 		bool SliderScalarEx1(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags);
+
+		// Open webpage button
+		void OpenWebpage(const char* url);
+		void OpenWebpageButton(const char* label, const char* url);
 	};
 }
 

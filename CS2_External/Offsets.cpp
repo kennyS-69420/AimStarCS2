@@ -44,12 +44,6 @@ bool Offset::UpdateOffsets()
 
 	Offset::Matrix = TempAddress - ClientDLL;
 
-	TempAddress = SearchOffsets(Offset::Signatures::GlobalVars, ClientDLL);
-	if (TempAddress == 0)
-		return false;
-
-	Offset::GlobalVars = TempAddress - ClientDLL;
-
 	TempAddress = SearchOffsets(Offset::Signatures::ViewAngles, ClientDLL);
 	if (TempAddress == 0)
 		return false;
@@ -68,6 +62,7 @@ bool Offset::UpdateOffsets()
 	if (TempAddress == 0)
 		return false;
 
-	Offset::ForceJump = TempAddress + 0x30 - ClientDLL;	
+	Offset::ForceJump = TempAddress + 0x30 - ClientDLL;
+
 	return true;
 }

@@ -9,8 +9,6 @@ bool CGame::InitAddress()
 	this->Address.ViewAngle = GetClientDLLAddress() + Offset::ViewAngle;
 	this->Address.LocalController = GetClientDLLAddress() + Offset::LocalPlayerController;
 	this->Address.LocalPawn = GetClientDLLAddress() + Offset::LocalPlayerPawn;
-	this->Address.ForceJump = GetClientDLLAddress() + Offset::ForceJump;
-	this->Address.GlobalVars = GetClientDLLAddress() + Offset::GlobalVars;
 
 	return this->Address.ClientDLL != 0;
 }
@@ -48,11 +46,6 @@ DWORD64 CGame::GetLocalControllerAddress()
 DWORD64 CGame::GetLocalPawnAddress()
 {
 	return this->Address.LocalPawn;
-}
-
-DWORD64 CGame::GetGlobalVarsAddress()
-{
-	return this->Address.GlobalVars;
 }
 
 bool CGame::UpdateEntityListEntry()

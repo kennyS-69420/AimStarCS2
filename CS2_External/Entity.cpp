@@ -1,5 +1,17 @@
 #include "Entity.h"
 
+template <typename T>
+bool GetDataAddressWithOffset(const DWORD64& Address, DWORD Offset, T& Data)
+{
+	if (Address == 0)
+		return false;
+
+	if (!ProcessMgr.ReadMemory<T>(Address + Offset, Data))
+		return false;
+
+	return true;
+}
+
 bool CEntity::UpdateController(const DWORD64& PlayerControllerAddress)
 {
 	if (PlayerControllerAddress == 0)
@@ -100,6 +112,7 @@ bool PlayerPawn::GetSpotted()
 	return GetDataAddressWithOffset<int>(Address, Offset::Pawn.bSpottedByMask, this->bSpottedByMask);
 }
 
+
 bool PlayerPawn::GetWeaponName()
 {
 	DWORD64 WeaponNameAddress = 0;
@@ -181,7 +194,7 @@ bool PlayerPawn::GetFov()
 	DWORD64 CameraServices = 0;
 	if (!ProcessMgr.ReadMemory<DWORD64>(Address + Offset::Pawn.CameraServices, CameraServices))
 		return false;
-	return GetDataAddressWithOffset<int>(CameraServices, Offset::Pawn.iFovStart, this->Fov);
+	return GetDataAddressWithOffset<int>(CameraServices, Offset::Pawn.iFov, this->Fov);
 }
 
 bool PlayerPawn::GetFFlags()

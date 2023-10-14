@@ -1,5 +1,6 @@
 #include "OS-ImGui_External.h"
-#include "..\MenuConfig.hpp"
+#include "../MenuConfig.hpp"
+
 /****************************************************
 * Copyright (C)	: Liv
 * @file			: OS-ImGui_External.cpp
@@ -112,7 +113,7 @@ namespace OSImGui
         if (DestWindowName.empty() && DestWindowClassName.empty())
             throw OSException("DestWindowName and DestWindowClassName are empty");
 
-        Window.Name = "Window";
+        Window.Name = "AimStar External";
         Window.wName = StringToWstring(Window.Name);
         Window.ClassName = "WindowClass";
         Window.wClassName = StringToWstring(Window.ClassName);
@@ -167,6 +168,12 @@ namespace OSImGui
                 if (!UpdateWindowData())
                     break;
             }
+
+            if (MenuConfig::BypassOBS)
+                SetWindowDisplayAffinity(Window.hWnd, WDA_EXCLUDEFROMCAPTURE);
+            else
+                SetWindowDisplayAffinity(Window.hWnd, WDA_NONE);
+
             ImGui_ImplDX11_NewFrame();
             ImGui_ImplWin32_NewFrame();
             ImGui::NewFrame();
@@ -190,8 +197,8 @@ namespace OSImGui
         RegisterClassExW(&wc);
         if (Type == ATTACH)
         {
-			Window.hWnd = CreateWindowExW(WS_EX_TOPMOST | WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW, Window.wClassName.c_str(), Window.wName.c_str(), WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, 100, 100, NULL, NULL, GetModuleHandle(NULL), NULL);
-			SetLayeredWindowAttributes(Window.hWnd, 0, 255, LWA_ALPHA);
+            Window.hWnd = CreateWindowExW(WS_EX_TOPMOST | WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW, Window.wClassName.c_str(), Window.wName.c_str(), WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, 100, 100, NULL, NULL, GetModuleHandle(NULL), NULL);
+            SetLayeredWindowAttributes(Window.hWnd, 0, 255, LWA_ALPHA);
         }
         else
         {
@@ -237,11 +244,6 @@ namespace OSImGui
         ScreenToClient(Window.hWnd, &MousePos);
         ImGui::GetIO().MousePos.x = static_cast<float>(MousePos.x);
         ImGui::GetIO().MousePos.y = static_cast<float>(MousePos.y);
-
-        if(MenuConfig::OBSBypass)
-            SetWindowDisplayAffinity(Window.hWnd, WDA_EXCLUDEFROMCAPTURE);
-        else
-            SetWindowDisplayAffinity(Window.hWnd, WDA_NONE);
 
         if (ImGui::GetIO().WantCaptureMouse)
             SetWindowLong(Window.hWnd, GWL_EXSTYLE, GetWindowLong(Window.hWnd, GWL_EXSTYLE) & (~WS_EX_LAYERED));

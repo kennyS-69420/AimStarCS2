@@ -4,63 +4,105 @@
 
 namespace MenuConfig
 {
+	inline float ComboWidth = 100.f;
+	inline float SliderWidth = 150.f;
+	inline int MenuStyle = 0;
+
+	inline bool ESPenbled = false;
 	inline bool ShowBoneESP = true;
 	inline bool ShowBoxESP = true;
 	inline bool ShowHealthBar = true;
-	inline bool ShowWeaponESP = true;
-	inline bool ShowDistance = true;
-	inline bool ShowEyeRay = true;
+	inline bool ShowWeaponESP = false;
+	inline bool ShowEyeRay = false;
 	inline bool ShowPlayerName = true;
+	inline bool DrawFov = false;
 
-	inline bool AimBot = true;
+	inline bool AimBot = false;
 	inline int AimBotHotKey = 0;
 	// 0: head 1: neck 3: spine
 	inline int  AimPosition = 0;
-	inline bool ShowAimFovRange = true;
-	inline ImColor AimFovRangeColor = ImColor(230, 230, 230, 255);
 	inline DWORD  AimPositionIndex = BONEINDEX::head;
 	inline bool VisibleCheck = true;
+
+	inline bool RCS = false;
+	inline bool Bhop = false;
+
 	// 0: normal 1: dynamic
 	inline int  BoxType = 0;
 	// 0: Vertical 1: Horizontal
 	inline int  HealthBarType = 0;
+	// 0: Top 1: Center 2: Bottom
+	inline int  LinePos = 0;
 
-	inline ImColor BoneColor = ImColor(255, 255, 255, 255);
-	inline ImColor BoxColor = ImColor(255, 255, 255, 255);
+	inline ImColor BoneColor = ImColor(0, 255, 255, 255);
+	inline ImColor BoxColor = ImColor(255, 80, 0, 255);
 	inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
+	inline ImColor FovCircleColor = ImColor(180, 255, 0, 255);
 
 	inline bool ShowMenu = true;
 
-	inline bool ShowRadar = true;
+	inline bool ShowRadar = false;
 	inline float RadarRange = 150;
 	inline float RadarPointSizeProportion = 1.f;
-	inline bool ShowRadarCrossLine = true;
+	inline bool ShowRadarCrossLine = false;
 	inline ImColor RadarCrossLineColor = ImColor(220, 220, 220, 255);
 	// 0: circle 1: arrow 2: circle with arrow
 	inline int RadarType = 2;
-	inline float Proportion = 2230;
+	inline float Proportion = 3300.f;
+	inline bool customRadar = false;
+	inline float RadarBgAlpha = 0.1f;
 
-	inline bool TriggerBot = true;
+	inline bool TriggerBot = false;
+	inline bool TriggerAlways = false;
 	inline int TriggerHotKey = 0;
 
 	inline bool TeamCheck = true;
-	inline bool OBSBypass = true;
 
-	inline bool BunnyHop = false;
-	
-	inline bool ShowHeadShootLine = true;
-	inline ImColor HeadShootLineColor = ImColor(255, 255, 255, 255);
+	inline bool ShowHeadShootLine = false;
+	inline ImColor HeadShootLineColor = ImColor(255, 255, 255, 200);
 
-	inline bool ShowFovLine = true;
+	inline bool ShowFovLine = false;
 	inline ImColor FovLineColor = ImColor(55, 55, 55, 220);
 	inline float FovLineSize = 60.f;
 
 	inline bool ShowLineToEnemy = false;
 	inline ImColor LineToEnemyColor = ImColor(255, 255, 255, 220);
 
-	inline bool ShowCrossHair = true;
-	inline ImColor CrossHairColor = ImColor(45, 45, 45, 255);
-	inline float CrossHairSize = 150;
+	inline bool BypassOBS = false;
 
-	inline bool ShowWhenSpec = true;
+	inline bool BunnyHop = false;
+	inline bool WorkInSpec = true;
+
+	// Penis Config
+	inline bool ShowPenis = false;
+	inline float PenisLength = 15.f;
+	inline float PenisSize = 1.3f;
+	inline ImColor PenisColor = ImColor(255, 0, 0, 200);
+}
+
+namespace CrosshairConfig
+{
+	inline float CrossHairSize = 75;
+
+	inline bool ShowCrossHair = false;
+	inline bool drawDot = true;
+	inline bool drawCrossline = true;
+	inline bool tStyle = false;
+	inline bool drawCircle = false;
+	inline bool drawOutLine = true;
+	inline bool showTargeting = false;
+	inline bool DynamicGap = false;
+
+	inline int crosshairPreset = 0;
+	inline int Gap = 8;
+	inline int HorizontalLength = 6;
+	inline int VerticalLength = 6;
+	inline float DotSize = 1.0f;
+	inline float CircleRadius = 3.f;
+
+	inline bool isAim = false;
+	inline bool isJump = false;
+	
+	inline ImColor CrossHairColor = ImColor(0, 255, 0, 255);
+	inline ImColor TargetedColor = ImColor(255, 0, 0, 255);
 }

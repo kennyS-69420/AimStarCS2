@@ -4,11 +4,17 @@
 #include "AimBot.hpp"
 #include "Radar/Radar.h"
 #include "TriggerBot.h"
-#include "Bunnyhop.hpp"
+#include "Bunnyhop.h"
 
 namespace Cheats
 {
+	void RenderCrossHair(ImDrawList* drawList) noexcept;
+
 	void Menu();
 	void RadarSetting(Base_Radar& Radar);
 	void Run();
 }
+
+struct {
+	ImFont* normal15px = nullptr;
+} fonts;

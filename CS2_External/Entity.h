@@ -2,7 +2,6 @@
 #include "Game.h"
 #include "View.hpp"
 #include "Bone.h"
-#include "Globals.hpp"
 
 struct C_UTL_VECTOR
 {

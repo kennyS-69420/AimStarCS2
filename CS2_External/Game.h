@@ -17,7 +17,6 @@ private:
 		DWORD64 LocalController;
 		DWORD64 LocalPawn;
 		DWORD64 ForceJump;
-		DWORD64 GlobalVars;
 	}Address;
 
 public:
@@ -40,8 +39,6 @@ public:
 	DWORD64 GetLocalControllerAddress();
 
 	DWORD64 GetLocalPawnAddress();
-
-	DWORD64 GetGlobalVarsAddress();
 
 	bool UpdateEntityListEntry();
 

@@ -17,6 +17,8 @@ namespace OSImGui
         ImGuiIO& io = ImGui::GetIO(); (void)io;
 
         ImGui::StyleColorsDark();
+        
+        io.Fonts -> AddFontFromFileTTF("c:\\Windows\\Fonts\\msyhbd.ttc", 16.0f, NULL, io.Fonts->GetGlyphRangesChineseFull());
         io.LogFilename = nullptr;
 
         if (!ImGui_ImplWin32_Init(Window.hWnd))
