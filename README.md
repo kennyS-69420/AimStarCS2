@@ -1,34 +1,94 @@
-# CS2_External
-CS2 external cheat.
+[![Language](https://img.shields.io/badge/build-C++-blue?style=flat&label=Language)](https://en.wikipedia.org/wiki/C%2B%2B)
+[![CS2](https://img.shields.io/badge/Game-CS2-red.svg?style=flat)](https://store.steampowered.com/app/730/CounterStrike_2/) 
+[![License](https://img.shields.io/github/license/CowNowK/AimStarCS2.svg?style=flat)](LICENSE)
+# AimStar for CS2
+External Cheat for CS2
 
-## ImGui library -> [OS-ImGui](https://github.com/TKazer/OS-ImGui)
+> I will only update this project on weekends, bcauz Ima studnt need 2 go 2 the f*ckin schooooooooool👎🏻
 
 ## NOTICE
+- I made most of the modifications based on Tkazer's.
+- 这是基于Liv的项目进行了一些修改和优化
+- Some players have suggested that the crosshair feature could be made into a separate small tool.
 
-This source just used to study how to code a simple CS2 external hack systematically.
+***
+![](/Image1.png)
+![](/Image2.png)
 
-这个源码仅供学习如何系统的写一套CS2外部辅助程序。
+## Features
 
-<img src="https://github.com/TKazer/CS2_External/blob/master/Image2.png" width="1200" />
+<details>
+<summary>ESP</summary>
+  
+- BoxESP
+  
+- BoneESP
+  
+- NameESP
+  
+- WeaponESP
 
-## Functions
+- ~~SexyESP~~
+  
+- HealthBar
+  
+- SnapLine
+  
+- EyeRay
 
-> 1. BoneESP
+</details>
 
-> 2. BoxESP
+<details>
+<summary>Aimbot</summary>
 
-> 3. AimBot (With rcs)
+- Draw Fov
 
-> 4. EyeLine
+- Bone
 
-> 5. Auto update offsets
+- Smooth
 
-> 6. weaponESP
+- RCS
 
-> 7. Radar
+</details>
 
-> 8. TriggerBot
+<details>
+<summary>Radar</summary>
 
-> 9. HeadShoot Line
+- Styles
 
-> 10. Fov Line
+- Radar Proportion
+
+- Radar Range
+
+- Radar Background
+
+</details>
+
+<details>
+<summary>Misc</summary>
+- Bunnyhop
+
+- Triggerbot
+
+- Custom Crosshair
+
+- Headshot Line
+
+- Team Check
+
+- OBS Check
+
+- Visibility Check
+
+- Window Style
+
+- Config Saver
+
+</details>
+
+## Known Bugs
+> Sometimes the aimbot malfunctions and doesn't work properly.
+> 
+> Sometimes the ESP renders unclear large boxes or keeps the skeleton stationary.
+>
+> The Bunnyhop feature seems to be not working. (I haven't found the problematic code section yet.)
