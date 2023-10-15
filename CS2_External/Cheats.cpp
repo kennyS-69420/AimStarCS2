@@ -266,7 +266,7 @@ void Cheats::Menu()
 			ImGui::Checkbox("Cheat In Spec", &MenuConfig::WorkInSpec);
 
 			ImGui::NextColumn();
-//			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
+			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
 			ImGui::Checkbox("Team Check", &MenuConfig::TeamCheck);
 			ImGui::Checkbox("Bypass OBS", &MenuConfig::BypassOBS);
 

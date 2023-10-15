@@ -1,6 +1,6 @@
 #pragma once
 #include <Windows.h>
-#include "Utils/ProcessManager.hpp"
+#include "ProcessManager.hpp"
 template <typename T>
 inline bool GetDataAddressWithOffset(const DWORD64& Address, DWORD Offset, T& Data)
 {

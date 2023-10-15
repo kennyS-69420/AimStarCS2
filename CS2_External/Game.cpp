@@ -48,6 +48,12 @@ DWORD64 CGame::GetLocalPawnAddress()
 	return this->Address.LocalPawn;
 }
 
+DWORD64 CGame::GetGlobalVarsAddress()
+{
+	return this->Address.GlobalVars;
+}
+
+
 bool CGame::UpdateEntityListEntry()
 {
 	DWORD64 EntityListEntry = 0;
