@@ -119,6 +119,7 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		MenuConfig::ShowDistance = false;
 		MenuConfig::ShowBoneESP = true;
 		MenuConfig::ShowBoxESP = true;
 		MenuConfig::ShowHealthBar = true;

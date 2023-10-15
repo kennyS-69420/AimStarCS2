@@ -18,6 +18,7 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
+        configFile << "ShowDistance" << MenuConfig::ShowDistance << std::endl;
         configFile << "ShowBoneESP " << MenuConfig::ShowBoneESP << std::endl;
         configFile << "TriggerDelay " << TriggerBot::TriggerDelay << std::endl;
         configFile << "ShowBoxESP " << MenuConfig::ShowBoxESP << std::endl;
@@ -111,6 +112,7 @@ namespace MyConfigSaver {
             std::string key;
             if (iss >> key) {
                 if (key == "ShowBoneESP") iss >> MenuConfig::ShowBoneESP;
+                else if (key == "ShowDistance") iss >> MenuConfig::ShowDistance;
                 else if (key == "TriggerDelay") iss >> TriggerBot::TriggerDelay;
                 else if (key == "ShowBoxESP") iss >> MenuConfig::ShowBoxESP;
                 else if (key == "TriggerHotKey") { iss >> MenuConfig::TriggerHotKey; TriggerBot::SetHotKey(MenuConfig::TriggerHotKey); }

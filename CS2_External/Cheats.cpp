@@ -42,6 +42,7 @@ void Cheats::Menu()
 			ImGui::Combo("BarStyle", &MenuConfig::HealthBarType, "Vetical\0Horizontal");
 			
 			ImGui::Checkbox("Weapon", &MenuConfig::ShowWeaponESP);
+			ImGui::Checkbox("Distance", &MenuConfig::ShowDistance);
 			ImGui::Checkbox("Name", &MenuConfig::ShowPlayerName);
 		
 			ImGui::Checkbox("SnapLine", &MenuConfig::ShowLineToEnemy);
@@ -290,7 +291,7 @@ void Cheats::Menu()
 			// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
 
 			Gui.OpenWebpageButton("Source Code", "https://github.com/CowNowK/AimStarCS2");
-			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-14");
+			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-15");
 			ImGui::NewLine();
 
 			ImGui::Text("Offsets:");
@@ -525,6 +526,10 @@ void Cheats::Run()
 			if (MenuConfig::ShowWeaponESP)
 				Gui.StrokeText(Entity.Pawn.WeaponName, { Rect.x + Rect.z / 2,Rect.y + Rect.w }, ImColor(255, 255, 255, 255), 14, true);
 
+			// Draw Distance
+			Render::DrawDistance(LocalEntity, Entity, Rect);
+
+			// Draw player name
 			if (MenuConfig::ShowPlayerName)
 			{
 				if (MenuConfig::HealthBarType == 0)

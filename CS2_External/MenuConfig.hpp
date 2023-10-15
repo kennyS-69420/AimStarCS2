@@ -16,6 +16,7 @@ namespace MenuConfig
 	inline bool ShowEyeRay = false;
 	inline bool ShowPlayerName = true;
 	inline bool DrawFov = false;
+	inline bool ShowDistance = false;
 
 	inline bool AimBot = false;
 	inline int AimBotHotKey = 0;

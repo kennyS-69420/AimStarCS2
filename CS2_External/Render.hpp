@@ -5,6 +5,7 @@
 #include <map>
 #include <Windows.h>
 #include "Entity.h"
+#include "Utils/Format.h"
 #include "OS-ImGui/imgui/imgui.h"
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "OS-ImGui/imgui/imgui_internal.h"
@@ -23,6 +24,16 @@ inline std::optional<GUI> gui;
 
 namespace Render
 {
+	void DrawDistance(const CEntity& LocalEntity, CEntity& Entity, ImVec4 Rect)
+	{
+		if (!MenuConfig::ShowDistance)
+			return;
+
+		int distance = static_cast<int>(Entity.Pawn.Pos.DistanceTo(LocalEntity.Pawn.Pos) / 100);
+		std::string dis_str = Format("%im", distance);
+		Gui.StrokeText(dis_str, { Rect.x + Rect.z + 4, Rect.y }, ImColor(255, 255, 255, 255), 14, false);
+	}
+
 	void DrawFovCircle(const CEntity& LocalEntity)
 	{
 		if (!MenuConfig::DrawFov)

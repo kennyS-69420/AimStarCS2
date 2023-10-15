@@ -9,6 +9,8 @@ bool CGame::InitAddress()
 	this->Address.ViewAngle = GetClientDLLAddress() + Offset::ViewAngle;
 	this->Address.LocalController = GetClientDLLAddress() + Offset::LocalPlayerController;
 	this->Address.LocalPawn = GetClientDLLAddress() + Offset::LocalPlayerPawn;
+	this->Address.ForceJump = GetClientDLLAddress() + Offset::ForceJump;
+	this->Address.GlobalVars = GetClientDLLAddress() + Offset::GlobalVars;
 
 	return this->Address.ClientDLL != 0;
 }
