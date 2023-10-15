@@ -28,6 +28,8 @@ External Cheat for CS2
   
 - WeaponESP
 
+- DistanceESP
+
 - ~~SexyESP~~
   
 - HealthBar
@@ -66,11 +68,12 @@ External Cheat for CS2
 
 <details>
 <summary>Misc</summary>
+
 - Bunnyhop
 
 - Triggerbot
 
-- Custom Crosshair
+- Custom Discoloration Crosshair
 
 - Headshot Line
 
