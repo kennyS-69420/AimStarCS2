@@ -28,6 +28,8 @@ External Cheat for CS2
   
 - WeaponESP
 
+- DistanceESP
+
 - ~~SexyESP~~
   
 - HealthBar
@@ -66,11 +68,12 @@ External Cheat for CS2
 
 <details>
 <summary>Misc</summary>
+
 - Bunnyhop
 
 - Triggerbot
 
-- Custom Crosshair
+- Custom Discoloration Crosshair
 
 - Headshot Line
 
@@ -91,4 +94,4 @@ External Cheat for CS2
 > 
 > Sometimes the ESP renders unclear large boxes or keeps the skeleton stationary.
 >
-> The Bunnyhop feature seems to be not working. (I haven't found the problematic code section yet.)
+> Offsets outdated
