@@ -28,18 +28,19 @@ namespace Offset
 		DWORD CurrentHealth = 0x32C;
 		DWORD GameSceneNode = 0x310;
 		DWORD BoneArray = 0x1E0;
-		DWORD angEyeAngles = 0x1500;
+		DWORD angEyeAngles = 0x14F8;
 		DWORD vecLastClipCameraPos = 0x1274;
 		DWORD pClippingWeapon = 0x1290;
-		DWORD iShotsFired = 0x1404;
-		DWORD aimPunchAngle = 0x1704;
-		DWORD aimPunchCache = 0x1728;
-		DWORD iIDEntIndex = 0x152C;
+		DWORD iShotsFired = 0x1400;
+		DWORD flFlashDuration = 0x1450;
+		DWORD aimPunchAngle = 0x16FC;
+		DWORD aimPunchCache = 0x1720;
+		DWORD iIDEntIndex = 0x1524;
 		DWORD iTeamNum = 0x3BF;
 		DWORD CameraServices = 0x10E0;
-		DWORD iFov = 0x214;
+		DWORD iFovStart = 0x214;
 		DWORD fFlags = 0x3C8;
-		DWORD bSpottedByMask = 0x1620 + 0xC;
+		DWORD bSpottedByMask = 0x1618 + 0xC; // entitySpottedState + bSpottedByMask
 	}Pawn;
 
 	struct
