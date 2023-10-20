@@ -5,6 +5,7 @@
 #include "Radar/Radar.h"
 #include "TriggerBot.h"
 #include "Bunnyhop.hpp"
+#include "Hacks/NoFlash.h"
 
 namespace Cheats
 {

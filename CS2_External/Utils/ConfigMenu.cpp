@@ -179,6 +179,7 @@ namespace ConfigMenu {
 		CrosshairConfig::DotSize = 1.0f;
 		MenuConfig::BunnyHop = false;
 		MenuConfig::WorkInSpec = true;
+		MenuConfig::NoFlash = false;
 
 		MenuConfig::ESPenbled = false;
 

@@ -265,6 +265,7 @@ void Cheats::Menu()
 			ImGui::SameLine();
 			ImGui::ColorEdit4("##HeadShootLineColor", reinterpret_cast<float*>(&MenuConfig::HeadShootLineColor), ImGuiColorEditFlags_NoInputs);
 			ImGui::Checkbox("Cheat In Spec", &MenuConfig::WorkInSpec);
+			ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
 
 			ImGui::NextColumn();
 			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
@@ -291,7 +292,7 @@ void Cheats::Menu()
 			// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
 
 			Gui.OpenWebpageButton("Source Code", "https://github.com/CowNowK/AimStarCS2");
-			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-15");
+			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-20");
 			ImGui::NewLine();
 
 			ImGui::Text("Offsets:");
@@ -571,6 +572,9 @@ void Cheats::Run()
 	// Bhop
 	Bunnyhop::Run(LocalEntity);
 
+	// No Flash
+	NoFlash::Run(LocalEntity);
+
 	// Aimbot
 	if (MenuConfig::AimBot)
 	{
@@ -585,13 +589,5 @@ void Cheats::Run()
 			}
 		}	
 	}
-	
-	/*
-	if (MenuConfig::Bhop)
-	{
-		FakeBhop();
-	}
-	*/
-	
-	
+		
 }

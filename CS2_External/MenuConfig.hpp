@@ -73,6 +73,7 @@ namespace MenuConfig
 
 	inline bool BunnyHop = false;
 	inline bool WorkInSpec = true;
+	inline bool NoFlash = false;
 
 	// Penis Config
 	inline bool ShowPenis = false;

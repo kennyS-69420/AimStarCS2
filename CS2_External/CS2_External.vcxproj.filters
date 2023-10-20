@@ -119,6 +119,7 @@
     <ClInclude Include="Utils\Format.h" />
     <ClInclude Include="Bunnyhop.hpp" />
     <ClInclude Include="Utils\Globals.hpp" />
+    <ClInclude Include="Hacks\NoFlash.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
