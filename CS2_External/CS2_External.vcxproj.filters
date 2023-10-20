@@ -120,6 +120,8 @@
     <ClInclude Include="Bunnyhop.hpp" />
     <ClInclude Include="Utils\Globals.hpp" />
     <ClInclude Include="Hacks\NoFlash.h" />
+    <ClInclude Include="Font\fontArray.h" />
+    <ClInclude Include="Font\IconsFontAwesome5.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
@@ -191,5 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CS2_External.aps" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Font\fa-regular.ttf" />
   </ItemGroup>
 </Project>

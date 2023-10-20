@@ -1,4 +1,6 @@
 #include "OS-ImGui_Base.h"
+#include "..\Font\fontArray.h"
+#include "..\Font\IconsFontAwesome5.h"
 
 /****************************************************
 * Copyright (C)	: Liv
@@ -14,11 +16,27 @@ namespace OSImGui
     bool OSImGui_Base::InitImGui(ID3D11Device* device, ID3D11DeviceContext* device_context)
     {
         ImGui::CreateContext();
-        ImGuiIO& io = ImGui::GetIO(); (void)io;
+        ImGuiIO& io = ImGui::GetIO();
+        io.Fonts->AddFontDefault();
+        (void)io;
+
+        ImFontAtlas* fontAtlas = new ImFontAtlas();
+        ImFontConfig arialConfig;
+        arialConfig.FontDataOwnedByAtlas = false;
+        ImFont* arialFont = fontAtlas->AddFontFromFileTTF("c:\\Windows\\Fonts\\msyhbd.ttc", 16.0f, NULL, io.Fonts->GetGlyphRangesChineseFull());
+
+        ImFontConfig iconConfig;
+        static const ImWchar iconRanges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+        iconConfig.MergeMode = true;
+        iconConfig.PixelSnapH = true;
+        iconConfig.OversampleH = 3;
+        iconConfig.OversampleV = 3;
+        iconConfig.GlyphRanges = iconRanges;
+        iconConfig.FontDataOwnedByAtlas = false;
+        ImFont* iconFont = fontAtlas->AddFontFromMemoryTTF((void*)rawData, sizeof(rawData), 24.f, &iconConfig, iconRanges);
+        io.Fonts = fontAtlas;
 
         ImGui::StyleColorsDark();
-        
-        io.Fonts -> AddFontFromFileTTF("c:\\Windows\\Fonts\\msyhbd.ttc", 16.0f, NULL, io.Fonts->GetGlyphRangesChineseFull());
         io.LogFilename = nullptr;
 
         if (!ImGui_ImplWin32_Init(Window.hWnd))

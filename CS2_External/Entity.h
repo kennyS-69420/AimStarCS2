@@ -51,6 +51,7 @@ public:
 	int Fov;
 	DWORD64 bSpottedByMask;
 	int fFlags;
+
 public:
 	bool GetPos();
 	bool GetViewAngle();
