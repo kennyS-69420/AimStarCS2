@@ -94,4 +94,4 @@ External Cheat for CS2
 > 
 > Sometimes the ESP renders unclear large boxes or keeps the skeleton stationary.
 >
-> The Bunnyhop feature seems to be not working. (I haven't found the problematic code section yet.)
+> Offsets outdated
