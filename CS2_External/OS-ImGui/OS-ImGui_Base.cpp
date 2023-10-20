@@ -1,4 +1,4 @@
-#include "OS-ImGui_Base.h"
+﻿#include "OS-ImGui_Base.h"
 #include "..\Font\fontArray.h"
 #include "..\Font\IconsFontAwesome5.h"
 
@@ -23,7 +23,7 @@ namespace OSImGui
         ImFontAtlas* fontAtlas = new ImFontAtlas();
         ImFontConfig arialConfig;
         arialConfig.FontDataOwnedByAtlas = false;
-        ImFont* arialFont = fontAtlas->AddFontFromFileTTF("c:\\Windows\\Fonts\\msyhbd.ttc", 16.0f, NULL, io.Fonts->GetGlyphRangesChineseFull());
+        ImFont* arialFont = fontAtlas->AddFontFromFileTTF("c:\\Windows\\Fonts\\msyhbd.ttc", 16.0f, &arialConfig, io.Fonts->GetGlyphRangesChineseFull());
 
         ImFontConfig iconConfig;
         static const ImWchar iconRanges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };

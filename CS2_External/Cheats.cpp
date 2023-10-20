@@ -4,6 +4,7 @@
 #include "MenuConfig.hpp"
 #include "Utils/ConfigMenu.hpp"
 #include "Utils/ConfigSaver.hpp"
+#include "Font/IconsFontAwesome5.h"
 
 void Cheats::Menu()
 {

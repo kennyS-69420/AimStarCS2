@@ -196,5 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Font\fa-regular.ttf" />
+    <Font Include="Font\stratum2.ttf" />
   </ItemGroup>
 </Project>

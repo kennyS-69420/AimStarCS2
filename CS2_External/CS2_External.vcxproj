@@ -206,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Font\fa-regular.ttf" />
+    <Font Include="Font\stratum2.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
