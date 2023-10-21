@@ -4,6 +4,8 @@
 # AimStar for CS2
 External Cheat for CS2
 
+`I create a discord server` **->** [AimShit](https://discord.gg/dqNDkFD6Jw)
+
 > I will only update this project on weekends, bcauz Ima studnt need 2 go 2 the f*ckin schooooooooool👎🏻
 
 ## NOTICE
