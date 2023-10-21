@@ -140,6 +140,7 @@
     <ClInclude Include="Bunnyhop.hpp" />
     <ClInclude Include="Cheats.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Features\CheatList.h" />
     <ClInclude Include="Font\fontArray.h" />
     <ClInclude Include="Font\IconsFontAwesome5.h" />
     <ClInclude Include="Game.h" />

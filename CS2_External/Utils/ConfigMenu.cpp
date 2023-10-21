@@ -183,6 +183,7 @@ namespace ConfigMenu {
 		MenuConfig::WorkInSpec = true;
 		MenuConfig::NoFlash = false;
 		MenuConfig::WaterMark = false;
+		MenuConfig::CheatList = false;
 
 		MenuConfig::ESPenbled = false;
 

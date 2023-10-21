@@ -77,6 +77,7 @@ namespace MenuConfig
 	inline bool WorkInSpec = true;
 	inline bool NoFlash = false;
 	inline bool WaterMark = false;
+	inline bool CheatList = false;
 
 	// Penis Config
 	inline bool ShowPenis = false;

@@ -270,6 +270,7 @@ void Cheats::Menu()
 			ImGui::Checkbox("Cheat In Spec", &MenuConfig::WorkInSpec);
 			ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
 			ImGui::Checkbox("Watermark", &MenuConfig::WaterMark);
+			ImGui::Checkbox("Cheat List", &MenuConfig::CheatList);
 
 			ImGui::NextColumn();
 			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
@@ -296,7 +297,7 @@ void Cheats::Menu()
 			// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
 
 			Gui.OpenWebpageButton("Source Code", "https://github.com/CowNowK/AimStarCS2");
-			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-20");
+			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-21");
 			ImGui::NewLine();
 
 			ImGui::Text("Offsets:");
@@ -565,6 +566,9 @@ void Cheats::Run()
 	// WaterMark
 	Watermark::Render();
 
+	// Cheat List
+	CheatList::Render();
+
 	// Fov line
 	Render::DrawFov(LocalEntity, MenuConfig::FovLineSize, MenuConfig::FovLineColor, 1);
 
@@ -605,16 +609,10 @@ void Cheats::Run()
 			}
 		}
 
-		bool hotkeyPressed = false;
-		if (MenuConfig::AimToggleMode && GetAsyncKeyState(AimControl::HotKey))
+		if (MenuConfig::AimToggleMode && (GetAsyncKeyState(AimControl::HotKey) & 0x8000) && currentTick - lastTick >= 200)
 		{
-			if (!hotkeyPressed)
-			{
-				AimControl::switchToggle();
-				hotkeyPressed = true;
-			}
-			else
-				hotkeyPressed = false;
+			AimControl::switchToggle();
+			lastTick = currentTick;
 		}
 			
 			
