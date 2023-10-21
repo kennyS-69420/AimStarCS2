@@ -12,9 +12,8 @@ int main()
 	"Author: CowNow\n"
 	"Source Code: https://github.com/CowNowK/AimStarCS2\n"
 	"\n"
-	"- Aimbot和RCS功能可能导致账号封禁，谨慎使用\n"
-	"- 按下[INS]键打开或隐藏菜单\n"
-	"- Aimbot and RCS features may result in VAC Bans, use with caution.\n"
+	"- This features may result in VAC Bans, use at your own risk:\n"
+	"	* Aimbot, RCS, Bhop, NoFlash\n"
 	"- Press [INS] to show or hide Menu.\n"
 	"\n"
 	);
