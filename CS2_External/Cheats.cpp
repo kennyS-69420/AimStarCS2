@@ -515,7 +515,12 @@ void Cheats::Run()
 				
 			// Draw Box
 			if (MenuConfig::ShowBoxESP)
+			{
+				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, { 0,0,0,255 }, 3);
 				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, MenuConfig::BoxColor, 1.3);
+			}
+				
+			
 
 			// Draw HealthBar
 			if (MenuConfig::ShowHealthBar)
