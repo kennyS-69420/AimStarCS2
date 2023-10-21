@@ -28,7 +28,9 @@ void Cheats::Menu()
 			ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&MenuConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("BoxStyle", &MenuConfig::BoxType, "Normal\0Dynamic");
+			ImGui::Combo("BoxStyle", &MenuConfig::BoxType, "Normal\0Dynamic\0Flat");
+			if (MenuConfig::ShowBoxESP)
+				ImGui::SliderFloat("Box Rounding", &MenuConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
 
 			ImGui::Checkbox("Skeleton", &MenuConfig::ShowBoneESP);
 			ImGui::SameLine();
@@ -298,7 +300,9 @@ void Cheats::Menu()
 			// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
 
 			Gui.OpenWebpageButton("Source Code", "https://github.com/CowNowK/AimStarCS2");
-			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-21");
+			ImGui::SameLine();
+			Gui.OpenWebpageButton("Join Discord", "https://discord.gg/MzbmSRaU3p");
+			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-22");
 			ImGui::NewLine();
 
 			ImGui::Text("Offsets:");
@@ -503,6 +507,9 @@ void Cheats::Run()
 			case 1:
 				Rect = Render::Get2DBoneRect(Entity);
 				break;
+			case 2:
+				Rect = Render::Get2DBox(Entity);
+				break;
 			default:
 				break;
 			}
@@ -516,8 +523,16 @@ void Cheats::Run()
 			// Draw Box
 			if (MenuConfig::ShowBoxESP)
 			{
-				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, { 0,0,0,255 }, 3);
-				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, MenuConfig::BoxColor, 1.3);
+				if (MenuConfig::BoxType == 2)
+				{
+					Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, MenuConfig::BoxColor, MenuConfig::BoxRounding);
+				}
+				else
+				{
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, { 0,0,0,255 }, 3, MenuConfig::BoxRounding);
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, MenuConfig::BoxColor, 1.3, MenuConfig::BoxRounding);
+				}
+				
 			}
 				
 			

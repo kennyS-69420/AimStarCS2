@@ -127,6 +127,7 @@ namespace ConfigMenu {
 		MenuConfig::ShowWeaponESP = false;
 		MenuConfig::ShowEyeRay = false;
 		MenuConfig::ShowPlayerName = true;
+		MenuConfig::BoxRounding = 0.0f;
 		MenuConfig::AimBot = false;
 		MenuConfig::AimAlways = false;
 		MenuConfig::AimToggleMode = false;

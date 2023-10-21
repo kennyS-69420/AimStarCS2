@@ -17,6 +17,7 @@ namespace MenuConfig
 	inline bool ShowPlayerName = true;
 	inline bool DrawFov = false;
 	inline bool ShowDistance = false;
+	inline float BoxRounding = 0.0f;
 
 	inline bool AimBot = false;
 	inline bool AimAlways = false;
