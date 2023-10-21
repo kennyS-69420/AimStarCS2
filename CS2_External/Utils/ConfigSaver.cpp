@@ -37,6 +37,8 @@ namespace MyConfigSaver {
         configFile << "ShowEyeRay " << MenuConfig::ShowEyeRay << std::endl;
         configFile << "ShowPlayerName " << MenuConfig::ShowPlayerName << std::endl;
         configFile << "AimBot " << MenuConfig::AimBot << std::endl;
+        configFile << "AimAlways" << MenuConfig::AimAlways << std::endl;
+        configFile << "AimToggle" << MenuConfig::AimToggleMode << std::endl;
         configFile << "AimPosition " << MenuConfig::AimPosition << std::endl;
         configFile << "AimPositionIndex " << MenuConfig::AimPositionIndex << std::endl;
         configFile << "HealthBarType " << MenuConfig::HealthBarType << std::endl;
@@ -132,6 +134,8 @@ namespace MyConfigSaver {
                 else if (key == "ShowEyeRay") iss >> MenuConfig::ShowEyeRay;
                 else if (key == "ShowPlayerName") iss >> MenuConfig::ShowPlayerName;
                 else if (key == "AimBot") iss >> MenuConfig::AimBot;
+                else if (key == "AimAlways") iss >> MenuConfig::AimAlways;
+                else if (key == "AimToggle") iss >> MenuConfig::AimToggleMode;
                 else if (key == "AimPosition") iss >> MenuConfig::AimPosition;
                 else if (key == "AimPositionIndex") iss >> MenuConfig::AimPositionIndex;
                 else if (key == "HealthBarType") iss >> MenuConfig::HealthBarType;

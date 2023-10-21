@@ -25,6 +25,11 @@ namespace AimControl
 		HotKey = HotKeyList.at(Index);
 	}
 
+	inline void switchToggle()
+	{
+		MenuConfig::AimAlways = !MenuConfig::AimAlways;
+	}
+
 	inline void AimBot(const CEntity& Local, Vec3 LocalPos,  Vec3 AimPos)
 	{
 		float Yaw, Pitch;

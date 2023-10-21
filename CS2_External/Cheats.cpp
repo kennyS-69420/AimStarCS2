@@ -78,12 +78,14 @@ void Cheats::Menu()
 			}*/
 
 			Gui.MyCheckBox("Enabled", &MenuConfig::AimBot);
-			ImGui::SameLine();
+			
 			ImGui::SetNextItemWidth(75.f);
 			if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
 			{
 				AimControl::SetHotKey(MenuConfig::AimBotHotKey);
 			}
+			ImGui::SameLine();
+			ImGui::Checkbox("Toggle Mode", &MenuConfig::AimToggleMode);
 
 			ImGui::Checkbox("Draw Fov", &MenuConfig::DrawFov);
 			ImGui::SameLine();
@@ -585,14 +587,37 @@ void Cheats::Run()
 	{
 		Render::DrawFovCircle(LocalEntity);
 
-		if (GetAsyncKeyState(AimControl::HotKey))
+		if (MenuConfig::AimAlways)
 		{
-			
 			if (AimPos != Vec3(0, 0, 0))
 			{
 				AimControl::AimBot(LocalEntity, LocalEntity.Pawn.CameraPos, AimPos);
 			}
-		}	
+		}
+		else
+		{
+			if (GetAsyncKeyState(AimControl::HotKey))
+			{
+				if (AimPos != Vec3(0, 0, 0))
+				{
+					AimControl::AimBot(LocalEntity, LocalEntity.Pawn.CameraPos, AimPos);
+				}
+			}
+		}
+
+		bool hotkeyPressed = false;
+		if (MenuConfig::AimToggleMode && GetAsyncKeyState(AimControl::HotKey))
+		{
+			if (!hotkeyPressed)
+			{
+				AimControl::switchToggle();
+				hotkeyPressed = true;
+			}
+			else
+				hotkeyPressed = false;
+		}
+			
+			
 	}
 		
 }

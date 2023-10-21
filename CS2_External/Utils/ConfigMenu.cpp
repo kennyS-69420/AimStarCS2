@@ -127,6 +127,8 @@ namespace ConfigMenu {
 		MenuConfig::ShowEyeRay = false;
 		MenuConfig::ShowPlayerName = true;
 		MenuConfig::AimBot = false;
+		MenuConfig::AimAlways = false;
+		MenuConfig::AimToggleMode = false;
 		MenuConfig::AimPosition = 0;
 		MenuConfig::AimPositionIndex = BONEINDEX::head;
 		MenuConfig::BoxType = 0;

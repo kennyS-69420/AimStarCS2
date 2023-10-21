@@ -5,8 +5,8 @@
 #include "Radar/Radar.h"
 #include "TriggerBot.h"
 #include "Bunnyhop.hpp"
-#include "Hacks/NoFlash.h"
-#include "Hacks/Watermark.h"
+#include "Features/NoFlash.h"
+#include "Features/Watermark.h"
 
 namespace Cheats
 {
