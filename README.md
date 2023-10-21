@@ -95,5 +95,3 @@ External Cheat for CS2
 > Sometimes the aimbot malfunctions and doesn't work properly.
 > 
 > Sometimes the ESP renders unclear large boxes or keeps the skeleton stationary.
->
-> Offsets outdated
