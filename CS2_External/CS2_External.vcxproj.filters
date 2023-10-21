@@ -121,9 +121,10 @@
     <ClInclude Include="Utils\Globals.hpp" />
     <ClInclude Include="Features\NoFlash.h" />
     <ClInclude Include="Font\fontArray.h" />
-    <ClInclude Include="Font\IconsFontAwesome5.h" />
     <ClInclude Include="Features\Watermark.h" />
     <ClInclude Include="Features\CheatList.h" />
+    <ClInclude Include="Font\IconsFontAwesome6.h" />
+    <ClInclude Include="Font\IconsFontAwesome5.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">

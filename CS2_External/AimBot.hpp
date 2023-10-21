@@ -14,7 +14,6 @@ namespace AimControl
 	inline int HotKey = VK_LMENU;
 	inline float AimRange = 1920;	// (px)
 	inline float AimFov = 5;		// (fov)
-	//if need 89fov or higher,del AimRange check,only use fov check.
 	inline float Smooth = 0.7;
 	inline Vec2 RCSScale = { 1.f,1.f };
 	inline int RCSBullet = 1;
@@ -68,7 +67,7 @@ namespace AimControl
 		
 		gGame.SetViewAngle(Yaw, Pitch);
 
-		// Referenced N4te2k's fork
+		// Shit code
 		/*
 		Vec2 ScreenPos;
 		if (gGame.View.WorldToScreen(Vec3(Yaw, Pitch, 0.0f), ScreenPos))

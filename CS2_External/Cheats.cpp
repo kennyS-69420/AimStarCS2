@@ -9,11 +9,12 @@
 void Cheats::Menu()
 {
 	ImGui::Begin("AimStar",nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse);
+
 	
 	{
 		ImGui::BeginTabBar("AimStar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip);
 		// esp menu
-		if (ImGui::BeginTabItem("ESP"))
+		if (ImGui::BeginTabItem(ICON_FA_EYE " ESP"))
 		{
 			/*
 			if (ImGui::IsItemHovered())
@@ -69,7 +70,7 @@ void Cheats::Menu()
 		}
 
 		// aimbot menu
-		if (ImGui::BeginTabItem("AimBot"))
+		if (ImGui::BeginTabItem(ICON_FA_USER " AimBot"))
 		{
 			/*
 			if (ImGui::IsItemHovered())
@@ -120,7 +121,7 @@ void Cheats::Menu()
 		}
 
 		// RCS menu
-		if (ImGui::BeginTabItem("RCS"))
+		if (ImGui::BeginTabItem(ICON_FA_USER_CIRCLE " RCS"))
 		{
 			if (ImGui::IsItemHovered())
 			{
@@ -176,7 +177,7 @@ void Cheats::Menu()
 		}
 
 		// TriggerBot
-		if (ImGui::BeginTabItem("TriggerBot"))
+		if (ImGui::BeginTabItem(ICON_FA_HAND_POINTER " TriggerBot"))
 		{
 			/*
 			if (ImGui::IsItemHovered())
@@ -201,7 +202,7 @@ void Cheats::Menu()
 		}
 
 		//Crosshair
-		if (ImGui::BeginTabItem("Crosshair"))
+		if (ImGui::BeginTabItem("+ Crosshair"))
 		{
 			/*
 			if (ImGui::IsItemHovered())
@@ -250,7 +251,7 @@ void Cheats::Menu()
 		}
 
 		// Misc
-		if (ImGui::BeginTabItem("Misc"))
+		if (ImGui::BeginTabItem(ICON_FA_SUN " Misc"))
 		{
 			/*
 			if (ImGui::IsItemHovered())
@@ -285,7 +286,7 @@ void Cheats::Menu()
 		ConfigMenu::RenderConfigMenu();
 
 		// About
-		if (ImGui::BeginTabItem("README"))
+		if (ImGui::BeginTabItem(ICON_FA_FILE_CODE " README"))
 		{
 			/*
 			if (ImGui::IsItemHovered())

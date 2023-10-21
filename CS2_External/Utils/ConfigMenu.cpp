@@ -5,12 +5,13 @@
 #include "../AimBot.hpp"
 #include <filesystem>
 #include <string>
+#include "../Font/IconsFontAwesome5.h"
 
 namespace ConfigMenu {
 
 	void RenderConfigMenu() {
 		// Config
-		if (ImGui::BeginTabItem("Config"))
+		if (ImGui::BeginTabItem(ICON_FA_FOLDER_OPEN " Config"))
 		{
 			ImGui::Columns(2, nullptr, false);
 			ImGui::SetColumnOffset(1, 170.0f);

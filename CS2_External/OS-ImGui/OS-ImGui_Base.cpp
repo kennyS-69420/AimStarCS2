@@ -26,7 +26,7 @@ namespace OSImGui
         ImFont* arialFont = fontAtlas->AddFontFromFileTTF("c:\\Windows\\Fonts\\msyhbd.ttc", 16.0f, &arialConfig, io.Fonts->GetGlyphRangesChineseFull());
 
         ImFontConfig iconConfig;
-        static const ImWchar iconRanges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+        static const ImWchar iconRanges[] = { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
         iconConfig.MergeMode = true;
         iconConfig.PixelSnapH = true;
         iconConfig.OversampleH = 3;

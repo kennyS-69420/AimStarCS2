@@ -180,6 +180,7 @@ void ImGui::StyleColorsDark(ImGuiStyle* dst)
     style->WindowRounding = 5.3f;
     style->FrameRounding = 2.3f;
     style->ScrollbarRounding = 5.f;
+    style->WindowTitleAlign = ImVec2(0.5f, 0.5f);
 
     colors[ImGuiCol_Text] = ImVec4(0.86f, 0.93f, 0.89f, 0.78f);
     colors[ImGuiCol_TextDisabled] = ImVec4(0.86f, 0.93f, 0.89f, 0.28f);
@@ -244,6 +245,7 @@ void ImGui::StyleColorsClassic(ImGuiStyle* dst)
     style->WindowRounding = 5.3f;
     style->FrameRounding = 2.3f;
     style->ScrollbarRounding = 5.f;
+    style->WindowTitleAlign = ImVec2(0.5f, 0.5f);
 
     colors[ImGuiCol_Text]                   = ImVec4(0.90f, 0.90f, 0.90f, 1.00f);
     colors[ImGuiCol_TextDisabled]           = ImVec4(0.60f, 0.60f, 0.60f, 1.00f);
@@ -374,6 +376,7 @@ void ImGui::StyleColorsEnemyMouse(ImGuiStyle* dst)
     style->GrabRounding = 1;
     style->GrabMinSize = 20;
     style->FrameRounding = 3;
+    style->WindowTitleAlign = ImVec2(0.5f, 0.5f);
 
     colors[ImGuiCol_Text] = ImVec4(0.00f, 1.00f, 1.00f, 1.00f);
     colors[ImGuiCol_TextDisabled] = ImVec4(0.00f, 0.40f, 0.41f, 1.00f);
