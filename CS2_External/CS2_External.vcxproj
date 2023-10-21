@@ -144,6 +144,7 @@
     <ClInclude Include="Font\IconsFontAwesome5.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Hacks\NoFlash.h" />
+    <ClInclude Include="Hacks\Watermark.h" />
     <ClInclude Include="MenuConfig.hpp" />
     <ClInclude Include="Offsets.h" />
     <ClInclude Include="OS-ImGui\imgui\imconfig.h" />

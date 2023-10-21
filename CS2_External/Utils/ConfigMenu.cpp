@@ -180,6 +180,7 @@ namespace ConfigMenu {
 		MenuConfig::BunnyHop = false;
 		MenuConfig::WorkInSpec = true;
 		MenuConfig::NoFlash = false;
+		MenuConfig::WaterMark = false;
 
 		MenuConfig::ESPenbled = false;
 

@@ -267,6 +267,7 @@ void Cheats::Menu()
 			ImGui::ColorEdit4("##HeadShootLineColor", reinterpret_cast<float*>(&MenuConfig::HeadShootLineColor), ImGuiColorEditFlags_NoInputs);
 			ImGui::Checkbox("Cheat In Spec", &MenuConfig::WorkInSpec);
 			ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
+			ImGui::Checkbox("Watermark", &MenuConfig::WaterMark);
 
 			ImGui::NextColumn();
 			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
@@ -558,6 +559,9 @@ void Cheats::Run()
 	// TriggerBot
 	if (MenuConfig::TriggerBot && (GetAsyncKeyState(TriggerBot::HotKey) || MenuConfig::TriggerAlways))
 		TriggerBot::Run(LocalEntity);	
+
+	// WaterMark
+	Watermark::Render();
 
 	// Fov line
 	Render::DrawFov(LocalEntity, MenuConfig::FovLineSize, MenuConfig::FovLineColor, 1);

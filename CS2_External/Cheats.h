@@ -6,6 +6,7 @@
 #include "TriggerBot.h"
 #include "Bunnyhop.hpp"
 #include "Hacks/NoFlash.h"
+#include "Hacks/Watermark.h"
 
 namespace Cheats
 {

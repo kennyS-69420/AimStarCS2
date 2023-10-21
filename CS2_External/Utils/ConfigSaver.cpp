@@ -82,6 +82,7 @@ namespace MyConfigSaver {
         configFile << "BunnyHop " << MenuConfig::BunnyHop << std::endl;
         configFile << "WorkInSpec " << MenuConfig::WorkInSpec << std::endl;
         configFile << "NoFlash" << MenuConfig::NoFlash << std::endl;
+        configFile << "WaterMark" << MenuConfig::WaterMark << std::endl;
 
         configFile << "ESPenabled " << MenuConfig::ESPenbled << std::endl;
         configFile << "DrawFov " << MenuConfig::DrawFov << std::endl;
@@ -176,6 +177,7 @@ namespace MyConfigSaver {
                 else if (key == "BunnyHop") iss >> MenuConfig::BunnyHop;
                 else if (key == "WorkInSpec") iss >> MenuConfig::WorkInSpec;
                 else if (key == "NoFlash") iss >> MenuConfig::NoFlash;
+                else if (key == "WaterMark") iss >> MenuConfig::WaterMark;
 
                 else if (key == "ESPenabled") iss >> MenuConfig::ESPenbled;
                 else if (key == "DrawFov") iss >> MenuConfig::DrawFov;

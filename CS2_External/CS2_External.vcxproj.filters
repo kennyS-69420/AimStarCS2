@@ -122,6 +122,7 @@
     <ClInclude Include="Hacks\NoFlash.h" />
     <ClInclude Include="Font\fontArray.h" />
     <ClInclude Include="Font\IconsFontAwesome5.h" />
+    <ClInclude Include="Hacks\Watermark.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
