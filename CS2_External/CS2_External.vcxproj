@@ -141,6 +141,7 @@
     <ClInclude Include="Cheats.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Features\CheatList.h" />
+    <ClInclude Include="Features\StyleChanger.h" />
     <ClInclude Include="Font\fontArray.h" />
     <ClInclude Include="Font\IconsFontAwesome5.h" />
     <ClInclude Include="Font\IconsFontAwesome6.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Utils\Globals.hpp" />
     <ClInclude Include="Utils\GlobalVars.h" />
     <ClInclude Include="Utils\ProcessManager.hpp" />
+    <ClInclude Include="Utils\Style.h" />
     <ClInclude Include="View.hpp" />
   </ItemGroup>
   <ItemGroup>

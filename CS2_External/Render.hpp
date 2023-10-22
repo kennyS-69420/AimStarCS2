@@ -526,22 +526,6 @@ namespace Render
 		}
 	}
 
-	// Update window style color
-	void UpdateStyle(int Style)
-	{
-		switch (Style) {
-		case 0:
-			ImGui::StyleColorsDark();
-			break;
-		case 1:
-			ImGui::StyleColorsEnemyMouse();
-			break;
-		case 2:
-			ImGui::StyleColorsClassic();
-			break;
-		}
-	}
-
 	// Update crosshair preset
 	void UpdateCrosshairPreset(int style)
 	{

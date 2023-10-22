@@ -5,6 +5,7 @@
 #include "Utils/ConfigMenu.hpp"
 #include "Utils/ConfigSaver.hpp"
 #include "Font/IconsFontAwesome5.h"
+#include "Features/StyleChanger.h"
 
 void Cheats::Menu()
 {
@@ -264,8 +265,8 @@ void Cheats::Menu()
 			ImGui::Columns(2, nullptr, false);
 			ImGui::SetColumnOffset(1, 250.0f);
 
-			if (ImGui::Combo("Style", &MenuConfig::MenuStyle, "Default\0Enemy\0Classic"))
-				Render::UpdateStyle(MenuConfig::MenuStyle);
+			if (ImGui::Combo("Style", &MenuConfig::MenuStyle, "Default\0Light\0Classic\0Red"))
+				StyleChanger::UpdateStyle(MenuConfig::MenuStyle);
 
 			ImGui::Checkbox("Headshot Line", &MenuConfig::ShowHeadShootLine);
 			ImGui::SameLine();

@@ -125,6 +125,8 @@
     <ClInclude Include="Features\CheatList.h" />
     <ClInclude Include="Font\IconsFontAwesome6.h" />
     <ClInclude Include="Font\IconsFontAwesome5.h" />
+    <ClInclude Include="Utils\Style.h" />
+    <ClInclude Include="Features\StyleChanger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
