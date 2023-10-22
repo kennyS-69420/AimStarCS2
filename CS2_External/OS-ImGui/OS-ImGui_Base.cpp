@@ -36,7 +36,7 @@ namespace OSImGui
         ImFont* iconFont = fontAtlas->AddFontFromMemoryTTF((void*)rawData, sizeof(rawData), 16.f, &iconConfig, iconRanges);
         io.Fonts = fontAtlas;
 
-        ImGui::StyleColorsDark();
+        ImGui::StyleColorsEnemyMouse();
         io.LogFilename = nullptr;
 
         if (!ImGui_ImplWin32_Init(Window.hWnd))

@@ -22,4 +22,9 @@ namespace StyleChanger
 			break;
 		}
 	}
+
+	inline void InitStyle() noexcept
+	{
+		Styles::Style_EnemyMouse();
+	}
 }
