@@ -84,7 +84,7 @@ void Cheats::Menu()
 			Gui.MyCheckBox("Enabled", &MenuConfig::AimBot);
 			
 			ImGui::SetNextItemWidth(75.f);
-			if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+			if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LBUTTON\0LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
 			{
 				AimControl::SetHotKey(MenuConfig::AimBotHotKey);
 			}

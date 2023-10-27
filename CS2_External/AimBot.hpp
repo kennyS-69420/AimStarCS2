@@ -11,13 +11,12 @@
 
 namespace AimControl
 {
-	inline int HotKey = VK_LMENU;
-	inline float AimRange = 1920;	// (px)
+	inline int HotKey = VK_LBUTTON;
 	inline float AimFov = 5;		// (fov)
 	inline float Smooth = 0.7;
 	inline Vec2 RCSScale = { 1.f,1.f };
 	inline int RCSBullet = 1;
-	inline std::vector<int> HotKeyList{VK_LMENU, VK_RBUTTON, VK_XBUTTON1, VK_XBUTTON2, VK_CAPITAL, VK_LSHIFT, VK_LCONTROL};
+	inline std::vector<int> HotKeyList{VK_LBUTTON, VK_LMENU, VK_RBUTTON, VK_XBUTTON1, VK_XBUTTON2, VK_CAPITAL, VK_LSHIFT, VK_LCONTROL};
 
 	inline void SetHotKey(int Index)
 	{
@@ -45,8 +44,8 @@ namespace AimControl
 		if (Norm > AimFov)
 			return;
 
-		Yaw = Yaw * Smooth + Local.Pawn.ViewAngle.y;
-		Pitch = Pitch * Smooth + Local.Pawn.ViewAngle.x;
+		Yaw = Yaw * 1 - Smooth + Local.Pawn.ViewAngle.y;
+		Pitch = Pitch * 1 - Smooth + Local.Pawn.ViewAngle.x;
 
 		// Recoil control
 		if (MenuConfig::RCS)
