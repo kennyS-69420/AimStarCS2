@@ -51,7 +51,7 @@ External Cheat for CS2
 
 - Smooth
 
-- RCS
+- ~~RCS~~
 
 </details>
 
@@ -79,15 +79,15 @@ External Cheat for CS2
 
 - Headshot Line
 
-- Team Check
-
-- OBS Check
-
-- Visibility Check
-
 - Window Style
 
 - Config Saver
+
+- Hit Sound
+
+- No Flash
+
+- Cheat List
 
 </details>
 
