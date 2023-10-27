@@ -299,7 +299,7 @@ void Cheats::Menu()
 			Gui.OpenWebpageButton("Source Code", "https://github.com/CowNowK/AimStarCS2");
 			ImGui::SameLine();
 			Gui.OpenWebpageButton("Join Discord", "https://discord.gg/MzbmSRaU3p");
-			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-22");
+			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-27");
 			ImGui::NewLine();
 
 			ImGui::Text("Offsets:");

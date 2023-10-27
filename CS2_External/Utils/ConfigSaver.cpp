@@ -100,7 +100,7 @@ namespace MyConfigSaver {
         configFile << "PenisLength " << MenuConfig::PenisLength << std::endl;
         configFile << "SnaplinePos " << MenuConfig::LinePos << std::endl;
         configFile << "CustomRadar " << MenuConfig::customRadar << std::endl;
-        configFile << "MenuStyle" << MenuConfig::MenuStyle << std::endl;
+        configFile << "MenuStyle " << MenuConfig::MenuStyle << std::endl;
 
 
         configFile.close();
