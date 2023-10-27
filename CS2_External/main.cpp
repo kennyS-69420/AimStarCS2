@@ -3,6 +3,12 @@
 #include <iostream>
 #include <stdio.h>
 #include <iomanip>
+#include <filesystem>
+#include <cstdlib>
+#include <KnownFolders.h>
+#include <ShlObj.h>
+
+namespace fs = std::filesystem;
 
 int main()
 {
@@ -19,6 +25,15 @@ int main()
 	);
 
 	auto ProcessStatus = ProcessMgr.Attach("cs2.exe");
+
+	char documentsPath[MAX_PATH];
+	if (SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, 0, documentsPath) != S_OK) {
+		std::cerr << "[Info] Error: Failed to get the Documents folder path." << std::endl;
+		goto END;
+	}
+	MenuConfig::path = documentsPath;
+	MenuConfig::path += "/AimStar";
+
 	switch (ProcessStatus) {
 	case 1:
 		std::cout << "[ERROR] Please launch the game first!" << std::endl;
@@ -56,6 +71,19 @@ int main()
 	std::cout << "--LocalPlayerPawn:" << std::setiosflags(std::ios::uppercase) << std::hex << Offset::LocalPlayerPawn << std::endl;
 	*/
 
+	if (fs::exists(MenuConfig::path))
+		std::cout << "[Info] Config folder connected: " << MenuConfig::path << std::endl;
+	else
+	{
+		if (fs::create_directory(MenuConfig::path))
+			std::cout << "[Info] Config folder created: " << MenuConfig::path << std::endl;
+		else
+		{
+			std::cerr << "[Info] Error: Failed to create the config directory." << std::endl;
+			goto END;
+		}
+	}
+
 	std::cout << std::endl;
 	std::cout << "Cheat running successfully!" << std::endl;
 	std::cout << "Have fun..." << std::endl;
@@ -68,6 +96,7 @@ int main()
 	{
 		try
 		{
+			// Perfect World version
 			Gui.AttachAnotherWindow("反恐精英：全球攻势", "SDL_app", Cheats::Run);
 		}
 		catch (OSImGui::OSException& e)
