@@ -26,7 +26,7 @@ namespace CheatList
 		CheatText("RCS", MenuConfig::RCS);
 		CheatText("Radar", MenuConfig::ShowRadar);
 		if (MenuConfig::TriggerBot && (MenuConfig::TriggerAlways || GetAsyncKeyState(MenuConfig::TriggerHotKey)))
-			ImGui::Text("TriggerBot");
+			ImGui::Text("TriggerBot [Toggle]");
 
 		CheatText("Crosshair", CrosshairConfig::ShowCrossHair);
 		CheatText("Headshot Line", MenuConfig::ShowHeadShootLine);
