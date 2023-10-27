@@ -10,20 +10,33 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "OS-ImGui/imgui/imgui_internal.h"
 
-
-class GUI {
-public:
-	GUI() noexcept;
-	[[nodiscard]] bool isOpen() const noexcept { return open; }
-
-private:
-	bool open = true;
-};
-inline std::optional<GUI> gui;
-
-
 namespace Render
 {
+
+	void DrawHeadCircle(const CEntity& Entity, ImColor Color)
+	{
+		if (!MenuConfig::ShowHeadBox)
+			return;
+
+		Vec2 CenterPos;
+		Vec3 Temp;
+		BoneJointPos Head = Entity.GetBone().BonePosList[BONEINDEX::head];
+		BoneJointPos Neck = Entity.GetBone().BonePosList[BONEINDEX::neck_0];
+
+		CenterPos = Head.ScreenPos;
+		float Radius = abs(Head.ScreenPos.y - Neck.ScreenPos.y) + 2;
+
+		switch (MenuConfig::HeadBoxStyle)
+		{
+		case 1:
+			Gui.CircleFilled(CenterPos, Radius + 1, Color & IM_COL32_A_MASK);
+			Gui.CircleFilled(CenterPos, Radius, Color);
+		default:
+			Gui.Circle(CenterPos, Radius, Color, 1.2);
+		}
+		
+	}
+
 	void DrawDistance(const CEntity& LocalEntity, CEntity& Entity, ImVec4 Rect)
 	{
 		if (!MenuConfig::ShowDistance)
@@ -250,15 +263,15 @@ namespace Render
 
 		Vec2 StartPoint, EndPoint;
 		Vec3 Temp;
-		BoneJointPos Head = Entity.GetBone().BonePosList[BONEINDEX::pelvis];
+		BoneJointPos Dick = Entity.GetBone().BonePosList[BONEINDEX::pelvis];
 
-		StartPoint = Head.ScreenPos;
+		StartPoint = Dick.ScreenPos;
 
 		float LineLength = cos(Entity.Pawn.ViewAngle.x * M_PI / 180) * Length;
 
-		Temp.x = Head.Pos.x + cos(Entity.Pawn.ViewAngle.y * M_PI / 180) * LineLength;
-		Temp.y = Head.Pos.y + sin(Entity.Pawn.ViewAngle.y * M_PI / 180) * LineLength;
-		Temp.z = Head.Pos.z - sin(Entity.Pawn.ViewAngle.x * M_PI / 180) * Length;
+		Temp.x = Dick.Pos.x + cos(Entity.Pawn.ViewAngle.y * M_PI / 180) * LineLength;
+		Temp.y = Dick.Pos.y + sin(Entity.Pawn.ViewAngle.y * M_PI / 180) * LineLength;
+		Temp.z = Dick.Pos.z - sin(Entity.Pawn.ViewAngle.x * M_PI / 180) * Length;
 
 		if (!gGame.View.WorldToScreen(Temp, EndPoint))
 			return;

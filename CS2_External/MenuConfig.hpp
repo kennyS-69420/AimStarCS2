@@ -19,6 +19,9 @@ namespace MenuConfig
 	inline bool ShowPlayerName = true;
 	inline bool DrawFov = false;
 	inline bool ShowDistance = false;
+	inline bool ShowHeadBox = false;
+	// 0: normal 1: Flat
+	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = 0.0f;
 
 	inline bool AimBot = false;
@@ -33,7 +36,7 @@ namespace MenuConfig
 	inline bool RCS = false;
 	inline bool Bhop = false;
 
-	// 0: normal 1: dynamic
+	// 0: normal 1: dynamic 2: Flat
 	inline int  BoxType = 0;
 	// 0: Vertical 1: Horizontal
 	inline int  HealthBarType = 0;
@@ -44,6 +47,7 @@ namespace MenuConfig
 	inline ImColor BoxColor = ImColor(255, 80, 0, 255);
 	inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
 	inline ImColor FovCircleColor = ImColor(180, 255, 0, 255);
+	inline ImColor HeadBoxColor = ImColor(255, 255, 255, 255);
 
 	inline bool ShowMenu = true;
 

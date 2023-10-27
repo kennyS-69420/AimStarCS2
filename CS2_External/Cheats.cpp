@@ -29,13 +29,20 @@ void Cheats::Menu()
 			ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&MenuConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("BoxStyle", &MenuConfig::BoxType, "Normal\0Dynamic\0Flat");
+			ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat");
 			if (MenuConfig::ShowBoxESP)
 				ImGui::SliderFloat("Box Rounding", &MenuConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
 
 			ImGui::Checkbox("Skeleton", &MenuConfig::ShowBoneESP);
 			ImGui::SameLine();
 			ImGui::ColorEdit4("##BoneColor", reinterpret_cast<float*>(&MenuConfig::BoneColor), ImGuiColorEditFlags_NoInputs);
+
+			ImGui::Checkbox("Head Box", &MenuConfig::ShowHeadBox);
+			ImGui::SameLine();
+			ImGui::ColorEdit4("##HeadBoxColor", reinterpret_cast<float*>(&MenuConfig::HeadBoxColor), ImGuiColorEditFlags_NoInputs);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+			ImGui::Combo("##HeadBoxStyle", &MenuConfig::HeadBoxStyle, "Normal\0Flat");
 
 			ImGui::Checkbox("EyeRay", &MenuConfig::ShowEyeRay);
 			ImGui::SameLine();
@@ -44,7 +51,7 @@ void Cheats::Menu()
 			ImGui::Checkbox("HealthBar", &MenuConfig::ShowHealthBar);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(MenuConfig::ComboWidth); 
-			ImGui::Combo("BarStyle", &MenuConfig::HealthBarType, "Vetical\0Horizontal");
+			ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vetical\0Horizontal");
 			
 			ImGui::Checkbox("Weapon", &MenuConfig::ShowWeaponESP);
 			ImGui::Checkbox("Distance", &MenuConfig::ShowDistance);
@@ -73,14 +80,14 @@ void Cheats::Menu()
 		}
 
 		// aimbot menu
-		/*
+		
 		if (ImGui::BeginTabItem(ICON_FA_USER " AimBot"))
 		{
 
 			Gui.MyCheckBox("Enabled", &MenuConfig::AimBot);
 			
 			ImGui::SetNextItemWidth(75.f);
-			if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LBUTTON\0LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+			if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
 			{
 				AimControl::SetHotKey(MenuConfig::AimBotHotKey);
 			}
@@ -116,7 +123,7 @@ void Cheats::Menu()
 					break;
 				}
 			}
-
+			/*
 			ImGui::NewLine();
 			if (ImGui::CollapsingHeader("RCS"))
 			{
@@ -124,9 +131,9 @@ void Cheats::Menu()
 				ImGui::SliderInt("Start Bullet", &AimControl::RCSBullet, 1, 6, "%d");
 				ImGui::SliderFloat("Yaw", &AimControl::RCSScale.x, 0.f, 2.f, "%.1f");
 				ImGui::SliderFloat("Pitch", &AimControl::RCSScale.y, 0.f, 2.f, "%.1f");
-			}
+			}*/
 			ImGui::EndTabItem();
-		}*/
+		}
 
 		// Radar menu
 		if (ImGui::BeginTabItem("Radar"))
@@ -486,6 +493,9 @@ void Cheats::Run()
 
 			// Draw eyeRay
 			Render::ShowLosLine(Entity, 50.0f, MenuConfig::EyeRayColor, 1.3f);
+
+			// Draw Head Box
+			Render::DrawHeadCircle(Entity, MenuConfig::HeadBoxColor);
 
 			// Box
 			ImVec4 Rect;

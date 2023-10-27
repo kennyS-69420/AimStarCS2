@@ -15,12 +15,12 @@ extern "C" {
 
 namespace AimControl
 {
-	inline int HotKey = VK_LBUTTON;
+	inline int HotKey = VK_LMENU;
 	inline float AimFov = 5;		// (fov)
 	inline float Smooth = 0.7;
 	inline Vec2 RCSScale = { 1.f,1.f };
 	inline int RCSBullet = 1;
-	inline std::vector<int> HotKeyList{VK_LBUTTON, VK_LMENU, VK_RBUTTON, VK_XBUTTON1, VK_XBUTTON2, VK_CAPITAL, VK_LSHIFT, VK_LCONTROL};
+	inline std::vector<int> HotKeyList{VK_LMENU, VK_LBUTTON, VK_RBUTTON, VK_XBUTTON1, VK_XBUTTON2, VK_CAPITAL, VK_LSHIFT, VK_LCONTROL};
 
 	inline void SetHotKey(int Index)
 	{
@@ -37,8 +37,8 @@ namespace AimControl
 		float Yaw, Pitch;
 		float Distance, Norm;
 		Vec3 OppPos;
-		int ScreenCenterX = Gui.Window.Size.x;
-		int ScreenCenterY = Gui.Window.Size.y;
+		int ScreenCenterX = Gui.Window.Size.x / 2;
+		int ScreenCenterY = Gui.Window.Size.y / 2;
 		float TargetX = 0.f;
 		float TargetY = 0.f;
 

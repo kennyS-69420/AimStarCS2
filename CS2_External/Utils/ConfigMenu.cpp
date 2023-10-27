@@ -120,6 +120,9 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		MenuConfig::ShowHeadBox = false;
+		MenuConfig::HeadBoxStyle = 0;
+		MenuConfig::HeadBoxColor = ImColor(255, 255, 255, 255);
 		MenuConfig::ShowDistance = false;
 		MenuConfig::ShowBoneESP = true;
 		MenuConfig::ShowBoxESP = true;

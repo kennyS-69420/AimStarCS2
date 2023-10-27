@@ -18,6 +18,9 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
+        configFile << "ShowHeadBox" << MenuConfig::ShowHeadBox;
+        configFile << "HeadBoxStyle" << MenuConfig::HeadBoxStyle;
+        configFile << "HeadboxColor" << MenuConfig::HeadBoxColor;
         configFile << "ShowDistance" << MenuConfig::ShowDistance << std::endl;
         configFile << "ShowBoneESP " << MenuConfig::ShowBoneESP << std::endl;
         configFile << "TriggerDelay " << TriggerBot::TriggerDelay << std::endl;
@@ -118,6 +121,9 @@ namespace MyConfigSaver {
             std::string key;
             if (iss >> key) {
                 if (key == "ShowBoneESP") iss >> MenuConfig::ShowBoneESP;
+                else if (key == "ShowHeadBox") iss >> MenuConfig::ShowHeadBox;
+                else if (key == "HeadBoxStyle") iss >> MenuConfig::HeadBoxStyle;
+                else if (key == "HeadboxColor") iss >> MenuConfig::HeadBoxColor.Value.x >> MenuConfig::HeadBoxColor.Value.y >> MenuConfig::HeadBoxColor.Value.z >> MenuConfig::HeadBoxColor.Value.w;
                 else if (key == "ShowDistance") iss >> MenuConfig::ShowDistance;
                 else if (key == "TriggerDelay") iss >> TriggerBot::TriggerDelay;
                 else if (key == "ShowBoxESP") iss >> MenuConfig::ShowBoxESP;
