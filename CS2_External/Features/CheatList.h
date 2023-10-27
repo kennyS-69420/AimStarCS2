@@ -22,7 +22,7 @@ namespace CheatList
 
 		CheatText("ESP", MenuConfig::ESPenbled);
 		if (MenuConfig::AimBot && (MenuConfig::AimAlways || GetAsyncKeyState(AimControl::HotKey)))
-			ImGui::Text("Aimbot");
+			ImGui::Text("Aimbot [Toggle]");
 		CheatText("RCS", MenuConfig::RCS);
 		CheatText("Radar", MenuConfig::ShowRadar);
 		if (MenuConfig::TriggerBot && (MenuConfig::TriggerAlways || GetAsyncKeyState(MenuConfig::TriggerHotKey)))

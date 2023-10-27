@@ -120,22 +120,17 @@ void Cheats::Menu()
 					break;
 				}
 			}
-			ImGui::EndTabItem();
-		}
 
-		// RCS menu
-		if (ImGui::BeginTabItem(ICON_FA_USER_CIRCLE " RCS"))
-		{
-			if (ImGui::IsItemHovered())
+			ImGui::NewLine();
+			if (ImGui::CollapsingHeader("RCS"))
 			{
-				ImGui::SetTooltip("Recoil Control System");
+				Gui.MyCheckBox("Enabled", &MenuConfig::RCS);
+				ImGui::SliderInt("Start Bullet", &AimControl::RCSBullet, 1, 6, "%d");
+				ImGui::SliderFloat("Yaw", &AimControl::RCSScale.x, 0.f, 2.f, "%.1f");
+				ImGui::SliderFloat("Pitch", &AimControl::RCSScale.y, 0.f, 2.f, "%.1f");
+
+				ImGui::EndTabItem();
 			}
-
-			Gui.MyCheckBox("Enabled", &MenuConfig::RCS);
-			ImGui::SliderInt("Start Bullet", &AimControl::RCSBullet, 1, 6, "%d");
-			ImGui::SliderFloat("Yaw", &AimControl::RCSScale.x, 0.f, 2.f, "%.1f");
-			ImGui::SliderFloat("Pitch", &AimControl::RCSScale.y, 0.f, 2.f, "%.1f");
-
 			ImGui::EndTabItem();
 		}
 
