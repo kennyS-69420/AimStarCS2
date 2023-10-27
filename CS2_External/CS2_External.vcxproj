@@ -132,6 +132,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -142,6 +143,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Features\CheatList.h" />
     <ClInclude Include="Features\ESP.h" />
+    <ClInclude Include="Features\HitSound.h" />
     <ClInclude Include="Features\Mouse.h" />
     <ClInclude Include="Features\StyleChanger.h" />
     <ClInclude Include="Font\fontArray.h" />

@@ -32,6 +32,7 @@ namespace CheatList
 		CheatText("Headshot Line", MenuConfig::ShowHeadShootLine);
 		CheatText("No Flash", MenuConfig::NoFlash);
 		CheatText("Bhop", MenuConfig::BunnyHop);
+		CheatText("HitSound", MenuConfig::HitSound);
 
 
 		ImGui::End();

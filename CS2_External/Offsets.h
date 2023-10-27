@@ -23,6 +23,9 @@ namespace Offset
 
 	struct
 	{
+		DWORD BulletServices = 0x1698;
+		DWORD TotalHit = 0x40;
+
 		DWORD Pos = 0x1214;
 		DWORD MaxHealth = 0x328;
 		DWORD CurrentHealth = 0x32C;

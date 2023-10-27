@@ -189,6 +189,7 @@ namespace ConfigMenu {
 		MenuConfig::NoFlash = false;
 		MenuConfig::WaterMark = false;
 		MenuConfig::CheatList = false;
+		MenuConfig::HitSound = false;
 
 		MenuConfig::ESPenbled = false;
 

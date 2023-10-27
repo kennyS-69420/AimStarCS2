@@ -10,6 +10,7 @@
 #include "Font/IconsFontAwesome5.h"
 
 #include "Features/StyleChanger.h"
+#include "Features/HitSound.h"
 #include "Features/ESP.h"
 
 void Cheats::Menu()
@@ -276,6 +277,7 @@ void Cheats::Menu()
 			ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
 			ImGui::Checkbox("Watermark", &MenuConfig::WaterMark);
 			ImGui::Checkbox("Cheat List", &MenuConfig::CheatList);
+			ImGui::Checkbox("HitSound", &MenuConfig::HitSound);
 
 			ImGui::NextColumn();
 			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
@@ -378,6 +380,7 @@ void Cheats::RenderCrossHair(ImDrawList* drawList) noexcept
 		Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairConfig::CrossHairColor));
 }
 
+int PreviousTotalHits = 0;
 void Cheats::Run()
 {	
 	// Show menu
@@ -527,6 +530,9 @@ void Cheats::Run()
 	// TriggerBot
 	if (MenuConfig::TriggerBot && (GetAsyncKeyState(TriggerBot::HotKey) || MenuConfig::TriggerAlways))
 		TriggerBot::Run(LocalEntity);	
+
+	// HitSound
+	HitSound::Run(LocalEntity, PreviousTotalHits);
 
 	// WaterMark
 	Watermark::Render();

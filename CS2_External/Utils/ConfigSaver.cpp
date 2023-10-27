@@ -82,14 +82,15 @@ namespace MyConfigSaver {
         configFile << "CircleRadius " << CrosshairConfig::CircleRadius << std::endl;
         configFile << "TargetedColor " << CrosshairConfig::TargetedColor.Value.x << " " << CrosshairConfig::TargetedColor.Value.y << " " << CrosshairConfig::TargetedColor.Value.z << " " << CrosshairConfig::TargetedColor.Value.w << std::endl;
         configFile << "Gap " << CrosshairConfig::Gap << std::endl;
-        configFile << "DynamicGap" << CrosshairConfig::DynamicGap << std::endl;
-        configFile << "DotSize" << CrosshairConfig::DotSize << std::endl;
+        configFile << "DynamicGap " << CrosshairConfig::DynamicGap << std::endl;
+        configFile << "DotSize " << CrosshairConfig::DotSize << std::endl;
 
         configFile << "BunnyHop " << MenuConfig::BunnyHop << std::endl;
         configFile << "WorkInSpec " << MenuConfig::WorkInSpec << std::endl;
         configFile << "NoFlash" << MenuConfig::NoFlash << std::endl;
-        configFile << "WaterMark" << MenuConfig::WaterMark << std::endl;
-        configFile << "CheatList" << MenuConfig::CheatList << std::endl;
+        configFile << "WaterMark " << MenuConfig::WaterMark << std::endl;
+        configFile << "CheatList " << MenuConfig::CheatList << std::endl;
+        configFile << "HitSound " << MenuConfig::HitSound << std::endl;
 
         configFile << "ESPenabled " << MenuConfig::ESPenbled << std::endl;
         configFile << "DrawFov " << MenuConfig::DrawFov << std::endl;
@@ -192,6 +193,7 @@ namespace MyConfigSaver {
                 else if (key == "NoFlash") iss >> MenuConfig::NoFlash;
                 else if (key == "WaterMark") iss >> MenuConfig::WaterMark;
                 else if (key == "CheatList") iss >> MenuConfig::CheatList;
+                else if (key == "HitSound") iss >> MenuConfig::HitSound;
 
                 else if (key == "ESPenabled") iss >> MenuConfig::ESPenbled;
                 else if (key == "DrawFov") iss >> MenuConfig::DrawFov;
