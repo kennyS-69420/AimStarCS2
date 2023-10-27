@@ -1,6 +1,5 @@
 #pragma once
 #include <Windows.h>
-#include <iostream>
 #include "..\Entity.h"
 #include "..\MenuConfig.hpp"
 
@@ -15,7 +14,6 @@ namespace HitSound
 		int totalHits;
 		ProcessMgr.ReadMemory(aLocalPlayer.Pawn.Address + Offset::Pawn.BulletServices, pBulletServices);
 		ProcessMgr.ReadMemory(pBulletServices + Offset::Pawn.TotalHit, totalHits);
-		std::cout << pBulletServices << ", " << totalHits << ", " << PreviousTotalHits << std::endl;
 
 		if (totalHits != PreviousTotalHits) {
 			if (totalHits == 0 && PreviousTotalHits != 0)
