@@ -6,7 +6,11 @@
 #include "MenuConfig.hpp"
 #include <iostream>
 #include "View.hpp"
-#include <windows.h>
+
+extern "C" {
+#include "Features\Mouse.h"
+#include "Entity.h"
+}
 
 
 namespace AimControl
@@ -33,17 +37,92 @@ namespace AimControl
 		float Yaw, Pitch;
 		float Distance, Norm;
 		Vec3 OppPos;
-		
+		int ScreenCenterX = Gui.Window.Size.x;
+		int ScreenCenterY = Gui.Window.Size.y;
+		float TargetX = 0.f;
+		float TargetY = 0.f;
+
 		OppPos = AimPos - LocalPos;
 
 		Distance = sqrt(pow(OppPos.x, 2) + pow(OppPos.y, 2));
 		
-		Yaw = atan2f(OppPos.y, OppPos.x) * 57.295779513 - Local.Pawn.ViewAngle.y;
-		Pitch = -atan(OppPos.z / Distance) * 57.295779513 - Local.Pawn.ViewAngle.x;
+		Yaw = (Local.Pawn.ViewAngle.y - (Gui.Window.Size.y / 2));
+		Pitch = (Local.Pawn.ViewAngle.x - (Gui.Window.Size.y / 2));
 		Norm = sqrt(pow(Yaw, 2) + pow(Pitch, 2));
-		if (Norm > AimFov)
-			return;
 
+		Yaw = Yaw * 2 - Smooth + Local.Pawn.ViewAngle.y;
+		Pitch = Pitch * 2 - Smooth + Local.Pawn.ViewAngle.x;
+
+		Vec2 ScreenPos;
+		gGame.View.WorldToScreen(Vec3(AimPos), ScreenPos);
+
+		if (Norm > AimFov)
+		{
+			if (ScreenPos.x > ScreenCenterX)
+			{
+				TargetX = -(ScreenCenterX - ScreenPos.x);
+				TargetX /= Smooth;
+				if (TargetX + ScreenCenterX > ScreenCenterX * 2) TargetX = 0;
+			}
+			if (ScreenPos.x < ScreenCenterX)
+			{
+				TargetX = ScreenPos.x - ScreenCenterX;
+				TargetX /= Smooth;
+				if (TargetX + ScreenCenterX < 0) TargetX = 0;
+			}
+
+			if (ScreenPos.y != 0)
+			{
+				if (ScreenPos.y > ScreenCenterY)
+				{
+					TargetY = -(ScreenCenterY - ScreenPos.y);
+					TargetY /= Smooth;
+					if (TargetY + ScreenCenterY > ScreenCenterY * 2) TargetY = 0;
+				}
+
+				if (ScreenPos.y < ScreenCenterY)
+				{
+					TargetY = ScreenPos.y - ScreenCenterY;
+					TargetY /= Smooth;
+					if (TargetY + ScreenCenterY < 0) TargetY = 0;
+				}
+			}
+
+			if (!Smooth)
+			{
+				mouse_event(MOUSEEVENTF_MOVE, (DWORD)(TargetX), (DWORD)(TargetY), NULL, NULL);
+				return;
+			}
+
+			TargetX /= 10;
+			TargetY /= 10;
+			if (fabs(TargetX) < 1)
+			{
+				if (TargetX > 0)
+				{
+					TargetX = 1;
+				}
+				if (TargetX < 0)
+				{
+					TargetX = -1;
+				}
+			}
+			if (fabs(TargetY) < 1)
+			{
+				if (TargetY > 0)
+				{
+					TargetY = 1;
+				}
+				if (TargetY < 0)
+				{
+					TargetY = -1;
+				}
+			}
+			mouse_event(MOUSEEVENTF_MOVE, TargetX, TargetY, NULL, NULL);
+			Sleep(1);
+		}
+
+		/*
 		Yaw = Yaw * (1 - Smooth) + Local.Pawn.ViewAngle.y;
 		Pitch = Pitch * (1 - Smooth) + Local.Pawn.ViewAngle.x;
 
@@ -64,17 +143,6 @@ namespace AimControl
 
 		}
 		
-		gGame.SetViewAngle(Yaw, Pitch);
-
-		// Shit code
-		/*
-		Vec2 ScreenPos;
-		if (gGame.View.WorldToScreen(Vec3(Yaw, Pitch, 0.0f), ScreenPos))
-		{
-			mouse_event(MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE,
-				(int)(ScreenPos.x * 65535.0f / GetSystemMetrics(SM_CXSCREEN)),
-				(int)(ScreenPos.y * 65535.0f / GetSystemMetrics(SM_CYSCREEN)),
-				0, 0);
-		}*/
+		gGame.SetViewAngle(Yaw, Pitch);*/
 	}
 }

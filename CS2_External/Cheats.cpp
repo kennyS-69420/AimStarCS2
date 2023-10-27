@@ -73,13 +73,9 @@ void Cheats::Menu()
 		}
 
 		// aimbot menu
+		/*
 		if (ImGui::BeginTabItem(ICON_FA_USER " AimBot"))
 		{
-			/*
-			if (ImGui::IsItemHovered())
-			{
-				ImGui::SetTooltip("Analyzing the position of enemies, automatically adjust the player's aim to ensure that shots are accurately directed towards the target while a target is identified");
-			}*/
 
 			Gui.MyCheckBox("Enabled", &MenuConfig::AimBot);
 			
@@ -128,11 +124,9 @@ void Cheats::Menu()
 				ImGui::SliderInt("Start Bullet", &AimControl::RCSBullet, 1, 6, "%d");
 				ImGui::SliderFloat("Yaw", &AimControl::RCSScale.x, 0.f, 2.f, "%.1f");
 				ImGui::SliderFloat("Pitch", &AimControl::RCSScale.y, 0.f, 2.f, "%.1f");
-
-				ImGui::EndTabItem();
 			}
 			ImGui::EndTabItem();
-		}
+		}*/
 
 		// Radar menu
 		if (ImGui::BeginTabItem("Radar"))
