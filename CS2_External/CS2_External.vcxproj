@@ -141,6 +141,7 @@
     <ClInclude Include="Cheats.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Features\CheatList.h" />
+    <ClInclude Include="Features\ESP.h" />
     <ClInclude Include="Features\Mouse.h" />
     <ClInclude Include="Features\StyleChanger.h" />
     <ClInclude Include="Font\fontArray.h" />

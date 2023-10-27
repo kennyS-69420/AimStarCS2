@@ -128,6 +128,7 @@
     <ClInclude Include="Utils\Style.h" />
     <ClInclude Include="Features\StyleChanger.h" />
     <ClInclude Include="Features\Mouse.h" />
+    <ClInclude Include="Features\ESP.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">

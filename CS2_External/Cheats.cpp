@@ -1,11 +1,16 @@
 ﻿#include <string>
+#include <thread>
+#include <future>
+
 #include "Cheats.h"
 #include "Render.hpp"
 #include "MenuConfig.hpp"
 #include "Utils/ConfigMenu.hpp"
 #include "Utils/ConfigSaver.hpp"
 #include "Font/IconsFontAwesome5.h"
+
 #include "Features/StyleChanger.h"
+#include "Features/ESP.h"
 
 void Cheats::Menu()
 {
@@ -484,59 +489,11 @@ void Cheats::Run()
 
 		if (MenuConfig::ESPenbled)
 		{
-
-			// Draw Bone
-			Render::DrawBone(Entity, MenuConfig::BoneColor, 1.3f);
-
-			// Draw Penis
-			Render::ShowPenis(Entity, MenuConfig::PenisLength, MenuConfig::PenisColor, MenuConfig::PenisSize);
-
-			// Draw eyeRay
-			Render::ShowLosLine(Entity, 50.0f, MenuConfig::EyeRayColor, 1.3f);
-
-			// Draw Head Box
-			Render::DrawHeadCircle(Entity, MenuConfig::HeadBoxColor);
-
-			// Box
-			ImVec4 Rect;
-			switch (MenuConfig::BoxType)
-			{
-			case 0:
-				Rect = Render::Get2DBox(Entity);
-				break;
-			case 1:
-				Rect = Render::Get2DBoneRect(Entity);
-				break;
-			case 2:
-				Rect = Render::Get2DBox(Entity);
-				break;
-			default:
-				break;
-			}
-
-			// Snap Line
-			if (MenuConfig::ShowLineToEnemy)
-			{
-				Render::LineToEnemy(Rect, MenuConfig::LineToEnemyColor, 1.2);
-			}
-				
-			// Draw Box
-			if (MenuConfig::ShowBoxESP)
-			{
-				if (MenuConfig::BoxType == 2)
-				{
-					Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, MenuConfig::BoxColor, MenuConfig::BoxRounding);
-				}
-				else
-				{
-					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, { 0,0,0,255 }, 3, MenuConfig::BoxRounding);
-					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, MenuConfig::BoxColor, 1.3, MenuConfig::BoxRounding);
-				}
-				
-			}
-				
+			ImVec4 Rect = ESP::GetBoxRect(Entity, MenuConfig::BoxType);
+			ESP::RenderPlayerESP(Entity, Rect);
+//			std::future<void> Thread_PlayerESP = std::async(ESP::RenderPlayerESP, std::ref(Entity), std::ref(Rect));
 			
-
+				
 			// Draw HealthBar
 			if (MenuConfig::ShowHealthBar)
 			{
@@ -556,21 +513,8 @@ void Cheats::Run()
 				Render::DrawHealthBar(EntityAddress, 100, Entity.Pawn.Health, HealthBarPos, HealthBarSize, MenuConfig::HealthBarType);
 			}
 
-			// Draw weaponName
-			if (MenuConfig::ShowWeaponESP)
-				Gui.StrokeText(Entity.Pawn.WeaponName, { Rect.x + Rect.z / 2,Rect.y + Rect.w }, ImColor(255, 255, 255, 255), 14, true);
-
 			// Draw Distance
 			Render::DrawDistance(LocalEntity, Entity, Rect);
-
-			// Draw player name
-			if (MenuConfig::ShowPlayerName)
-			{
-				if (MenuConfig::HealthBarType == 0)
-					Gui.StrokeText(Entity.Controller.PlayerName, { Rect.x + Rect.z / 2,Rect.y - 14 }, ImColor(255, 255, 255, 255), 14, true);
-				else
-					Gui.StrokeText(Entity.Controller.PlayerName, { Rect.x + Rect.z / 2,Rect.y - 13 - 14 }, ImColor(255, 255, 255, 255), 14, true);
-			}
 		}
 	}
 	// Radar render

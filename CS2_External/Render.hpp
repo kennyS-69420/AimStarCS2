@@ -129,6 +129,9 @@ namespace Render
 
 	void LineToEnemy(ImVec4 Rect, ImColor Color, float Thickness)
 	{
+		if (!MenuConfig::ShowLineToEnemy)
+			return;
+
 		switch (MenuConfig::LinePos)
 		{
 		case 0:
