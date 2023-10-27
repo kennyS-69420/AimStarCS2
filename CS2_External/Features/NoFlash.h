@@ -10,7 +10,7 @@ namespace NoFlash
 		if (!MenuConfig::NoFlash)
 			return;
 
-		float duration;
+		float duration = 0.0f;
 		ProcessMgr.WriteMemory(aLocalPlayer.Pawn.Address + Offset::Pawn.flFlashDuration, duration);
 	}
 }
