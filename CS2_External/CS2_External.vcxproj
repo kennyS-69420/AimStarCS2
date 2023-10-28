@@ -145,6 +145,7 @@
     <ClInclude Include="Features\ESP.h" />
     <ClInclude Include="Features\HitSound.h" />
     <ClInclude Include="Features\Mouse.h" />
+    <ClInclude Include="Features\SpectatorList.h" />
     <ClInclude Include="Features\StyleChanger.h" />
     <ClInclude Include="Font\fontArray.h" />
     <ClInclude Include="Font\IconsFontAwesome5.h" />
