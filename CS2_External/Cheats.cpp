@@ -202,6 +202,7 @@ void Cheats::Menu()
 			ImGui::Checkbox("Always Activate", &MenuConfig::TriggerAlways);
 			DWORD TriggerDelayMin = 10, TriggerDelayMax = 300;
 			ImGui::SliderInt("Delay", &TriggerBot::TriggerDelay, TriggerDelayMin, TriggerDelayMax, "%d ms", ImGuiSliderFlags_None);
+			ImGui::SliderInt("Fake Shot", &TriggerBot::FakeShotDelay, 0, 1000, "%d ms", ImGuiSliderFlags_None);
 
 			ImGui::EndTabItem();
 		}

@@ -6,6 +6,12 @@ DWORD64 PawnAddress = 0;
 CEntity Entity;
 bool AllowShoot = false;
 
+void TriggerBot::ReleaseMouseButton()
+{
+	std::this_thread::sleep_for(std::chrono::milliseconds(FakeShotDelay));
+	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+}
+
 void TriggerBot::Run(const CEntity& LocalEntity)
 {
 	if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset::Pawn.iIDEntIndex, uHandle))
@@ -39,7 +45,8 @@ void TriggerBot::Run(const CEntity& LocalEntity)
 		if (!isAlreadyShooting)
 		{
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+			std::thread TriggerThread(ReleaseMouseButton);
+			TriggerThread.detach();
 		}
 		LastTimePoint = CurTimePoint;
 	}

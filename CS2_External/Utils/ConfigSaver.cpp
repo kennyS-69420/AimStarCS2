@@ -24,6 +24,7 @@ namespace MyConfigSaver {
         configFile << "ShowDistance " << MenuConfig::ShowDistance << std::endl;
         configFile << "ShowBoneESP " << MenuConfig::ShowBoneESP << std::endl;
         configFile << "TriggerDelay " << TriggerBot::TriggerDelay << std::endl;
+        configFile << "FakeShot" << TriggerBot::FakeShotDelay << std::endl;
         configFile << "ShowBoxESP " << MenuConfig::ShowBoxESP << std::endl;
         configFile << "BoxRounding" << MenuConfig::BoxRounding << std::endl;
         configFile << "TriggerHotKey " << MenuConfig::TriggerHotKey << std::endl;
@@ -127,6 +128,7 @@ namespace MyConfigSaver {
                 else if (key == "HeadboxColor") iss >> MenuConfig::HeadBoxColor.Value.x >> MenuConfig::HeadBoxColor.Value.y >> MenuConfig::HeadBoxColor.Value.z >> MenuConfig::HeadBoxColor.Value.w;
                 else if (key == "ShowDistance") iss >> MenuConfig::ShowDistance;
                 else if (key == "TriggerDelay") iss >> TriggerBot::TriggerDelay;
+                else if (key == "FakeShot") iss >> TriggerBot::FakeShotDelay;
                 else if (key == "ShowBoxESP") iss >> MenuConfig::ShowBoxESP;
                 else if (key == "BoxRounding") iss >> MenuConfig::BoxRounding;
                 else if (key == "TriggerHotKey") { iss >> MenuConfig::TriggerHotKey; TriggerBot::SetHotKey(MenuConfig::TriggerHotKey); }

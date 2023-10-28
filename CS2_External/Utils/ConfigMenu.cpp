@@ -168,6 +168,7 @@ namespace ConfigMenu {
 		MenuConfig::ShowLineToEnemy = false;
 		MenuConfig::FovLineSize = 60.0f;
 		TriggerBot::TriggerDelay = 90;
+		TriggerBot::FakeShotDelay = 500;
 		AimControl::RCSBullet = 1;
 		MenuConfig::TriggerHotKey = 0;
 		TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
