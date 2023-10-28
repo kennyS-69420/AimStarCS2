@@ -114,6 +114,12 @@ namespace ConfigMenu {
 				std::string configFileName = std::string(configNameBuffer) + ".config";
 				MyConfigSaver::SaveConfig(configFileName);
 			}
+			ImGui::SameLine();
+
+			if (ImGui::Button("Open Folder", { 100.0f, 25.0f }))
+			{
+				Gui.OpenWebpage(configDir.c_str());
+			}
 
 			ImGui::EndTabItem();
 		}

@@ -1,6 +1,7 @@
 #pragma once
 #include "OS-ImGui.h"
 #include <Shellapi.h>
+#include <Windows.h>
 
 /****************************************************
 * Copyright (C)	: Liv
