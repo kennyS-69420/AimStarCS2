@@ -106,7 +106,7 @@ namespace ConfigMenu {
 			}
 			ImGui::Columns(1);
 
-			ImGui::Separator();
+			ImGui::SeparatorText("Save Config");
 			ImGui::InputText(" ", configNameBuffer, sizeof(configNameBuffer));
 			ImGui::SameLine();
 			if (ImGui::Button("Create Config", { 100.0f, 25.0f }))
@@ -126,6 +126,7 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		MenuConfig::ShowPreview = true;
 		MenuConfig::ShowHeadBox = false;
 		MenuConfig::HeadBoxStyle = 0;
 		MenuConfig::HeadBoxColor = ImColor(255, 255, 255, 255);

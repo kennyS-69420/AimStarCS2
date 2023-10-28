@@ -20,6 +20,7 @@ namespace MenuConfig
 	inline bool DrawFov = false;
 	inline bool ShowDistance = false;
 	inline bool ShowHeadBox = false;
+	inline bool ShowPreview = true;
 	// 0: normal 1: Flat
 	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = 0.0f;
