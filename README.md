@@ -10,8 +10,7 @@ External Cheat for CS2
 
 ## NOTICE
 - I made most of the modifications based on Tkazer's.
-- 这是基于Liv的项目进行了一些修改和优化
-- Some players have suggested that the crosshair feature could be made into a separate small tool.
+- [COMMON ISSUES](https://github.com/CowNowK/AimStarCS2/discussions/19)
 
 ***
 ![](/Image1.png)
