@@ -134,8 +134,8 @@ namespace Styles
         style.ChildRounding = 5.5f;
         style.PopupRounding = 5.0f;
         style.FrameRounding = 3.0f;
-        style.GrabRounding = 0.0f;
-        style.GrabMinSize = 1.0f;
+        style.GrabRounding = 1.0f;
+        style.GrabMinSize = 20.0f;
         style.TabMinWidthForCloseButton = 0.0f;
 
         style.Colors[ImGuiCol_Text] = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
