@@ -108,7 +108,7 @@ void Cheats::Menu()
 			float FovMin = 0.1f, FovMax = 89.f;
 			float SmoothMin = 0.1f, SmoothMax = 1.f;
 			ImGui::SliderFloat("Fov", &AimControl::AimFov, 0.0f, 25.0f, "%.1f", ImGuiSliderFlags_Logarithmic);
-			ImGui::SliderFloat("Speed", &AimControl::Smooth, 0.0f, 1.0f, "%.1f");
+			ImGui::SliderFloat("Smooth", &AimControl::Smooth, 0.0f, 1.0f, "%.1f");
 			if (ImGui::Combo("Bone", &MenuConfig::AimPosition, "Head\0Neck\0Chest\0Penis"))
 			{
 				switch (MenuConfig::AimPosition)

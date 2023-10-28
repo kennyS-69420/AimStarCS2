@@ -121,3 +121,8 @@ namespace CrosshairConfig
 	inline ImColor CrossHairColor = ImColor(0, 255, 0, 255);
 	inline ImColor TargetedColor = ImColor(255, 0, 0, 255);
 }
+
+namespace DebuggerConfig
+{
+	inline bool Debug = false;
+}

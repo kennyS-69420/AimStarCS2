@@ -142,6 +142,7 @@
     <ClInclude Include="Cheats.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Features\CheatList.h" />
+    <ClInclude Include="Features\Debugger.h" />
     <ClInclude Include="Features\ESP.h" />
     <ClInclude Include="Features\HitSound.h" />
     <ClInclude Include="Features\Mouse.h" />

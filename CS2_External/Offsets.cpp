@@ -70,11 +70,12 @@ bool Offset::UpdateOffsets()
 
 	Offset::ForceJump = TempAddress + 0x30 - ClientDLL;
 
+	/*
 	TempAddress = SearchOffsets(Offset::Signatures::InventoryServices, ClientDLL);
 	if (TempAddress == 0)
 		return false;
 
-	Offset::InventoryServices = TempAddress + 0x608 - ClientDLL;
+	Offset::InventoryServices = TempAddress + 0x608 - ClientDLL;*/
 
 	return true;
 }

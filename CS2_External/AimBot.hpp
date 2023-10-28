@@ -55,7 +55,7 @@ namespace AimControl
 
 		Vec2 ScreenPos;
 		gGame.View.WorldToScreen(Vec3(AimPos), ScreenPos);
-
+		
 		if (Norm > AimFov)
 		{
 			if (ScreenPos.x > ScreenCenterX)
