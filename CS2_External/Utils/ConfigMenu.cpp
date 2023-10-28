@@ -75,7 +75,7 @@ namespace ConfigMenu {
 				{
 					// Delete
 					std::string selectedConfigFile = configFiles[selectedConfig];
-					std::string fullPath = configDir + "/" + selectedConfigFile;
+					std::string fullPath = configDir + "\\" + selectedConfigFile;
 					if (std::remove(fullPath.c_str()) == 0)
 					{
 						configFiles.erase(configFiles.begin() + selectedConfig);
