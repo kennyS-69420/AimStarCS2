@@ -18,10 +18,10 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
-        configFile << "ShowHeadBox" << MenuConfig::ShowHeadBox;
-        configFile << "HeadBoxStyle" << MenuConfig::HeadBoxStyle;
-        configFile << "HeadboxColor" << MenuConfig::HeadBoxColor;
-        configFile << "ShowDistance" << MenuConfig::ShowDistance << std::endl;
+        configFile << "ShowHeadBox " << MenuConfig::ShowHeadBox;
+        configFile << "HeadBoxStyle " << MenuConfig::HeadBoxStyle;
+        configFile << "HeadboxColor " << MenuConfig::HeadBoxColor;
+        configFile << "ShowDistance " << MenuConfig::ShowDistance << std::endl;
         configFile << "ShowBoneESP " << MenuConfig::ShowBoneESP << std::endl;
         configFile << "TriggerDelay " << TriggerBot::TriggerDelay << std::endl;
         configFile << "ShowBoxESP " << MenuConfig::ShowBoxESP << std::endl;
