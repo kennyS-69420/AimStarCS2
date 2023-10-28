@@ -86,6 +86,7 @@ namespace MenuConfig
 	inline bool WaterMark = false;
 	inline bool CheatList = false;
 	inline bool HitSound = false;
+	inline bool SkinChanger = false;
 
 	// Penis Config
 	inline bool ShowPenis = false;

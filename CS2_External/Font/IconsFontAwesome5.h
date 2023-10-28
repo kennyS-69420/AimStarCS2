@@ -321,6 +321,7 @@
 #define ICON_FA_EYE_DROPPER "\xef\x87\xbb"	// U+f1fb
 #define ICON_FA_EYE_SLASH "\xef\x81\xb0"	// U+f070
 #define ICON_FA_FAN "\xef\xa1\xa3"	// U+f863
+//
 #define ICON_FA_FAST_BACKWARD "\xef\x81\x89"	// U+f049
 #define ICON_FA_FAST_FORWARD "\xef\x81\x90"	// U+f050
 #define ICON_FA_FAUCET "\xee\x80\x85"	// U+e005

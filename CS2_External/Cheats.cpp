@@ -142,7 +142,7 @@ void Cheats::Menu()
 		}
 
 		// Radar menu
-		if (ImGui::BeginTabItem("Radar"))
+		if (ImGui::BeginTabItem(ICON_FA_COMPASS " Radar"))
 		{
 			/*
 			if (ImGui::IsItemHovered())
@@ -207,7 +207,7 @@ void Cheats::Menu()
 		}
 
 		//Crosshair
-		if (ImGui::BeginTabItem("+ Crosshair"))
+		if (ImGui::BeginTabItem(ICON_FA_DOT_CIRCLE  " Crosshair"))
 		{
 			/*
 			if (ImGui::IsItemHovered())
@@ -303,10 +303,10 @@ void Cheats::Menu()
 			// Since it's already the MIT license, there's no need to do that.
 			// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
 
-			Gui.OpenWebpageButton("Source Code", "https://github.com/CowNowK/AimStarCS2");
-			ImGui::SameLine();
-			Gui.OpenWebpageButton("Join Discord", "https://discord.gg/MzbmSRaU3p");
 			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-28");
+			Gui.OpenWebpageButton(ICON_FA_COPY " Source Code", "https://github.com/CowNowK/AimStarCS2");
+			ImGui::SameLine();
+			Gui.OpenWebpageButton(ICON_FA_COMMENT_DOTS " Join Discord", "https://discord.gg/MzbmSRaU3p");
 			ImGui::NewLine();
 
 			ImGui::Text("Offsets:");
