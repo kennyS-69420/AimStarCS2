@@ -130,6 +130,8 @@
     <ClInclude Include="Features\Mouse.h" />
     <ClInclude Include="Features\ESP.h" />
     <ClInclude Include="Features\HitSound.h" />
+    <ClInclude Include="Features\Debugger.h" />
+    <ClInclude Include="Features\SpectatorList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
@@ -204,7 +206,7 @@
     <None Include="CS2_External.aps" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Font\fa-regular.ttf" />
     <Font Include="Font\stratum2.ttf" />
+    <Font Include="Font\fa-regular.ttf" />
   </ItemGroup>
 </Project>
