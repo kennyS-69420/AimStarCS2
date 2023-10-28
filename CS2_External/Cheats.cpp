@@ -267,7 +267,7 @@ void Cheats::Menu()
 			ImGui::Columns(2, nullptr, false);
 			ImGui::SetColumnOffset(1, 250.0f);
 
-			if (ImGui::Combo("Style", &MenuConfig::MenuStyle, "Default\0Light\0Classic\0Red"))
+			if (ImGui::Combo("Style", &MenuConfig::MenuStyle, "Default\0Hacker\0Light\0Classic\0Red"))
 				StyleChanger::UpdateStyle(MenuConfig::MenuStyle);
 
 			ImGui::Checkbox("Headshot Line", &MenuConfig::ShowHeadShootLine);

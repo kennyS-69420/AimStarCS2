@@ -10,12 +10,15 @@ namespace StyleChanger
 			Styles::Style_EnemyMouse();
 			break;
 		case 1:
-			ImGui::StyleColorsLight();
+			Styles::Style_Hacker();
 			break;
 		case 2:
-			ImGui::StyleColorsClassic();
+			ImGui::StyleColorsLight();
 			break;
 		case 3:
+			ImGui::StyleColorsClassic();
+			break;
+		case 4:
 			Styles::Style_Classic();
 			break;
 		default:
