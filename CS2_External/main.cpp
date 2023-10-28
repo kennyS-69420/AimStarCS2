@@ -19,7 +19,7 @@ int main()
 	"Source Code: https://github.com/CowNowK/AimStarCS2\n"
 	"\n"
 	"- This features may result in VAC Bans, use at your own risk:\n"
-	"	* Aimbot, RCS, Bhop, NoFlash\n"
+	"	* Bhop, NoFlash\n"
 	"- Press [INS] to show or hide Menu.\n"
 	"\n"
 	);
