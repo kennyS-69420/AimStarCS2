@@ -11,6 +11,7 @@ namespace Offset
 	inline DWORD LocalPlayerPawn;
 	inline DWORD ForceJump;
 	inline DWORD GlobalVars;
+	inline DWORD InventoryServices;
 
 	struct
 	{
@@ -69,8 +70,17 @@ namespace Offset
 		DWORD m_hController = 0x122C;
 	} PlayerController;
 
+	// Never have a try for external skin changer
+	struct
+	{
+		DWORD MusicID = 0x40;
+		DWORD Rank = 0x44;
+		DWORD AuthoritativeWeaponSlots = 0x70;
+	} Inventory;
+
 	namespace Signatures
 	{
+		const std::string InventoryServices = "E8 ?? ?? ?? ?? 8B 45 D0 48 8B 55 D8";
 		const std::string GlobalVars = "48 89 0D ?? ?? ?? ?? 48 89 41";
 		const std::string EntityList = "48 8B 0D ?? ?? ?? ?? 48 89 7C 24 ?? 8B FA C1";
 		const std::string LocalPlayerController = "48 8B 05 ?? ?? ?? ?? 48 85 C0 74 4F";
