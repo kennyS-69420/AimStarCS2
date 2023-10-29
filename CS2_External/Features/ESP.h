@@ -2,6 +2,7 @@
 #include "..\Render.hpp"
 #include "..\MenuConfig.hpp"
 #include "..\Cheats.h"
+#define ICON_FA_EYE "\xef\x81\xae"
 
 namespace ESP
 {
@@ -81,10 +82,11 @@ namespace ESP
 		ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
 		ImGui::SetNextWindowSize(ImVec2(200, 250), ImGuiCond_FirstUseEver);
 		const auto& window = ImGui::FindWindowByName("AimStar");
-//		ImGui::SetNextWindowPos(ImVec2(window->Pos.x + window->Size.x - 250, window->Pos.y + 100), ImGuiCond_Always);
 		ImGui::SetNextWindowPos(ImVec2(window->Pos.x + window->Size.x + ImGui::GetStyle().WindowPadding.x, window->Pos.y));
+		
+//		ImGui::SetNextWindowPos(ImVec2(window->Pos.x + window->Size.x - 250, window->Pos.y + 100), ImGuiCond_Always);
+		
 		ImGui::Begin("ESP Preview", nullptr, windowFlags);
-
 		ImVec2 windowSize = ImGui::GetWindowSize();
 		ImVec2 rectSize(100, 150);
 		ImVec2 rectPos((windowSize.x - rectSize.x) * 0.45f, (windowSize.y - rectSize.y) * 0.3f);
@@ -145,7 +147,17 @@ namespace ESP
 			
 		}
 		if (ESPConfig::ShowHeadBox) {
-			ImGui::GetWindowDrawList()->AddCircle({ centerPos.x + 44, centerPos.y + 17 }, 10.0f, ESPConfig::HeadBoxColor, 0, 1.8f);
+			switch (ESPConfig::HeadBoxStyle)
+			{
+			case 0:
+				ImGui::GetWindowDrawList()->AddCircle({ centerPos.x + 44, centerPos.y + 17 }, 10.0f, ESPConfig::HeadBoxColor, 0, 1.8f);
+				break;
+			case 1:
+				ImGui::GetWindowDrawList()->AddCircleFilled({ centerPos.x + 44, centerPos.y + 17 }, 10.0f, ESPConfig::HeadBoxColor, 0);
+			default:
+				break;
+			}
+			
 		}
 		if (ESPConfig::ShowBoxESP) {
 			ImVec2 rectStartPos;

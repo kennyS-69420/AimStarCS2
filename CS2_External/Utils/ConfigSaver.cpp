@@ -18,6 +18,8 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
+        configFile << "MenuStyle " << MenuConfig::MenuStyle << std::endl;
+        configFile << "WindowStyle " << MenuConfig::WindowStyle << std::endl;
         configFile << "BoxAlpha " << ESPConfig::BoxAlpha << std::endl;
         configFile << "EspPreview " << ESPConfig::ShowPreview << std::endl;
         configFile << "ShowHeadBox " << ESPConfig::ShowHeadBox << std::endl;
@@ -125,6 +127,8 @@ namespace MyConfigSaver {
             std::string key;
             if (iss >> key) {
                 if (key == "ShowBoneESP") iss >> ESPConfig::ShowBoneESP;
+                else if (key == "MenuStyle") iss >> MenuConfig::MenuStyle;
+                else if (key == "WindowStyle") iss >> MenuConfig::WindowStyle;
                 else if (key == "BoxAlpha") iss >> ESPConfig::BoxAlpha;
                 else if (key == "EspPreview") iss >> ESPConfig::ShowPreview;
                 else if (key == "ShowHeadBox") iss >> ESPConfig::ShowHeadBox;
@@ -216,6 +220,6 @@ namespace MyConfigSaver {
         }
 
         configFile.close();
-        std::cout << "[Info] Configuration loaded from " << MenuConfig::path + '/' + filename << std::endl;
+        std::cout << "[Info] Configuration loaded from " << MenuConfig::path + '\\' + filename << std::endl;
     }
 } // namespace ConfigSaver

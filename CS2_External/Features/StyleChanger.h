@@ -3,9 +3,9 @@
 
 namespace StyleChanger
 {
-	inline void UpdateStyle(int Style) noexcept
+	inline void UpdateSkin(int Skin) noexcept
 	{
-		switch (Style) {
+		switch (Skin) {
 		case 0:
 			Styles::Style_EnemyMouse();
 			break;
@@ -18,10 +18,5 @@ namespace StyleChanger
 		default:
 			break;
 		}
-	}
-
-	inline void InitStyle() noexcept
-	{
-		Styles::Style_EnemyMouse();
 	}
 }

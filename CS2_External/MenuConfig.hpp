@@ -9,6 +9,8 @@ namespace MenuConfig
 	inline float ComboWidth = 100.f;
 	inline float SliderWidth = 150.f;
 	inline int MenuStyle = 0;
+	// 0: Window 1: Collapse
+	inline int WindowStyle = 0;
 
 	inline bool AimBot = false;
 	inline bool AimAlways = false;

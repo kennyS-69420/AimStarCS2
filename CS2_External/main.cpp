@@ -32,7 +32,7 @@ int main()
 		goto END;
 	}
 	MenuConfig::path = documentsPath;
-	MenuConfig::path += "/AimStar";
+	MenuConfig::path += "\\AimStar";
 
 	switch (ProcessStatus) {
 	case 1:

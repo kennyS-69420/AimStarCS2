@@ -86,8 +86,17 @@ void Cheats::Run()
 	
 	if (MenuConfig::ShowMenu)
 	{
-		GUI::RenderMenu();
-		ESP::PreviewWindow();
+		switch (MenuConfig::WindowStyle)
+		{
+		case 0:
+			GUI::RenderMenu();
+			ESP::PreviewWindow();
+			break;
+		case 1:
+			GUI::RenderVapeMenu();
+			break;
+		}
+
 	}
 		
 

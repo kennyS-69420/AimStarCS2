@@ -126,6 +126,8 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		MenuConfig::MenuStyle = 0;
+		MenuConfig::WindowStyle = 0;
 		ESPConfig::BoxAlpha = 0.0f;
 		ESPConfig::ShowPreview = true;
 		ESPConfig::ShowHeadBox = false;
