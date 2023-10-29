@@ -9,9 +9,12 @@
 #include "Features/NoFlash.h"
 #include "Features/Watermark.h"
 #include "Features/CheatList.h"
+#include "Features/HitSound.h"
 
 namespace Cheats
 {
+	void KeyCheckThread();
+
 	void RenderCrossHair(ImDrawList* drawList) noexcept;
 
 	void Menu();

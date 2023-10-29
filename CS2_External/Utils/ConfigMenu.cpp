@@ -126,18 +126,19 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
-		MenuConfig::ShowPreview = true;
-		MenuConfig::ShowHeadBox = false;
-		MenuConfig::HeadBoxStyle = 0;
-		MenuConfig::HeadBoxColor = ImColor(255, 255, 255, 255);
-		MenuConfig::ShowDistance = false;
-		MenuConfig::ShowBoneESP = true;
-		MenuConfig::ShowBoxESP = true;
-		MenuConfig::ShowHealthBar = true;
-		MenuConfig::ShowWeaponESP = false;
-		MenuConfig::ShowEyeRay = false;
-		MenuConfig::ShowPlayerName = true;
-		MenuConfig::BoxRounding = 0.0f;
+		ESPConfig::BoxAlpha = 0.0f;
+		ESPConfig::ShowPreview = true;
+		ESPConfig::ShowHeadBox = false;
+		ESPConfig::HeadBoxStyle = 0;
+		ESPConfig::HeadBoxColor = ImColor(255, 255, 255, 255);
+		ESPConfig::ShowDistance = false;
+		ESPConfig::ShowBoneESP = true;
+		ESPConfig::ShowBoxESP = true;
+		ESPConfig::ShowHealthBar = true;
+		ESPConfig::ShowWeaponESP = false;
+		ESPConfig::ShowEyeRay = false;
+		ESPConfig::ShowPlayerName = true;
+		ESPConfig::BoxRounding = 0.0f;
 		MenuConfig::AimBot = false;
 		MenuConfig::AimAlways = false;
 		MenuConfig::AimToggleMode = false;
@@ -145,9 +146,9 @@ namespace ConfigMenu {
 		MenuConfig::AimPositionIndex = BONEINDEX::head;
 		MenuConfig::BoxType = 0;
 		MenuConfig::HealthBarType = 0;
-		MenuConfig::BoneColor = ImColor(0, 255, 255, 255);
-		MenuConfig::BoxColor = ImColor(255, 80, 0, 255);
-		MenuConfig::EyeRayColor = ImVec4(255, 0, 0, 255);
+		ESPConfig::BoneColor = ImColor(0, 255, 255, 255);
+		ESPConfig::BoxColor = ImColor(255, 80, 0, 255);
+		ESPConfig::EyeRayColor = ImVec4(255, 0, 0, 255);
 		MenuConfig::ShowMenu = true;
 		MenuConfig::ShowRadar = false;
 		MenuConfig::RadarRange = 150;
@@ -199,14 +200,14 @@ namespace ConfigMenu {
 		MenuConfig::CheatList = false;
 		MenuConfig::HitSound = false;
 
-		MenuConfig::ESPenbled = false;
+		ESPConfig::ESPenbled = false;
 
-		MenuConfig::ShowPenis = false;
-		MenuConfig::PenisLength = 15.f;
-		MenuConfig::PenisSize = 1.3f;
-		MenuConfig::PenisColor = ImColor(255, 0, 0, 200);
+		ESPConfig::ShowPenis = false;
+		ESPConfig::PenisLength = 15.f;
+		ESPConfig::PenisSize = 1.3f;
+		ESPConfig::PenisColor = ImColor(255, 0, 0, 200);
 
-		MenuConfig::DrawFov = false;
+		ESPConfig::DrawFov = false;
 		MenuConfig::FovCircleColor = ImColor(255, 255, 255, 255);
 	}
 }

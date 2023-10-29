@@ -15,7 +15,7 @@ namespace Render
 
 	void DrawHeadCircle(const CEntity& Entity, ImColor Color)
 	{
-		if (!MenuConfig::ShowHeadBox)
+		if (!ESPConfig::ShowHeadBox)
 			return;
 
 		Vec2 CenterPos;
@@ -26,7 +26,7 @@ namespace Render
 		CenterPos = Head.ScreenPos;
 		float Radius = abs(Head.ScreenPos.y - Neck.ScreenPos.y) + 2;
 
-		switch (MenuConfig::HeadBoxStyle)
+		switch (ESPConfig::HeadBoxStyle)
 		{
 		case 1:
 			Gui.CircleFilled(CenterPos, Radius + 1, Color & IM_COL32_A_MASK);
@@ -39,7 +39,7 @@ namespace Render
 
 	void DrawDistance(const CEntity& LocalEntity, CEntity& Entity, ImVec4 Rect)
 	{
-		if (!MenuConfig::ShowDistance)
+		if (!ESPConfig::ShowDistance)
 			return;
 
 		int distance = static_cast<int>(Entity.Pawn.Pos.DistanceTo(LocalEntity.Pawn.Pos) / 100);
@@ -49,7 +49,7 @@ namespace Render
 
 	void DrawFovCircle(const CEntity& LocalEntity)
 	{
-		if (!MenuConfig::DrawFov)
+		if (!ESPConfig::DrawFov)
 			return;
 
 		Vec2 CenterPoint = Gui.Window.Size / 2;
@@ -208,7 +208,7 @@ namespace Render
 	// ��������
 	void DrawBone(const CEntity& Entity, ImColor Color, float Thickness)
 	{
-		if (!MenuConfig::ShowBoneESP)
+		if (!ESPConfig::ShowBoneESP)
 			return;
 
 		BoneJointPos Previous, Current;
@@ -237,7 +237,7 @@ namespace Render
 	// �������
 	void ShowLosLine(const CEntity& Entity, const float Length, ImColor Color, float Thickness)
 	{
-		if (!MenuConfig::ShowEyeRay)
+		if (!ESPConfig::ShowEyeRay)
 			return;
 
 		Vec2 StartPoint, EndPoint;
@@ -261,7 +261,7 @@ namespace Render
 	//ţţ����
 	void ShowPenis(const CEntity& Entity, const float Length, ImColor Color, float Thickness)
 	{
-		if (!MenuConfig::ShowPenis)
+		if (!ESPConfig::ShowPenis)
 			return;
 
 		Vec2 StartPoint, EndPoint;

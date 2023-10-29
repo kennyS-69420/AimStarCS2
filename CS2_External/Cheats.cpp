@@ -1,334 +1,31 @@
 ﻿#include <string>
 #include <thread>
 #include <future>
+#include <iostream>
 
 #include "Cheats.h"
 #include "Render.hpp"
 #include "MenuConfig.hpp"
-#include "Utils/ConfigMenu.hpp"
-#include "Utils/ConfigSaver.hpp"
-#include "Font/IconsFontAwesome5.h"
 
-#include "Features/StyleChanger.h"
-#include "Features/HitSound.h"
 #include "Features/ESP.h"
+#include "Features/GUI.h"
 
-void Cheats::Menu()
+int PreviousTotalHits = 0;
+
+// Does not work and not use it for now
+void Cheats::KeyCheckThread()
 {
-	ImGui::Begin("AimStar",nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse);
-
-	
+	try
 	{
-		ImGui::BeginTabBar("AimStar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip);
-		// esp menu
-		if (ImGui::BeginTabItem(ICON_FA_EYE " ESP"))
+		if ((GetAsyncKeyState(VK_INSERT) & 0x8000))
 		{
-			Gui.MyCheckBox("Enabled", &MenuConfig::ESPenbled);
-			ImGui::Checkbox("Box", &MenuConfig::ShowBoxESP);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&MenuConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat");
-			if (MenuConfig::ShowBoxESP)
-				ImGui::SliderFloat("Box Rounding", &MenuConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
-
-			ImGui::Checkbox("Skeleton", &MenuConfig::ShowBoneESP);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##BoneColor", reinterpret_cast<float*>(&MenuConfig::BoneColor), ImGuiColorEditFlags_NoInputs);
-
-			ImGui::Checkbox("Head Box", &MenuConfig::ShowHeadBox);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##HeadBoxColor", reinterpret_cast<float*>(&MenuConfig::HeadBoxColor), ImGuiColorEditFlags_NoInputs);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("##HeadBoxStyle", &MenuConfig::HeadBoxStyle, "Normal\0Flat");
-
-			ImGui::Checkbox("EyeRay", &MenuConfig::ShowEyeRay);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##EyeRay", reinterpret_cast<float*>(&MenuConfig::EyeRayColor), ImGuiColorEditFlags_NoInputs);
-
-			ImGui::Checkbox("HealthBar", &MenuConfig::ShowHealthBar);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth); 
-			ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vetical\0Horizontal");
-			
-			ImGui::Checkbox("Weapon", &MenuConfig::ShowWeaponESP);
-			ImGui::Checkbox("Distance", &MenuConfig::ShowDistance);
-			ImGui::Checkbox("Name", &MenuConfig::ShowPlayerName);
-		
-			ImGui::Checkbox("SnapLine", &MenuConfig::ShowLineToEnemy);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##LineToEnemyColor", reinterpret_cast<float*>(&MenuConfig::LineToEnemyColor), ImGuiColorEditFlags_NoInputs);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom");
-			ImGui::Checkbox("Preview Window", &MenuConfig::ShowPreview);
-
-//			ImGui::NextColumn();
-			ImGui::NewLine();
-			if (ImGui::CollapsingHeader("SexyESP"))
-			{
-				ImGui::Checkbox("Penis", &MenuConfig::ShowPenis);
-				ImGui::SameLine();
-				ImGui::ColorEdit4("##PenisColor", reinterpret_cast<float*>(&MenuConfig::PenisColor), ImGuiColorEditFlags_NoInputs);
-				ImGui::SliderFloat("Length", &MenuConfig::PenisLength, 1.0f, 50.0f, "%.1f");
-				ImGui::SliderFloat("Size", &MenuConfig::PenisSize, 1.3f, 5.0f, "%.3f");
-			}
-
-//			ImGui::Columns(1);
-			ImGui::EndTabItem();
+			MenuConfig::ShowMenu = !MenuConfig::ShowMenu;
 		}
-
-		// aimbot menu
-		
-		if (ImGui::BeginTabItem(ICON_FA_USER " AimBot"))
-		{
-
-			Gui.MyCheckBox("Enabled", &MenuConfig::AimBot);
-			
-			ImGui::SetNextItemWidth(75.f);
-			if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
-			{
-				AimControl::SetHotKey(MenuConfig::AimBotHotKey);
-			}
-			ImGui::SameLine();
-			ImGui::Checkbox("Toggle Mode", &MenuConfig::AimToggleMode);
-
-			ImGui::Checkbox("Draw Fov", &MenuConfig::DrawFov);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##FovCircleColor", reinterpret_cast<float*>(&MenuConfig::FovCircleColor), ImGuiColorEditFlags_NoInputs);
-			ImGui::Checkbox("Visible Only", &MenuConfig::VisibleCheck);
-
-			float FovMin = 0.1f, FovMax = 89.f;
-			float SmoothMin = 0.1f, SmoothMax = 1.f;
-			ImGui::SliderFloat("Fov", &AimControl::AimFov, 0.0f, 25.0f, "%.1f", ImGuiSliderFlags_Logarithmic);
-			ImGui::SliderFloat("Smooth", &AimControl::Smooth, 0.0f, 1.0f, "%.1f");
-			if (ImGui::Combo("Bone", &MenuConfig::AimPosition, "Head\0Neck\0Chest\0Penis"))
-			{
-				switch (MenuConfig::AimPosition)
-				{
-				case 0:
-					MenuConfig::AimPositionIndex = BONEINDEX::head;
-					break;
-				case 1:
-					MenuConfig::AimPositionIndex = BONEINDEX::neck_0;
-					break;
-				case 2:
-					MenuConfig::AimPositionIndex = BONEINDEX::spine_1;
-					break;
-				case 3:
-					MenuConfig::AimPositionIndex = BONEINDEX::pelvis;
-					break;
-				default:
-					break;
-				}
-			}
-			/*
-			ImGui::NewLine();
-			if (ImGui::CollapsingHeader("RCS"))
-			{
-				Gui.MyCheckBox("Enabled", &MenuConfig::RCS);
-				ImGui::SliderInt("Start Bullet", &AimControl::RCSBullet, 1, 6, "%d");
-				ImGui::SliderFloat("Yaw", &AimControl::RCSScale.x, 0.f, 2.f, "%.1f");
-				ImGui::SliderFloat("Pitch", &AimControl::RCSScale.y, 0.f, 2.f, "%.1f");
-			}*/
-			ImGui::EndTabItem();
-		}
-
-		// Radar menu
-		if (ImGui::BeginTabItem(ICON_FA_COMPASS " Radar"))
-		{
-			/*
-			if (ImGui::IsItemHovered())
-			{
-				ImGui::SetTooltip("External rendering radar hack.");
-			}*/
-
-			Gui.MyCheckBox("Enabled", &MenuConfig::ShowRadar);
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 20);
-			ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow");
-			ImGui::Checkbox("Custom", &MenuConfig::customRadar);
-			
-			if (MenuConfig::customRadar)
-			{
-				ImGui::NewLine();
-				ImGui::Checkbox("Cross Line", &MenuConfig::ShowRadarCrossLine);
-				ImGui::SameLine();
-				ImGui::ColorEdit4("##CrossLineColor", reinterpret_cast<float*>(&MenuConfig::RadarCrossLineColor), ImGuiColorEditFlags_NoInputs);
-				float RadarPointSizeProportionMin = 0.8f, RadarPointSizeProportionMax = 2.f;
-				float ProportionMin = 500.f, ProportionMax = 3300.f;
-				float RadarRangeMin = 100.f, RadarRangeMax = 300.f;
-				ImGui::SliderFloat("PointSize", &MenuConfig::RadarPointSizeProportion, RadarPointSizeProportionMin, RadarPointSizeProportionMax, "%.1f");
-				ImGui::SliderFloat("Proportion", &MenuConfig::Proportion, ProportionMin, ProportionMax, "%.1f");
-				ImGui::SliderFloat("Range", &MenuConfig::RadarRange, RadarRangeMin, RadarRangeMax, "%.1f");
-				ImGui::SliderFloat("Backgroud Alpha", &MenuConfig::RadarBgAlpha, 0.0f, 1.0f, "%.2f");
-			}
-			
-
-
-//			ImGui::Checkbox("Fov Line", &MenuConfig::ShowFovLine);
-//			ImGui::SameLine();
-//			ImGui::ColorEdit4("##FovLineColor", reinterpret_cast<float*>(&MenuConfig::FovLineColor), ImGuiColorEditFlags_NoInputs);
-//			float FovLineSizeMin = 20.f, FovLineSizeMax = 120.f;
-//			Gui.SliderScalarEx1("Length", ImGuiDataType_Float, &MenuConfig::FovLineSize, &FovLineSizeMin, &FovLineSizeMax, "%.1f", ImGuiSliderFlags_None);
-
-			ImGui::EndTabItem();
-		}
-
-		// TriggerBot
-		if (ImGui::BeginTabItem(ICON_FA_HAND_POINTER " TriggerBot"))
-		{
-			/*
-			if (ImGui::IsItemHovered())
-			{
-				ImGui::SetTooltip("Automatically fires a weapon as soon as an enemy comes into the crosshair.");
-			}*/
-
-			Gui.MyCheckBox("Enabled", &MenuConfig::TriggerBot);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-
-			if (ImGui::Combo("Hotkey", &MenuConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
-			{
-				TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
-			}
-
-			ImGui::Checkbox("Always Activate", &MenuConfig::TriggerAlways);
-			DWORD TriggerDelayMin = 10, TriggerDelayMax = 300;
-			ImGui::SliderInt("Delay", &TriggerBot::TriggerDelay, TriggerDelayMin, TriggerDelayMax, "%d ms", ImGuiSliderFlags_None);
-			ImGui::SliderInt("Fake Shot", &TriggerBot::FakeShotDelay, 0, 1000, "%d ms", ImGuiSliderFlags_None);
-
-			ImGui::EndTabItem();
-		}
-
-		//Crosshair
-		if (ImGui::BeginTabItem(ICON_FA_DOT_CIRCLE " Crosshair"))
-		{
-			/*
-			if (ImGui::IsItemHovered())
-			{
-				ImGui::SetTooltip("Highly customizable external crosshair.");
-			}*/
-
-			Gui.MyCheckBox("Enabled", &CrosshairConfig::ShowCrossHair);
-
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 50);
-			if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot"))
-				Render::UpdateCrosshairPreset(CrosshairConfig::crosshairPreset);
-
-			ImGui::Text("Crosshair Color");
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##CrossHairColor", reinterpret_cast<float*>(&CrosshairConfig::CrossHairColor), ImGuiColorEditFlags_NoInputs);
-
-			ImGui::Checkbox("Center Dot", &CrosshairConfig::drawDot);
-			if (CrosshairConfig::drawDot)
-			{
-				ImGui::SliderFloat("Dot Size", &CrosshairConfig::DotSize, 1.f, 50.f, "%.f");
-			}
-
-			ImGui::Checkbox("Outline", &CrosshairConfig::drawOutLine);
-			ImGui::Checkbox("Crossline", &CrosshairConfig::drawCrossline);
-			if (CrosshairConfig::drawCrossline)
-			{
-				ImGui::SliderInt("Horizontal Length", &CrosshairConfig::HorizontalLength, 1, 100, "%d");
-				ImGui::SliderInt("Vertical Length", &CrosshairConfig::VerticalLength, 1, 100, "%d");
-				ImGui::SliderInt("Gap", &CrosshairConfig::Gap, 1, 50, "%d");
-//				ImGui::Checkbox("Dynamic Gap", &CrosshairConfig::DynamicGap);
-				ImGui::Checkbox("T Style", &CrosshairConfig::tStyle);
-			}
-
-			ImGui::Separator();
-			ImGui::Checkbox("Circle", &CrosshairConfig::drawCircle);
-			if(CrosshairConfig::drawCircle)
-				ImGui::SliderFloat("Circle Radius", &CrosshairConfig::CircleRadius, 0.0f, 50.0f, "%.1f");
-
-			ImGui::Separator();
-			ImGui::Checkbox("Target Crosshair", &CrosshairConfig::showTargeting);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##CrosshairColor", reinterpret_cast<float*>(&CrosshairConfig::TargetedColor), ImGuiColorEditFlags_NoInputs);
-
-			ImGui::EndTabItem();
-		}
-
-		// Misc
-		if (ImGui::BeginTabItem(ICON_FA_SUN " Misc"))
-		{
-			/*
-			if (ImGui::IsItemHovered())
-			{
-				ImGui::SetTooltip("Other features.");
-			}*/
-
-			ImGui::Columns(2, nullptr, false);
-			ImGui::SetColumnOffset(1, 250.0f);
-
-			if (ImGui::Combo("Style", &MenuConfig::MenuStyle, "Default\0Hacker\0Light\0Classic\0Red"))
-				StyleChanger::UpdateStyle(MenuConfig::MenuStyle);
-
-			ImGui::Checkbox("Headshot Line", &MenuConfig::ShowHeadShootLine);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##HeadShootLineColor", reinterpret_cast<float*>(&MenuConfig::HeadShootLineColor), ImGuiColorEditFlags_NoInputs);
-			ImGui::Checkbox("Cheat In Spec", &MenuConfig::WorkInSpec);
-			ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
-			ImGui::Checkbox("Watermark", &MenuConfig::WaterMark);
-			ImGui::Checkbox("Cheat List", &MenuConfig::CheatList);
-			ImGui::Checkbox("HitSound", &MenuConfig::HitSound);
-
-			ImGui::NextColumn();
-			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
-			ImGui::Checkbox("Team Check", &MenuConfig::TeamCheck);
-			ImGui::Checkbox("Bypass OBS", &MenuConfig::BypassOBS);
-
-			ImGui::Columns(1);
-			ImGui::EndTabItem();
-		}
-
-		// Config
-		ConfigMenu::RenderConfigMenu();
-
-		// About
-		if (ImGui::BeginTabItem(ICON_FA_FILE_CODE " README"))
-		{
-			/*
-			if (ImGui::IsItemHovered())
-			{
-				ImGui::SetTooltip("About.");
-			}*/
-
-			// Since it's already the MIT license, there's no need to do that.
-			// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
-
-			ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-29");
-			Gui.OpenWebpageButton(ICON_FA_COPY " Source Code", "https://github.com/CowNowK/AimStarCS2");
-			ImGui::SameLine();
-			Gui.OpenWebpageButton(ICON_FA_COMMENT_DOTS " Join Discord", "https://discord.gg/MzbmSRaU3p");
-			ImGui::NewLine();
-
-			ImGui::Text("Offsets:");
-			ImGui::Text("EntityList:");
-			ImGui::SameLine();
-			ImGui::Text(std::to_string(Offset::EntityList).c_str());
-			ImGui::Text("Matrix:");
-			ImGui::SameLine();
-			ImGui::Text(std::to_string(Offset::Matrix).c_str());
-			ImGui::Text("LocalPlayerController:");
-			ImGui::SameLine();
-			ImGui::Text(std::to_string(Offset::LocalPlayerController).c_str());
-			ImGui::Text("ViewAngle:");
-			ImGui::SameLine();
-			ImGui::Text(std::to_string(Offset::ViewAngle).c_str());
-			ImGui::Text("LocalPlayerPawn:");
-			ImGui::SameLine();
-			ImGui::Text(std::to_string(Offset::LocalPlayerPawn).c_str());
-			ImGui::Text("ForceJump:");
-			ImGui::SameLine();
-			ImGui::Text(std::to_string(Offset::ForceJump).c_str());
-
-			ImGui::EndTabItem();
-		}
-
-	}ImGui::End();
+		std::this_thread::sleep_for(std::chrono::milliseconds(150));
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 void Cheats::RadarSetting(Base_Radar& Radar)
@@ -376,20 +73,20 @@ void Cheats::RenderCrossHair(ImDrawList* drawList) noexcept
 		Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairConfig::CrossHairColor));
 }
 
-int PreviousTotalHits = 0;
 void Cheats::Run()
 {	
 	// Show menu
 	static DWORD lastTick = 0; 
 	DWORD currentTick = GetTickCount(); 
-	if ((GetAsyncKeyState(VK_INSERT) & 0x8000) && currentTick - lastTick >= 150){
-		// Check key state per 150ms once to avoid loop
+	if ((GetAsyncKeyState(VK_INSERT) & 0x8000) && currentTick - lastTick >= 150) {
 		MenuConfig::ShowMenu = !MenuConfig::ShowMenu;
-		lastTick = currentTick; 
+		lastTick = currentTick;
 	}
+//	std::thread keyCheckThread(KeyCheckThread);
+	
 	if (MenuConfig::ShowMenu)
 	{
-		Menu();
+		GUI::RenderMenu();
 		ESP::PreviewWindow();
 	}
 		
@@ -490,7 +187,7 @@ void Cheats::Run()
 		}
 		
 
-		if (MenuConfig::ESPenbled)
+		if (ESPConfig::ESPenbled)
 		{
 			ImVec4 Rect = ESP::GetBoxRect(Entity, MenuConfig::BoxType);
 			ESP::RenderPlayerESP(Entity, Rect);
@@ -498,7 +195,7 @@ void Cheats::Run()
 			
 				
 			// Draw HealthBar
-			if (MenuConfig::ShowHealthBar)
+			if (ESPConfig::ShowHealthBar)
 			{
 				ImVec2 HealthBarPos, HealthBarSize;
 				if (MenuConfig::HealthBarType == 0)

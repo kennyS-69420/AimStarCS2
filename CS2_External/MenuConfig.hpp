@@ -10,21 +10,6 @@ namespace MenuConfig
 	inline float SliderWidth = 150.f;
 	inline int MenuStyle = 0;
 
-	inline bool ESPenbled = false;
-	inline bool ShowBoneESP = true;
-	inline bool ShowBoxESP = true;
-	inline bool ShowHealthBar = true;
-	inline bool ShowWeaponESP = false;
-	inline bool ShowEyeRay = false;
-	inline bool ShowPlayerName = true;
-	inline bool DrawFov = false;
-	inline bool ShowDistance = false;
-	inline bool ShowHeadBox = false;
-	inline bool ShowPreview = true;
-	// 0: normal 1: Flat
-	inline int HeadBoxStyle = 0;
-	inline float BoxRounding = 0.0f;
-
 	inline bool AimBot = false;
 	inline bool AimAlways = false;
 	inline bool AimToggleMode = false;
@@ -44,11 +29,7 @@ namespace MenuConfig
 	// 0: Top 1: Center 2: Bottom
 	inline int  LinePos = 0;
 
-	inline ImColor BoneColor = ImColor(0, 255, 255, 255);
-	inline ImColor BoxColor = ImColor(255, 80, 0, 255);
-	inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
 	inline ImColor FovCircleColor = ImColor(180, 255, 0, 255);
-	inline ImColor HeadBoxColor = ImColor(255, 255, 255, 255);
 
 	inline bool ShowMenu = true;
 
@@ -89,11 +70,6 @@ namespace MenuConfig
 	inline bool HitSound = false;
 	inline bool SkinChanger = false;
 
-	// Penis Config
-	inline bool ShowPenis = false;
-	inline float PenisLength = 15.f;
-	inline float PenisSize = 1.3f;
-	inline ImColor PenisColor = ImColor(255, 0, 0, 200);
 }
 
 namespace CrosshairConfig
@@ -121,6 +97,36 @@ namespace CrosshairConfig
 	
 	inline ImColor CrossHairColor = ImColor(0, 255, 0, 255);
 	inline ImColor TargetedColor = ImColor(255, 0, 0, 255);
+}
+
+namespace ESPConfig
+{
+	inline bool ESPenbled = false;
+	inline bool ShowBoneESP = true;
+	inline bool ShowBoxESP = true;
+	inline bool ShowHealthBar = true;
+	inline bool ShowWeaponESP = false;
+	inline bool ShowEyeRay = false;
+	inline bool ShowPlayerName = true;
+	inline bool DrawFov = false;
+	inline bool ShowDistance = false;
+	inline bool ShowHeadBox = false;
+	inline bool ShowPreview = true;
+	// 0: normal 1: Flat
+	inline int HeadBoxStyle = 0;
+	inline float BoxRounding = 5.0f;
+	inline float BoxAlpha = 0.5f;
+
+	inline ImColor BoneColor = ImColor(0, 255, 255, 255);
+	inline ImColor BoxColor = ImColor(255, 80, 0, 255);
+	inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
+	inline ImColor HeadBoxColor = ImColor(255, 255, 255, 255);
+
+	// Penis Config
+	inline bool ShowPenis = false;
+	inline float PenisLength = 15.f;
+	inline float PenisSize = 1.3f;
+	inline ImColor PenisColor = ImColor(255, 0, 0, 200);
 }
 
 namespace DebuggerConfig

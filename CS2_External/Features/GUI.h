@@ -1,0 +1,333 @@
+#pragma once
+#include "..\MenuConfig.hpp"
+#include "..\Render.hpp"
+#include "..\Font\IconsFontAwesome5.h"
+#include "..\AimBot.hpp"
+#include "..\Radar\Radar.h"
+#include "..\TriggerBot.h"
+#include "..\Utils\ConfigMenu.hpp"
+#include "..\Utils\ConfigSaver.hpp"
+
+#include "StyleChanger.h"
+
+namespace GUI
+{
+	void RenderMenu()
+	{
+		ImGui::Begin("AimStar", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse);
+		{
+			ImGui::BeginTabBar("AimStar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip);
+			// esp menu
+			if (ImGui::BeginTabItem(ICON_FA_EYE " ESP"))
+			{
+				Gui.MyCheckBox("Enabled", &ESPConfig::ESPenbled);
+				ImGui::Checkbox("Box", &ESPConfig::ShowBoxESP);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&ESPConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat");
+				if (MenuConfig::BoxType == 2)
+					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
+				if (ESPConfig::ShowBoxESP)
+					ImGui::SliderFloat("Box Rounding", &ESPConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
+
+
+				ImGui::Checkbox("Skeleton", &ESPConfig::ShowBoneESP);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##BoneColor", reinterpret_cast<float*>(&ESPConfig::BoneColor), ImGuiColorEditFlags_NoInputs);
+
+				ImGui::Checkbox("Head Box", &ESPConfig::ShowHeadBox);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##HeadBoxColor", reinterpret_cast<float*>(&ESPConfig::HeadBoxColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("##HeadBoxStyle", &ESPConfig::HeadBoxStyle, "Normal\0Flat");
+
+				ImGui::Checkbox("EyeRay", &ESPConfig::ShowEyeRay);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##EyeRay", reinterpret_cast<float*>(&ESPConfig::EyeRayColor), ImGuiColorEditFlags_NoInputs);
+
+				ImGui::Checkbox("HealthBar", &ESPConfig::ShowHealthBar);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vertical\0Horizontal");
+
+				ImGui::Checkbox("Weapon", &ESPConfig::ShowWeaponESP);
+				ImGui::Checkbox("Distance", &ESPConfig::ShowDistance);
+				ImGui::Checkbox("Name", &ESPConfig::ShowPlayerName);
+
+				ImGui::Checkbox("SnapLine", &MenuConfig::ShowLineToEnemy);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##LineToEnemyColor", reinterpret_cast<float*>(&MenuConfig::LineToEnemyColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom");
+				ImGui::Checkbox("Preview Window", &ESPConfig::ShowPreview);
+
+				//			ImGui::NextColumn();
+				ImGui::NewLine();
+				if (ImGui::CollapsingHeader("SexyESP"))
+				{
+					ImGui::Checkbox("Penis", &ESPConfig::ShowPenis);
+					ImGui::SameLine();
+					ImGui::ColorEdit4("##PenisColor", reinterpret_cast<float*>(&ESPConfig::PenisColor), ImGuiColorEditFlags_NoInputs);
+					ImGui::SliderFloat("Length", &ESPConfig::PenisLength, 1.0f, 50.0f, "%.1f");
+					ImGui::SliderFloat("Size", &ESPConfig::PenisSize, 1.3f, 5.0f, "%.3f");
+				}
+
+				//			ImGui::Columns(1);
+				ImGui::EndTabItem();
+			}
+
+			// aimbot menu
+
+			if (ImGui::BeginTabItem(ICON_FA_USER " AimBot"))
+			{
+
+				Gui.MyCheckBox("Enabled", &MenuConfig::AimBot);
+
+				ImGui::SetNextItemWidth(75.f);
+				if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+				{
+					AimControl::SetHotKey(MenuConfig::AimBotHotKey);
+				}
+				ImGui::SameLine();
+				ImGui::Checkbox("Toggle Mode", &MenuConfig::AimToggleMode);
+
+				ImGui::Checkbox("Draw Fov", &ESPConfig::DrawFov);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##FovCircleColor", reinterpret_cast<float*>(&MenuConfig::FovCircleColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::Checkbox("Visible Only", &MenuConfig::VisibleCheck);
+
+				float FovMin = 0.1f, FovMax = 89.f;
+				float SmoothMin = 0.1f, SmoothMax = 1.f;
+				ImGui::SliderFloat("Fov", &AimControl::AimFov, 0.0f, 25.0f, "%.1f", ImGuiSliderFlags_Logarithmic);
+				ImGui::SliderFloat("Smooth", &AimControl::Smooth, 0.0f, 1.0f, "%.1f");
+				if (ImGui::Combo("Bone", &MenuConfig::AimPosition, "Head\0Neck\0Chest\0Penis"))
+				{
+					switch (MenuConfig::AimPosition)
+					{
+					case 0:
+						MenuConfig::AimPositionIndex = BONEINDEX::head;
+						break;
+					case 1:
+						MenuConfig::AimPositionIndex = BONEINDEX::neck_0;
+						break;
+					case 2:
+						MenuConfig::AimPositionIndex = BONEINDEX::spine_1;
+						break;
+					case 3:
+						MenuConfig::AimPositionIndex = BONEINDEX::pelvis;
+						break;
+					default:
+						break;
+					}
+				}
+				/*
+				ImGui::NewLine();
+				if (ImGui::CollapsingHeader("RCS"))
+				{
+					Gui.MyCheckBox("Enabled", &MenuConfig::RCS);
+					ImGui::SliderInt("Start Bullet", &AimControl::RCSBullet, 1, 6, "%d");
+					ImGui::SliderFloat("Yaw", &AimControl::RCSScale.x, 0.f, 2.f, "%.1f");
+					ImGui::SliderFloat("Pitch", &AimControl::RCSScale.y, 0.f, 2.f, "%.1f");
+				}*/
+				ImGui::EndTabItem();
+			}
+
+			// Radar menu
+			if (ImGui::BeginTabItem(ICON_FA_COMPASS " Radar"))
+			{
+				/*
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::SetTooltip("External rendering radar hack.");
+				}*/
+
+				Gui.MyCheckBox("Enabled", &MenuConfig::ShowRadar);
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 20);
+				ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow");
+				ImGui::Checkbox("Custom", &MenuConfig::customRadar);
+
+				if (MenuConfig::customRadar)
+				{
+					ImGui::NewLine();
+					ImGui::Checkbox("Cross Line", &MenuConfig::ShowRadarCrossLine);
+					ImGui::SameLine();
+					ImGui::ColorEdit4("##CrossLineColor", reinterpret_cast<float*>(&MenuConfig::RadarCrossLineColor), ImGuiColorEditFlags_NoInputs);
+					float RadarPointSizeProportionMin = 0.8f, RadarPointSizeProportionMax = 2.f;
+					float ProportionMin = 500.f, ProportionMax = 3300.f;
+					float RadarRangeMin = 100.f, RadarRangeMax = 300.f;
+					ImGui::SliderFloat("PointSize", &MenuConfig::RadarPointSizeProportion, RadarPointSizeProportionMin, RadarPointSizeProportionMax, "%.1f");
+					ImGui::SliderFloat("Proportion", &MenuConfig::Proportion, ProportionMin, ProportionMax, "%.1f");
+					ImGui::SliderFloat("Range", &MenuConfig::RadarRange, RadarRangeMin, RadarRangeMax, "%.1f");
+					ImGui::SliderFloat("Backgroud Alpha", &MenuConfig::RadarBgAlpha, 0.0f, 1.0f, "%.2f");
+				}
+
+
+
+				//			ImGui::Checkbox("Fov Line", &MenuConfig::ShowFovLine);
+				//			ImGui::SameLine();
+				//			ImGui::ColorEdit4("##FovLineColor", reinterpret_cast<float*>(&MenuConfig::FovLineColor), ImGuiColorEditFlags_NoInputs);
+				//			float FovLineSizeMin = 20.f, FovLineSizeMax = 120.f;
+				//			Gui.SliderScalarEx1("Length", ImGuiDataType_Float, &MenuConfig::FovLineSize, &FovLineSizeMin, &FovLineSizeMax, "%.1f", ImGuiSliderFlags_None);
+
+				ImGui::EndTabItem();
+			}
+
+			// TriggerBot
+			if (ImGui::BeginTabItem(ICON_FA_HAND_POINTER " TriggerBot"))
+			{
+				/*
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::SetTooltip("Automatically fires a weapon as soon as an enemy comes into the crosshair.");
+				}*/
+
+				Gui.MyCheckBox("Enabled", &MenuConfig::TriggerBot);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+
+				if (ImGui::Combo("Hotkey", &MenuConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+				{
+					TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
+				}
+
+				ImGui::Checkbox("Always Activate", &MenuConfig::TriggerAlways);
+				DWORD TriggerDelayMin = 10, TriggerDelayMax = 300;
+				ImGui::SliderInt("Delay", &TriggerBot::TriggerDelay, TriggerDelayMin, TriggerDelayMax, "%d ms", ImGuiSliderFlags_None);
+				ImGui::SliderInt("Fake Shot", &TriggerBot::FakeShotDelay, 0, 1000, "%d ms", ImGuiSliderFlags_None);
+
+				ImGui::EndTabItem();
+			}
+
+			//Crosshair
+			if (ImGui::BeginTabItem(ICON_FA_DOT_CIRCLE " Crosshair"))
+			{
+				/*
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::SetTooltip("Highly customizable external crosshair.");
+				}*/
+
+				Gui.MyCheckBox("Enabled", &CrosshairConfig::ShowCrossHair);
+
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 50);
+				if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot"))
+					Render::UpdateCrosshairPreset(CrosshairConfig::crosshairPreset);
+
+				ImGui::Text("Crosshair Color");
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##CrossHairColor", reinterpret_cast<float*>(&CrosshairConfig::CrossHairColor), ImGuiColorEditFlags_NoInputs);
+
+				ImGui::Checkbox("Center Dot", &CrosshairConfig::drawDot);
+				if (CrosshairConfig::drawDot)
+				{
+					ImGui::SliderFloat("Dot Size", &CrosshairConfig::DotSize, 1.f, 50.f, "%.f");
+				}
+
+				ImGui::Checkbox("Outline", &CrosshairConfig::drawOutLine);
+				ImGui::Checkbox("Crossline", &CrosshairConfig::drawCrossline);
+				if (CrosshairConfig::drawCrossline)
+				{
+					ImGui::SliderInt("Horizontal Length", &CrosshairConfig::HorizontalLength, 1, 100, "%d");
+					ImGui::SliderInt("Vertical Length", &CrosshairConfig::VerticalLength, 1, 100, "%d");
+					ImGui::SliderInt("Gap", &CrosshairConfig::Gap, 1, 50, "%d");
+					//				ImGui::Checkbox("Dynamic Gap", &CrosshairConfig::DynamicGap);
+					ImGui::Checkbox("T Style", &CrosshairConfig::tStyle);
+				}
+
+				ImGui::Separator();
+				ImGui::Checkbox("Circle", &CrosshairConfig::drawCircle);
+				if (CrosshairConfig::drawCircle)
+					ImGui::SliderFloat("Circle Radius", &CrosshairConfig::CircleRadius, 0.0f, 50.0f, "%.1f");
+
+				ImGui::Separator();
+				ImGui::Checkbox("Target Crosshair", &CrosshairConfig::showTargeting);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##CrosshairColor", reinterpret_cast<float*>(&CrosshairConfig::TargetedColor), ImGuiColorEditFlags_NoInputs);
+
+				ImGui::EndTabItem();
+			}
+
+			// Misc
+			if (ImGui::BeginTabItem(ICON_FA_SUN " Misc"))
+			{
+				/*
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::SetTooltip("Other features.");
+				}*/
+
+				ImGui::Columns(2, nullptr, false);
+				ImGui::SetColumnOffset(1, 250.0f);
+
+				if (ImGui::Combo("Style", &MenuConfig::MenuStyle, "Default\0Hacker\0Red"))
+					StyleChanger::UpdateStyle(MenuConfig::MenuStyle);
+
+				ImGui::Checkbox("Headshot Line", &MenuConfig::ShowHeadShootLine);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##HeadShootLineColor", reinterpret_cast<float*>(&MenuConfig::HeadShootLineColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::Checkbox("Cheat In Spec", &MenuConfig::WorkInSpec);
+				ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
+				ImGui::Checkbox("Watermark", &MenuConfig::WaterMark);
+				ImGui::Checkbox("Cheat List", &MenuConfig::CheatList);
+				ImGui::Checkbox("HitSound", &MenuConfig::HitSound);
+
+				ImGui::NextColumn();
+				ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
+				ImGui::Checkbox("Team Check", &MenuConfig::TeamCheck);
+				ImGui::Checkbox("Bypass OBS", &MenuConfig::BypassOBS);
+
+				ImGui::Columns(1);
+				ImGui::EndTabItem();
+			}
+
+			// Config
+			ConfigMenu::RenderConfigMenu();
+
+			// About
+			if (ImGui::BeginTabItem(ICON_FA_FILE_CODE " README"))
+			{
+				/*
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::SetTooltip("About.");
+				}*/
+
+				// Since it's already the MIT license, there's no need to do that.
+				// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
+
+				ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-29");
+				Gui.OpenWebpageButton(ICON_FA_COPY " Source Code", "https://github.com/CowNowK/AimStarCS2");
+				ImGui::SameLine();
+				Gui.OpenWebpageButton(ICON_FA_COMMENT_DOTS " Join Discord", "https://discord.gg/MzbmSRaU3p");
+				ImGui::NewLine();
+
+				ImGui::Text("Offsets:");
+				ImGui::Text("EntityList:");
+				ImGui::SameLine();
+				ImGui::Text(std::to_string(Offset::EntityList).c_str());
+				ImGui::Text("Matrix:");
+				ImGui::SameLine();
+				ImGui::Text(std::to_string(Offset::Matrix).c_str());
+				ImGui::Text("LocalPlayerController:");
+				ImGui::SameLine();
+				ImGui::Text(std::to_string(Offset::LocalPlayerController).c_str());
+				ImGui::Text("ViewAngle:");
+				ImGui::SameLine();
+				ImGui::Text(std::to_string(Offset::ViewAngle).c_str());
+				ImGui::Text("LocalPlayerPawn:");
+				ImGui::SameLine();
+				ImGui::Text(std::to_string(Offset::LocalPlayerPawn).c_str());
+				ImGui::Text("ForceJump:");
+				ImGui::SameLine();
+				ImGui::Text(std::to_string(Offset::ForceJump).c_str());
+
+				ImGui::EndTabItem();
+			}
+
+		}ImGui::End();
+	}
+}

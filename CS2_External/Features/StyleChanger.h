@@ -13,12 +13,6 @@ namespace StyleChanger
 			Styles::Style_Hacker();
 			break;
 		case 2:
-			ImGui::StyleColorsLight();
-			break;
-		case 3:
-			ImGui::StyleColorsClassic();
-			break;
-		case 4:
 			Styles::Style_Classic();
 			break;
 		default:

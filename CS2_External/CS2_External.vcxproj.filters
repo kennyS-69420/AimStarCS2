@@ -132,6 +132,7 @@
     <ClInclude Include="Features\HitSound.h" />
     <ClInclude Include="Features\Debugger.h" />
     <ClInclude Include="Features\SpectatorList.h" />
+    <ClInclude Include="Features\GUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">

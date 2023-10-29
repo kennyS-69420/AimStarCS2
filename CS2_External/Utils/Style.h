@@ -12,6 +12,7 @@ namespace Styles
         style->FrameRounding = 2.3f;
         style->ScrollbarRounding = 5.f;
         style->WindowTitleAlign = ImVec2(0.5f, 0.5f);
+        style->GrabMinSize = 20.0f;
 
         colors[ImGuiCol_Text] = ImVec4(0.86f, 0.93f, 0.89f, 0.78f);
         colors[ImGuiCol_TextDisabled] = ImVec4(0.86f, 0.93f, 0.89f, 0.28f);

@@ -20,7 +20,7 @@ namespace CheatList
 		ImGui::SetNextWindowSize(ImVec2(200, 0));
 		ImGui::Begin("Cheats List", nullptr, windowFlags);
 
-		CheatText("ESP", MenuConfig::ESPenbled);
+		CheatText("ESP", ESPConfig::ESPenbled);
 		if (MenuConfig::AimBot && (MenuConfig::AimAlways || GetAsyncKeyState(AimControl::HotKey)))
 			ImGui::Text("Aimbot [Toggle]");
 		CheatText("RCS", MenuConfig::RCS);
