@@ -126,6 +126,7 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		MenuConfig::AirJump = false;
 		MenuConfig::MenuStyle = 0;
 		MenuConfig::WindowStyle = 0;
 		ESPConfig::BoxAlpha = 0.0f;

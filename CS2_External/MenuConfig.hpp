@@ -6,6 +6,7 @@ namespace MenuConfig
 {
 	inline std::string path = "";
 
+	inline bool AirJump = false;
 	inline float ComboWidth = 100.f;
 	inline float SliderWidth = 150.f;
 	inline int MenuStyle = 0;

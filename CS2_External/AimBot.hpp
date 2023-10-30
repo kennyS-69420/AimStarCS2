@@ -36,6 +36,8 @@ namespace AimControl
 	{
 		if (MenuConfig::ShowMenu)
 			return;
+		if (MenuConfig::AirJump && !(Local.Pawn.HasFlag(PlayerPawn::Flags::IN_AIR)))
+			return;
 
 		float Yaw, Pitch;
 		float Distance, Norm;

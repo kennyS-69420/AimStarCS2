@@ -99,6 +99,8 @@ namespace GUI
 				ImGui::SameLine();
 				ImGui::ColorEdit4("##FovCircleColor", reinterpret_cast<float*>(&MenuConfig::FovCircleColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::Checkbox("Visible Only", &MenuConfig::VisibleCheck);
+				ImGui::SameLine();
+				ImGui::Checkbox("On Ground Only", &MenuConfig::AirJump);
 
 				float FovMin = 0.1f, FovMax = 89.f;
 				float SmoothMin = 0.1f, SmoothMax = 1.f;
