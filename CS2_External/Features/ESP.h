@@ -210,7 +210,18 @@ namespace ESP
 		if (MenuConfig::ShowLineToEnemy) {
 			ImVec2 LineStart, LineEnd;
 			LineStart = { centerPos.x + rectSize.x / 2 , centerPos.y };
-			LineEnd = { LineStart.x, LineStart.y - 50 };
+			switch (MenuConfig::LinePos)
+			{
+			case 0:
+				LineEnd = { LineStart.x, LineStart.y - 50 };
+				break;
+			case 1:
+				LineEnd = { Gui.Window.Size.x, Gui.Window.Size.y };
+				break;
+			case 2:
+				LineEnd = { LineStart.x, LineStart.y - 200 };
+				break;
+			}
 			ImGui::GetWindowDrawList()->AddLine(LineStart, LineEnd, MenuConfig::LineToEnemyColor, 1.8f);
 		}
 		if (ESPConfig::ShowPlayerName) {

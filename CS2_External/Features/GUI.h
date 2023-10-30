@@ -362,7 +362,6 @@ namespace GUI
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
 			ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom");
-			ImGui::Checkbox("Preview Window", &ESPConfig::ShowPreview);
 
 			ImGui::SeparatorText("Sexy ESP");
 			ImGui::Checkbox("Penis", &ESPConfig::ShowPenis);
@@ -547,7 +546,7 @@ namespace GUI
 				if (ImGui::Combo("Theme", &MenuConfig::MenuStyle, "Default\0Hacker\0Red\0"))
 					StyleChanger::UpdateSkin(MenuConfig::MenuStyle);
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("Style", &MenuConfig::WindowStyle, "Window\0Collapse\0");
+				if (ImGui::Combo("Style", &MenuConfig::WindowStyle, "Window\0Collapse\0"))
 				ImGui::EndTabItem();
 			}
 			ConfigMenu::RenderConfigMenu();

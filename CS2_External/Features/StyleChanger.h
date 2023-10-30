@@ -15,6 +15,9 @@ namespace StyleChanger
 		case 2:
 			Styles::Style_Classic();
 			break;
+		case 3:
+			Styles::Style_Vape();
+			break;
 		default:
 			break;
 		}

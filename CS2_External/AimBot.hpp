@@ -64,14 +64,18 @@ namespace AimControl
 			if (ScreenPos.x > ScreenCenterX)
 			{
 				TargetX = -(ScreenCenterX - ScreenPos.x);
-				TargetX /= Smooth;
-				if (TargetX + ScreenCenterX > ScreenCenterX * 2) TargetX = 0;
+				if (Smooth != 0.0f)
+					TargetX /= Smooth;
+				if (TargetX + ScreenCenterX > ScreenCenterX * 2)
+					TargetX = 0;
 			}
 			if (ScreenPos.x < ScreenCenterX)
 			{
 				TargetX = ScreenPos.x - ScreenCenterX;
-				TargetX /= Smooth;
-				if (TargetX + ScreenCenterX < 0) TargetX = 0;
+				if (Smooth != 0.0f)
+					TargetX /= Smooth;
+				if (TargetX + ScreenCenterX < 0)
+					TargetX = 0;
 			}
 
 			if (ScreenPos.y != 0)
@@ -79,15 +83,19 @@ namespace AimControl
 				if (ScreenPos.y > ScreenCenterY)
 				{
 					TargetY = -(ScreenCenterY - ScreenPos.y);
-					TargetY /= Smooth;
-					if (TargetY + ScreenCenterY > ScreenCenterY * 2) TargetY = 0;
+					if (Smooth != 0.0f)
+						TargetX /= Smooth;
+					if (TargetY + ScreenCenterY > ScreenCenterY * 2)
+						TargetY = 0;
 				}
 
 				if (ScreenPos.y < ScreenCenterY)
 				{
 					TargetY = ScreenPos.y - ScreenCenterY;
-					TargetY /= Smooth;
-					if (TargetY + ScreenCenterY < 0) TargetY = 0;
+					if (Smooth != 0.0f)
+						TargetX /= Smooth;
+					if (TargetY + ScreenCenterY < 0)
+						TargetY = 0;
 				}
 			}
 
