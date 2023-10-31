@@ -177,7 +177,6 @@ void Cheats::Run()
 				Gui.Text(std::to_string(BoneIndex), ScreenPos, ImColor(255, 255, 255, 255));
 			}
 		}*/
-
 		DistanceToSight = Entity.GetBone().BonePosList[BONEINDEX::head].ScreenPos.DistanceTo({ Gui.Window.Size.x / 2,Gui.Window.Size.y / 2 });
 
 
@@ -194,12 +193,11 @@ void Cheats::Run()
 					AimPos.z -= 1.f;
 			}
 		}
-		
 
 		if (ESPConfig::ESPenbled)
 		{
 			ImVec4 Rect = ESP::GetBoxRect(Entity, MenuConfig::BoxType);
-			ESP::RenderPlayerESP(Entity, Rect);
+			ESP::RenderPlayerESP(LocalEntity, Entity, Rect, LocalPlayerControllerIndex, i);
 //			std::future<void> Thread_PlayerESP = std::async(ESP::RenderPlayerESP, std::ref(Entity), std::ref(Rect));
 			
 				
@@ -224,9 +222,8 @@ void Cheats::Run()
 
 			// Draw Distance
 			Render::DrawDistance(LocalEntity, Entity, Rect);
-
-			Glow::Run(LocalEntity);
 		}
+		Glow::Run(LocalEntity);
 	}
 	// Radar render
 	if(MenuConfig::ShowRadar)

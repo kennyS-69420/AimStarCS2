@@ -117,6 +117,7 @@ namespace ESPConfig
 	inline bool ShowDistance = false;
 	inline bool ShowHeadBox = false;
 	inline bool ShowPreview = true;
+	inline bool VisibleCheck = false;
 	// 0: normal 1: Flat
 	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = 5.0f;
@@ -126,6 +127,7 @@ namespace ESPConfig
 	inline ImColor BoxColor = ImColor(255, 80, 0, 255);
 	inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
 	inline ImColor HeadBoxColor = ImColor(255, 255, 255, 255);
+	inline ImColor VisibleColor = ImColor(255, 196, 0, 255);
 
 	// Penis Config
 	inline bool ShowPenis = false;

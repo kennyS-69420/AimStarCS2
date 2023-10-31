@@ -20,6 +20,8 @@ namespace ESP
 		case 2:
 			Rect = Render::Get2DBox(Entity);
 			break;
+		case 3:
+			Rect = Render::Get2DBox(Entity);
 		default:
 			break;
 		}
@@ -27,7 +29,7 @@ namespace ESP
 		return Rect;
 	}
 
-	void RenderPlayerESP(const CEntity& Entity, ImVec4 Rect)
+	void RenderPlayerESP(const CEntity& LocalEntity, const CEntity& Entity, ImVec4 Rect, int LocalPlayerControllerIndex, int Index)
 	{
 		Render::DrawBone(Entity, ESPConfig::BoneColor, 1.3f);
 		Render::ShowPenis(Entity, ESPConfig::PenisLength, ESPConfig::PenisColor, ESPConfig::PenisSize);
@@ -37,19 +39,40 @@ namespace ESP
 		// box
 		if (ESPConfig::ShowBoxESP)
 		{
+			ImColor FlatBoxCol = { ESPConfig::BoxColor.Value.x, ESPConfig::BoxColor.Value.y, ESPConfig::BoxColor.Value.z, ESPConfig::BoxAlpha };
+			ImColor FlatBoxVisCol = { ESPConfig::VisibleColor.Value.x, ESPConfig::VisibleColor.Value.y, ESPConfig::VisibleColor.Value.z, ESPConfig::BoxAlpha };
 			switch (MenuConfig::BoxType)
 			{
 			case 0:
-				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
-				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor, 1.3, ESPConfig::BoxRounding);
+				if (((Entity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex)) || (LocalEntity.Pawn.bSpottedByMask & (DWORD64(1) << Index))) && ESPConfig::VisibleCheck)
+				{
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::VisibleColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::VisibleColor, 1.3, ESPConfig::BoxRounding);
+				}
+				else {
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor, 1.3, ESPConfig::BoxRounding);
+				}
 				break;
 			case 1:
-				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
-				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor, 1.3, ESPConfig::BoxRounding);
+				if (((Entity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex)) || (LocalEntity.Pawn.bSpottedByMask & (DWORD64(1) << Index))) && ESPConfig::VisibleCheck)
+				{
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::VisibleColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::VisibleColor, 1.3, ESPConfig::BoxRounding);
+				}
+				else {
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
+					Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor, 1.3, ESPConfig::BoxRounding);
+				}
 				break;
 			case 2:
-				ImColor FlatBoxCol = { ESPConfig::BoxColor.Value.x, ESPConfig::BoxColor.Value.y, ESPConfig::BoxColor.Value.z, ESPConfig::BoxAlpha };
-				Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+				if (((Entity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex)) || (LocalEntity.Pawn.bSpottedByMask & (DWORD64(1) << Index))) && ESPConfig::VisibleCheck)
+				{
+					Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, FlatBoxVisCol, ESPConfig::BoxRounding);
+				}
+				else {
+					Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+				}
 				break;
 			}
 

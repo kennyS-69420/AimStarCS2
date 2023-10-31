@@ -26,7 +26,7 @@ namespace GUI
 				ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&ESPConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat");
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0");
 				if (MenuConfig::BoxType == 2)
 					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
 				if (ESPConfig::ShowBoxESP)
@@ -63,6 +63,9 @@ namespace GUI
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
 				ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom");
+				ImGui::Checkbox("Visible Check", &ESPConfig::VisibleCheck);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##EspVisCol", reinterpret_cast<float*>(&ESPConfig::VisibleColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::Checkbox("Preview Window", &ESPConfig::ShowPreview);
 
 				//			ImGui::NextColumn();
@@ -140,7 +143,6 @@ namespace GUI
 			if(ImGui::BeginTabItem(" Glow"))
 			{
 				Gui.MyCheckBox("Enabled", &MenuConfig::Glow);
-				ImGui::ColorEdit4("Glow Color", reinterpret_cast<float*>(&MenuConfig::GlowColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::EndTabItem();
 			}
 			// Radar menu
@@ -333,185 +335,189 @@ namespace GUI
 	void RenderVapeMenu()
 	{
 		// ESP
-		ImGui::Begin(ICON_FA_EYE " ESP", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+		ImGui::SetNextWindowSize({ 320,0 });
+		ImGui::Begin(ICON_FA_EYE " Visual", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
 		{
-			ImGui::Checkbox("Enabled", &ESPConfig::ESPenbled);
-			ImGui::Checkbox("Box", &ESPConfig::ShowBoxESP);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat");
-			ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-			if (MenuConfig::BoxType == 2)
-				ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
-			ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-			if (ESPConfig::ShowBoxESP)
-				ImGui::SliderFloat("Box Rounding", &ESPConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
-
-
-			ImGui::Checkbox("Skeleton", &ESPConfig::ShowBoneESP);
-			ImGui::Checkbox("Head Box", &ESPConfig::ShowHeadBox);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("##HeadBoxStyle", &ESPConfig::HeadBoxStyle, "Normal\0Flat");
-
-			ImGui::Checkbox("EyeRay", &ESPConfig::ShowEyeRay);
-
-			ImGui::Checkbox("HealthBar", &ESPConfig::ShowHealthBar);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vertical\0Horizontal");
-
-			ImGui::Checkbox("Weapon", &ESPConfig::ShowWeaponESP);
-			ImGui::Checkbox("Distance", &ESPConfig::ShowDistance);
-			ImGui::Checkbox("Name", &ESPConfig::ShowPlayerName);
-
-			ImGui::Checkbox("SnapLine", &MenuConfig::ShowLineToEnemy);
-			ImGui::SameLine();
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-			ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom");
-
-			ImGui::SeparatorText("Sexy ESP");
-			ImGui::Checkbox("Penis", &ESPConfig::ShowPenis);
-			ImGui::SameLine();
-			ImGui::ColorEdit4("##PenisColor", reinterpret_cast<float*>(&ESPConfig::PenisColor), ImGuiColorEditFlags_NoInputs);
-			ImGui::SliderFloat("Length", &ESPConfig::PenisLength, 1.0f, 50.0f, "%.1f");
-			ImGui::SliderFloat("Size", &ESPConfig::PenisSize, 1.3f, 5.0f, "%.3f");
-		} ImGui::End();
-
-		// Aimbot
-		ImGui::Begin(ICON_FA_USER " AimBot", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-		{
-			ImGui::Checkbox("Enabled", &MenuConfig::AimBot);
-
-			ImGui::SetNextItemWidth(75.f);
-			if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+			if (ImGui::CollapsingHeader("ESP"))
 			{
-				AimControl::SetHotKey(MenuConfig::AimBotHotKey);
+				ImGui::Checkbox("Enabled", &ESPConfig::ESPenbled);
+				ImGui::Checkbox("Box", &ESPConfig::ShowBoxESP);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat");
+				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+				if (MenuConfig::BoxType == 2)
+					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
+				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+				if (ESPConfig::ShowBoxESP)
+					ImGui::SliderFloat("Box Rounding", &ESPConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
+
+
+				ImGui::Checkbox("Skeleton", &ESPConfig::ShowBoneESP);
+				ImGui::Checkbox("Head Box", &ESPConfig::ShowHeadBox);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("##HeadBoxStyle", &ESPConfig::HeadBoxStyle, "Normal\0Flat");
+
+				ImGui::Checkbox("EyeRay", &ESPConfig::ShowEyeRay);
+
+				ImGui::Checkbox("HealthBar", &ESPConfig::ShowHealthBar);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vertical\0Horizontal");
+
+				ImGui::Checkbox("Weapon", &ESPConfig::ShowWeaponESP);
+				ImGui::Checkbox("Distance", &ESPConfig::ShowDistance);
+				ImGui::Checkbox("Name", &ESPConfig::ShowPlayerName);
+
+				ImGui::Checkbox("SnapLine", &MenuConfig::ShowLineToEnemy);
+				ImGui::SameLine();
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+				ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom");
+
+				ImGui::SeparatorText("Sexy ESP");
+				ImGui::Checkbox("Penis", &ESPConfig::ShowPenis);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##PenisColor", reinterpret_cast<float*>(&ESPConfig::PenisColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::SliderFloat("Length", &ESPConfig::PenisLength, 1.0f, 50.0f, "%.1f");
+				ImGui::SliderFloat("Size", &ESPConfig::PenisSize, 1.3f, 5.0f, "%.3f");
 			}
-			ImGui::SameLine();
-			ImGui::Checkbox("Toggle Mode", &MenuConfig::AimToggleMode);
-
-			ImGui::Checkbox("Draw Fov", &ESPConfig::DrawFov);
-			ImGui::Checkbox("Visible Only", &MenuConfig::VisibleCheck);
-
-			float FovMin = 0.1f, FovMax = 89.f;
-			float SmoothMin = 0.1f, SmoothMax = 1.f;
-			ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-			ImGui::SliderFloat("Fov", &AimControl::AimFov, 0.0f, 25.0f, "%.1f", ImGuiSliderFlags_Logarithmic | ImGuiColorEditFlags_NoInputs);
-			ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-			ImGui::SliderFloat("Smooth", &AimControl::Smooth, 0.0f, 1.0f, "%.1f", ImGuiColorEditFlags_NoInputs);
-			if (ImGui::Combo("Bone", &MenuConfig::AimPosition, "Head\0Neck\0Chest\0Penis"))
+			if (ImGui::CollapsingHeader("Radar"))
 			{
-				switch (MenuConfig::AimPosition)
+				ImGui::Checkbox("Enabled", &MenuConfig::ShowRadar);
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 20);
+				ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow");
+				ImGui::Checkbox("Custom", &MenuConfig::customRadar);
+
+				if (MenuConfig::customRadar)
 				{
-				case 0:
-					MenuConfig::AimPositionIndex = BONEINDEX::head;
-					break;
-				case 1:
-					MenuConfig::AimPositionIndex = BONEINDEX::neck_0;
-					break;
-				case 2:
-					MenuConfig::AimPositionIndex = BONEINDEX::spine_1;
-					break;
-				case 3:
-					MenuConfig::AimPositionIndex = BONEINDEX::pelvis;
-					break;
-				default:
-					break;
+					ImGui::NewLine();
+					ImGui::Checkbox("Cross Line", &MenuConfig::ShowRadarCrossLine);
+					float RadarPointSizeProportionMin = 0.8f, RadarPointSizeProportionMax = 2.f;
+					float ProportionMin = 500.f, ProportionMax = 3300.f;
+					float RadarRangeMin = 100.f, RadarRangeMax = 300.f;
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderFloat("PointSize", &MenuConfig::RadarPointSizeProportion, RadarPointSizeProportionMin, RadarPointSizeProportionMax, "%.1f", ImGuiColorEditFlags_NoInputs);
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderFloat("Proportion", &MenuConfig::Proportion, ProportionMin, ProportionMax, "%.1f", ImGuiColorEditFlags_NoInputs);
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderFloat("Range", &MenuConfig::RadarRange, RadarRangeMin, RadarRangeMax, "%.1f", ImGuiColorEditFlags_NoInputs);
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderFloat("Backgroud Alpha", &MenuConfig::RadarBgAlpha, 0.0f, 1.0f, "%.2f", ImGuiColorEditFlags_NoInputs);
 				}
 			}
-		} ImGui::End();
 
-		ImGui::Begin(ICON_FA_COMPASS " Radar", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-		{
-			ImGui::Checkbox("Enabled", &MenuConfig::ShowRadar);
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 20);
-			ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow");
-			ImGui::Checkbox("Custom", &MenuConfig::customRadar);
-
-			if (MenuConfig::customRadar)
+			if (ImGui::CollapsingHeader("Glow"))
 			{
-				ImGui::NewLine();
-				ImGui::Checkbox("Cross Line", &MenuConfig::ShowRadarCrossLine);
-				float RadarPointSizeProportionMin = 0.8f, RadarPointSizeProportionMax = 2.f;
-				float ProportionMin = 500.f, ProportionMax = 3300.f;
-				float RadarRangeMin = 100.f, RadarRangeMax = 300.f;
+				Gui.MyCheckBox("Enabled", &MenuConfig::Glow);
+			}
+			if (ImGui::CollapsingHeader("Crosshairs"))
+			{
+				ImGui::Checkbox("Enabled", &CrosshairConfig::ShowCrossHair);
+
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 50);
+				if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot"))
+					Render::UpdateCrosshairPreset(CrosshairConfig::crosshairPreset);
+
+				ImGui::Checkbox("Center Dot", &CrosshairConfig::drawDot);
+				if (CrosshairConfig::drawDot)
+				{
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderFloat("Dot Size", &CrosshairConfig::DotSize, 1.f, 50.f, "%.f", ImGuiColorEditFlags_NoInputs);
+				}
+
+				ImGui::Checkbox("Outline", &CrosshairConfig::drawOutLine);
+				ImGui::Checkbox("Crossline", &CrosshairConfig::drawCrossline);
+				if (CrosshairConfig::drawCrossline)
+				{
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderInt("Horizontal Length", &CrosshairConfig::HorizontalLength, 1, 100, "%d", ImGuiColorEditFlags_NoInputs);
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderInt("Vertical Length", &CrosshairConfig::VerticalLength, 1, 100, "%d", ImGuiColorEditFlags_NoInputs);
+					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+					ImGui::SliderInt("Gap", &CrosshairConfig::Gap, 1, 50, "%d", ImGuiColorEditFlags_NoInputs);
+					//				ImGui::Checkbox("Dynamic Gap", &CrosshairConfig::DynamicGap);
+					ImGui::Checkbox("T Style", &CrosshairConfig::tStyle);
+				}
+
+				ImGui::Separator();
+				ImGui::Checkbox("Circle", &CrosshairConfig::drawCircle);
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderFloat("PointSize", &MenuConfig::RadarPointSizeProportion, RadarPointSizeProportionMin, RadarPointSizeProportionMax, "%.1f", ImGuiColorEditFlags_NoInputs);
-				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderFloat("Proportion", &MenuConfig::Proportion, ProportionMin, ProportionMax, "%.1f", ImGuiColorEditFlags_NoInputs);
-				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderFloat("Range", &MenuConfig::RadarRange, RadarRangeMin, RadarRangeMax, "%.1f", ImGuiColorEditFlags_NoInputs);
-				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderFloat("Backgroud Alpha", &MenuConfig::RadarBgAlpha, 0.0f, 1.0f, "%.2f", ImGuiColorEditFlags_NoInputs);
+				if (CrosshairConfig::drawCircle)
+					ImGui::SliderFloat("Circle Radius", &CrosshairConfig::CircleRadius, 0.0f, 50.0f, "%.1f", ImGuiColorEditFlags_NoInputs);
+
+				ImGui::Separator();
+				ImGui::Checkbox("Target Crosshair", &CrosshairConfig::showTargeting);
 			}
 		} ImGui::End();
 
-		ImGui::Begin("Glow", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+		ImGui::SetNextWindowSize({ 320,0 });
+		ImGui::Begin(ICON_FA_USER " Player", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
 		{
-			Gui.MyCheckBox("Enabled", &MenuConfig::Glow);
-			ImGui::ColorEdit4("Glow Color", reinterpret_cast<float*>(&MenuConfig::GlowColor), ImGuiColorEditFlags_NoInputs);
-		} ImGui::End;
-
-		ImGui::Begin(ICON_FA_HAND_POINTER " TriggerBot", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-		{
-			ImGui::Checkbox("Enabled", &MenuConfig::TriggerBot);
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-
-			if (ImGui::Combo("Togglekey", &MenuConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+			if (ImGui::CollapsingHeader("Aimbot"))
 			{
-				TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
+				ImGui::Checkbox("Enabled", &MenuConfig::AimBot);
+
+				ImGui::SetNextItemWidth(75.f);
+				if (ImGui::Combo("Key", &MenuConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+				{
+					AimControl::SetHotKey(MenuConfig::AimBotHotKey);
+				}
+				ImGui::SameLine();
+				ImGui::Checkbox("Toggle Mode", &MenuConfig::AimToggleMode);
+
+				ImGui::Checkbox("Draw Fov", &ESPConfig::DrawFov);
+				ImGui::Checkbox("Visible Only", &MenuConfig::VisibleCheck);
+
+				float FovMin = 0.1f, FovMax = 89.f;
+				float SmoothMin = 0.1f, SmoothMax = 1.f;
+				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+				ImGui::SliderFloat("Fov", &AimControl::AimFov, 0.0f, 25.0f, "%.1f", ImGuiSliderFlags_Logarithmic | ImGuiColorEditFlags_NoInputs);
+				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+				ImGui::SliderFloat("Smooth", &AimControl::Smooth, 0.0f, 1.0f, "%.1f", ImGuiColorEditFlags_NoInputs);
+				if (ImGui::Combo("Bone", &MenuConfig::AimPosition, "Head\0Neck\0Chest\0Penis"))
+				{
+					switch (MenuConfig::AimPosition)
+					{
+					case 0:
+						MenuConfig::AimPositionIndex = BONEINDEX::head;
+						break;
+					case 1:
+						MenuConfig::AimPositionIndex = BONEINDEX::neck_0;
+						break;
+					case 2:
+						MenuConfig::AimPositionIndex = BONEINDEX::spine_1;
+						break;
+					case 3:
+						MenuConfig::AimPositionIndex = BONEINDEX::pelvis;
+						break;
+					default:
+						break;
+					}
+				}
 			}
-
-			ImGui::Checkbox("Always Activate", &MenuConfig::TriggerAlways);
-			DWORD TriggerDelayMin = 10, TriggerDelayMax = 300;
-			ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-			ImGui::SliderInt("Delay", &TriggerBot::TriggerDelay, TriggerDelayMin, TriggerDelayMax, "%d ms", ImGuiSliderFlags_None | ImGuiColorEditFlags_NoInputs);
-			ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-			ImGui::SliderInt("Fake Shot", &TriggerBot::FakeShotDelay, 0, 1000, "%d ms", ImGuiSliderFlags_None | ImGuiColorEditFlags_NoInputs);
-		} ImGui::End();
-
-		//Crosshair
-		ImGui::Begin(ICON_FA_DOT_CIRCLE " Crosshair", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-		{
-			ImGui::Checkbox("Enabled", &CrosshairConfig::ShowCrossHair);
-
-			ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 50);
-			if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot"))
-				Render::UpdateCrosshairPreset(CrosshairConfig::crosshairPreset);
-
-			ImGui::Checkbox("Center Dot", &CrosshairConfig::drawDot);
-			if (CrosshairConfig::drawDot)
+			if (ImGui::CollapsingHeader("TriggerBot"))
 			{
+				ImGui::Checkbox("Enabled", &MenuConfig::TriggerBot);
+				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
+
+				if (ImGui::Combo("Togglekey", &MenuConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL"))
+				{
+					TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
+				}
+
+				ImGui::Checkbox("Always Activate", &MenuConfig::TriggerAlways);
+				DWORD TriggerDelayMin = 10, TriggerDelayMax = 300;
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderFloat("Dot Size", &CrosshairConfig::DotSize, 1.f, 50.f, "%.f", ImGuiColorEditFlags_NoInputs);
+				ImGui::SliderInt("Delay", &TriggerBot::TriggerDelay, TriggerDelayMin, TriggerDelayMax, "%d ms", ImGuiSliderFlags_None | ImGuiColorEditFlags_NoInputs);
+				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
+				ImGui::SliderInt("Fake Shot", &TriggerBot::FakeShotDelay, 0, 1000, "%d ms", ImGuiSliderFlags_None | ImGuiColorEditFlags_NoInputs);
 			}
-
-			ImGui::Checkbox("Outline", &CrosshairConfig::drawOutLine);
-			ImGui::Checkbox("Crossline", &CrosshairConfig::drawCrossline);
-			if (CrosshairConfig::drawCrossline)
-			{
-				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderInt("Horizontal Length", &CrosshairConfig::HorizontalLength, 1, 100, "%d", ImGuiColorEditFlags_NoInputs);
-				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderInt("Vertical Length", &CrosshairConfig::VerticalLength, 1, 100, "%d", ImGuiColorEditFlags_NoInputs);
-				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderInt("Gap", &CrosshairConfig::Gap, 1, 50, "%d", ImGuiColorEditFlags_NoInputs);
-				//				ImGui::Checkbox("Dynamic Gap", &CrosshairConfig::DynamicGap);
-				ImGui::Checkbox("T Style", &CrosshairConfig::tStyle);
-			}
-
-			ImGui::Separator();
-			ImGui::Checkbox("Circle", &CrosshairConfig::drawCircle);
-			ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-			if (CrosshairConfig::drawCircle)
-				ImGui::SliderFloat("Circle Radius", &CrosshairConfig::CircleRadius, 0.0f, 50.0f, "%.1f", ImGuiColorEditFlags_NoInputs);
-
-			ImGui::Separator();
-			ImGui::Checkbox("Target Crosshair", &CrosshairConfig::showTargeting);
+			
 		} ImGui::End();
 
 		// Misc
+		ImGui::SetNextWindowSize({ 320,0 });
 		ImGui::Begin(ICON_FA_SUN " Misc", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
 		{
 			ImGui::Checkbox("Headshot Line", &MenuConfig::ShowHeadShootLine);
@@ -536,6 +542,7 @@ namespace GUI
 		} ImGui::End();
 
 		// Color Settings
+		ImGui::SetNextWindowSize({ 320,0 });
 		ImGui::Begin(ICON_FA_EDIT " Config", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
 		{
 			ImGui::BeginTabBar("ConfigBar", ImGuiTabBarFlags_NoTooltip);

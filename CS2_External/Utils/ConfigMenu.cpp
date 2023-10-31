@@ -126,6 +126,8 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		ESPConfig::VisibleColor = ImColor(255, 196, 0, 255);
+		ESPConfig::VisibleCheck = false;
 		MenuConfig::GlowColor = ImColor(255, 0, 0, 100);;
 		MenuConfig::Glow = false;
 		MenuConfig::AirJump = false;
