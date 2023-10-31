@@ -137,7 +137,12 @@ namespace GUI
 				}*/
 				ImGui::EndTabItem();
 			}
-
+			if(ImGui::BeginTabItem(" Glow"))
+			{
+				Gui.MyCheckBox("Enabled", &MenuConfig::Glow);
+				ImGui::ColorEdit4("Glow Color", reinterpret_cast<float*>(&MenuConfig::GlowColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::EndTabItem();
+			}
 			// Radar menu
 			if (ImGui::BeginTabItem(ICON_FA_COMPASS " Radar"))
 			{
@@ -441,6 +446,12 @@ namespace GUI
 				ImGui::SliderFloat("Backgroud Alpha", &MenuConfig::RadarBgAlpha, 0.0f, 1.0f, "%.2f", ImGuiColorEditFlags_NoInputs);
 			}
 		} ImGui::End();
+
+		ImGui::Begin("Glow", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+		{
+			Gui.MyCheckBox("Enabled", &MenuConfig::Glow);
+			ImGui::ColorEdit4("Glow Color", reinterpret_cast<float*>(&MenuConfig::GlowColor), ImGuiColorEditFlags_NoInputs);
+		} ImGui::End;
 
 		ImGui::Begin(ICON_FA_HAND_POINTER " TriggerBot", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
 		{

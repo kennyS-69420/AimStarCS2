@@ -24,6 +24,7 @@ namespace CheatList
 		if (MenuConfig::AimBot && (MenuConfig::AimAlways || GetAsyncKeyState(AimControl::HotKey)))
 			ImGui::Text("Aimbot [Toggle]");
 		CheatText("RCS", MenuConfig::RCS);
+		CheatText("Glow", MenuConfig::Glow);
 		CheatText("Radar", MenuConfig::ShowRadar);
 		if (MenuConfig::TriggerBot && (MenuConfig::TriggerAlways || GetAsyncKeyState(MenuConfig::TriggerHotKey)))
 			ImGui::Text("TriggerBot [Toggle]");

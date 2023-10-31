@@ -224,6 +224,8 @@ void Cheats::Run()
 
 			// Draw Distance
 			Render::DrawDistance(LocalEntity, Entity, Rect);
+
+			Glow::Run(LocalEntity);
 		}
 	}
 	// Radar render

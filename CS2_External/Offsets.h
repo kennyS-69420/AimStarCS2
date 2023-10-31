@@ -20,7 +20,8 @@ namespace Offset
 		DWORD IsAlive = 0x7C4;
 		DWORD PlayerPawn = 0x7BC;
 		DWORD iszPlayerName = 0x610;
-	}Entity;
+		DWORD EnemySenesor = 0x13C4;
+	} Entity;
 
 	struct
 	{
@@ -45,7 +46,7 @@ namespace Offset
 		DWORD iFovStart = 0x214;
 		DWORD fFlags = 0x3C8;
 		DWORD bSpottedByMask = 0x1618 + 0xC; // entitySpottedState + bSpottedByMask
-	}Pawn;
+	} Pawn;
 
 	struct
 	{

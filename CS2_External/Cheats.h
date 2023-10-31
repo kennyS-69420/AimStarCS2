@@ -10,6 +10,7 @@
 #include "Features/Watermark.h"
 #include "Features/CheatList.h"
 #include "Features/HitSound.h"
+#include "Features/Glow.h"
 
 namespace Cheats
 {

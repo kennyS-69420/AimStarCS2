@@ -133,6 +133,7 @@
     <ClInclude Include="Features\Debugger.h" />
     <ClInclude Include="Features\SpectatorList.h" />
     <ClInclude Include="Features\GUI.h" />
+    <ClInclude Include="Features\Glow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
@@ -196,6 +197,7 @@
     <ClCompile Include="Utils\ConfigSaver.cpp" />
     <ClCompile Include="Utils\GlobalVars.cpp" />
     <ClCompile Include="Features\Mouse.cpp" />
+    <ClCompile Include="Features\Glow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CS2_External.rc" />

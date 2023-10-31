@@ -18,6 +18,8 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
+        configFile << "GlowColor " << MenuConfig::GlowColor.Value.x << MenuConfig::GlowColor.Value.y << MenuConfig::GlowColor.Value.z << MenuConfig::GlowColor.Value.w << std::endl;
+        configFile << "Glow " << MenuConfig::Glow << std::endl;
         configFile << "AirJump " << MenuConfig::AirJump << std::endl;
         configFile << "MenuStyle " << MenuConfig::MenuStyle << std::endl;
         configFile << "WindowStyle " << MenuConfig::WindowStyle << std::endl;
@@ -128,6 +130,8 @@ namespace MyConfigSaver {
             std::string key;
             if (iss >> key) {
                 if (key == "ShowBoneESP") iss >> ESPConfig::ShowBoneESP;
+                else if (key == "GlowColor") iss >> MenuConfig::GlowColor.Value.x >> MenuConfig::GlowColor.Value.y >> MenuConfig::GlowColor.Value.z >> MenuConfig::GlowColor.Value.w;
+                else if (key == "Glow") iss >> MenuConfig::Glow;
                 else if (key == "AirJump") iss >> MenuConfig::AirJump;
                 else if (key == "MenuStyle") iss >> MenuConfig::MenuStyle;
                 else if (key == "WindowStyle") iss >> MenuConfig::WindowStyle;

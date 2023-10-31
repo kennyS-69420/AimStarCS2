@@ -144,6 +144,7 @@
     <ClInclude Include="Features\CheatList.h" />
     <ClInclude Include="Features\Debugger.h" />
     <ClInclude Include="Features\ESP.h" />
+    <ClInclude Include="Features\Glow.h" />
     <ClInclude Include="Features\GUI.h" />
     <ClInclude Include="Features\HitSound.h" />
     <ClInclude Include="Features\Mouse.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Cheats.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Features\Glow.cpp" />
     <ClCompile Include="Features\Mouse.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
