@@ -37,17 +37,20 @@ namespace ESP
 		// box
 		if (ESPConfig::ShowBoxESP)
 		{
-			if (MenuConfig::BoxType == 2)
+			switch (MenuConfig::BoxType)
 			{
-				{
-					ImColor FlatBoxCol = { ESPConfig::BoxColor.Value.x, ESPConfig::BoxColor.Value.y, ESPConfig::BoxColor.Value.z, ESPConfig::BoxAlpha };
-					Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
-				}
-			}
-			else
-			{
+			case 0:
 				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
 				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor, 1.3, ESPConfig::BoxRounding);
+				break;
+			case 1:
+				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3, ESPConfig::BoxRounding);
+				Gui.Rectangle({ Rect.x,Rect.y }, { Rect.z,Rect.w }, ESPConfig::BoxColor, 1.3, ESPConfig::BoxRounding);
+				break;
+			case 2:
+				ImColor FlatBoxCol = { ESPConfig::BoxColor.Value.x, ESPConfig::BoxColor.Value.y, ESPConfig::BoxColor.Value.z, ESPConfig::BoxAlpha };
+				Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+				break;
 			}
 
 		}
