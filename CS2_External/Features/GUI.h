@@ -214,7 +214,7 @@ namespace GUI
 				Gui.MyCheckBox("Enabled", &CrosshairConfig::ShowCrossHair);
 
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 50);
-				if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot"))
+				if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot\0Square\0"))
 					Render::UpdateCrosshairPreset(CrosshairConfig::crosshairPreset);
 
 				ImGui::Text("Crosshair Color");
@@ -231,17 +231,18 @@ namespace GUI
 				ImGui::Checkbox("Crossline", &CrosshairConfig::drawCrossline);
 				if (CrosshairConfig::drawCrossline)
 				{
-					ImGui::SliderInt("Horizontal Length", &CrosshairConfig::HorizontalLength, 1, 100, "%d");
-					ImGui::SliderInt("Vertical Length", &CrosshairConfig::VerticalLength, 1, 100, "%d");
-					ImGui::SliderInt("Gap", &CrosshairConfig::Gap, 1, 50, "%d");
+					ImGui::SliderInt("Horizontal Length", &CrosshairConfig::HorizontalLength, 1, 100, "%d", ImGuiSliderFlags_NoInput);
+					ImGui::SliderInt("Vertical Length", &CrosshairConfig::VerticalLength, 1, 100, "%d", ImGuiSliderFlags_NoInput);
+					ImGui::SliderInt("Gap", &CrosshairConfig::Gap, 1, 50, "%d", ImGuiSliderFlags_NoInput);
 					//				ImGui::Checkbox("Dynamic Gap", &CrosshairConfig::DynamicGap);
+					ImGui::SliderInt("Thickness", &CrosshairConfig::Thickness, 1, 20, "%d", ImGuiSliderFlags_NoInput);
 					ImGui::Checkbox("T Style", &CrosshairConfig::tStyle);
 				}
 
 				ImGui::Separator();
 				ImGui::Checkbox("Circle", &CrosshairConfig::drawCircle);
 				if (CrosshairConfig::drawCircle)
-					ImGui::SliderFloat("Circle Radius", &CrosshairConfig::CircleRadius, 0.0f, 50.0f, "%.1f");
+					ImGui::SliderFloat("Circle Radius", &CrosshairConfig::CircleRadius, 0.0f, 50.0f, "%.1f", ImGuiSliderFlags_NoInput);
 
 				ImGui::Separator();
 				ImGui::Checkbox("Target Crosshair", &CrosshairConfig::showTargeting);
@@ -416,7 +417,7 @@ namespace GUI
 				ImGui::Checkbox("Enabled", &CrosshairConfig::ShowCrossHair);
 
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 50);
-				if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot"))
+				if (ImGui::Combo("Presets", &CrosshairConfig::crosshairPreset, "Custom\0Dot\0Circle Dot 1\0Circle Dot 2\0Crosshair Small\0Crosshair Medium\0Crosshair Dot\0Square\0"))
 					Render::UpdateCrosshairPreset(CrosshairConfig::crosshairPreset);
 
 				ImGui::Checkbox("Center Dot", &CrosshairConfig::drawDot);
@@ -437,6 +438,7 @@ namespace GUI
 					ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
 					ImGui::SliderInt("Gap", &CrosshairConfig::Gap, 1, 50, "%d", ImGuiColorEditFlags_NoInputs);
 					//				ImGui::Checkbox("Dynamic Gap", &CrosshairConfig::DynamicGap);
+					ImGui::SliderInt("Thickness", &CrosshairConfig::Thickness, 1, 20, "%d", ImGuiSliderFlags_NoInput);
 					ImGui::Checkbox("T Style", &CrosshairConfig::tStyle);
 				}
 

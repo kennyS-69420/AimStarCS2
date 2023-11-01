@@ -94,6 +94,7 @@ namespace MyConfigSaver {
         configFile << "Gap " << CrosshairConfig::Gap << std::endl;
         configFile << "DynamicGap " << CrosshairConfig::DynamicGap << std::endl;
         configFile << "DotSize " << CrosshairConfig::DotSize << std::endl;
+        configFile << "CrosshairsThickness " << CrosshairConfig::Thickness << std::endl;
 
         configFile << "BunnyHop " << MenuConfig::BunnyHop << std::endl;
         configFile << "WorkInSpec " << MenuConfig::WorkInSpec << std::endl;
@@ -207,6 +208,7 @@ namespace MyConfigSaver {
                 else if (key == "TargetedColor") iss >> CrosshairConfig::TargetedColor.Value.x >> CrosshairConfig::TargetedColor.Value.y >> CrosshairConfig::TargetedColor.Value.z >> CrosshairConfig::TargetedColor.Value.w;
                 else if (key == "DynamicGap") iss >> CrosshairConfig::DynamicGap;
                 else if (key == "DotSize") iss >> CrosshairConfig::DotSize;
+                else if (key == "CrosshairsThickness") iss >> CrosshairConfig::Thickness;
 
                 else if (key == "BunnyHop") iss >> MenuConfig::BunnyHop;
                 else if (key == "WorkInSpec") iss >> MenuConfig::WorkInSpec;

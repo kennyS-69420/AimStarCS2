@@ -94,6 +94,7 @@ namespace CrosshairConfig
 	inline int Gap = 8;
 	inline int HorizontalLength = 6;
 	inline int VerticalLength = 6;
+	inline int Thickness = 1.0f;
 	inline float DotSize = 1.0f;
 	inline float CircleRadius = 3.f;
 

@@ -200,6 +200,7 @@ namespace ConfigMenu {
 		CrosshairConfig::CircleRadius = 3.f;
 		CrosshairConfig::DynamicGap = false;
 		CrosshairConfig::DotSize = 1.0f;
+		CrosshairConfig::Thickness = 1;
 		MenuConfig::BunnyHop = false;
 		MenuConfig::WorkInSpec = true;
 		MenuConfig::NoFlash = false;
