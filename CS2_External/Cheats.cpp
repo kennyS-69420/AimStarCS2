@@ -83,18 +83,16 @@ void Cheats::Run()
 		lastTick = currentTick;
 	}
 //	std::thread keyCheckThread(KeyCheckThread);
-	
+//  std::future<void> Thread_PlayerESP = std::async(ESP::RenderPlayerESP, std::ref(Entity), std::ref(Rect));
 	if (MenuConfig::ShowMenu)
 	{
-		switch (MenuConfig::WindowStyle)
+		if (MenuConfig::WindowStyle == 0)
 		{
-		case 0:
 			GUI::RenderMenu();
 			ESP::PreviewWindow();
-			break;
-		case 1:
+		}
+		else {
 			GUI::RenderVapeMenu();
-			break;
 		}
 
 	}
@@ -198,7 +196,6 @@ void Cheats::Run()
 		{
 			ImVec4 Rect = ESP::GetBoxRect(Entity, MenuConfig::BoxType);
 			ESP::RenderPlayerESP(LocalEntity, Entity, Rect, LocalPlayerControllerIndex, i);
-//			std::future<void> Thread_PlayerESP = std::async(ESP::RenderPlayerESP, std::ref(Entity), std::ref(Rect));
 			
 				
 			// Draw HealthBar
