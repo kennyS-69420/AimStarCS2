@@ -74,6 +74,13 @@ namespace ESP
 					Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
 				}
 				break;
+			case 3:
+				//Left Up
+				Gui.Line({ Rect.x,Rect.y }, { Rect.x + Rect.z * 0.25f,Rect.y }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3);
+				Gui.Line({ Rect.x,Rect.y }, { Rect.x,Rect.y + Rect.w * 0.25f }, ESPConfig::BoxColor & IM_COL32_A_MASK, 3);
+				Gui.Line({ Rect.x,Rect.y }, { Rect.x + Rect.z * 0.25f,Rect.y }, ESPConfig::BoxColor, 1.3f);
+				Gui.Line({ Rect.x,Rect.y }, { Rect.x,Rect.y + Rect.w * 0.25f }, ESPConfig::BoxColor, 1.3f);
+				break;
 			}
 
 		}
