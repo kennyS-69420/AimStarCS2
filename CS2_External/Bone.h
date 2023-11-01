@@ -49,7 +49,7 @@ public:
 namespace BoneJointList
 {
 	// ¼¹¹Ç
-	inline std::list<DWORD> Trunk = { head,neck_0,spine_2, pelvis};
+	inline std::list<DWORD> Trunk = { neck_0,spine_2, pelvis};
 	// ×ó±Û
 	inline std::list<DWORD> LeftArm = { neck_0,  arm_upper_L, arm_lower_L, hand_L };
 	// ÓÒ±Û

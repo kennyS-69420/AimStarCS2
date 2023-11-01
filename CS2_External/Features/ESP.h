@@ -151,9 +151,6 @@ namespace ESP
 		}
 		if (ESPConfig::ShowBoneESP) {
 			ImU32 boneColor = ESPConfig::BoneColor;
-			ImVec2 NeckStart(centerPos.x + 44, centerPos.y + 15);
-			ImVec2 NeckEnd(centerPos.x + 50, centerPos.y + 25);
-			ImGui::GetWindowDrawList()->AddLine(NeckStart, NeckEnd, boneColor, 1.8f); // Head to Neck
 			ImVec2 SpineStart(centerPos.x + 50, centerPos.y + 25);
 			ImVec2 SpineEnd(centerPos.x + 60, centerPos.y + 55);
 			ImGui::GetWindowDrawList()->AddLine(SpineStart, SpineEnd, boneColor, 1.8f); // Neck to Spine
@@ -199,10 +196,10 @@ namespace ESP
 			switch (ESPConfig::HeadBoxStyle)
 			{
 			case 0:
-				ImGui::GetWindowDrawList()->AddCircle({ centerPos.x + 44, centerPos.y + 17 }, 10.0f, ESPConfig::HeadBoxColor, 0, 1.8f);
+				ImGui::GetWindowDrawList()->AddCircle({ centerPos.x + 44, centerPos.y + 17 }, 12.0f, ESPConfig::HeadBoxColor, 0, 1.8f);
 				break;
 			case 1:
-				ImGui::GetWindowDrawList()->AddCircleFilled({ centerPos.x + 44, centerPos.y + 17 }, 10.0f, ESPConfig::HeadBoxColor, 0);
+				ImGui::GetWindowDrawList()->AddCircleFilled({ centerPos.x + 44, centerPos.y + 17 }, 12.0f, ESPConfig::HeadBoxColor, 0);
 			default:
 				break;
 			}
