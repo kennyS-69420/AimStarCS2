@@ -26,7 +26,7 @@ namespace GUI
 				ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&ESPConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0");
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0");
 				if (MenuConfig::BoxType == 2)
 					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
 				if (ESPConfig::ShowBoxESP)
@@ -156,7 +156,7 @@ namespace GUI
 
 				Gui.MyCheckBox("Enabled", &MenuConfig::ShowRadar);
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 20);
-				ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow");
+				ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow\0");
 				ImGui::Checkbox("Custom", &MenuConfig::customRadar);
 
 				if (MenuConfig::customRadar)
@@ -345,7 +345,7 @@ namespace GUI
 				ImGui::Checkbox("Box", &ESPConfig::ShowBoxESP);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat");
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0");
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
 				if (MenuConfig::BoxType == 2)
 					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
@@ -387,7 +387,7 @@ namespace GUI
 			{
 				ImGui::Checkbox("Enabled", &MenuConfig::ShowRadar);
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth + 20);
-				ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow");
+				ImGui::Combo("Style", &MenuConfig::RadarType, "Circle\0Arrow\0Circle & Arrow\0");
 				ImGui::Checkbox("Custom", &MenuConfig::customRadar);
 
 				if (MenuConfig::customRadar)
