@@ -54,11 +54,24 @@ void TriggerBot::Run(const CEntity& LocalEntity)
 
 void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept
 {
-	if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset::Pawn.iIDEntIndex, uHandle)
-		|| uHandle == -1)
+	if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset::Pawn.iIDEntIndex, uHandle) || uHandle == -1)
 	{
 		CrosshairConfig::isAim = false;
 	}
 	else
-		CrosshairConfig::isAim = true;
+	{
+		ListEntry = ProcessMgr.TraceAddress(gGame.GetEntityListAddress(), { 0x8 * (uHandle >> 9) + 0x10, 0x0 });
+		if (ListEntry != 0)
+		{
+			if (ProcessMgr.ReadMemory<DWORD64>(ListEntry + 0x78 * (uHandle & 0x1FF), PawnAddress))
+			{
+				if (Entity.UpdatePawn(PawnAddress))
+				{
+					CrosshairConfig::isAim = CrosshairConfig::TeamCheck ? (LocalEntity.Pawn.TeamID != Entity.Pawn.TeamID) : true;
+					return;
+				}
+			}
+		}
+		CrosshairConfig::isAim = false;
+	}
 }

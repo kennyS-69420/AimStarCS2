@@ -248,6 +248,7 @@ namespace GUI
 				ImGui::Checkbox("Target Crosshair", &CrosshairConfig::showTargeting);
 				ImGui::SameLine();
 				ImGui::ColorEdit4("##CrosshairColor", reinterpret_cast<float*>(&CrosshairConfig::TargetedColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::Checkbox("TeamCheck", &CrosshairConfig::TeamCheck);
 
 				ImGui::EndTabItem();
 			}
@@ -450,6 +451,7 @@ namespace GUI
 
 				ImGui::Separator();
 				ImGui::Checkbox("Target Crosshair", &CrosshairConfig::showTargeting);
+				ImGui::Checkbox("TeamCheck", &CrosshairConfig::TeamCheck);
 			}
 		} ImGui::End();
 

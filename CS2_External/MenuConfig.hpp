@@ -89,6 +89,7 @@ namespace CrosshairConfig
 	inline bool drawOutLine = true;
 	inline bool showTargeting = false;
 	inline bool DynamicGap = false;
+	inline bool TeamCheck = true;
 
 	inline int crosshairPreset = 0;
 	inline int Gap = 8;
