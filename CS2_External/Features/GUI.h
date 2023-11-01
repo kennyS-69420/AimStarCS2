@@ -102,7 +102,6 @@ namespace GUI
 				ImGui::SameLine();
 				ImGui::ColorEdit4("##FovCircleColor", reinterpret_cast<float*>(&MenuConfig::FovCircleColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::Checkbox("Visible Only", &MenuConfig::VisibleCheck);
-				ImGui::SameLine();
 				ImGui::Checkbox("On Ground Only", &MenuConfig::AirJump);
 
 				float FovMin = 0.1f, FovMax = 89.f;
@@ -302,7 +301,7 @@ namespace GUI
 				// Since it's already the MIT license, there's no need to do that.
 				// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
 
-				ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-10-29");
+				ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-11-1");
 				Gui.OpenWebpageButton(ICON_FA_COPY " Source Code", "https://github.com/CowNowK/AimStarCS2");
 				ImGui::SameLine();
 				Gui.OpenWebpageButton(ICON_FA_COMMENT_DOTS " Join Discord", "https://discord.gg/MzbmSRaU3p");
@@ -472,6 +471,7 @@ namespace GUI
 
 				ImGui::Checkbox("Draw Fov", &ESPConfig::DrawFov);
 				ImGui::Checkbox("Visible Only", &MenuConfig::VisibleCheck);
+				ImGui::Checkbox("On Ground Only", &MenuConfig::AirJump);
 
 				float FovMin = 0.1f, FovMax = 89.f;
 				float SmoothMin = 0.1f, SmoothMax = 1.f;
