@@ -570,9 +570,9 @@ namespace GUI
 				if (ImGui::Combo("Theme", &MenuConfig::MenuStyle, "Default\0Hacker\0Red\0"))
 					StyleChanger::UpdateSkin(MenuConfig::MenuStyle);
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				if (ImGui::Combo("Style", &MenuConfig::WindowStyle, "Window\0Collapse\0"))
+				ImGui::Combo("Style", &MenuConfig::WindowStyle, "Window\0Collapse\0");
 				ImGui::EndTabItem();
-			}
+			} 
 			ConfigMenu::RenderConfigMenu();
 
 		} ImGui::End();
