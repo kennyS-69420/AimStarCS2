@@ -26,7 +26,7 @@ namespace GUI
 				ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&ESPConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0");
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0Corner Edge\0");
 				if (MenuConfig::BoxType == 2)
 					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
 				if (ESPConfig::ShowBoxESP)
@@ -345,7 +345,7 @@ namespace GUI
 				ImGui::Checkbox("Box", &ESPConfig::ShowBoxESP);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0");
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0Corner Edge\0");
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
 				if (MenuConfig::BoxType == 2)
 					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
