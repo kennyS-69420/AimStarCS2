@@ -321,7 +321,6 @@
 #define ICON_FA_EYE_DROPPER "\xef\x87\xbb"	// U+f1fb
 #define ICON_FA_EYE_SLASH "\xef\x81\xb0"	// U+f070
 #define ICON_FA_FAN "\xef\xa1\xa3"	// U+f863
-//
 #define ICON_FA_FAST_BACKWARD "\xef\x81\x89"	// U+f049
 #define ICON_FA_FAST_FORWARD "\xef\x81\x90"	// U+f050
 #define ICON_FA_FAUCET "\xee\x80\x85"	// U+e005
@@ -398,6 +397,7 @@
 #define ICON_FA_GLOBE "\xef\x82\xac"	// U+f0ac
 #define ICON_FA_GLOBE_AFRICA "\xef\x95\xbc"	// U+f57c
 #define ICON_FA_GLOBE_AMERICAS "\xef\x95\xbd"	// U+f57d
+//
 #define ICON_FA_GLOBE_ASIA "\xef\x95\xbe"	// U+f57e
 #define ICON_FA_GLOBE_EUROPE "\xef\x9e\xa2"	// U+f7a2
 #define ICON_FA_GOLF_BALL "\xef\x91\x90"	// U+f450
