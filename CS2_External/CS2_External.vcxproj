@@ -144,6 +144,7 @@
     <ClInclude Include="Features\CheatList.h" />
     <ClInclude Include="Features\Debugger.h" />
     <ClInclude Include="Features\ESP.h" />
+    <ClInclude Include="Features\GetWeaponIcon.h" />
     <ClInclude Include="Features\Glow.h" />
     <ClInclude Include="Features\GUI.h" />
     <ClInclude Include="Features\HitSound.h" />

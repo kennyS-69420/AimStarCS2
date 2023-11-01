@@ -134,6 +134,7 @@
     <ClInclude Include="Features\SpectatorList.h" />
     <ClInclude Include="Features\GUI.h" />
     <ClInclude Include="Features\Glow.h" />
+    <ClInclude Include="Features\GetWeaponIcon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
