@@ -135,6 +135,7 @@
     <ClInclude Include="Features\GUI.h" />
     <ClInclude Include="Features\Glow.h" />
     <ClInclude Include="Features\GetWeaponIcon.h" />
+    <ClInclude Include="Sources\WeaponIcon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">

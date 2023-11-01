@@ -2,6 +2,7 @@
 #include "..\Render.hpp"
 #include "..\MenuConfig.hpp"
 #include "..\Cheats.h"
+#include "GetWeaponIcon.h"
 #define ICON_FA_EYE "\xef\x81\xae"
 
 namespace ESP
@@ -31,6 +32,25 @@ namespace ESP
 		}
 
 		return Rect;
+	}
+
+	const char* RenderWeaponIcon(const CEntity& Entity)
+	{
+		uintptr_t ClippingWeapon, WeaponData, WeaponNameAddress;
+		ProcessMgr.ReadMemory(Entity.Pawn.Address + Offset::Pawn.pClippingWeapon, ClippingWeapon);
+		ProcessMgr.ReadMemory(ClippingWeapon + 0x360, WeaponData);
+		ProcessMgr.ReadMemory(WeaponData + Offset::WeaponBaseData.m_szName, WeaponNameAddress);
+		std::string weaponName = "Invalid Weapon Name";
+
+		if (!WeaponNameAddress)
+		{
+			weaponName = "NULL";
+		}
+		else {
+			weaponName = Entity.Pawn.WeaponName;
+		}
+		std::string weaponIcon = GunIcon(weaponName);
+		return weaponIcon.c_str();
 	}
 
 	void RenderPlayerESP(const CEntity& LocalEntity, const CEntity& Entity, ImVec4 Rect, int LocalPlayerControllerIndex, int Index)
@@ -101,8 +121,6 @@ namespace ESP
 					Gui.Line({ Rect.x + Rect.z, Rect.y + Rect.w }, { Rect.x + Rect.z - Rect.z * 0.25f, Rect.y + Rect.w }, ESPConfig::BoxColor, 1.3f);
 					Gui.Line({ Rect.x + Rect.z, Rect.y + Rect.w }, { Rect.x + Rect.z, Rect.y + Rect.w - Rect.w * 0.25f }, ESPConfig::BoxColor, 1.3f);
 				}
-				
-				
 			}
 		}
 
@@ -110,7 +128,14 @@ namespace ESP
 		Render::LineToEnemy(Rect, MenuConfig::LineToEnemyColor, 1.2);
 
 		if (ESPConfig::ShowWeaponESP)
+		{
 			Gui.StrokeText(Entity.Pawn.WeaponName, { Rect.x + Rect.z / 2,Rect.y + Rect.w }, ImColor(255, 255, 255, 255), 14, true);
+
+			// Weapon Icon
+			//Gui.StrokeText(RenderWeaponIcon(Entity), { Rect.x + Rect.z / 2,Rect.y + Rect.w }, ImColor(255, 255, 255, 255), 20, true);
+		}
+			
+
 
 		if (ESPConfig::ShowPlayerName)
 		{

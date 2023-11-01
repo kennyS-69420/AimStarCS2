@@ -1,6 +1,7 @@
 ﻿#include "OS-ImGui_Base.h"
 #include "..\Font\fontArray.h"
 #include "..\Font\IconsFontAwesome5.h"
+#include "..\Sources\WeaponIcon.h"
 
 /****************************************************
 * Copyright (C)	: Liv
@@ -34,6 +35,15 @@ namespace OSImGui
         iconConfig.GlyphRanges = iconRanges;
         iconConfig.FontDataOwnedByAtlas = false;
         ImFont* iconFont = fontAtlas->AddFontFromMemoryTTF((void*)rawData, sizeof(rawData), 16.f, &iconConfig, iconRanges);
+
+        ImFontConfig WeaponFontConfig;
+        WeaponFontConfig.MergeMode = true;
+        WeaponFontConfig.PixelSnapH = true;
+        WeaponFontConfig.OversampleH = 3;
+        WeaponFontConfig.OversampleV = 3;
+        iconConfig.FontDataOwnedByAtlas = false;
+        ImFont* WeaponIconFont = fontAtlas->AddFontFromMemoryTTF((void*)WeaponIconData, sizeof(WeaponIconData), 16.f, &WeaponFontConfig, io.Fonts->GetGlyphRangesChineseFull());
+
         io.Fonts = fontAtlas;
 
         ImGui::StyleColorsEnemyMouse();

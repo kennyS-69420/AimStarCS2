@@ -175,6 +175,7 @@
     <ClInclude Include="Radar\Radar.h" />
     <ClInclude Include="Render.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Sources\WeaponIcon.h" />
     <ClInclude Include="TriggerBot.h" />
     <ClInclude Include="Utils\ConfigMenu.hpp" />
     <ClInclude Include="Utils\ConfigSaver.hpp" />

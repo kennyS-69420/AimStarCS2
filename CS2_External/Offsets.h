@@ -71,6 +71,11 @@ namespace Offset
 		DWORD m_hController = 0x122C;
 	} PlayerController;
 
+	struct
+	{
+		DWORD m_szName = 0xC18;
+	} WeaponBaseData;
+
 	// Never have a try for external skin changer
 	struct
 	{
