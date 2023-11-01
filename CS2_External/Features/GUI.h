@@ -42,7 +42,7 @@ namespace GUI
 				ImGui::ColorEdit4("##HeadBoxColor", reinterpret_cast<float*>(&ESPConfig::HeadBoxColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##HeadBoxStyle", &ESPConfig::HeadBoxStyle, "Normal\0Flat");
+				ImGui::Combo("##HeadBoxStyle", &ESPConfig::HeadBoxStyle, "Normal\0Flat\0");
 
 				ImGui::Checkbox("EyeRay", &ESPConfig::ShowEyeRay);
 				ImGui::SameLine();
@@ -51,7 +51,7 @@ namespace GUI
 				ImGui::Checkbox("HealthBar", &ESPConfig::ShowHealthBar);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vertical\0Horizontal");
+				ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vertical\0Top\0");
 
 				ImGui::Checkbox("Weapon", &ESPConfig::ShowWeaponESP);
 				ImGui::Checkbox("Distance", &ESPConfig::ShowDistance);
@@ -62,7 +62,7 @@ namespace GUI
 				ImGui::ColorEdit4("##LineToEnemyColor", reinterpret_cast<float*>(&MenuConfig::LineToEnemyColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom");
+				ImGui::Combo("Line Pos", &MenuConfig::LinePos, "Top\0Center\0Bottom\0");
 				ImGui::Checkbox("Visible Check", &ESPConfig::VisibleCheck);
 				ImGui::SameLine();
 				ImGui::ColorEdit4("##EspVisCol", reinterpret_cast<float*>(&ESPConfig::VisibleColor), ImGuiColorEditFlags_NoInputs);
@@ -364,7 +364,7 @@ namespace GUI
 				ImGui::Checkbox("HealthBar", &ESPConfig::ShowHealthBar);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vertical\0Horizontal");
+				ImGui::Combo("##BarStyle", &MenuConfig::HealthBarType, "Vertical\0Top\0Bottom\0");
 
 				ImGui::Checkbox("Weapon", &ESPConfig::ShowWeaponESP);
 				ImGui::Checkbox("Distance", &ESPConfig::ShowDistance);

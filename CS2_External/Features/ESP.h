@@ -77,6 +77,8 @@ namespace ESP
 			}
 
 		}
+
+
 		Render::LineToEnemy(Rect, MenuConfig::LineToEnemyColor, 1.2);
 
 		if (ESPConfig::ShowWeaponESP)

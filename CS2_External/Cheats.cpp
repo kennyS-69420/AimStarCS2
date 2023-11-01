@@ -205,17 +205,20 @@ void Cheats::Run()
 			if (ESPConfig::ShowHealthBar)
 			{
 				ImVec2 HealthBarPos, HealthBarSize;
-				if (MenuConfig::HealthBarType == 0)
+				switch (MenuConfig::HealthBarType == 0)
 				{
-					// Vertical
-					HealthBarPos = { Rect.x - 10.f,Rect.y };
-					HealthBarSize = { 7 ,Rect.w };
-				}
-				else
-				{
-					// Horizontal
+				case 0:
 					HealthBarPos = { Rect.x + Rect.z / 2 - 70 / 2,Rect.y - 13 };
 					HealthBarSize = { 70,8 };
+					break;
+				case 1:
+					HealthBarPos = { Rect.x - 10.f,Rect.y };
+					HealthBarSize = { 7 ,Rect.w };
+					break;
+				case 2:
+					HealthBarPos = { Rect.x, Rect.y + Rect.w + 2 };
+					HealthBarSize = { Rect.z, 4 };
+					break;
 				}
 				Render::DrawHealthBar(EntityAddress, 100, Entity.Pawn.Health, HealthBarPos, HealthBarSize, MenuConfig::HealthBarType);
 			}
@@ -223,8 +226,9 @@ void Cheats::Run()
 			// Draw Distance
 			Render::DrawDistance(LocalEntity, Entity, Rect);
 		}
-		Glow::Run(LocalEntity);
+		Glow::Run(Entity);
 	}
+	
 	// Radar render
 	if(MenuConfig::ShowRadar)
 	{
