@@ -229,17 +229,17 @@ namespace ESP
 			if (MenuConfig::HealthBarType == 0) {
 				ImVec2 HBS(centerPos.x - 8, centerPos.y);
 				ImVec2 HBE(centerPos.x - 3, centerPos.y + rectSize.y);
-				ImGui::GetWindowDrawList()->AddRectFilled(HBS, HBE, ImColor(96, 246, 113, 220), 0.0f, ImDrawCornerFlags_All);
+				ImGui::GetWindowDrawList()->AddRectFilled(HBS, HBE, ImColor(96, 246, 113, 220), 30.f, ImDrawCornerFlags_All);
 			}
 			if (MenuConfig::HealthBarType == 1) {
 				ImVec2 HBS(centerPos.x, centerPos.y - 6);
 				ImVec2 HBE(centerPos.x + rectSize.x, centerPos.y - 3);
-				ImGui::GetWindowDrawList()->AddRectFilled(HBS, HBE, ImColor(96, 246, 113, 220), 0.0f, ImDrawCornerFlags_All);
+				ImGui::GetWindowDrawList()->AddRectFilled(HBS, HBE, ImColor(96, 246, 113, 220), 30.f, ImDrawCornerFlags_All);
 			}
 			if (MenuConfig::HealthBarType == 2) {
 				ImVec2 HBS(centerPos.x, centerPos.y + rectSize.y + 6);
 				ImVec2 HBE(centerPos.x + rectSize.x, centerPos.y + rectSize.y + 3);
-				ImGui::GetWindowDrawList()->AddRectFilled(HBS, HBE, ImColor(96, 246, 113, 220), 0.0f, ImDrawCornerFlags_All);
+				ImGui::GetWindowDrawList()->AddRectFilled(HBS, HBE, ImColor(96, 246, 113, 220), 30.f, ImDrawCornerFlags_All);
 			}
 		}
 		if (MenuConfig::ShowLineToEnemy) {
