@@ -23,7 +23,9 @@ namespace bmb
 			return;
 
 		bool isBombPlanted;
-		auto plantedAddress = gGame.GetClientDLLAddress() + Offset::GlobalVar.PlantedC4 - 0x8;
+		bool IsBeingDefused;
+		float DefuseTime;
+		auto plantedAddress = gGame.GetClientDLLAddress() + Offset::GlobalVar.dwPlantedC4 - 0x8;		
 
 		static float windowWidth = 200.0f;
 		ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize;
@@ -34,6 +36,10 @@ namespace bmb
 		ImGui::Begin("Bomb Timer", nullptr, flags);
 
 		ProcessMgr.ReadMemory(plantedAddress, isBombPlanted);
+		ProcessMgr.ReadMemory(Offset::GlobalVar.dwPlantedC4 + Offset::PlantedC4.m_bBeingDefused, IsBeingDefused);
+		ProcessMgr.ReadMemory(Offset::GlobalVar.dwPlantedC4 + Offset::PlantedC4.m_flDefuseCountDown, DefuseTime);
+		std::cout << IsBeingDefused << ", " << DefuseTime << std::endl;
+
 		auto time = currentTimeMillis();
 
 		if (isBombPlanted && !isPlanted && (plantTime == NULL || time - plantTime > 60000))

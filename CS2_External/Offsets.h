@@ -50,7 +50,7 @@ namespace Offset
 
 	struct
 	{
-		DWORD PlantedC4 = 0x189DAF8;
+		DWORD dwPlantedC4 = 0x189DAF8;
 
 		DWORD RealTime = 0x00;
 		DWORD FrameCount = 0x04;
@@ -77,6 +77,12 @@ namespace Offset
 	{
 		DWORD m_szName = 0xC18;
 	} WeaponBaseData;
+
+	struct
+	{
+		DWORD m_bBeingDefused = 0xEBC;
+		DWORD m_flDefuseCountDown = 0xED0;
+	} PlantedC4;
 
 	// Never have a try for external skin changer
 	struct

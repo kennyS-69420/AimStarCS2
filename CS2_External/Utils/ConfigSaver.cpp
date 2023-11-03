@@ -35,9 +35,9 @@ namespace MyConfigSaver {
         configFile << "ShowDistance " << ESPConfig::ShowDistance << std::endl;
         configFile << "ShowBoneESP " << ESPConfig::ShowBoneESP << std::endl;
         configFile << "TriggerDelay " << TriggerBot::TriggerDelay << std::endl;
-        configFile << "FakeShot" << TriggerBot::FakeShotDelay << std::endl;
+        configFile << "FakeShot " << TriggerBot::FakeShotDelay << std::endl;
         configFile << "ShowBoxESP " << ESPConfig::ShowBoxESP << std::endl;
-        configFile << "BoxRounding" << ESPConfig::BoxRounding << std::endl;
+        configFile << "BoxRounding " << ESPConfig::BoxRounding << std::endl;
         configFile << "TriggerHotKey " << MenuConfig::TriggerHotKey << std::endl;
         configFile << "RCSBullet " << AimControl::RCSBullet << std::endl;
         configFile << "ShowHealthBar " << ESPConfig::ShowHealthBar << std::endl;
@@ -53,8 +53,8 @@ namespace MyConfigSaver {
         configFile << "ShowEyeRay " << ESPConfig::ShowEyeRay << std::endl;
         configFile << "ShowPlayerName " << ESPConfig::ShowPlayerName << std::endl;
         configFile << "AimBot " << MenuConfig::AimBot << std::endl;
-        configFile << "AimAlways" << MenuConfig::AimAlways << std::endl;
-        configFile << "AimToggle" << MenuConfig::AimToggleMode << std::endl;
+        configFile << "AimAlways " << MenuConfig::AimAlways << std::endl;
+        configFile << "AimToggle " << MenuConfig::AimToggleMode << std::endl;
         configFile << "AimPosition " << MenuConfig::AimPosition << std::endl;
         configFile << "AimPositionIndex " << MenuConfig::AimPositionIndex << std::endl;
         configFile << "HealthBarType " << MenuConfig::HealthBarType << std::endl;
@@ -75,7 +75,7 @@ namespace MyConfigSaver {
         configFile << "Proportion " << MenuConfig::Proportion << std::endl;
         configFile << "BoxType " << MenuConfig::BoxType << std::endl;
         configFile << "TriggerBot " << MenuConfig::TriggerBot << std::endl;
-        configFile << "TriggerAlways" << MenuConfig::TriggerAlways << std::endl;
+        configFile << "TriggerAlways " << MenuConfig::TriggerAlways << std::endl;
         configFile << "TeamCheck " << MenuConfig::TeamCheck << std::endl;
         configFile << "BypassOBS " << MenuConfig::BypassOBS << std::endl;
         configFile << "VisibleCheck " << MenuConfig::VisibleCheck << std::endl;
