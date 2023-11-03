@@ -20,32 +20,32 @@ namespace Offset
 		DWORD IsAlive = 0x7C4;
 		DWORD PlayerPawn = 0x7BC;
 		DWORD iszPlayerName = 0x610;
-		DWORD EnemySenesor = 0x13C4;
+		DWORD EnemySenesor = 0x13D4;
 	} Entity;
 
 	struct
 	{
-		DWORD BulletServices = 0x1698;
+		DWORD BulletServices = 0x16A8;
 		DWORD TotalHit = 0x40;
 
-		DWORD Pos = 0x1214;
+		DWORD Pos = 0x1224;	// m_vOldOrigin
 		DWORD MaxHealth = 0x328;
-		DWORD CurrentHealth = 0x32C;
+		DWORD CurrentHealth = 0x32C; // m_iHealth
 		DWORD GameSceneNode = 0x310;
 		DWORD BoneArray = 0x1E0;
-		DWORD angEyeAngles = 0x14F8;
-		DWORD vecLastClipCameraPos = 0x1274;
-		DWORD pClippingWeapon = 0x1290;
-		DWORD iShotsFired = 0x1400;
-		DWORD flFlashDuration = 0x1450;
-		DWORD aimPunchAngle = 0x16FC;
-		DWORD aimPunchCache = 0x1720;
-		DWORD iIDEntIndex = 0x1524;
+		DWORD angEyeAngles = 0x1508;
+		DWORD vecLastClipCameraPos = 0x1284;
+		DWORD pClippingWeapon = 0x12A0;
+		DWORD iShotsFired = 0x1410;
+		DWORD flFlashDuration = 0x1460;
+		DWORD aimPunchAngle = 0x170C;
+		DWORD aimPunchCache = 0x1730;
+		DWORD iIDEntIndex = 0x1534;
 		DWORD iTeamNum = 0x3BF;
-		DWORD CameraServices = 0x10E0;
+		DWORD CameraServices = 0x10E0; // m_pCameraServices
 		DWORD iFovStart = 0x214;
 		DWORD fFlags = 0x3C8;
-		DWORD bSpottedByMask = 0x1618 + 0xC; // entitySpottedState + bSpottedByMask
+		DWORD bSpottedByMask = 0x1628 + 0xC; // entitySpottedState + bSpottedByMask
 	} Pawn;
 
 	struct
@@ -68,7 +68,7 @@ namespace Offset
 		DWORD m_hPawn = 0x5DC;
 		DWORD m_pObserverServices = 0x10C0;
 		DWORD m_hObserverTarget = 0x44;
-		DWORD m_hController = 0x122C;
+		DWORD m_hController = 0x123C;
 	} PlayerController;
 
 	struct
