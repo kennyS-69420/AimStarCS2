@@ -62,6 +62,8 @@ namespace bmb
 			ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(242, 93, 93, 255));
 		}
 
+		ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 180) * 0.5f);
+		float barLength = remaining <= 0.0f ? 0.0f : remaining >= 40 ? 1.0f : (remaining / 40.0f);
 		
 		if (isPlanted && remaining >= 0)
 		{
@@ -72,10 +74,8 @@ namespace bmb
 		}
 		else {
 			Gui.MyText("C4 not planted", true);
+			barLength = 0.0f;
 		}
-		
-		ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 180) * 0.5f);
-		float barLength = remaining <= 0.0f ? 0.0f : remaining >= 40 ? 1.0f : (remaining / 40.0f);
 		Gui.MyProgressBar(barLength, { 180, 15 }, "", MenuConfig::BombTimerCol);
 
 		if (isPlanted && !isBombPlanted)
