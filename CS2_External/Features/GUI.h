@@ -301,7 +301,7 @@ namespace GUI
 				// Since it's already the MIT license, there's no need to do that.
 				// ImGui::TextColored(ImColor(255, 0, 0, 255), "Reselling prohibited");
 
-				ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-11-1");
+				ImGui::TextColored(ImColor(0, 200, 255, 255), "Last update: 2023-11-3");
 				Gui.OpenWebpageButton(ICON_FA_COPY " Source Code", "https://github.com/CowNowK/AimStarCS2");
 				ImGui::SameLine();
 				Gui.OpenWebpageButton(ICON_FA_COMMENT_DOTS " Join Discord", "https://discord.gg/MzbmSRaU3p");
