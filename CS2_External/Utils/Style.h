@@ -135,7 +135,7 @@ namespace Styles
         style.WindowRounding = 10.0f;
         style.WindowBorderSize = 1.0f;
         style.WindowMinSize = ImVec2(32.0f, 32.0f);
-        style.WindowTitleAlign = ImVec2(0.0f, 0.5f);
+        style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
         style.WindowMenuButtonPosition = ImGuiDir_Left;
         style.ChildRounding = 5.5f;
         style.ChildBorderSize = 1.0f;

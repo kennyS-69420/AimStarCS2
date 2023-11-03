@@ -73,6 +73,7 @@ namespace MenuConfig
 	inline bool HitSound = false;
 	inline bool SkinChanger = false;
 	inline bool Glow = false;
+	inline bool bmbTimer = false;
 	inline ImColor GlowColor = ImColor(255, 0, 0, 100);
 
 }

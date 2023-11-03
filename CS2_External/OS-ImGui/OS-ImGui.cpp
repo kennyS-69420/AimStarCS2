@@ -26,6 +26,14 @@ namespace OSImGui
             OpenWebpage(url);
     }
 
+    void OSImGui::MyText(std::string Text, bool isCenter) {
+        auto windowWidth = ImGui::GetWindowSize().x;
+        auto textWidth = ImGui::CalcTextSize(Text.c_str()).x;
+        if (isCenter)
+            ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
+        ImGui::Text(Text.c_str());
+    }
+
     void OSImGui::Text(std::string Text, Vec2 Pos, ImColor Color, float FontSize, bool KeepCenter)
     {
         if (!KeepCenter)

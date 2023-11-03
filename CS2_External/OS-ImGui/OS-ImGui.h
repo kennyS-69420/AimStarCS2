@@ -21,6 +21,7 @@ namespace OSImGui
 	public:
 		// 文本
 		void Text(std::string Text, Vec2 Pos, ImColor Color, float FontSize = 15, bool KeepCenter = false);
+		void MyText(std::string Text, bool isCenter);
 		// 描边文本
 		void StrokeText(std::string Text, Vec2 Pos, ImColor Color, float FontSize = 15, bool KeepCenter = false);
 		// 矩形

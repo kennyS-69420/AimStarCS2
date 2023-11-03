@@ -9,6 +9,7 @@
 
 #include "Features/ESP.h"
 #include "Features/GUI.h"
+#include "Features/BombTimer.h"
 
 int PreviousTotalHits = 0;
 
@@ -262,6 +263,8 @@ void Cheats::Run()
 
 	// No Flash
 	NoFlash::Run(LocalEntity);
+
+	bmb::RenderWindow();
 
 	// Aimbot
 	if (MenuConfig::AimBot)

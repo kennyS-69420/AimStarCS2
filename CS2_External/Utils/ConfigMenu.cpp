@@ -126,6 +126,7 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		MenuConfig::bmbTimer = false;
 		ESPConfig::VisibleColor = ImColor(255, 196, 0, 255);
 		ESPConfig::VisibleCheck = false;
 		MenuConfig::GlowColor = ImColor(255, 0, 0, 100);;
