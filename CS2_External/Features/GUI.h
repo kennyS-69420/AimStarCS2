@@ -107,7 +107,7 @@ namespace GUI
 				float FovMin = 0.1f, FovMax = 89.f;
 				float SmoothMin = 0.1f, SmoothMax = 1.f;
 				ImGui::SliderFloat("Fov", &AimControl::AimFov, 0.0f, 25.0f, "%.1f", ImGuiSliderFlags_Logarithmic);
-				ImGui::SliderFloat("Smooth", &AimControl::Smooth, 0.0f, 1.0f, "%.1f");
+				ImGui::SliderFloat("Smooth", &AimControl::Smooth, 1.0f, 5.0f, "%.1f");
 				if (ImGui::Combo("Bone", &MenuConfig::AimPosition, "Head\0Neck\0Chest\0Penis"))
 				{
 					switch (MenuConfig::AimPosition)
@@ -478,7 +478,7 @@ namespace GUI
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
 				ImGui::SliderFloat("Fov", &AimControl::AimFov, 0.0f, 25.0f, "%.1f", ImGuiSliderFlags_Logarithmic | ImGuiColorEditFlags_NoInputs);
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				ImGui::SliderFloat("Smooth", &AimControl::Smooth, 0.0f, 1.0f, "%.1f", ImGuiColorEditFlags_NoInputs);
+				ImGui::SliderFloat("Smooth", &AimControl::Smooth, 1.0f, 5.0f, "%.1f", ImGuiColorEditFlags_NoInputs);
 				if (ImGui::Combo("Bone", &MenuConfig::AimPosition, "Head\0Neck\0Chest\0Penis"))
 				{
 					switch (MenuConfig::AimPosition)

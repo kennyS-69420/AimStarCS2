@@ -17,7 +17,7 @@ namespace AimControl
 {
     inline int HotKey = VK_LMENU;
     inline float AimFov = 5;
-    inline float Smooth = 0.7;
+    inline float Smooth = 2.0f;
     inline Vec2 RCSScale = { 1.f,1.f };
     inline int RCSBullet = 1;
     inline std::vector<int> HotKeyList{ VK_LMENU, VK_LBUTTON, VK_RBUTTON, VK_XBUTTON1, VK_XBUTTON2, VK_CAPITAL, VK_LSHIFT, VK_LCONTROL };
@@ -102,8 +102,13 @@ namespace AimControl
                 return;
             }
 
-            TargetX /= 10;
-            TargetY /= 10;
+            // Dynamic AimSmooth based on distance
+            float DistanceRatio = Norm / AimFov; // Calculate the distance ratio
+            float SpeedFactor = 1.0f + (1.0f - DistanceRatio); // Determine the speed factor based on the distance ratio
+            TargetX /= (Smooth * SpeedFactor);
+            TargetY /= (Smooth * SpeedFactor);
+            // by Skarbor
+            
             if (fabs(TargetX) < 1)
             {
                 if (TargetX > 0)
