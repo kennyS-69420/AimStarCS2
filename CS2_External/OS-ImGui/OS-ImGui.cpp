@@ -15,6 +15,13 @@
 // OS-ImGui Draw »æÖÆ¹¦ÄÜ
 namespace OSImGui
 {
+    void OSImGui::MyProgressBar(float fraction, const ImVec2& Size, const char* overlay, ImVec4 Color)
+    {
+        ImGui::PushStyleColor(ImGuiCol_PlotHistogram, Color);
+        ImGui::ProgressBar(fraction, Size, overlay);
+        ImGui::PopStyleColor();
+    }
+
     void OSImGui::OpenWebpage(const char* url)
     {
         ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWNORMAL);

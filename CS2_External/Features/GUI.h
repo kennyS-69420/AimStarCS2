@@ -281,6 +281,8 @@ namespace GUI
 				ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
 				ImGui::Checkbox("HitSound", &MenuConfig::HitSound);
 				ImGui::Checkbox("Bomb Timer", &MenuConfig::bmbTimer);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##BombTimerCol", reinterpret_cast<float*>(&MenuConfig::BombTimerCol), ImGuiColorEditFlags_NoInputs);
 
 				ImGui::NextColumn();
 				ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
@@ -543,6 +545,8 @@ namespace GUI
 			ImGui::Checkbox("HitSound", &MenuConfig::HitSound);
 			ImGui::Checkbox("Bunny Hop", &MenuConfig::BunnyHop);
 			ImGui::Checkbox("Bomb Timer", &MenuConfig::bmbTimer);
+			ImGui::SameLine();
+			ImGui::ColorEdit4("##BombTimerCol", reinterpret_cast<float*>(&MenuConfig::BombTimerCol), ImGuiColorEditFlags_NoInputs);
 			ImGui::Checkbox("Team Check", &MenuConfig::TeamCheck);
 			ImGui::Checkbox("Bypass OBS", &MenuConfig::BypassOBS);
 

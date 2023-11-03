@@ -59,14 +59,18 @@ namespace bmb
 		
 		if (isPlanted && remaining >= 0)
 		{
-			std::ostringstream out;
-			out.precision(3);
-			out << std::fixed << remaining << " s";
-			Gui.MyText(std::move(out).str().c_str(), true);
+			std::ostringstream ss;
+			ss.precision(3);
+			ss << std::fixed << remaining << " s";
+			Gui.MyText(std::move(ss).str().c_str(), true);
 		}
 		else {
 			Gui.MyText("C4 not planted", true);
 		}
+		
+		ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 180) * 0.5f);
+		float barLength = remaining <= 0.0f ? 0.0f : remaining >= 40 ? 1.0f : (remaining / 40.0f);
+		Gui.MyProgressBar(barLength, { 180, 15 }, "", MenuConfig::BombTimerCol);
 
 		if (isPlanted && !isBombPlanted)
 		{

@@ -18,8 +18,9 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
+        configFile << "BombTimerCol " << MenuConfig::BombTimerCol.Value.x << MenuConfig::BombTimerCol.Value.y << MenuConfig::BombTimerCol.Value.z << MenuConfig::BombTimerCol.Value.w << std::endl;
         configFile << "bmbTimer " << MenuConfig::bmbTimer << std::endl;
-        configFile << "ESPVisCol " << ESPConfig::VisibleColor << ESPConfig::VisibleColor.Value.x << ESPConfig::VisibleColor.Value.y << ESPConfig::VisibleColor.Value.z << ESPConfig::VisibleColor.Value.w << std::endl;;
+        configFile << "ESPVisCol " << ESPConfig::VisibleColor.Value.x << ESPConfig::VisibleColor.Value.y << ESPConfig::VisibleColor.Value.z << ESPConfig::VisibleColor.Value.w << std::endl;;
         configFile << "ESPVisCheck " << ESPConfig::VisibleCheck << std::endl;
         configFile << "GlowColor " << MenuConfig::GlowColor.Value.x << MenuConfig::GlowColor.Value.y << MenuConfig::GlowColor.Value.z << MenuConfig::GlowColor.Value.w << std::endl;
         configFile << "Glow " << MenuConfig::Glow << std::endl;
@@ -135,6 +136,7 @@ namespace MyConfigSaver {
             std::string key;
             if (iss >> key) {
                 if (key == "ShowBoneESP") iss >> ESPConfig::ShowBoneESP;
+                else if (key == "BombTimerCol") iss >> MenuConfig::BombTimerCol.Value.x >> MenuConfig::BombTimerCol.Value.y >> MenuConfig::BombTimerCol.Value.z >> MenuConfig::BombTimerCol.Value.w;
                 else if (key == "bmbTimer") iss >> MenuConfig::bmbTimer;
                 else if (key == "ESPVisCol") iss >> ESPConfig::VisibleColor.Value.x >> ESPConfig::VisibleColor.Value.y >> ESPConfig::VisibleColor.Value.z >> ESPConfig::VisibleColor.Value.w;
                 else if (key == "ESPVisCheck") iss >> ESPConfig::VisibleCheck;

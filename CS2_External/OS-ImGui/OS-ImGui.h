@@ -51,6 +51,8 @@ namespace OSImGui
 		// Open webpage button
 		void OpenWebpage(const char* url);
 		void OpenWebpageButton(const char* label, const char* url);
+
+		void MyProgressBar(float fraction, const ImVec2& Size, const char* overlay, ImVec4 Color);
 	};
 }
 
