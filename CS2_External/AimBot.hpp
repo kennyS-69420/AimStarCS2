@@ -53,12 +53,10 @@ namespace AimControl
         Pitch = -atan(OppPos.z / Distance) * 57.295779513 - Local.Pawn.ViewAngle.x;
         Norm = sqrt(pow(Yaw, 2) + pow(Pitch, 2));
 
-        float halfFov = AimFov * 0.5f;
-
         Vec2 ScreenPos;
         gGame.View.WorldToScreen(Vec3(AimPos), ScreenPos);
 
-        if (Norm < halfFov)
+        if (Norm < AimFov)
         {
             if (ScreenPos.x > ScreenCenterX)
             {
