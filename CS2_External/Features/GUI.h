@@ -26,12 +26,18 @@ namespace GUI
 				ImGui::ColorEdit4("##BoxColor", reinterpret_cast<float*>(&ESPConfig::BoxColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0Corner Edge\0");
-				if (MenuConfig::BoxType == 2)
-					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Corner\0Corner Edge\0");
 				if (ESPConfig::ShowBoxESP)
 					ImGui::SliderFloat("Box Rounding", &ESPConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
 
+				ImGui::Checkbox("Filled Box", &ESPConfig::FilledBox);
+				ImGui::SameLine();
+				ImGui::ColorEdit4("##FilledColor", reinterpret_cast<float*>(&ESPConfig::FilledColor), ImGuiColorEditFlags_NoInputs);
+				if (ESPConfig::FilledBox)
+				{
+					ImGui::SliderFloat("Filled Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
+				}
+					
 
 				ImGui::Checkbox("Skeleton", &ESPConfig::ShowBoneESP);
 				ImGui::SameLine();
@@ -346,14 +352,16 @@ namespace GUI
 				ImGui::Checkbox("Box", &ESPConfig::ShowBoxESP);
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(MenuConfig::ComboWidth);
-				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Flat\0Corner\0Corner Edge\0");
-				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
-				if (MenuConfig::BoxType == 2)
-					ImGui::SliderFloat("Flat Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
+				ImGui::Combo("##BoxStyle", &MenuConfig::BoxType, "Normal\0Edge\0Corner\0Corner Edge\0");
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
 				if (ESPConfig::ShowBoxESP)
 					ImGui::SliderFloat("Box Rounding", &ESPConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
 
+				ImGui::Checkbox("Filled Box", &ESPConfig::FilledBox);
+				if (ESPConfig::FilledBox)
+				{
+					ImGui::SliderFloat("Filled Box Alpha", &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
+				}
 
 				ImGui::Checkbox("Skeleton", &ESPConfig::ShowBoneESP);
 				ImGui::Checkbox("Head Box", &ESPConfig::ShowHeadBox);
@@ -560,6 +568,7 @@ namespace GUI
 				ImGui::ColorEdit4("Head Box", reinterpret_cast<float*>(&ESPConfig::HeadBoxColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::ColorEdit4("Snap Line", reinterpret_cast<float*>(&MenuConfig::LineToEnemyColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::ColorEdit4("Eye Ray", reinterpret_cast<float*>(&ESPConfig::EyeRayColor), ImGuiColorEditFlags_NoInputs);
+				ImGui::ColorEdit4("Filled Box", reinterpret_cast<float*>(&ESPConfig::FilledColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SeparatorText("Aimbot");
 				ImGui::ColorEdit4("Fov Circle", reinterpret_cast<float*>(&MenuConfig::FovCircleColor), ImGuiColorEditFlags_NoInputs);
 				ImGui::SeparatorText("Radar");
