@@ -20,12 +20,12 @@ namespace Offset
 		DWORD IsAlive = 0x7C4;
 		DWORD PlayerPawn = 0x7BC;
 		DWORD iszPlayerName = 0x610;
-		DWORD EnemySenesor = 0x13DC;
+		DWORD EnemySensor = 0x13DC;
 	} Entity;
 
 	struct
 	{
-		DWORD BulletServices = 0x16A8;
+		DWORD BulletServices = 0x16B0;
 		DWORD TotalHit = 0x40;
 
 		DWORD Pos = 0x1224;	// m_vOldOrigin

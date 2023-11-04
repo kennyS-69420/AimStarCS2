@@ -38,7 +38,7 @@ namespace bmb
 		ProcessMgr.ReadMemory(plantedAddress, isBombPlanted);
 		ProcessMgr.ReadMemory(Offset::GlobalVar.dwPlantedC4 + Offset::PlantedC4.m_bBeingDefused, IsBeingDefused);
 		ProcessMgr.ReadMemory(Offset::GlobalVar.dwPlantedC4 + Offset::PlantedC4.m_flDefuseCountDown, DefuseTime);
-		std::cout << IsBeingDefused << ", " << DefuseTime << std::endl;
+//		std::cout << IsBeingDefused << ", " << DefuseTime << std::endl;
 
 		auto time = currentTimeMillis();
 
