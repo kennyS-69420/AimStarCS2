@@ -50,7 +50,7 @@ namespace Offset
 
 	struct
 	{
-		DWORD dwPlantedC4 = 0x189DAF8;
+		DWORD dwPlantedC4 = 0x180EB48;
 
 		DWORD RealTime = 0x00;
 		DWORD FrameCount = 0x04;
