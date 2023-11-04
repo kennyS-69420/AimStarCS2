@@ -82,6 +82,7 @@ namespace Offset
 	{
 		DWORD m_bBeingDefused = 0xEBC;
 		DWORD m_flDefuseCountDown = 0xED0;
+		DWORD m_nBombSite = 0xE84;
 	} PlantedC4;
 
 	// Never have a try for external skin changer

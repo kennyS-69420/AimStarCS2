@@ -34,6 +34,7 @@ namespace CheatList
 		CheatText("No Flash", MenuConfig::NoFlash);
 		CheatText("Bhop", MenuConfig::BunnyHop);
 		CheatText("HitSound", MenuConfig::HitSound);
+		CheatText("Bomb Timer", MenuConfig::bmbTimer);
 
 
 		ImGui::End();

@@ -4,6 +4,7 @@
 #include <utility>
 #include <sstream>
 #include <ctime>
+#include <string>
 #include "..\Entity.h"
 #include "..\MenuConfig.hpp"
 
@@ -15,6 +16,27 @@ namespace bmb
 	uint64_t currentTimeMillis() {
 		using namespace std::chrono;
 		return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+	}
+
+	// Idea from Tokinaa
+	int getBombSite(bool Planted)
+	{
+		if (Planted)
+		{
+			int site;
+			uintptr_t cPlantedC4;
+			ProcessMgr.ReadMemory(gGame.GetClientDLLAddress() + Offset::GlobalVar.dwPlantedC4, cPlantedC4);
+			if (!ProcessMgr.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset::GlobalVar.dwPlantedC4, cPlantedC4))
+				return 0;
+			if (!ProcessMgr.ReadMemory<uintptr_t>(cPlantedC4, cPlantedC4))
+				return 0;
+
+			if (!ProcessMgr.ReadMemory<int>(cPlantedC4 + Offset::PlantedC4.m_nBombSite, site))
+				return 0;
+
+			return site;
+		}
+		
 	}
 
 	void RenderWindow()
@@ -36,6 +58,7 @@ namespace bmb
 		ImGui::Begin("Bomb Timer", nullptr, flags);
 
 		ProcessMgr.ReadMemory(plantedAddress, isBombPlanted);
+
 		ProcessMgr.ReadMemory(Offset::GlobalVar.dwPlantedC4 + Offset::PlantedC4.m_bBeingDefused, IsBeingDefused);
 		ProcessMgr.ReadMemory(Offset::GlobalVar.dwPlantedC4 + Offset::PlantedC4.m_flDefuseCountDown, DefuseTime);
 //		std::cout << IsBeingDefused << ", " << DefuseTime << std::endl;
@@ -69,7 +92,7 @@ namespace bmb
 		{
 			std::ostringstream ss;
 			ss.precision(3);
-			ss << std::fixed << remaining << " s";
+			ss << "Bomb on " << (!getBombSite(isBombPlanted) ? "A" : "B") << ": " << std::fixed << remaining << " s";
 			Gui.MyText(std::move(ss).str().c_str(), true);
 		}
 		else {
