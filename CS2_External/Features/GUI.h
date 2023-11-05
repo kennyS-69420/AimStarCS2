@@ -134,6 +134,7 @@ namespace GUI
 						break;
 					}
 				}
+				ImGui::TextColored(ImColor(101, 255, 0, 255), "Aimbot will not work while the menu is opened");
 				/*
 				ImGui::NewLine();
 				if (ImGui::CollapsingHeader("RCS"))

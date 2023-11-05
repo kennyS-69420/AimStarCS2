@@ -73,6 +73,7 @@ namespace bmb
 
 		float remaining = (40000 - (int64_t)time + plantTime) / (float)1000;
 
+		/*
 		if (remaining > 10 || remaining < 0 || !isPlanted)
 		{
 			ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 196, 0, 255));
@@ -83,7 +84,7 @@ namespace bmb
 		}
 		else {
 			ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(242, 93, 93, 255));
-		}
+		}*/
 
 		ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 180) * 0.5f);
 		float barLength = remaining <= 0.0f ? 0.0f : remaining >= 40 ? 1.0f : (remaining / 40.0f);
