@@ -62,6 +62,8 @@ External Cheat for CS2
 
 - Cheat List
 
+- Bomb Timer
+
 </details>
 
 ## Known Bugs
