@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "..\Render.hpp"
 #include "..\MenuConfig.hpp"
 #include "..\Cheats.h"

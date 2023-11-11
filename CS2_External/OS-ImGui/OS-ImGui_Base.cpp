@@ -37,12 +37,14 @@ namespace OSImGui
         ImFont* iconFont = fontAtlas->AddFontFromMemoryTTF((void*)rawData, sizeof(rawData), 16.f, &iconConfig, iconRanges);
 
         ImFontConfig WeaponFontConfig;
+        static const ImWchar ranges[] = { 0xE000, 0xE226, 0xE031, 0xE031 };
         WeaponFontConfig.MergeMode = true;
-        WeaponFontConfig.PixelSnapH = true;
-        WeaponFontConfig.OversampleH = 3;
-        WeaponFontConfig.OversampleV = 3;
+        WeaponFontConfig.PixelSnapH = false;
+        WeaponFontConfig.OversampleH = 5;
+        WeaponFontConfig.OversampleV = 5;
+        WeaponFontConfig.RasterizerMultiply = 1.2f;
         iconConfig.FontDataOwnedByAtlas = false;
-        ImFont* WeaponIconFont = fontAtlas->AddFontFromMemoryTTF((void*)WeaponIconData, sizeof(WeaponIconData), 16.f, &WeaponFontConfig, io.Fonts->GetGlyphRangesChineseFull());
+        ImFont* WeaponIconFont = fontAtlas->AddFontFromMemoryTTF((void*)cs_icon, sizeof(cs_icon), 25.0f, &WeaponFontConfig, ranges);
 
         io.Fonts = fontAtlas;
 
