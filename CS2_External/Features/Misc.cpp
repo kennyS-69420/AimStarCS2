@@ -1,4 +1,5 @@
 #include "Misc.h"
+#include <iostream>
 
 void Misc::CheatList() noexcept
 {
@@ -45,7 +46,7 @@ void Misc::Watermark() noexcept
 	FrameRate = ImGui::GetIO().Framerate;
 	getCurrentTime(&ptm);
 
-	ImGui::Text("AimStar | %d fps | %d:%d:%d",
+	ImGui::Text("AimStar | %d fps | %02d:%02d:%02d",
 		FrameRate != 0.0f ? static_cast<int>(FrameRate) : 0,
 		ptm.tm_hour, ptm.tm_min, ptm.tm_sec);
 	ImGui::End();
@@ -82,4 +83,14 @@ void Misc::NoFlash(const CEntity& aLocalPlayer) noexcept
 
 	float duration = 0.0f;
 	ProcessMgr.WriteMemory(aLocalPlayer.Pawn.Address + Offset::Pawn.flFlashDuration, duration);
+}
+
+void Misc::Invincible(const CEntity& Player) noexcept
+{
+	if (!MenuConfig::infinity)
+		return;
+
+	float Health;
+	ProcessMgr.ReadMemory(Player.Pawn.Address + Offset::ServerPawn.CurrentHealth, Health);
+
 }

@@ -28,7 +28,6 @@ namespace Offset
 	{
 		DWORD BulletServices = 0x16B0;
 		DWORD TotalHit = 0x40;
-
 		DWORD Pos = 0x1224;	// m_vOldOrigin
 		DWORD MaxHealth = 0x328;
 		DWORD CurrentHealth = 0x32C; // m_iHealth
@@ -48,6 +47,11 @@ namespace Offset
 		DWORD fFlags = 0x3C8;
 		DWORD bSpottedByMask = 0x1630 + 0xC; // entitySpottedState + bSpottedByMask
 	} Pawn;
+
+	struct
+	{
+		DWORD CurrentHealth = 0x2A8; // m_iHealth
+	} ServerPawn;
 
 	struct
 	{

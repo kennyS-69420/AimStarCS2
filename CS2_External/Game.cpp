@@ -3,12 +3,14 @@
 bool CGame::InitAddress()
 {
 	this->Address.ClientDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("client.dll"));
+	this->Address.ServerDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("server.dll"));
 	
 	this->Address.EntityList = GetClientDLLAddress() + Offset::EntityList;
 	this->Address.Matrix = GetClientDLLAddress() + Offset::Matrix;
 	this->Address.ViewAngle = GetClientDLLAddress() + Offset::ViewAngle;
 	this->Address.LocalController = GetClientDLLAddress() + Offset::LocalPlayerController;
 	this->Address.LocalPawn = GetClientDLLAddress() + Offset::LocalPlayerPawn;
+	this->Address.ServerPawn = GetServerDLLAddress() + Offset::LocalPlayerPawn;
 	this->Address.ForceJump = GetClientDLLAddress() + Offset::ForceJump;
 	this->Address.GlobalVars = GetClientDLLAddress() + Offset::GlobalVars;
 
@@ -18,6 +20,11 @@ bool CGame::InitAddress()
 DWORD64 CGame::GetClientDLLAddress()
 {
 	return this->Address.ClientDLL;
+}
+
+DWORD64 CGame::GetServerDLLAddress()
+{
+	return this->Address.ServerDLL;
 }
 
 DWORD64 CGame::GetEntityListAddress()
@@ -48,6 +55,11 @@ DWORD64 CGame::GetLocalControllerAddress()
 DWORD64 CGame::GetLocalPawnAddress()
 {
 	return this->Address.LocalPawn;
+}
+
+DWORD64 CGame::GetServerPawnAddress()
+{
+	return this->Address.ServerPawn;
 }
 
 DWORD64 CGame::GetGlobalVarsAddress()

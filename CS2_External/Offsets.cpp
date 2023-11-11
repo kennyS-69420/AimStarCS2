@@ -23,6 +23,10 @@ bool Offset::UpdateOffsets()
 	DWORD64 ClientDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("client.dll"));
 	if (ClientDLL == 0)
 		return false;
+
+	DWORD64 ServerDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("server.dll"));
+	if (ClientDLL == 0)
+		return false;
 	
 	DWORD64 TempAddress = 0;
 

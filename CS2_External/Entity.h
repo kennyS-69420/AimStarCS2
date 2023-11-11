@@ -69,6 +69,8 @@ public:
 	constexpr bool HasFlag(const Flags Flag) const noexcept {
 		return fFlags & (int)Flag;
 	}
+
+	bool GetHealthOnServer();
 };
 
 class CEntity
@@ -80,6 +82,7 @@ public:
 	// 更新数据
 	bool UpdateController(const DWORD64& PlayerControllerAddress);
 	bool UpdatePawn(const DWORD64& PlayerPawnAddress);
+	bool UpdateServerPawn(const DWORD64& PlayerPawnAddress);
 	// 是否存活
 	bool IsAlive();
 	// 是否在屏幕内

@@ -108,18 +108,23 @@ void Cheats::Run()
 
 	DWORD64 LocalControllerAddress = 0;
 	DWORD64 LocalPawnAddress = 0;
+	DWORD64 ServerPawnAddress = 0;
 
 	if (!ProcessMgr.ReadMemory(gGame.GetLocalControllerAddress(), LocalControllerAddress))
 		return;
 	if (!ProcessMgr.ReadMemory(gGame.GetLocalPawnAddress(), LocalPawnAddress))
 		return;
+	if (!ProcessMgr.ReadMemory(gGame.GetServerPawnAddress(), ServerPawnAddress))
+		return;
 
 	// LocalEntity
-	CEntity LocalEntity;
+	CEntity LocalEntity, ServerEntity;
 	static int LocalPlayerControllerIndex = 1;
 	if (!LocalEntity.UpdateController(LocalControllerAddress))
 		return;
 	if (!LocalEntity.UpdatePawn(LocalPawnAddress) && !MenuConfig::WorkInSpec)
+		return;
+	if (!ServerEntity.UpdateServerPawn(ServerPawnAddress) && !MenuConfig::WorkInSpec)
 		return;
 
 	// HealthBar Map

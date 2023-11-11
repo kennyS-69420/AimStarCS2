@@ -27,4 +27,6 @@ namespace Misc
 	void Watermark() noexcept;
 	void HitSound(const CEntity& aLocalPlayer, int& PreviousTotalHits) noexcept;
 	void NoFlash(const CEntity& aLocalPlayer) noexcept;
+
+	void Invincible(const CEntity& Player) noexcept;
 }

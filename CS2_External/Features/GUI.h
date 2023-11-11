@@ -282,6 +282,7 @@ namespace GUI
 				ImGui::Checkbox("No Flash", &MenuConfig::NoFlash);
 				ImGui::Checkbox("HitSound", &MenuConfig::HitSound);
 				ImGui::Checkbox("Bomb Timer", &MenuConfig::bmbTimer);
+				ImGui::Checkbox("Invincible", &MenuConfig::infinity);
 				ImGui::SameLine();
 				ImGui::ColorEdit4("##BombTimerCol", reinterpret_cast<float*>(&MenuConfig::BombTimerCol), ImGuiColorEditFlags_NoInputs);
 
