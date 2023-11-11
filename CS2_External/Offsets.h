@@ -22,6 +22,7 @@ namespace Offset
 		DWORD PlayerPawn = 0x7BC;
 		DWORD iszPlayerName = 0x610;
 		DWORD EnemySensor = 0x13DC;
+		DWORD GravityScale = 0x434;
 	} Entity;
 
 	struct

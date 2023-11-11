@@ -85,6 +85,14 @@ void Misc::NoFlash(const CEntity& aLocalPlayer) noexcept
 	ProcessMgr.WriteMemory(aLocalPlayer.Pawn.Address + Offset::Pawn.flFlashDuration, duration);
 }
 
+void Misc::EdgeJump(const CEntity& aLocalPlayer) noexcept
+{
+	// Unfinished
+	float Gravity;
+	ProcessMgr.ReadMemory(aLocalPlayer.Pawn.Address + Offset::Entity.GravityScale, Gravity);
+	std::cout << Gravity << std::endl;
+}
+
 void Misc::Invincible(const CEntity& Player) noexcept
 {
 	if (!MenuConfig::infinity)
