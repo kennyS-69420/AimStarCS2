@@ -119,17 +119,13 @@
     <ClInclude Include="Utils\Format.h" />
     <ClInclude Include="Bunnyhop.hpp" />
     <ClInclude Include="Utils\Globals.hpp" />
-    <ClInclude Include="Features\NoFlash.h" />
     <ClInclude Include="Font\fontArray.h" />
-    <ClInclude Include="Features\Watermark.h" />
-    <ClInclude Include="Features\CheatList.h" />
     <ClInclude Include="Font\IconsFontAwesome6.h" />
     <ClInclude Include="Font\IconsFontAwesome5.h" />
     <ClInclude Include="Utils\Style.h" />
     <ClInclude Include="Features\StyleChanger.h" />
     <ClInclude Include="Features\Mouse.h" />
     <ClInclude Include="Features\ESP.h" />
-    <ClInclude Include="Features\HitSound.h" />
     <ClInclude Include="Features\Debugger.h" />
     <ClInclude Include="Features\SpectatorList.h" />
     <ClInclude Include="Features\GUI.h" />
@@ -137,6 +133,7 @@
     <ClInclude Include="Features\GetWeaponIcon.h" />
     <ClInclude Include="Sources\WeaponIcon.h" />
     <ClInclude Include="Features\BombTimer.h" />
+    <ClInclude Include="Features\Misc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
@@ -201,6 +198,7 @@
     <ClCompile Include="Utils\GlobalVars.cpp" />
     <ClCompile Include="Features\Mouse.cpp" />
     <ClCompile Include="Features\Glow.cpp" />
+    <ClCompile Include="Features\Misc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CS2_External.rc" />

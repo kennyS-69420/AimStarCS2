@@ -6,11 +6,8 @@
 #include "TriggerBot.h"
 #include "Bunnyhop.hpp"
 
-#include "Features/NoFlash.h"
-#include "Features/Watermark.h"
-#include "Features/CheatList.h"
-#include "Features/HitSound.h"
 #include "Features/Glow.h"
+#include "Features/Misc.h"
 
 namespace Cheats
 {

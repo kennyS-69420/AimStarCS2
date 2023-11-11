@@ -238,14 +238,10 @@ void Cheats::Run()
 	if (MenuConfig::TriggerBot && (GetAsyncKeyState(TriggerBot::HotKey) || MenuConfig::TriggerAlways))
 		TriggerBot::Run(LocalEntity);	
 
-	// HitSound
-	HitSound::Run(LocalEntity, PreviousTotalHits);
-
-	// WaterMark
-	Watermark::Render();
-
-	// Cheat List
-	CheatList::Render();
+	Misc::HitSound(LocalEntity, PreviousTotalHits);
+	Misc::NoFlash(LocalEntity);
+	Misc::Watermark();
+	Misc::CheatList();
 
 	// Fov line
 	Render::DrawFov(LocalEntity, MenuConfig::FovLineSize, MenuConfig::FovLineColor, 1);
@@ -260,9 +256,6 @@ void Cheats::Run()
 
 	// Bhop
 	Bunnyhop::Run(LocalEntity);
-
-	// No Flash
-	NoFlash::Run(LocalEntity);
 
 	bmb::RenderWindow();
 
