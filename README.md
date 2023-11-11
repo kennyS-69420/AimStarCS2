@@ -82,3 +82,7 @@ External Cheat for CS2
 > Sometimes the ESP renders unclear large boxes or keeps the skeleton stationary.
 >
 > Glow blinking
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=CowNowK/AimStarCS2&type=Date)](https://star-history.com/#CowNowK/AimStarCS2&Date)
