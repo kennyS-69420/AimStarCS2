@@ -182,6 +182,7 @@
     <ClInclude Include="Utils\GlobalVars.h" />
     <ClInclude Include="Utils\ProcessManager.hpp" />
     <ClInclude Include="Utils\Style.h" />
+    <ClInclude Include="Utils\VACbypass.h" />
     <ClInclude Include="View.hpp" />
   </ItemGroup>
   <ItemGroup>
