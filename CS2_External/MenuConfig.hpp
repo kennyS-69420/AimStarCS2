@@ -75,6 +75,7 @@ namespace MenuConfig
 	inline bool Glow = false;
 	inline bool bmbTimer = false;
 	inline bool infinity = false;
+	inline bool SpecList = false;
 	inline ImColor BombTimerCol = ImColor(255, 120, 0, 255);
 	inline ImColor GlowColor = ImColor(255, 0, 0, 100);
 

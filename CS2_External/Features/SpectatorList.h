@@ -1,31 +1,76 @@
 #pragma once
 #include "..\MenuConfig.hpp"
 #include "..\Entity.h"
+#include <vector>
+#include <string>
+#include <iostream>
 
 namespace SpecList
 {
-	bool isSpectating(PlayerController* PlayerController)
-	{
-		DWORD64 hPawn;
-		ProcessMgr.ReadMemory(PlayerController->Address + Offset::PlayerController.m_hPawn, hPawn);
-		if (!hPawn)
-			return false;
+    float spectatorOffsetY = 0;
+    bool isSpectating(const uint32_t m_hPawn)
+    {
+        uintptr_t pCSPlayerPawn;
+        uintptr_t m_pObserverServices;
+        uintptr_t m_hObserverTarget;
 
-		DWORD64 ObserverServices;
-		DWORD64 ObserverTarget;
-		ProcessMgr.ReadMemory(hPawn + Offset::PlayerController.m_pObserverServices, ObserverServices);
-		ProcessMgr.ReadMemory(ObserverServices + Offset::PlayerController.m_hObserverTarget, ObserverTarget);
+        ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hPawn & 0x1FF), pCSPlayerPawn);
+        ProcessMgr.ReadMemory<uintptr_t>(pCSPlayerPawn + 0x10C0, m_pObserverServices);
+        ProcessMgr.ReadMemory<uintptr_t>(m_pObserverServices + 0x44, m_hObserverTarget);
+        if (!m_hObserverTarget == 0) {
+            std::cout << m_hObserverTarget << std::endl;
+            return true;
+        }
 
-		DWORD64 targetController;
-		ProcessMgr.ReadMemory(ObserverTarget + Offset::PlayerController.m_hController, targetController);
-		if (!targetController)
-			return false;
-		
-		return true;
-	}
+        return false;
+    }
 
-	void Run(const CEntity& aLocalPlayer, const CEntity& Entities)
-	{
-		auto y = 0u;
-	}
+    void SpecWindowList(std::vector<std::string> SpectatorList)
+    {
+        ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoCollapse;
+        if (!MenuConfig::ShowMenu)
+            ImGui::SetNextWindowBgAlpha(0.3f);
+        ImGui::SetNextWindowSize(ImVec2(200, 0));
+        ImGui::Begin("Spectator List", nullptr, windowFlags);
+
+        for (const auto& spectator : SpectatorList)
+        {
+            ImGui::Text(spectator.c_str());
+        }
+    }
+
+    void GetSpectatorList(CEntity& Entity, CEntity& LocalEntity, DWORD64 EntityAddress)
+    {
+        if (!MenuConfig::SpecList)
+            return;
+
+        std::vector<std::string> spectators;
+        
+        int spectatorCount = 0;
+        uint32_t m_hPawn;
+        uintptr_t pCSPlayerPawn;
+        uintptr_t m_pObserverServices;
+        
+        ProcessMgr.ReadMemory<uint32_t>(Entity.Controller.Address + 0x5DC, m_hPawn);
+        ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hPawn & 0x1FF), pCSPlayerPawn);
+        ProcessMgr.ReadMemory<uintptr_t>(pCSPlayerPawn + 0x10C0, m_pObserverServices);
+
+        if (m_pObserverServices)
+        {
+            uint32_t m_hObserverTarget;
+            uintptr_t list_entry;
+            uintptr_t pController;
+            ProcessMgr.ReadMemory<uint32_t>(m_pObserverServices + 0x44, m_hObserverTarget);
+            ProcessMgr.ReadMemory<uintptr_t>(EntityAddress + 0x8 * ((m_hObserverTarget & 0x7FFF) >> 9) + 0x10, list_entry);
+            ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hObserverTarget & 0x1FF), pController);
+
+            if (pController == LocalEntity.Pawn.Address)
+            {
+                spectators.push_back(Entity.Controller.PlayerName);
+            }
+            spectatorCount = 0;
+        }
+        SpecWindowList(spectators);
+    }
+
 }

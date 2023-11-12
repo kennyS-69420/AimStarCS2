@@ -10,6 +10,7 @@
 #include "Features/ESP.h"
 #include "Features/GUI.h"
 #include "Features/BombTimer.h"
+#include "Features/SpectatorList.h"
 
 int PreviousTotalHits = 0;
 
@@ -230,6 +231,7 @@ void Cheats::Run()
 			Render::DrawDistance(LocalEntity, Entity, Rect);
 		}
 		Glow::Run(Entity);
+		SpecList::GetSpectatorList(Entity, LocalEntity, EntityAddress);
 	}
 	
 	// Radar render

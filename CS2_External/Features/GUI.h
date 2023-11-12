@@ -284,6 +284,7 @@ namespace GUI
 				ImGui::Checkbox("Bomb Timer", &MenuConfig::bmbTimer);
 				ImGui::SameLine();
 				ImGui::ColorEdit4("##BombTimerCol", reinterpret_cast<float*>(&MenuConfig::BombTimerCol), ImGuiColorEditFlags_NoInputs);
+				ImGui::Checkbox("Spectator List", &MenuConfig::SpecList);
 //				ImGui::Checkbox("Invincible", &MenuConfig::infinity);
 
 				ImGui::NextColumn();
@@ -549,6 +550,7 @@ namespace GUI
 			ImGui::Checkbox("Bomb Timer", &MenuConfig::bmbTimer);
 			ImGui::SameLine();
 			ImGui::ColorEdit4("##BombTimerCol", reinterpret_cast<float*>(&MenuConfig::BombTimerCol), ImGuiColorEditFlags_NoInputs);
+			ImGui::Checkbox("Spectator List", &MenuConfig::SpecList);
 			ImGui::Checkbox("Team Check", &MenuConfig::TeamCheck);
 			ImGui::Checkbox("Bypass OBS", &MenuConfig::BypassOBS);
 

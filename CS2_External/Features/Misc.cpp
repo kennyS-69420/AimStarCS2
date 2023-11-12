@@ -26,6 +26,7 @@ void Misc::CheatList() noexcept
 	CheatText("Bhop", MenuConfig::BunnyHop);
 	CheatText("HitSound", MenuConfig::HitSound);
 	CheatText("Bomb Timer", MenuConfig::bmbTimer);
+	CheatText("Spec List", MenuConfig::SpecList);
 
 	ImGui::End();
 }
