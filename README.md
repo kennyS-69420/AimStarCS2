@@ -70,7 +70,6 @@ External Cheat for CS2
 - Features copied from UnknownCheats
   - [Glow](https://www.unknowncheats.me/forum/counter-strike-2-a/604503-glow-external.html)
   - [Weapon Icon](https://www.unknowncheats.me/forum/counter-strike-2-a/608799-weapon-icon-esp.html)
-  - [Spectator List](https://www.unknowncheats.me/forum/counter-strike-2-a/595247-spectator-list.html)
   - [HitSound](https://www.unknowncheats.me/forum/counter-strike-2-releases/607417-hitsound-external.html)
 - Features intergrated from [Aeonix](https://github.com/Fr0go1/Aeonix-Cs2)
   - Visible Check Box
