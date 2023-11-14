@@ -24,7 +24,6 @@ namespace Offset
 		DWORD EnemySensor = 0x13DC;
 		DWORD GravityScale = 0x434;
 	}Entity;
-
 	struct
 	{
 		DWORD BulletServices = 0x16B0;
@@ -110,6 +109,6 @@ namespace Offset
 		const std::string PlantedC4 = "48 8B 15 ?? ?? ?? ?? FF C0 48 8D 4C 24";
 	}
 
-	// Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½Ö·
+	// Ò»¼ü¸üÐÂ»ùÖ·
 	bool UpdateOffsets();
 }
