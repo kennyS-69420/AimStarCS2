@@ -18,12 +18,12 @@ namespace Offset
 	{
 		DWORD Health = 0x32C;
 		DWORD TeamID = 0x3BF;
-		DWORD IsAlive = 0x7C4;
-		DWORD PlayerPawn = 0x7BC;
-		DWORD iszPlayerName = 0x610;
+		DWORD IsAlive = 0x7DC;
+		DWORD PlayerPawn = 0x5F4;
+		DWORD iszPlayerName = 0x628;
 		DWORD EnemySensor = 0x13DC;
 		DWORD GravityScale = 0x434;
-	} Entity;
+	}Entity;
 
 	struct
 	{
@@ -110,6 +110,6 @@ namespace Offset
 		const std::string PlantedC4 = "48 8B 15 ?? ?? ?? ?? FF C0 48 8D 4C 24";
 	}
 
-	// Ò»¼ü¸üÐÂ»ùÖ·
+	// Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½Ö·
 	bool UpdateOffsets();
 }
