@@ -201,7 +201,7 @@ namespace GUI
 				}
 
 				ImGui::Checkbox("Always Activate", &MenuConfig::TriggerAlways);
-				DWORD TriggerDelayMin = 10, TriggerDelayMax = 300;
+				DWORD TriggerDelayMin = 10, TriggerDelayMax = 1000;
 				ImGui::SliderInt("Delay", &TriggerBot::TriggerDelay, TriggerDelayMin, TriggerDelayMax, "%d ms", ImGuiSliderFlags_None);
 				ImGui::SliderInt("Fake Shot", &TriggerBot::FakeShotDelay, 0, 1000, "%d ms", ImGuiSliderFlags_None);
 
@@ -525,7 +525,7 @@ namespace GUI
 				}
 
 				ImGui::Checkbox("Always Activate", &MenuConfig::TriggerAlways);
-				DWORD TriggerDelayMin = 10, TriggerDelayMax = 300;
+				DWORD TriggerDelayMin = 10, TriggerDelayMax = 1000;
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);
 				ImGui::SliderInt("Delay", &TriggerBot::TriggerDelay, TriggerDelayMin, TriggerDelayMax, "%d ms", ImGuiSliderFlags_None | ImGuiColorEditFlags_NoInputs);
 				ImGui::SetNextItemWidth(MenuConfig::SliderWidth);

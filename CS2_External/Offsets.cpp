@@ -7,7 +7,7 @@ DWORD64 SearchOffsets(std::string Signature, DWORD64 ModuleAddress)
 	DWORD Offsets = 0;
 
 	TempAddressList = ProcessMgr.SearchMemory(Signature, ModuleAddress, ModuleAddress + 0x4000000);
-	
+
 	if (TempAddressList.size() <= 0)
 		return 0;
 
@@ -24,10 +24,6 @@ bool Offset::UpdateOffsets()
 	if (ClientDLL == 0)
 		return false;
 
-	DWORD64 ServerDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("server.dll"));
-	if (ClientDLL == 0)
-		return false;
-	
 	DWORD64 TempAddress = 0;
 
 	TempAddress = SearchOffsets(Offset::Signatures::EntityList, ClientDLL);
@@ -60,7 +56,7 @@ bool Offset::UpdateOffsets()
 	if (!ProcessMgr.ReadMemory(TempAddress, TempAddress))
 		return false;
 
-	Offset::ViewAngle = TempAddress + 0x4518 - ClientDLL;
+	Offset::ViewAngle = TempAddress + 0x6140 - ClientDLL;
 
 	TempAddress = SearchOffsets(Offset::Signatures::LocalPlayerPawn, ClientDLL);
 	if (TempAddress == 0)
@@ -73,19 +69,5 @@ bool Offset::UpdateOffsets()
 		return false;
 
 	Offset::ForceJump = TempAddress + 0x30 - ClientDLL;
-
-	TempAddress = SearchOffsets(Offset::Signatures::PlantedC4, ClientDLL);
-	if (TempAddress == 0)
-		return false;
-
-	Offset::PlantedC4 = TempAddress - ClientDLL;
-
-	/*
-	TempAddress = SearchOffsets(Offset::Signatures::InventoryServices, ClientDLL);
-	if (TempAddress == 0)
-		return false;
-
-	Offset::InventoryServices = TempAddress + 0x608 - ClientDLL;*/
-
 	return true;
 }
