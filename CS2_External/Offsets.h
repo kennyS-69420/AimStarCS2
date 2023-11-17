@@ -70,7 +70,7 @@ namespace Offset
 
 	struct
 	{
-		DWORD m_hPawn = 0x5DC;
+		DWORD m_hPawn = 0x60C;
 		DWORD m_pObserverServices = 0x10C0;
 		DWORD m_hObserverTarget = 0x44;
 		DWORD m_hController = 0x123C;
@@ -87,14 +87,6 @@ namespace Offset
 		DWORD m_flDefuseCountDown = 0xED0;
 		DWORD m_nBombSite = 0xE84;
 	} C4;
-
-	// Never have a try for external skin changer
-	struct
-	{
-		DWORD MusicID = 0x40;
-		DWORD Rank = 0x44;
-		DWORD AuthoritativeWeaponSlots = 0x70;
-	} Inventory;
 
 	namespace Signatures
 	{

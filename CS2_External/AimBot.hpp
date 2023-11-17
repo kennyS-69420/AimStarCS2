@@ -6,7 +6,6 @@
 #include "MenuConfig.hpp"
 #include <iostream>
 #include "View.hpp"
-#include "Mouse.h"
 
 extern "C" {
 #include "Features\Mouse.h"
@@ -99,8 +98,7 @@ namespace AimControl
 
             if (!Smooth)
             {
-                //mouse_event(MOUSEEVENTF_MOVE, (DWORD)(TargetX), (DWORD)(TargetY), NULL, NULL);
-                Mouse::MoveMouse((int)TargetX, (int)TargetY);
+                mouse_event(MOUSEEVENTF_MOVE, (DWORD)(TargetX), (DWORD)(TargetY), NULL, NULL);
                 return;
             }
 
@@ -133,8 +131,7 @@ namespace AimControl
                     TargetY = -1;
                 }
             }
-            //mouse_event(MOUSEEVENTF_MOVE, TargetX, TargetY, NULL, NULL);
-            Mouse::MoveMouse((int)TargetX, (int)TargetY);
+            mouse_event(MOUSEEVENTF_MOVE, TargetX, TargetY, NULL, NULL);
         }
     }
 }

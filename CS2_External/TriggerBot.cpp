@@ -1,5 +1,4 @@
 #include "TriggerBot.h"
-#include "Mouse.h"
 
 DWORD uHandle = 0;
 DWORD64 ListEntry = 0;
@@ -11,8 +10,7 @@ void TriggerBot::ReleaseMouseButton()
 {
 	// This is determining how long the trigger bot should wait between shots
 	std::this_thread::sleep_for(std::chrono::milliseconds(TriggerDelay));
-	//mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-	Mouse::SimulateLeftButtonUp();
+	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 }
 
 void TriggerBot::Run(const CEntity& LocalEntity)
@@ -47,8 +45,7 @@ void TriggerBot::Run(const CEntity& LocalEntity)
 		const bool isAlreadyShooting = GetAsyncKeyState(VK_LBUTTON) < 0;
 		if (!isAlreadyShooting)
 		{
-			//mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-			Mouse::SimulateLeftButtonDown();
+			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 			std::thread TriggerThread(ReleaseMouseButton);
 			TriggerThread.detach();
 		}
