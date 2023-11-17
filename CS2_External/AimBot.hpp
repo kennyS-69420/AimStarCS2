@@ -15,7 +15,7 @@ extern "C" {
 
 namespace AimControl
 {
-    inline int HotKey = VK_LMENU;
+    inline int HotKey = VK_XBUTTON2;
     inline float AimFov = 5;
     inline float Smooth = 2.0f;
     inline Vec2 RCSScale = { 1.f,1.f };
