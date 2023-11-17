@@ -14,9 +14,8 @@ External Cheat for CS2
 ## NOTICE
 ```
 1. This cheat is based on Tkazer's.
-2. I won't be releasing any compiled code on Github anymore
-3. Using the cheat without bypassing VAC will result in account ban
-4. Use at your own risk
+2. Using the cheat without bypassing VAC will result in account ban
+3. Use at your own risk
 ```
 [COMMON ISSUES](https://github.com/CowNowK/AimStarCS2/discussions/19)
 
