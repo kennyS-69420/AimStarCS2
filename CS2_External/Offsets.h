@@ -109,6 +109,5 @@ namespace Offset
 		const std::string PlantedC4 = "48 8B 15 ?? ?? ?? ?? FF C0 48 8D 4C 24";
 	}
 
-	// Ò»¼ü¸üÐÂ»ùÖ·
 	bool UpdateOffsets();
 }
