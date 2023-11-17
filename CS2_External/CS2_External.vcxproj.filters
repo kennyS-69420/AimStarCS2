@@ -134,7 +134,7 @@
     <ClInclude Include="Sources\WeaponIcon.h" />
     <ClInclude Include="Features\BombTimer.h" />
     <ClInclude Include="Features\Misc.h" />
-    <ClInclude Include="Utils\VACbypass.h" />
+    <ClInclude Include="Utils\Handles.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OS-ImGui\imgui\imgui.cpp">

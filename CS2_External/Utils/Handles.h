@@ -34,8 +34,26 @@ namespace VAC
 		return -2;
 	}
 
-	int GetHandle()
+	int Handle_Close(DWORD Handle)
 	{
+		HANDLE hHandle = (HANDLE)Handle;
+		if (!CloseHandle(hHandle))
+		{
+			cout << "Close handle failed: " << GetLastError() << endl;
+		}
+	}
+
+	int Handle_Close(HANDLE hProcess)
+	{
+		if (!CloseHandle(hProcess))
+		{
+			cout << "Close handle failed: " << GetLastError() << endl;
+		}
+	}
+
+	int CloseQueryInfoCheck()
+	{
+		// Get steam handle
 		long pid = GetProcessIdFromName("steam.exe");
 		HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, pid);
 		if (hProcess == NULL)
@@ -43,6 +61,9 @@ namespace VAC
 			cout << "Open process failed: " << GetLastError() << endl;
 			return 1;
 		}
+
+		// 
+		
 	}
 }
 
