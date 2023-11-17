@@ -18,9 +18,9 @@ namespace Offset
 	{
 		DWORD Health = 0x32C;
 		DWORD TeamID = 0x3BF;
-		DWORD IsAlive = 0x7DC;
-		DWORD PlayerPawn = 0x5F4;
-		DWORD iszPlayerName = 0x628;
+		DWORD IsAlive = 0x7F4;
+		DWORD PlayerPawn = 0x7EC;
+		DWORD iszPlayerName = 0x640;
 		DWORD EnemySensor = 0x13DC;
 		DWORD GravityScale = 0x434;
 	}Entity;
@@ -100,7 +100,7 @@ namespace Offset
 	{
 		const std::string InventoryServices = "E8 ?? ?? ?? ?? 8B 45 D0 48 8B 55 D8";
 		const std::string GlobalVars = "48 89 0D ?? ?? ?? ?? 48 89 41";
-		const std::string EntityList = "48 8B 0D ?? ?? ?? ?? 48 89 7C 24 ?? 8B FA C1";
+		const std::string EntityList = "48 8B 0D ?? ?? ?? ?? 48 89 7C 24 ?? 8B FA C1 EB";
 		const std::string LocalPlayerController = "48 8B 05 ?? ?? ?? ?? 48 85 C0 74 4F";
 		const std::string ViewAngles = "48 8B 0D ?? ?? ?? ?? E9 ?? ?? ?? ?? CC CC CC CC 40 55";
 		const std::string ViewMatrix = "48 8D 0D ?? ?? ?? ?? 48 C1 E0 06";
