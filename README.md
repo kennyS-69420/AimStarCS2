@@ -12,8 +12,13 @@ External Cheat for CS2
 > I will only update this project on weekends, bcauz Ima studnt need 2 go 2 the f*ckin schooooooooool👎🏻
 
 ## NOTICE
-- I made most of the modifications based on Tkazer's.
-- [COMMON ISSUES](https://github.com/CowNowK/AimStarCS2/discussions/19)
+```
+1. This cheat is based on Tkazer's.
+2. I won't be releasing any compiled code on Github anymore
+3. Using the cheat without bypassing VAC will result in account ban
+4. Use at your own risk
+```
+[COMMON ISSUES](https://github.com/CowNowK/AimStarCS2/discussions/19)
 
 ***
 ![](/Image1.png)
