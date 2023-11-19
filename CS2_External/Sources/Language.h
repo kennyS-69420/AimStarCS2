@@ -499,24 +499,24 @@ namespace Lang
 		Global.SwitchButton = u8"Включить";
 
 		// ESP
-		ESPtext.FeatureName = u8" ESP (ЕСП)";
-		ESPtext.Box = u8"Бокс";
-		ESPtext.BoxRounding = u8"Округление бокса";
-		ESPtext.FilledBox = u8"Заполненный бокс";
-		ESPtext.FilledAlpha = u8"Прозрачность заполненного бокса";
-		ESPtext.Skeleton = u8"Скелет";
-		ESPtext.HeadBox = u8"Бокс головы";
-		ESPtext.EyeRay = u8"Направление зрения";
-		ESPtext.HealthBar = u8"Полоска здоровья";
-		ESPtext.Weapon = u8"Оружие";
-		ESPtext.Distance = u8"Дистанция";
-		ESPtext.PlayerName = u8"Имя";
+		ESPtext.FeatureName = u8" ESP (WH)";
+		ESPtext.Box = u8"Обводка";
+		ESPtext.BoxRounding = u8"Округление обводки";
+		ESPtext.FilledBox = u8"Заполненная обводка";
+		ESPtext.FilledAlpha = u8"Прозрачность заполненной обводки";
+		ESPtext.Skeleton = u8"Скелет цели";
+		ESPtext.HeadBox = u8"Бокс головы цели";
+		ESPtext.EyeRay = u8"Направление зрения цели";
+		ESPtext.HealthBar = u8"Полоска здоровья цели";
+		ESPtext.Weapon = u8"Оружие цели";
+		ESPtext.Distance = u8"Дистанция до цели";
+		ESPtext.PlayerName = u8"Имя цели";
 		ESPtext.SnapLine = u8"Линия к противнику";
 		ESPtext.LinePosList = u8"Позиция линии";
 		ESPtext.VisCheck = u8"Только если цель в поле зрения";
-		ESPtext.Preview = u8"Отобразить окно с вх";
-		ESPtext.CollapseHead = u8"Сексуальный ВХ";
-		ESPtext.Penis = u8"Показать член";
+		ESPtext.Preview = u8"Отобразить предпросмотр WH";
+		ESPtext.CollapseHead = u8"WH для гениев";
+		ESPtext.Penis = u8"Показать пенис";
 		ESPtext.PenisLength = u8"Длина";
 		ESPtext.PenisSize = u8"Размер";
 
@@ -524,16 +524,16 @@ namespace Lang
 		AimbotText.FeatureName = u8" Аимбот";
 		AimbotText.HotKeyList = u8"Горячая клавиша";
 		AimbotText.Toggle = u8"Режим нажатия";
-		AimbotText.DrawFov = u8"Отобразить фов";
+		AimbotText.DrawFov = u8"Отобразить поле зрение";
 		AimbotText.VisCheck = u8"Только если цель в поле зрения";
 		AimbotText.JumpCheck = u8"Только на земле ";
-		AimbotText.FovSlider = u8"FOV (ФОВ)";
-		AimbotText.SmoothSlider = u8"Плавность";
+		AimbotText.FovSlider = u8"Радиус поля зрения";
+		AimbotText.SmoothSlider = u8"Сглаживание";
 		AimbotText.BoneList = u8"Скелет";
-		AimbotText.Tip = u8"Аимбот не работает пока меню открыто";
+		AimbotText.Tip = u8"Для работы Аимбота нужно закрыть меню (HOME)";
 
 		// Glow
-		GlowText.FeatureName = u8" Подсветка";
+		GlowText.FeatureName = u8" Свечение";
 
 		// Radar
 		RadarText.FeatureName = u8" Радар";
@@ -549,7 +549,7 @@ namespace Lang
 		TriggerText.FeatureName = u8" Триггербот";
 		TriggerText.HotKeyList = u8"Горячая клавиша";
 		TriggerText.Toggle = u8"Всегда активен";
-		TriggerText.DelaySlider = u8"Задержка между выстрелами";
+		TriggerText.DelaySlider = u8"Задержка перед выстрелом";
 		TriggerText.FakeShotSlider = u8"Продолжительность выстрела";
 
 		// Crosshairs
@@ -568,41 +568,41 @@ namespace Lang
 		CrosshairsText.Circle = u8"Круг";
 		CrosshairsText.RadiusSlider = u8"Радиус круга";
 		CrosshairsText.TargetCheck = u8"Нацеливание прицела";
-		CrosshairsText.TeamCheck = u8"Проверка на тиммейта";
+		CrosshairsText.TeamCheck = u8"Режим своих напарников";
 
 		// Misc
-		MiscText.FeatureName = u8" Остальное";
+		MiscText.FeatureName = u8" Дополнительно";
 		MiscText.ThemeList = u8"Тема";
 		MiscText.StyleList = u8"Стиль";
-		MiscText.HeadshotLine = u8"Линия головы";
-		MiscText.SpecCheck = u8"Софт в наблюдателях";
-		MiscText.NoFlash = u8"Нету молока от флешки";
+		MiscText.HeadshotLine = u8"Высотная линия головы";
+		MiscText.SpecCheck = u8"Отображение при наблюдении";
+		MiscText.NoFlash = u8"Анти-слепота";
 		MiscText.HitSound = u8"Звук попадания";
-		MiscText.bmbTimer = u8"Таймер на бомбе";
+		MiscText.bmbTimer = u8"Таймер до взрыва C4";
 		MiscText.SpecList = u8"Список наблюдателей";
 		MiscText.Bhop = u8"Бхоп";
-		MiscText.Watermark = u8"Метка софта";
-		MiscText.CheatList = u8"Список читов";
-		MiscText.TeamCheck = u8"Проверка на тиммейта";
-		MiscText.AntiRecord = u8"Bypass OBS";
+		MiscText.Watermark = u8"Водяной знак";
+		MiscText.CheatList = u8"Список активных читов";
+		MiscText.TeamCheck = u8"Режим своих напарников";
+		MiscText.AntiRecord = u8"Обход записи/демонстрации";
 
 		MiscText.LanguageList = u8"Язык";
 
 		// Config Menu
-		ConfigText.FeatureName = u8" Конфиг";
-		ConfigText.Load = u8"Загрузить выбранное";
-		ConfigText.Save = u8"Сохранить выбранное";
-		ConfigText.Delete = u8"Удалить выбранное";
-		ConfigText.Reset = u8"Ресетнуть конфиг";
-		ConfigText.Create = u8"Создать конфиг";
-		ConfigText.OpenFolder = u8"Открыть папку";
-		ConfigText.SeparateLine = u8"Сохранить конфиг";
+		ConfigText.FeatureName = u8" Конфигурация";
+		ConfigText.Load = u8"Загрузить выделенное";
+		ConfigText.Save = u8"Сохранить выделенное";
+		ConfigText.Delete = u8"Удалить выделенное";
+		ConfigText.Reset = u8"Восстановить стандартные настройки";
+		ConfigText.Create = u8"Создать конфигурацию";
+		ConfigText.OpenFolder = u8"Открыть папку с конфигурациями";
+		ConfigText.SeparateLine = u8"Сохранить конфигурацию";
 
 		// Readme Menu
-		ReadMeText.FeatureName = u8" ПРОЧИТАЙМЕНЯ";
+		ReadMeText.FeatureName = u8" ОТКРОЙ";
 		ReadMeText.LastUpdate = u8"Последнее обновление: ";
 		ReadMeText.SourceButton = u8" Исходный код";
-		ReadMeText.DiscordButton = u8" Присоединиться к дискорду";
+		ReadMeText.DiscordButton = u8" Присоединиться к дискорд серверу";
 		ReadMeText.OffsetsTitle = u8"Оффсеты:";
 	}
 
