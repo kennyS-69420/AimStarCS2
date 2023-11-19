@@ -16,6 +16,7 @@ External Cheat for CS2
 1. This cheat is based on Tkazer's.
 2. Using the cheat without bypassing VAC will result in account ban
 3. Use at your own risk
+4. Only publish on Discord
 ```
 [COMMON ISSUES](https://github.com/CowNowK/AimStarCS2/discussions/19)
 
