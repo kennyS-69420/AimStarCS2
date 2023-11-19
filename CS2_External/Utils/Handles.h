@@ -5,7 +5,7 @@
 #include <comdef.h>
 using namespace std;
 
-namespace VAC
+namespace Handles
 {
 	long GetProcessIdFromName(const char* name)
 	{

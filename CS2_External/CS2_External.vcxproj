@@ -149,6 +149,7 @@
     <ClInclude Include="Features\GUI.h" />
     <ClInclude Include="Features\Misc.h" />
     <ClInclude Include="Features\Mouse.h" />
+    <ClInclude Include="Features\RCS.h" />
     <ClInclude Include="Features\SpectatorList.h" />
     <ClInclude Include="Features\StyleChanger.h" />
     <ClInclude Include="Font\fontArray.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Radar\Radar.h" />
     <ClInclude Include="Render.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Sources\Language.h" />
     <ClInclude Include="Sources\WeaponIcon.h" />
     <ClInclude Include="TriggerBot.h" />
     <ClInclude Include="Utils\ConfigMenu.hpp" />

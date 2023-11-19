@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <string>
 #include <time.h>
 
 #include "..\OS-ImGui\imgui\imgui.h"
@@ -12,6 +13,15 @@
 
 namespace Misc
 {
+	// Convert std::string into std::wstring
+	static inline std::wstring STR2LPCWSTR(const std::string& str)
+	{
+		int size = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, nullptr, 0);
+		std::wstring result(size, L'\0');
+		MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, &result[0], size);
+		return result;
+	}
+
 	static inline void CheatText(const char* Cheat, bool config)
 	{
 		if (config)

@@ -8,8 +8,7 @@ bool AllowShoot = false;
 
 void TriggerBot::ReleaseMouseButton()
 {
-	// This is determining how long the trigger bot should wait between shots
-	std::this_thread::sleep_for(std::chrono::milliseconds(TriggerDelay));
+	std::this_thread::sleep_for(std::chrono::milliseconds(FakeShotDelay));
 	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 }
 

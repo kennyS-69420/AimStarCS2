@@ -19,8 +19,16 @@ int main()
 	"Source Code: https://github.com/CowNowK/AimStarCS2\n"
 	"\n"
 	"- This features may result in VAC Bans, use at your own risk:\n"
-	"	* Bhop, NoFlash, Glow\n"
+	"	* Bhop, NoFlash\n"
 	"- Press [INS] to show or hide Menu.\n"
+	"- Language Bug: some very special characters may not be displayed\n"
+	"\n"
+	"#Disclamers:\n"
+	"- Because AimStar has too many users, and there are many derivative cheats that are being sold or free. AimStar may now be detected\n"
+	"- Use at your own risk\n"
+	"\n"
+	"#Contributors: \n"
+	"Shinyaluvs, Skarbor, KeysIsCool, Kenny, tokinaa, faster_bbc, vsantos1, 5mmod, gScream, Hazetick, styx\n"
 	"\n"
 	);
 
@@ -33,6 +41,7 @@ int main()
 	}
 	MenuConfig::path = documentsPath;
 	MenuConfig::path += "\\AimStar";
+	MenuConfig::SoundPath = MenuConfig::path + "\\Sounds";
 
 	switch (ProcessStatus) {
 	case 1:
@@ -80,6 +89,19 @@ int main()
 		else
 		{
 			std::cerr << "[Info] Error: Failed to create the config directory." << std::endl;
+			goto END;
+		}
+	}
+
+	if (fs::exists(MenuConfig::SoundPath))
+		std::cout << "[Info] Hitsound folder connected: " << MenuConfig::SoundPath << std::endl;
+	else
+	{
+		if (fs::create_directory(MenuConfig::SoundPath))
+			std::cout << "[Info] Hitsound folder created: " << MenuConfig::SoundPath << std::endl;
+		else
+		{
+			std::cerr << "[Info] Error: Failed to create the file directory." << std::endl;
 			goto END;
 		}
 	}

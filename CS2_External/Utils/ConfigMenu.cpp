@@ -6,12 +6,15 @@
 #include <filesystem>
 #include <string>
 #include "../Font/IconsFontAwesome5.h"
+#include "../Sources/Language.h"
 
 namespace ConfigMenu {
 
-	void RenderConfigMenu() {
-		// Config
-		if (ImGui::BeginTabItem(ICON_FA_FOLDER_OPEN " Config"))
+	
+
+	void RenderConfigMenu(const char *Tab) {
+		// Config		
+		if (ImGui::BeginTabItem(Tab))
 		{
 			ImGui::Columns(2, nullptr, false);
 			ImGui::SetColumnOffset(1, 170.0f);
@@ -126,6 +129,8 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		ESPConfig::BoxFilledVisColor = ImColor(0, 0, 255, 255);
+		ESPConfig::FilledVisBox = false;
 		MenuConfig::SpecList = false;
 		MenuConfig::BombTimerCol = ImColor(255, 120, 0, 255);
 		MenuConfig::bmbTimer = false;
@@ -181,7 +186,7 @@ namespace ConfigMenu {
 		MenuConfig::FovLineSize = 60.0f;
 		TriggerBot::TriggerDelay = 90;
 		TriggerBot::FakeShotDelay = 500;
-		AimControl::RCSBullet = 1;
+		RCS::RCSBullet = 1;
 		MenuConfig::TriggerHotKey = 0;
 		TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
 		AimControl::RCSScale = ImVec2(1.2f, 1.4f);

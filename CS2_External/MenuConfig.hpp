@@ -5,6 +5,9 @@
 namespace MenuConfig
 {
 	inline std::string path = "";
+	inline std::string SoundPath = "";
+	// 0: English 1: SimplifiedChinese
+	inline int Language = 0;
 
 	inline bool AirJump = false;
 	inline float ComboWidth = 100.f;
@@ -125,6 +128,7 @@ namespace ESPConfig
 	inline bool ShowPreview = true;
 	inline bool VisibleCheck = false;
 	inline bool FilledBox = false;
+	inline bool FilledVisBox = false;
 	// 0: normal 1: Flat
 	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = 5.0f;
@@ -135,7 +139,8 @@ namespace ESPConfig
 	inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
 	inline ImColor HeadBoxColor = ImColor(255, 255, 255, 255);
 	inline ImColor VisibleColor = ImColor(255, 196, 0, 255);
-	inline ImColor FilledColor = ImColor(0, 194, 255, 255);
+	inline ImColor FilledColor = ImColor(255, 255, 255, 255);
+	inline ImColor BoxFilledVisColor = ImColor(0, 0, 255, 255);
 
 	// Penis Config
 	inline bool ShowPenis = false;

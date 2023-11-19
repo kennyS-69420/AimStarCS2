@@ -24,6 +24,10 @@ bool Offset::UpdateOffsets()
 	if (ClientDLL == 0)
 		return false;
 
+	DWORD64 ServerDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("server.dll"));
+	if (ClientDLL == 0)
+		return false;
+
 	DWORD64 TempAddress = 0;
 
 	TempAddress = SearchOffsets(Offset::Signatures::EntityList, ClientDLL);

@@ -6,6 +6,7 @@
 #include "MenuConfig.hpp"
 #include <iostream>
 #include "View.hpp"
+#include "Features/RCS.h"
 
 extern "C" {
 #include "Features\Mouse.h"
@@ -19,7 +20,6 @@ namespace AimControl
     inline float AimFov = 5;
     inline float Smooth = 2.0f;
     inline Vec2 RCSScale = { 1.f,1.f };
-    inline int RCSBullet = 1;
     inline std::vector<int> HotKeyList{ VK_LMENU, VK_LBUTTON, VK_RBUTTON, VK_XBUTTON1, VK_XBUTTON2, VK_CAPITAL, VK_LSHIFT, VK_LCONTROL };
 
     inline void SetHotKey(int Index)

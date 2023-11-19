@@ -9,6 +9,7 @@
 
 #include "Features/ESP.h"
 #include "Features/GUI.h"
+#include "Features/RCS.H"
 #include "Features/BombTimer.h"
 #include "Features/SpectatorList.h"
 
@@ -136,6 +137,7 @@ void Cheats::Run()
 	float MaxAimDistance = 100000;
 	Vec3  HeadPos{ 0,0,0 };
 	Vec3  AimPos{ 0,0,0 };
+	Vec2  Angles{ 0,0 };
 
 	// Radar Data
 	Base_Radar Radar;
@@ -266,6 +268,13 @@ void Cheats::Run()
 
 	bmb::RenderWindow();
 
+	// RCS
+	if (MenuConfig::RCS)
+	{
+		RCS::GetAngles(LocalEntity, Angles);
+		std::cout << "(" << Angles.x << ", " << Angles.y << ")" << std::endl;
+		RCS::Run(LocalEntity, Angles, MenuConfig::AimBot);
+	}
 	// Aimbot
 	if (MenuConfig::AimBot)
 	{

@@ -3897,6 +3897,37 @@ const ImWchar*  ImFontAtlas::GetGlyphRangesChineseFull()
     return &ranges[0];
 }
 
+const ImWchar* ImFontAtlas::GetGlyphRangesAll()
+{
+    static const ImWchar ranges[] =
+    {
+        0x0020, 0x00FF, 
+        0x0102, 0x0103, 
+        0x0110, 0x0111, 
+        0x0128, 0x0129, 
+        0x0168, 0x0169, 
+        0x01A0, 0x01A1, 
+        0x01AF, 0x01B0, 
+        0x0370, 0x03FF, 
+        0x0400, 0x052F, 
+        0x0E00, 0x0E7F, 
+        0x1EA0, 0x1EF9,
+        0x2000, 0x206F, 
+        0x2010, 0x205E, 
+        0x2DE0, 0x2DFF, 
+        0x3000, 0x30FF, 
+        0x3131, 0x3163, 
+        0x31F0, 0x31FF, 
+        0xAC00, 0xD7A3, 
+        0xA640, 0xA69F, 
+        0xFF00, 0xFFEF, 
+        0xFFFD, 0xFFFD, 
+        0x4e00, 0x9FAF, 
+        0,
+    };
+    return &ranges[0];
+}
+
 static void UnpackAccumulativeOffsetsIntoRanges(int base_codepoint, const short* accumulative_offsets, int accumulative_offsets_count, ImWchar* out_ranges)
 {
     for (int n = 0; n < accumulative_offsets_count; n++, out_ranges += 2)

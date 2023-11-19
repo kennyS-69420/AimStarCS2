@@ -6,6 +6,7 @@
 #include "../MenuConfig.hpp" // Include your global settings header
 #include "../TriggerBot.h"
 #include "../AimBot.hpp"
+#include "../Features/RCS.h"
 
 namespace MyConfigSaver {
 
@@ -18,6 +19,8 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
+        configFile << "BoxFilledVisColor " << ESPConfig::BoxFilledVisColor.Value.x << ESPConfig::BoxFilledVisColor.Value.y << ESPConfig::BoxFilledVisColor.Value.z << ESPConfig::BoxFilledVisColor.Value.w << std::endl;
+        configFile << "BoxFilledVisCheck " << ESPConfig::FilledVisBox << std::endl;
         configFile << "SpecList " << MenuConfig::SpecList << std::endl;
         configFile << "BombTimerCol " << MenuConfig::BombTimerCol.Value.x << MenuConfig::BombTimerCol.Value.y << MenuConfig::BombTimerCol.Value.z << MenuConfig::BombTimerCol.Value.w << std::endl;
         configFile << "bmbTimer " << MenuConfig::bmbTimer << std::endl;
@@ -40,7 +43,7 @@ namespace MyConfigSaver {
         configFile << "ShowBoxESP " << ESPConfig::ShowBoxESP << std::endl;
         configFile << "BoxRounding " << ESPConfig::BoxRounding << std::endl;
         configFile << "TriggerHotKey " << MenuConfig::TriggerHotKey << std::endl;
-        configFile << "RCSBullet " << AimControl::RCSBullet << std::endl;
+        configFile << "RCSBullet " << RCS::RCSBullet << std::endl;
         configFile << "ShowHealthBar " << ESPConfig::ShowHealthBar << std::endl;
         configFile << "AimFov " << AimControl::AimFov << std::endl;
         configFile << "FovLineSize " << MenuConfig::FovLineSize << std::endl;
@@ -137,6 +140,8 @@ namespace MyConfigSaver {
             std::string key;
             if (iss >> key) {
                 if (key == "ShowBoneESP") iss >> ESPConfig::ShowBoneESP;
+                else if (key == "BoxFilledVisColor") iss >> ESPConfig::BoxFilledVisColor.Value.x >> ESPConfig::BoxFilledVisColor.Value.y >> ESPConfig::BoxFilledVisColor.Value.z >> ESPConfig::BoxFilledVisColor.Value.w;
+                else if (key == "BoxFilledVisCheck") iss >> ESPConfig::FilledVisBox;
                 else if (key == "SpecList") iss >> MenuConfig::SpecList;
                 else if (key == "BombTimerCol") iss >> MenuConfig::BombTimerCol.Value.x >> MenuConfig::BombTimerCol.Value.y >> MenuConfig::BombTimerCol.Value.z >> MenuConfig::BombTimerCol.Value.w;
                 else if (key == "bmbTimer") iss >> MenuConfig::bmbTimer;
@@ -158,7 +163,7 @@ namespace MyConfigSaver {
                 else if (key == "ShowBoxESP") iss >> ESPConfig::ShowBoxESP;
                 else if (key == "BoxRounding") iss >> ESPConfig::BoxRounding;
                 else if (key == "TriggerHotKey") { iss >> MenuConfig::TriggerHotKey; TriggerBot::SetHotKey(MenuConfig::TriggerHotKey); }
-                else if (key == "RCSBullet") iss >> AimControl::RCSBullet;
+                else if (key == "RCSBullet") iss >> RCS::RCSBullet;
                 else if (key == "ShowHealthBar") iss >> ESPConfig::ShowHealthBar;
                 else if (key == "AimFov") iss >> AimControl::AimFov;
                 else if (key == "FovLineSize") iss >> MenuConfig::FovLineSize;

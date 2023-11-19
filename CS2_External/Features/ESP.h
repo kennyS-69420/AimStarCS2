@@ -61,10 +61,23 @@ namespace ESP
 		Render::DrawHeadCircle(Entity, ESPConfig::HeadBoxColor);
 
 		// box
-		if (ESPConfig::FilledBox)
-		{
+		if (ESPConfig::FilledBox) {
 			ImColor FlatBoxCol = { ESPConfig::FilledColor.Value.x, ESPConfig::FilledColor.Value.y, ESPConfig::FilledColor.Value.z, ESPConfig::BoxAlpha };
-			Gui.RectangleFilled({ Rect.x,Rect.y }, { Rect.z,Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+			ImColor FlatBoxVisCol = { ESPConfig::BoxFilledVisColor.Value.x, ESPConfig::BoxFilledVisColor.Value.y, ESPConfig::BoxFilledVisColor.Value.z, ESPConfig::BoxAlpha };
+			if (ESPConfig::FilledVisBox) {
+				// visCheck from @KeysIsCool
+				if ((Entity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex)) ||
+					(LocalEntity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex))) {
+
+					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxVisCol, ESPConfig::BoxRounding);
+				}
+				else {
+					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+				}
+			}
+			else {
+				Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+			}
 		}
 		if (ESPConfig::ShowBoxESP)
 		{	
