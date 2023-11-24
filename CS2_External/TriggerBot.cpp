@@ -1,4 +1,6 @@
 #include "TriggerBot.h"
+#include "MouseSim.h"
+
 
 DWORD uHandle = 0;
 DWORD64 ListEntry = 0;
@@ -9,7 +11,8 @@ bool AllowShoot = false;
 void TriggerBot::ReleaseMouseButton()
 {
 	std::this_thread::sleep_for(std::chrono::milliseconds(FakeShotDelay));
-	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+	//mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+	MouseSim::SimulateLeftButtonUp();
 }
 
 void TriggerBot::Run(const CEntity& LocalEntity)
@@ -44,7 +47,8 @@ void TriggerBot::Run(const CEntity& LocalEntity)
 		const bool isAlreadyShooting = GetAsyncKeyState(VK_LBUTTON) < 0;
 		if (!isAlreadyShooting)
 		{
-			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+			//mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+			MouseSim::SimulateLeftButtonDown();
 			std::thread TriggerThread(ReleaseMouseButton);
 			TriggerThread.detach();
 		}

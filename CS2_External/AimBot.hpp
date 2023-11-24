@@ -7,6 +7,7 @@
 #include <iostream>
 #include "View.hpp"
 #include "Features/RCS.h"
+#include"MouseSim.h"
 
 extern "C" {
 #include "Features\Mouse.h"
@@ -98,7 +99,8 @@ namespace AimControl
 
             if (!Smooth)
             {
-                mouse_event(MOUSEEVENTF_MOVE, (DWORD)(TargetX), (DWORD)(TargetY), NULL, NULL);
+                //mouse_event(MOUSEEVENTF_MOVE, (DWORD)(TargetX), (DWORD)(TargetY), NULL, NULL);
+                MouseSim::MoveMouse((int)TargetX, (int)TargetY);
                 return;
             }
 
@@ -131,7 +133,8 @@ namespace AimControl
                     TargetY = -1;
                 }
             }
-            mouse_event(MOUSEEVENTF_MOVE, TargetX, TargetY, NULL, NULL);
+            //mouse_event(MOUSEEVENTF_MOVE, TargetX, TargetY, NULL, NULL);
+            MouseSim::MoveMouse((int)TargetX, (int)TargetY);
         }
     }
 }
