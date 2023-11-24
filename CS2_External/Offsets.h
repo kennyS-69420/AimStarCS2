@@ -44,13 +44,13 @@ namespace Offset
 		DWORD iTeamNum = 0x3BF;
 		DWORD CameraServices = 0x10E0; // m_pCameraServices
 		DWORD iFovStart = 0x214;
-		DWORD fFlags = 0x3C8;
-		DWORD bSpottedByMask = 0x1630 + 0xC; // entitySpottedState + bSpottedByMask
+		DWORD fFlags = 0x63;
+		DWORD bSpottedByMask = 0x1A28 + 0xC; // entitySpottedState + bSpottedByMask
 	} Pawn;
 
 	struct
 	{
-		DWORD CurrentHealth = 0x2A8; // m_iHealth
+		DWORD CurrentHealth = 0x32C; // m_iHealth
 	} ServerPawn;
 
 	struct
