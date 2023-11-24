@@ -19,7 +19,7 @@ namespace Offset
 		DWORD Health = 0x32C;
 		DWORD TeamID = 0x3BF;
 		DWORD IsAlive = 0x7F4;
-		DWORD PlayerPawn = 0x7EC;
+		DWORD PlayerPawn = 0x60C;
 		DWORD iszPlayerName = 0x640;
 		DWORD EnemySensor = 0x13DC;
 		DWORD GravityScale = 0x434;
@@ -50,7 +50,7 @@ namespace Offset
 
 	struct
 	{
-		DWORD CurrentHealth = 0x2A8; // m_iHealth
+		DWORD CurrentHealth = 0x32C; // m_iHealth
 	} ServerPawn;
 
 	struct
@@ -70,7 +70,7 @@ namespace Offset
 
 	struct
 	{
-		DWORD m_hPawn = 0x60C;
+		DWORD m_hPawn = 0x5DC;
 		DWORD m_pObserverServices = 0x10C0;
 		DWORD m_hObserverTarget = 0x44;
 		DWORD m_hController = 0x123C;
