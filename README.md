@@ -9,6 +9,12 @@ External Cheat for CS2
 
 `I create a discord server` **->** [AimShit](https://discord.gg/dqNDkFD6Jw)
 
+`Server destroyed bc this fkn orphan rebelled, we r making a new one plz wait`
+
+![image](https://github.com/CowNowK/AimStarCS2/assets/133740174/0df8c21b-98b4-4fbd-86f9-47bc412ac4c0)
+![image](https://github.com/CowNowK/AimStarCS2/assets/133740174/606986f5-10c2-4133-83bd-9f959306ed5c)
+
+
 > I will only update this project on weekends, bcauz Ima studnt need 2 go 2 the f*ckin schooooooooool👎🏻
 
 ## NOTICE
