@@ -19,7 +19,7 @@ namespace Offset
 		DWORD Health = 0x32C;
 		DWORD TeamID = 0x3BF;
 		DWORD IsAlive = 0x7F4;
-		DWORD PlayerPawn = 0x60C;
+		DWORD PlayerPawn = 0x7EC;
 		DWORD iszPlayerName = 0x640;
 		DWORD EnemySensor = 0x13DC;
 		DWORD GravityScale = 0x434;
@@ -44,8 +44,8 @@ namespace Offset
 		DWORD iTeamNum = 0x3BF;
 		DWORD CameraServices = 0x10E0; // m_pCameraServices
 		DWORD iFovStart = 0x214;
-		DWORD fFlags = 0x3C8;
-		DWORD bSpottedByMask = 0x1630 + 0xC; // entitySpottedState + bSpottedByMask
+		DWORD fFlags = 0x63;
+		DWORD bSpottedByMask = 0x1A28 + 0xC; // entitySpottedState + bSpottedByMask
 	} Pawn;
 
 	struct
@@ -70,7 +70,7 @@ namespace Offset
 
 	struct
 	{
-		DWORD m_hPawn = 0x5DC;
+		DWORD m_hPawn = 0x60C;
 		DWORD m_pObserverServices = 0x10C0;
 		DWORD m_hObserverTarget = 0x44;
 		DWORD m_hController = 0x123C;
