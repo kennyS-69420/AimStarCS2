@@ -524,7 +524,7 @@ namespace Lang
 		ESPtext.LinePosList = u8"Позиция линии";
 		ESPtext.VisCheck = u8"Только если цель в поле зрения";
 		ESPtext.Preview = u8"Отобразить предпросмотр WH";
-		ESPtext.CollapseHead = u8"WH для гениев";
+		ESPtext.CollapseHead = u8"Секс WH";
 		ESPtext.Penis = u8"Показать пенис";
 		ESPtext.PenisLength = u8"Длина";
 		ESPtext.PenisSize = u8"Размер";
