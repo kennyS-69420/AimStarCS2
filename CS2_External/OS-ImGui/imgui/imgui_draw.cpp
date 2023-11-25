@@ -3908,6 +3908,7 @@ const ImWchar* ImFontAtlas::GetGlyphRangesAll()
         0x0370, 0x03FF, // Greek and Coptic
         0x0400, 0x052F, // Cyrillic + Cyrillic Supplement
         0x0E00, 0x0E7F, // Thai
+        0x0F00, 0x0FFF, // Tibetan
         0x1EA0, 0x1EF9, // Latin Extended
         0x2000, 0x206F, // General Punctuation
         0x2010, 0x205E, // Punctuations
