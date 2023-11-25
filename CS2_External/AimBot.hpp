@@ -58,41 +58,21 @@ namespace AimControl
 
         if (Norm < AimFov)
         {
-            if (ScreenPos.x > ScreenCenterX)
+            // Shake Fixed by @Sweely
+            if (ScreenPos.x != ScreenCenterX)
             {
-                TargetX = -(ScreenCenterX - ScreenPos.x);
-                if (Smooth != 0.0f) {
-                    TargetX /= Smooth;
-                }
-                if (TargetX + ScreenCenterX > ScreenCenterX * 2) TargetX = 0;
-            }
-            if (ScreenPos.x < ScreenCenterX)
-            {
-                TargetX = ScreenPos.x - ScreenCenterX;
-                if (Smooth != 0.0f) {
-                    TargetX /= Smooth;
-                }
-                if (TargetX + ScreenCenterX < 0) TargetX = 0;
+                TargetX = (ScreenPos.x > ScreenCenterX) ? -(ScreenCenterX - ScreenPos.x) : ScreenPos.x - ScreenCenterX;
+                TargetX /= Smooth != 0.0f ? Smooth : 1.5f;
+                TargetX = (TargetX + ScreenCenterX > ScreenCenterX * 2 || TargetX + ScreenCenterX < 0) ? 0 : TargetX;
             }
 
             if (ScreenPos.y != 0)
             {
-                if (ScreenPos.y > ScreenCenterY)
+                if (ScreenPos.y != ScreenCenterY)
                 {
-                    TargetY = -(ScreenCenterY - ScreenPos.y);
-                    if (Smooth != 0.0f) {
-                        TargetY /= Smooth;
-                    }
-                    if (TargetY + ScreenCenterY > ScreenCenterY * 2) TargetY = 0;
-                }
-
-                if (ScreenPos.y < ScreenCenterY)
-                {
-                    TargetY = ScreenPos.y - ScreenCenterY;
-                    if (Smooth != 0.0f) {
-                        TargetY /= Smooth;
-                    }
-                    if (TargetY + ScreenCenterY < 0) TargetY = 0;
+                    TargetY = (ScreenPos.y > ScreenCenterY) ? -(ScreenCenterY - ScreenPos.y) : ScreenPos.y - ScreenCenterY;
+                    TargetY /= Smooth != 0.0f ? Smooth : 1.5f;
+                    TargetY = (TargetY + ScreenCenterY > ScreenCenterY * 2 || TargetY + ScreenCenterY < 0) ? 0 : TargetY;
                 }
             }
 
