@@ -543,7 +543,7 @@ namespace Lang
 		AimbotText.FovSlider = u8"Радиус поля зрения";
 		AimbotText.SmoothSlider = u8"Сглаживание";
 		AimbotText.BoneList = u8"Скелет";
-		AimbotText.Tip = u8"Для работы Аимбота нужно закрыть меню (HOME)";
+		AimbotText.Tip = u8"Для работы Аимбота нужно закрыть меню (Insert)";
 
 		// Glow
 		GlowText.FeatureName = u8" Свечение";
