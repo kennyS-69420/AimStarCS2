@@ -846,90 +846,92 @@ namespace Lang
 	// Translated by @faster_bbc
 	inline void Slovak()
 	{
-		Global.SwitchButton = u8"Zapnúť";
-		Global.FeatureSettings = u8"Settings";
+		Global.SwitchButton = u8"Zapnút";
+		Global.FeatureSettings = u8"Nastavenia";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
 		ESPtext.Box = u8"Box";
 		ESPtext.BoxRounding = u8"Zaoblenie Boxu";
 		ESPtext.FilledBox = u8"Vyplnený box";
-		ESPtext.FilledAlpha = u8"Prehliadnosť vyplneného boxu";
+		ESPtext.FilledAlpha = u8"Prehliadnost vyplneného boxu";
 		ESPtext.Skeleton = u8"Kostra";
-		ESPtext.HeadBox = u8"Box na hlavu";
-		ESPtext.EyeRay = u8"Čiara videnia hráča";
-		ESPtext.HealthBar = u8"Hrubá čiara života";
-		ESPtext.Weapon = u8"Zbraň";
-		ESPtext.Distance = u8"Zdialenosť";
+		ESPtext.HeadBox = u8"Kruh na hlavu";
+		ESPtext.EyeRay = u8"Kde sa hrác pozerá";
+		ESPtext.HealthBar = u8"Bar života";
+		ESPtext.Weapon = u8"Zbran";
+		ESPtext.Distance = u8"Zdialenost";
 		ESPtext.PlayerName = u8"Meno";
-		ESPtext.SnapLine = u8"Čiara ku hráčovy";
-		ESPtext.LinePosList = u8"Lokácia čiary";
-		ESPtext.VisCheck = u8"Skontrolovať viditelnosť";
-		ESPtext.Preview = u8"Náhľad";
+		ESPtext.SnapLine = u8"Ciara ku hrácovy";
+		ESPtext.LinePosList = u8"Lokácia ciary";
+		ESPtext.VisCheck = u8"Skontrolovat viditelnost";
+		ESPtext.Preview = u8"Náhlad";
 		ESPtext.CollapseHead = u8"Sex ESP";
-		ESPtext.Penis = u8"Penis/Pipik/Bakuľa";
-		ESPtext.PenisLength = u8"Dĺžka";
-		ESPtext.PenisSize = u8"Velkosť";
+		ESPtext.Penis = u8"Penis/Pipik/Bakula";
+		ESPtext.PenisLength = u8"Dlzka";
+		ESPtext.PenisSize = u8"Velkost";
+		ESPtext.MultiColor = u8"Viacfarebné";
+		ESPtext.MultiColTip = u8"Funguje len vtedy, keď má rámček nezaoblené rohy.";
 
 		// Aimbot
-		AimbotText.FeatureName = u8" Aimbo";
-		AimbotText.HotKeyList = u8"Tlačítko";
+		AimbotText.FeatureName = u8" Aimbot";
+		AimbotText.HotKeyList = u8"Tlacítko";
 		AimbotText.Toggle = u8"Prepínaci mód";
-		AimbotText.DrawFov = u8"Ukázať FOV";
-		AimbotText.VisCheck = u8"Skontrolovať viditelnosť";
+		AimbotText.DrawFov = u8"Ukázat FOV";
+		AimbotText.VisCheck = u8"Skontrolovat viditelnost";
 		AimbotText.JumpCheck = u8"Iba na zemy";
 		AimbotText.FovSlider = u8"FOV";
-		AimbotText.SmoothSlider = u8"Hladkosť";
-		AimbotText.BoneList = u8"Kosť";
-		AimbotText.Tip = u8"Aimbot nebude fungovať pokiaľ je menu otvorené";
+		AimbotText.SmoothSlider = u8"Hladkost";
+		AimbotText.BoneList = u8"Kost";
+		AimbotText.Tip = u8"Aimbot nebude fungovat pokial je menu otvorené";
 
 		// Glow
-		GlowText.FeatureName = u8" Žiarenie";
+		GlowText.FeatureName = u8" Ziarenie";
 
 		// Radar
 		RadarText.FeatureName = u8" Radar";
-		RadarText.StyleList = u8"Štýl";
+		RadarText.StyleList = u8"Styl";
 		RadarText.CustomCheck = u8"Vlastné";
-		RadarText.CrossLine = u8"Kríž";
-		RadarText.SizeSlider = u8"Velkosť bodky";
+		RadarText.CrossLine = u8"Kríz";
+		RadarText.SizeSlider = u8"Velkost bodky";
 		RadarText.ProportionSlider = u8"Proporcia";
 		RadarText.RangeSlider = u8"Rozsah";
-		RadarText.AlphaSlider = u8"Prehliadnosť pozadia okna";
+		RadarText.AlphaSlider = u8"Prehliadnost pozadia okna";
 
 		// Triggerbot
 		TriggerText.FeatureName = u8" Trigggerbot";
-		TriggerText.HotKeyList = u8"Tlačítko";
-		TriggerText.Toggle = u8"Vždy aktívne";
+		TriggerText.HotKeyList = u8"Tlacítko";
+		TriggerText.Toggle = u8"Vzdy aktívne";
 		TriggerText.DelaySlider = u8"Oneskorenie výstrelu";
 		TriggerText.FakeShotSlider = u8"Trvanie výstrelu";
 
 		// Crosshairs
 		CrosshairsText.FeatureName = u8" Crosshair";
-		CrosshairsText.PresetList = u8"Predvoľby";
+		CrosshairsText.PresetList = u8"Predvolby";
 		CrosshairsText.ColorEditor = u8"Farba crosshairu";
 		CrosshairsText.Dot = u8"Stredová bodka";
-		CrosshairsText.DotSizeSlider = u8"Velkosť bodky";
+		CrosshairsText.DotSizeSlider = u8"Velkost bodky";
 		CrosshairsText.Outline = u8"Obrys";
-		CrosshairsText.Crossline = u8"Kríž";
-		CrosshairsText.hLengthSlider = u8"Horizontálna dĺžka";
-		CrosshairsText.vLengthSilder = u8"Vertikálna dĺžka";
+		CrosshairsText.Crossline = u8"Kríz";
+		CrosshairsText.hLengthSlider = u8"Horizontálna dlzka";
+		CrosshairsText.vLengthSilder = u8"Vertikálna dlzka";
 		CrosshairsText.GapSlider = u8"Medzera";
-		CrosshairsText.ThicknessSlider = u8"Hrubosť";
-		CrosshairsText.tStyle = u8"T štýl";
+		CrosshairsText.ThicknessSlider = u8"Hrubost";
+		CrosshairsText.tStyle = u8"T styl";
 		CrosshairsText.Circle = u8"Kruh";
-		CrosshairsText.RadiusSlider = u8"Velkosť Kruhu";
+		CrosshairsText.RadiusSlider = u8"Velkost Kruhu";
 		CrosshairsText.TargetCheck = u8"Zameriavanie Crosshairu";
 		CrosshairsText.TeamCheck = u8"Kontrola tímu";
 
 		// Misc
 		MiscText.FeatureName = u8" Ostatné";
 		MiscText.ThemeList = u8"Téma";
-		MiscText.StyleList = u8"Štýl";
-		MiscText.HeadshotLine = u8"Čiara strely do hlavy";
-		MiscText.SpecCheck = u8"Cheat keď si divák";
-		MiscText.NoFlash = u8"Žiadny flash";
+		MiscText.StyleList = u8"Styl";
+		MiscText.HeadshotLine = u8"Ciara strely do hlavy";
+		MiscText.SpecCheck = u8"Cheat ked si divák";
+		MiscText.NoFlash = u8"Ziadny flash";
 		MiscText.HitSound = u8"Zvuk udretia";
-		MiscText.bmbTimer = u8"Časovač bomby";
+		MiscText.bmbTimer = u8"Casovac bomby";
 		MiscText.SpecList = u8"List divákov";
 		MiscText.Bhop = u8"Automatické skákanie";
 		MiscText.Watermark = u8"Vodný znak";
@@ -941,16 +943,16 @@ namespace Lang
 
 		// Config Menu
 		ConfigText.FeatureName = u8" Nastavenie";
-		ConfigText.Load = u8"Načítať vybraté";
-		ConfigText.Save = u8"Uložiť vybraté";
-		ConfigText.Delete = u8"Vymazať vybraté";
-		ConfigText.Reset = u8"Obnoviť vybraté";
-		ConfigText.Create = u8"Vytvoriť nastavenie";
-		ConfigText.OpenFolder = u8"Otvoriť priečinok";
-		ConfigText.SeparateLine = u8"Uložiť nastavenie";
+		ConfigText.Load = u8"Nacítat vybraté";
+		ConfigText.Save = u8"Ulozit vybraté";
+		ConfigText.Delete = u8"Vymazat vybraté";
+		ConfigText.Reset = u8"Obnovit vybraté";
+		ConfigText.Create = u8"Vytvorit nastavenie";
+		ConfigText.OpenFolder = u8"Otvorit priecinok";
+		ConfigText.SeparateLine = u8"Uložit nastavenie";
 
 		// Readme Menu
-		ReadMeText.FeatureName = u8" Prečítaj ma";
+		ReadMeText.FeatureName = u8" Precítaj";
 		ReadMeText.LastUpdate = u8"Posledná aktulizácia: ";
 		ReadMeText.SourceButton = u8" Zdrojový Kód";
 		ReadMeText.DiscordButton = u8" Pripoj sa na Discord";
@@ -1073,6 +1075,121 @@ namespace Lang
 	}
 
 
+	// Translated by @Yashing
+	inline void Francais()
+	{
+		Global.SwitchButton = u8"Enable";
+		Global.FeatureSettings = u8"paramètres";
+
+		// ESP
+		ESPtext.FeatureName = u8" BOITE";
+		ESPtext.Box = u8"Boite";
+		ESPtext.BoxRounding = u8"tour de boite";
+		ESPtext.FilledBox = u8"remplissage de boite";
+		ESPtext.FilledAlpha = u8"remplissage de boite Alpha";
+		ESPtext.Skeleton = u8"Squelette";
+		ESPtext.HeadBox = u8"Boite de tête";
+		ESPtext.EyeRay = u8"Regarde des yeux";
+		ESPtext.HealthBar = u8"Barre de vie";
+		ESPtext.Weapon = u8"Arme";
+		ESPtext.Distance = u8"Distance";
+		ESPtext.PlayerName = u8"Nom";
+		ESPtext.SnapLine = u8"line d'allé";
+		ESPtext.LinePosList = u8"position des lignes";
+		ESPtext.VisCheck = u8"Vérification visible";
+		ESPtext.Preview = u8"Fenêtre de prevision de boite";
+		ESPtext.CollapseHead = u8"SexyBoite";
+		ESPtext.Penis = u8"MontréPénis";
+		ESPtext.PenisLength = u8"Longueur";
+		ESPtext.PenisSize = u8"Taille";
+		ESPtext.MultiColor = u8"Multi-couleurs";
+		ESPtext.MultiColTip = u8"Ne fonctionne que si la boîte a des coins non arrondis.";
+
+		// Aimbot
+		AimbotText.FeatureName = u8" Visée automatique";
+		AimbotText.HotKeyList = u8"Clef";
+		AimbotText.Toggle = u8"Rester activé";
+		AimbotText.DrawFov = u8"Déssiner la vue";
+		AimbotText.VisCheck = u8"Visible uniquement";
+		AimbotText.JumpCheck = u8"Au sol uniquement";
+		AimbotText.FovSlider = u8"Visée";
+		AimbotText.SmoothSlider = u8"Vitesse";
+		AimbotText.BoneList = u8"Os";
+		AimbotText.Tip = u8"La visée automatique ne fonctionne pas avec la fenetre ouverte";
+
+		// Glow
+		GlowText.FeatureName = u8" Brillance";
+
+		// Radar
+		RadarText.FeatureName = u8" Radar";
+		RadarText.StyleList = u8"Style";
+		RadarText.CustomCheck = u8"Personnalisation";
+		RadarText.CrossLine = u8"Ligne ccroisée";
+		RadarText.SizeSlider = u8"Taille des points";
+		RadarText.ProportionSlider = u8"Proportion";
+		RadarText.RangeSlider = u8"Rang";
+		RadarText.AlphaSlider = u8"Arrière plan windows";
+
+		// Triggerbot
+		TriggerText.FeatureName = u8" Tir a vue";
+		TriggerText.HotKeyList = u8"Raccourci clavier";
+		TriggerText.Toggle = u8"Toujours actif";
+		TriggerText.DelaySlider = u8"Délai de tir";
+		TriggerText.FakeShotSlider = u8"Durée du tir";
+
+		// Crosshairs
+		CrosshairsText.FeatureName = u8" Viseur personnalisé";
+		CrosshairsText.PresetList = u8"Sauvegarde";
+		CrosshairsText.ColorEditor = u8"Couleur du viseur";
+		CrosshairsText.Dot = u8"Point central";
+		CrosshairsText.DotSizeSlider = u8"Taille du point";
+		CrosshairsText.Outline = u8"Contour";
+		CrosshairsText.Crossline = u8"Ligne croisées";
+		CrosshairsText.hLengthSlider = u8"Taille horizontale";
+		CrosshairsText.vLengthSilder = u8"Taille";
+		CrosshairsText.GapSlider = u8"Ecart";
+		CrosshairsText.ThicknessSlider = u8"Epaisseur";
+		CrosshairsText.tStyle = u8"Style du T";
+		CrosshairsText.Circle = u8"Cercle";
+		CrosshairsText.RadiusSlider = u8"Rayon du cercle";
+		CrosshairsText.TargetCheck = u8"Cibler la réticule";
+		CrosshairsText.TeamCheck = u8"Vérification de l'équipe";
+
+		// Misc
+		MiscText.FeatureName = u8" Divers";
+		MiscText.ThemeList = u8"Theme";
+		MiscText.StyleList = u8"Style";
+		MiscText.HeadshotLine = u8"Lignes de tirs a la tête";
+		MiscText.SpecCheck = u8"Listes3";
+		MiscText.NoFlash = u8"Pas d'effet flash";
+		MiscText.HitSound = u8"Bruit de touches";
+		MiscText.bmbTimer = u8"Temp de la bombe";
+		MiscText.SpecList = u8"Liste des spectateurs";
+		MiscText.Bhop = u8"Sauts en continues";
+		MiscText.Watermark = u8"Afficher FPS";
+		MiscText.CheatList = u8"Lsite des triches";
+		MiscText.TeamCheck = u8"Vérifications d'équipe";
+		MiscText.AntiRecord = u8"Invisible OBS Studio";
+
+		MiscText.LanguageList = u8"Langue";
+
+		// Config Menu
+		ConfigText.FeatureName = u8" Configuration(s)";
+		ConfigText.Load = u8"Charger la séléction";
+		ConfigText.Save = u8"Sauvegarder la séléction";
+		ConfigText.Delete = u8"Supprimer la séléction";
+		ConfigText.Reset = u8"Reintiallisé les configuration";
+		ConfigText.Create = u8"Crée une configuration";
+		ConfigText.OpenFolder = u8"Ouvrir fichier";
+		ConfigText.SeparateLine = u8"Sauvegarder la configuration";
+
+		// Readme Menu
+		ReadMeText.FeatureName = u8" Lis moi";
+		ReadMeText.LastUpdate = u8"Dèrnière MAJ: ";
+		ReadMeText.SourceButton = u8" Code de la source";
+		ReadMeText.DiscordButton = u8" Rejoindre DISCORD";
+		ReadMeText.OffsetsTitle = u8"Compensations:";
+	}
 
 	inline void ChangeLang(int LangIndex)
 	{
@@ -1101,6 +1218,9 @@ namespace Lang
 			break;
 		case 7:
 			Slovak();
+			break;
+		case 8:
+			Francais();
 			break;
 		default:
 			English();
