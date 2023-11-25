@@ -532,7 +532,7 @@ namespace Lang
 		// Aimbot
 		AimbotText.FeatureName = u8" Аимбот";
 		AimbotText.HotKeyList = u8"Горячая клавиша";
-		AimbotText.Toggle = u8"Режим нажатия";
+		AimbotText.Toggle = u8"Режим переключения";
 		AimbotText.DrawFov = u8"Отобразить поле зрение";
 		AimbotText.VisCheck = u8"Только если цель в поле зрения";
 		AimbotText.JumpCheck = u8"Только на земле ";
