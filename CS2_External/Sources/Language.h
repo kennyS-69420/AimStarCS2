@@ -505,7 +505,7 @@ namespace Lang
 	inline void Russian()
 	{
 		Global.SwitchButton = u8"Включить";
-		Global.FeatureSettings = u8"Settings";
+		Global.FeatureSettings = u8"Настройки";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP (WH)";
