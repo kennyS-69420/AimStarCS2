@@ -15,8 +15,14 @@ namespace StyleChanger
 		case 2:
 			Styles::Style_Classic();
 			break;
+		//case 3:
+			//Styles::Style_Vape();
+			//break;
 		case 3:
-			Styles::Style_Vape();
+			Styles::ModernDarkTheme();
+			break;
+		case 4:
+			Styles::DeepDark();
 			break;
 		default:
 			break;

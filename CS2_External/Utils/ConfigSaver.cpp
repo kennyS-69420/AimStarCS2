@@ -19,14 +19,18 @@ namespace MyConfigSaver {
         }
 
         // Example: Save global settings to the file
-        configFile << "BoxFilledVisColor " << ESPConfig::BoxFilledVisColor.Value.x << ESPConfig::BoxFilledVisColor.Value.y << ESPConfig::BoxFilledVisColor.Value.z << ESPConfig::BoxFilledVisColor.Value.w << std::endl;
+        configFile << "FilledBox " << ESPConfig::FilledBox << std::endl;
+        configFile << "BoxFilledColor2 " << ESPConfig::FilledColor2.Value.x << " " << ESPConfig::FilledColor2.Value.y << " " << ESPConfig::FilledColor2.Value.z << " " << ESPConfig::FilledColor2.Value.w << std::endl;
+        configFile << "BoxFilledColor " << ESPConfig::FilledColor.Value.x << " " << ESPConfig::FilledColor.Value.y << " " << ESPConfig::FilledColor.Value.z << " " << ESPConfig::FilledColor.Value.w << std::endl;
+        configFile << "MultiColor " << ESPConfig::MultiColor << std::endl;
+        configFile << "BoxFilledVisColor " << ESPConfig::BoxFilledVisColor.Value.x << " " << ESPConfig::BoxFilledVisColor.Value.y << " " << ESPConfig::BoxFilledVisColor.Value.z << " " << ESPConfig::BoxFilledVisColor.Value.w << std::endl;
         configFile << "BoxFilledVisCheck " << ESPConfig::FilledVisBox << std::endl;
         configFile << "SpecList " << MenuConfig::SpecList << std::endl;
-        configFile << "BombTimerCol " << MenuConfig::BombTimerCol.Value.x << MenuConfig::BombTimerCol.Value.y << MenuConfig::BombTimerCol.Value.z << MenuConfig::BombTimerCol.Value.w << std::endl;
+        configFile << "BombTimerCol " << MenuConfig::BombTimerCol.Value.x << " " << MenuConfig::BombTimerCol.Value.y << " " << MenuConfig::BombTimerCol.Value.z << " " << MenuConfig::BombTimerCol.Value.w << std::endl;
         configFile << "bmbTimer " << MenuConfig::bmbTimer << std::endl;
-        configFile << "ESPVisCol " << ESPConfig::VisibleColor.Value.x << ESPConfig::VisibleColor.Value.y << ESPConfig::VisibleColor.Value.z << ESPConfig::VisibleColor.Value.w << std::endl;;
+        configFile << "ESPVisCol " << ESPConfig::VisibleColor.Value.x << " " << ESPConfig::VisibleColor.Value.y << " " << ESPConfig::VisibleColor.Value.z << " " << ESPConfig::VisibleColor.Value.w << std::endl;;
         configFile << "ESPVisCheck " << ESPConfig::VisibleCheck << std::endl;
-        configFile << "GlowColor " << MenuConfig::GlowColor.Value.x << MenuConfig::GlowColor.Value.y << MenuConfig::GlowColor.Value.z << MenuConfig::GlowColor.Value.w << std::endl;
+        configFile << "GlowColor " << MenuConfig::GlowColor.Value.x << " " << MenuConfig::GlowColor.Value.y << " " << MenuConfig::GlowColor.Value.z << " " << MenuConfig::GlowColor.Value.w << std::endl;
         configFile << "Glow " << MenuConfig::Glow << std::endl;
         configFile << "AirJump " << MenuConfig::AirJump << std::endl;
         configFile << "MenuStyle " << MenuConfig::MenuStyle << std::endl;
@@ -140,6 +144,10 @@ namespace MyConfigSaver {
             std::string key;
             if (iss >> key) {
                 if (key == "ShowBoneESP") iss >> ESPConfig::ShowBoneESP;
+                else if (key == "FilledBox") iss >> ESPConfig::FilledBox;
+                else if (key == "MultiColor") iss >> ESPConfig::MultiColor;
+                else if (key == "BoxFilledColor") iss >> ESPConfig::FilledColor.Value.x >> ESPConfig::FilledColor.Value.y >> ESPConfig::FilledColor.Value.z >> ESPConfig::FilledColor.Value.w;
+                else if (key == "BoxFilledColor2") iss >> ESPConfig::FilledColor2.Value.x >> ESPConfig::FilledColor2.Value.y >> ESPConfig::FilledColor2.Value.z >> ESPConfig::FilledColor2.Value.w;
                 else if (key == "BoxFilledVisColor") iss >> ESPConfig::BoxFilledVisColor.Value.x >> ESPConfig::BoxFilledVisColor.Value.y >> ESPConfig::BoxFilledVisColor.Value.z >> ESPConfig::BoxFilledVisColor.Value.w;
                 else if (key == "BoxFilledVisCheck") iss >> ESPConfig::FilledVisBox;
                 else if (key == "SpecList") iss >> MenuConfig::SpecList;

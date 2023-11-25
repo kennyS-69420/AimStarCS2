@@ -129,6 +129,9 @@ namespace ConfigMenu {
 	}
 
 	void ResetToDefault() {
+		ESPConfig::FilledColor = ImColor(255, 255, 255, 255);
+		ESPConfig::FilledColor2 = ImColor(255, 255, 255, 255);
+		ESPConfig::MultiColor = false;
 		ESPConfig::BoxFilledVisColor = ImColor(0, 0, 255, 255);
 		ESPConfig::FilledVisBox = false;
 		MenuConfig::SpecList = false;

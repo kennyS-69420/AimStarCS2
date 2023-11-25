@@ -62,21 +62,33 @@ namespace ESP
 
 		// box
 		if (ESPConfig::FilledBox) {
+			float Rounding = ESPConfig::BoxRounding;
+			if (MenuConfig::BoxType == 2 || MenuConfig::BoxType == 3)
+				Rounding = 0.f;
 			ImColor FlatBoxCol = { ESPConfig::FilledColor.Value.x, ESPConfig::FilledColor.Value.y, ESPConfig::FilledColor.Value.z, ESPConfig::BoxAlpha };
+			ImColor FlatBoxCol2 = ESPConfig::FilledColor2;
 			ImColor FlatBoxVisCol = { ESPConfig::BoxFilledVisColor.Value.x, ESPConfig::BoxFilledVisColor.Value.y, ESPConfig::BoxFilledVisColor.Value.z, ESPConfig::BoxAlpha };
 			if (ESPConfig::FilledVisBox) {
 				// visCheck from @KeysIsCool
 				if ((Entity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex)) ||
 					(LocalEntity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex))) {
 
-					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxVisCol, ESPConfig::BoxRounding);
+					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxVisCol, Rounding);
 				}
 				else {
-					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, Rounding);
 				}
 			}
 			else {
-				Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, ESPConfig::BoxRounding);
+				if (ESPConfig::MultiColor)
+				{
+					Gui.RectangleFilledGraident({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, FlatBoxCol2, Rounding);
+				}
+				else
+				{
+					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, Rounding);
+				}
+				
 			}
 		}
 		if (ESPConfig::ShowBoxESP)
@@ -249,6 +261,30 @@ namespace ESP
 			
 		}
 
+		if (ESPConfig::FilledBox) {
+			ImVec2 rectStartPos;
+			ImVec2 rectEndPos;
+			ImColor filledBoxColor = { ESPConfig::FilledColor.Value.x, ESPConfig::FilledColor.Value.y, ESPConfig::FilledColor.Value.z, ESPConfig::BoxAlpha };
+
+			rectStartPos = centerPos;
+			rectEndPos = { rectStartPos.x + rectSize.x, rectStartPos.y + rectSize.y };
+
+			switch (MenuConfig::BoxType)
+			{
+			case 0:
+				ImGui::GetWindowDrawList()->AddRectFilled(rectStartPos, rectEndPos, filledBoxColor, ESPConfig::BoxRounding);
+				break;
+			case 1:
+				rectStartPos = { centerPos.x + 20, centerPos.y + 15 };
+				rectEndPos = { rectStartPos.x + 50, rectStartPos.y + 132 };
+				ImGui::GetWindowDrawList()->AddRectFilled(rectStartPos, rectEndPos, filledBoxColor, ESPConfig::BoxRounding);
+				break;
+			case 2:
+				ImGui::GetWindowDrawList()->AddRectFilled(rectStartPos, rectEndPos, filledBoxColor, 0);
+				break;
+			}
+		}
+
 		if (ESPConfig::ShowBoxESP) {
 			ImVec2 rectStartPos;
 			ImVec2 rectEndPos;
@@ -256,7 +292,7 @@ namespace ESP
 
 			rectStartPos = centerPos;
 			rectEndPos = { rectStartPos.x + rectSize.x, rectStartPos.y + rectSize.y };
-			ImColor filledBoxColor = { boxColor.Value.x, boxColor.Value.y, boxColor.Value.z, ESPConfig::BoxAlpha };
+			
 			switch (MenuConfig::BoxType)
 			{
 			case 0:

@@ -6,6 +6,7 @@ namespace Lang
 	struct
 	{
 		const char* SwitchButton;
+		const char* FeatureSettings;
 	} Global;
 
 	struct
@@ -30,6 +31,8 @@ namespace Lang
 		const char* Penis;
 		const char* PenisLength;
 		const char* PenisSize;
+		const char* MultiColor;
+		const char* MultiColTip;
 
 		const char* BoxType_Normal;
 		const char* BoxType_Edge;
@@ -157,6 +160,7 @@ namespace Lang
 	inline void English()
 	{
 		Global.SwitchButton = u8"Enable";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -179,6 +183,8 @@ namespace Lang
 		ESPtext.Penis = u8"Show Penis";
 		ESPtext.PenisLength = u8"Length";
 		ESPtext.PenisSize = u8"Size";
+		ESPtext.MultiColor = u8"Multi-Color";
+		ESPtext.MultiColTip = u8"Only work when the box has non-rounded corners.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -270,6 +276,7 @@ namespace Lang
 	inline void German()
 	{
 		Global.SwitchButton = u8"Aktivieren";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -384,6 +391,7 @@ namespace Lang
 	inline void Polish()
 	{
 		Global.SwitchButton = u8"Włącz";
+		Global.FeatureSettings = u8"Ustawienia";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -406,6 +414,8 @@ namespace Lang
 		ESPtext.Penis = u8"Pokaż Penis";
 		ESPtext.PenisLength = u8"Długość Penisa";
 		ESPtext.PenisSize = u8"Rozmiar Penisa";
+		ESPtext.MultiColor = u8"Wielokolorowy";
+		ESPtext.MultiColTip = u8"Działa tylko wtedy, gdy pudełko nie ma zaokrąglonych rogów.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -497,6 +507,7 @@ namespace Lang
 	inline void Russian()
 	{
 		Global.SwitchButton = u8"Включить";
+		Global.FeatureSettings = u8"Настройки";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP (WH)";
@@ -515,22 +526,24 @@ namespace Lang
 		ESPtext.LinePosList = u8"Позиция линии";
 		ESPtext.VisCheck = u8"Только если цель в поле зрения";
 		ESPtext.Preview = u8"Отобразить предпросмотр WH";
-		ESPtext.CollapseHead = u8"WH для гениев";
+		ESPtext.CollapseHead = u8"Секс WH";
 		ESPtext.Penis = u8"Показать пенис";
 		ESPtext.PenisLength = u8"Длина";
 		ESPtext.PenisSize = u8"Размер";
+		ESPtext.MultiColor = u8"Мульти-цвет";
+		ESPtext.MultiColTip = u8"Работает только когда обводка не имеет закругленные края.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Аимбот";
 		AimbotText.HotKeyList = u8"Горячая клавиша";
-		AimbotText.Toggle = u8"Режим нажатия";
+		AimbotText.Toggle = u8"Режим переключения";
 		AimbotText.DrawFov = u8"Отобразить поле зрение";
 		AimbotText.VisCheck = u8"Только если цель в поле зрения";
 		AimbotText.JumpCheck = u8"Только на земле ";
 		AimbotText.FovSlider = u8"Радиус поля зрения";
 		AimbotText.SmoothSlider = u8"Сглаживание";
 		AimbotText.BoneList = u8"Скелет";
-		AimbotText.Tip = u8"Для работы Аимбота нужно закрыть меню (HOME)";
+		AimbotText.Tip = u8"Для работы Аимбота нужно закрыть меню (Insert)";
 
 		// Glow
 		GlowText.FeatureName = u8" Свечение";
@@ -610,6 +623,7 @@ namespace Lang
 	inline void Danish()
 	{
 		Global.SwitchButton = u8"Slå til";
+		Global.FeatureSettings = u8"Indstillinger";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -632,6 +646,9 @@ namespace Lang
 		ESPtext.Penis = u8"Vis Pik";
 		ESPtext.PenisLength = u8"Længde";
 		ESPtext.PenisSize = u8"Størrelse";
+		ESPtext.MultiColor = u8"Multi-farvet";
+		ESPtext.MultiColTip = u8"Virker kun, når boksen ikke har afrundede hjørner.";
+
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -723,6 +740,7 @@ namespace Lang
 	inline void Portuguese()
 	{
 		Global.SwitchButton = u8"Ativar";
+		Global.FeatureSettings = u8"Definições";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -745,6 +763,8 @@ namespace Lang
 		ESPtext.Penis = u8"Mostrar Penis";
 		ESPtext.PenisLength = u8"Comprimento";
 		ESPtext.PenisSize = u8"Tamanho";
+		ESPtext.MultiColor = u8"Multicolorido";
+		ESPtext.MultiColTip = u8"Só funciona quando a caixa tem cantos não arredondados.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -836,6 +856,7 @@ namespace Lang
 	inline void Slovak()
 	{
 		Global.SwitchButton = u8"Zapnúť";
+		Global.FeatureSettings = u8"Nastavenia";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -858,6 +879,8 @@ namespace Lang
 		ESPtext.Penis = u8"Penis/Pipik/Bakuľa";
 		ESPtext.PenisLength = u8"Dĺžka";
 		ESPtext.PenisSize = u8"Velkosť";
+		ESPtext.MultiColor = u8"Viacfarebné";
+		ESPtext.MultiColTip = u8"Funguje len vtedy, keď má rámček nezaoblené rohy.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbo";
@@ -949,6 +972,7 @@ namespace Lang
 	inline void SimplifiedChinese()
 	{
 		Global.SwitchButton = u8"启用功能";
+		Global.FeatureSettings = u8"详细设置";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -971,6 +995,8 @@ namespace Lang
 		ESPtext.Penis = u8"显示牛子";
 		ESPtext.PenisLength = u8"牛子长度";
 		ESPtext.PenisSize = u8"牛子粗细";
+		ESPtext.MultiColor = u8"渐变色";
+		ESPtext.MultiColTip = u8"仅在圆角度为0时显示.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" 瞄准辅助";
@@ -1058,6 +1084,236 @@ namespace Lang
 	}
 
 
+	// Translated by @Yashing
+	inline void French()
+	{
+		Global.SwitchButton = u8"Enable";
+		Global.FeatureSettings = u8"Paramètres";
+
+		// ESP
+		ESPtext.FeatureName = u8" BOITE";
+		ESPtext.Box = u8"Boite";
+		ESPtext.BoxRounding = u8"Tour de boite";
+		ESPtext.FilledBox = u8"Remplissage de boite";
+		ESPtext.FilledAlpha = u8"Remplissage de boite Alpha";
+		ESPtext.Skeleton = u8"Squelette";
+		ESPtext.HeadBox = u8"Boite de tête";
+		ESPtext.EyeRay = u8"Regarde des yeux";
+		ESPtext.HealthBar = u8"Barre de vie";
+		ESPtext.Weapon = u8"Arme";
+		ESPtext.Distance = u8"Distance";
+		ESPtext.PlayerName = u8"Nom";
+		ESPtext.SnapLine = u8"Line d'allé";
+		ESPtext.LinePosList = u8"Position des lignes";
+		ESPtext.VisCheck = u8"Vérification visible";
+		ESPtext.Preview = u8"Fenêtre de prevision de boite";
+		ESPtext.CollapseHead = u8"SexyBoite";
+		ESPtext.Penis = u8"MontréPénis";
+		ESPtext.PenisLength = u8"Longueur";
+		ESPtext.PenisSize = u8"Taille";
+		ESPtext.MultiColor = u8"Multi-couleurs";
+		ESPtext.MultiColTip = u8"Ne fonctionne que si la boîte a des coins non arrondis.";
+
+		// Aimbot
+		AimbotText.FeatureName = u8" Visée automatique";
+		AimbotText.HotKeyList = u8"Clef";
+		AimbotText.Toggle = u8"Rester activé";
+		AimbotText.DrawFov = u8"Déssiner la vue";
+		AimbotText.VisCheck = u8"Visible uniquement";
+		AimbotText.JumpCheck = u8"Au sol uniquement";
+		AimbotText.FovSlider = u8"Visée";
+		AimbotText.SmoothSlider = u8"Vitesse";
+		AimbotText.BoneList = u8"Os";
+		AimbotText.Tip = u8"La visée automatique ne fonctionne pas avec la fenetre ouverte";
+
+		// Glow
+		GlowText.FeatureName = u8" Brillance";
+
+		// Radar
+		RadarText.FeatureName = u8" Radar";
+		RadarText.StyleList = u8"Style";
+		RadarText.CustomCheck = u8"Personnalisation";
+		RadarText.CrossLine = u8"Ligne ccroisée";
+		RadarText.SizeSlider = u8"Taille des points";
+		RadarText.ProportionSlider = u8"Proportion";
+		RadarText.RangeSlider = u8"Rang";
+		RadarText.AlphaSlider = u8"Arrière plan windows";
+
+		// Triggerbot
+		TriggerText.FeatureName = u8" Tir a vue";
+		TriggerText.HotKeyList = u8"Raccourci clavier";
+		TriggerText.Toggle = u8"Toujours actif";
+		TriggerText.DelaySlider = u8"Délai de tir";
+		TriggerText.FakeShotSlider = u8"Durée du tir";
+
+		// Crosshairs
+		CrosshairsText.FeatureName = u8" Viseur personnalisé";
+		CrosshairsText.PresetList = u8"Sauvegarde";
+		CrosshairsText.ColorEditor = u8"Couleur du viseur";
+		CrosshairsText.Dot = u8"Point central";
+		CrosshairsText.DotSizeSlider = u8"Taille du point";
+		CrosshairsText.Outline = u8"Contour";
+		CrosshairsText.Crossline = u8"Ligne croisées";
+		CrosshairsText.hLengthSlider = u8"Taille horizontale";
+		CrosshairsText.vLengthSilder = u8"Taille";
+		CrosshairsText.GapSlider = u8"Ecart";
+		CrosshairsText.ThicknessSlider = u8"Epaisseur";
+		CrosshairsText.tStyle = u8"Style du T";
+		CrosshairsText.Circle = u8"Cercle";
+		CrosshairsText.RadiusSlider = u8"Rayon du cercle";
+		CrosshairsText.TargetCheck = u8"Cibler la réticule";
+		CrosshairsText.TeamCheck = u8"Vérification de l'équipe";
+
+		// Misc
+		MiscText.FeatureName = u8" Divers";
+		MiscText.ThemeList = u8"Theme";
+		MiscText.StyleList = u8"Style";
+		MiscText.HeadshotLine = u8"Lignes de tirs a la tête";
+		MiscText.SpecCheck = u8"Listes3";
+		MiscText.NoFlash = u8"Pas d'effet flash";
+		MiscText.HitSound = u8"Bruit de touches";
+		MiscText.bmbTimer = u8"Temp de la bombe";
+		MiscText.SpecList = u8"Liste des spectateurs";
+		MiscText.Bhop = u8"Sauts en continues";
+		MiscText.Watermark = u8"Afficher FPS";
+		MiscText.CheatList = u8"Lsite des triches";
+		MiscText.TeamCheck = u8"Vérifications d'équipe";
+		MiscText.AntiRecord = u8"Invisible OBS Studio";
+
+		MiscText.LanguageList = u8"Langue";
+
+		// Config Menu
+		ConfigText.FeatureName = u8" Configuration(s)";
+		ConfigText.Load = u8"Charger la séléction";
+		ConfigText.Save = u8"Sauvegarder la séléction";
+		ConfigText.Delete = u8"Supprimer la séléction";
+		ConfigText.Reset = u8"Reintiallisé les configuration";
+		ConfigText.Create = u8"Crée une configuration";
+		ConfigText.OpenFolder = u8"Ouvrir fichier";
+		ConfigText.SeparateLine = u8"Sauvegarder la configuration";
+
+		// Readme Menu
+		ReadMeText.FeatureName = u8" Lis moi";
+		ReadMeText.LastUpdate = u8"Dèrnière MAJ: ";
+		ReadMeText.SourceButton = u8" Code de la source";
+		ReadMeText.DiscordButton = u8" Rejoindre DISCORD";
+		ReadMeText.OffsetsTitle = u8"Compensations:";
+	}
+
+	// Translated by @TRINITRAMIN
+	inline void Korean()
+	{
+		Global.SwitchButton = u8"할 수 있게 하다";
+		Global.FeatureSettings = u8"설정";
+
+		// ESP
+		ESPtext.FeatureName = u8" 이에스피 ";
+		ESPtext.Box = u8"박스";
+		ESPtext.BoxRounding = u8"박스 랜더링";
+		ESPtext.FilledBox = u8"채워진 상자";
+		ESPtext.FilledAlpha = u8"채워진 상자 알파";
+		ESPtext.Skeleton = u8"해골";
+		ESPtext.HeadBox = u8"머리 ";
+		ESPtext.EyeRay = u8"아이 레이";
+		ESPtext.HealthBar = u8"채력 줄";
+		ESPtext.Weapon = u8"무기";
+		ESPtext.Distance = u8"거리";
+		ESPtext.PlayerName = u8"이름";
+		ESPtext.SnapLine = u8"스냅라인";
+		ESPtext.LinePosList = u8"라인포스";
+		ESPtext.VisCheck = u8"벽뒤 구분";
+		ESPtext.Preview = u8"esp미리보기";
+		ESPtext.CollapseHead = u8"섹시ESP";
+		ESPtext.Penis = u8"그곳을 보여주세요";
+		ESPtext.PenisLength = u8"길이";
+		ESPtext.PenisSize = u8"크기";
+		ESPtext.MultiColor = u8"멀티 컬러";
+		ESPtext.MultiColTip = u8"상자의 모서리가 둥글지 않은 경우에만 작동합니다.";
+
+		// Aimbot
+		AimbotText.FeatureName = u8"에임봇";
+		AimbotText.HotKeyList = u8"키";
+		AimbotText.Toggle = u8"껏다 키기";
+		AimbotText.DrawFov = u8"FOV 그리기";
+		AimbotText.VisCheck = u8"보이는 것만";
+		AimbotText.JumpCheck = u8"지상에서만";
+		AimbotText.SmoothSlider = u8"매끄러운";
+		AimbotText.BoneList = u8"뼈";
+		AimbotText.Tip = u8"메뉴가 열려 있는 동안에는 Aimbot이 작동하지 않습니다.";
+
+		// Glow
+		GlowText.FeatureName = u8" 불타는 듯한 빛깔";
+
+		// Radar
+		RadarText.FeatureName = u8" 레이더";
+		RadarText.StyleList = u8"스타일";
+		RadarText.CustomCheck = u8"커스텀";
+		RadarText.CrossLine = u8"Cross 라인";
+		RadarText.SizeSlider = u8"포인트 크기";
+		RadarText.ProportionSlider = u8"비율";
+		RadarText.RangeSlider = u8"범위";
+		RadarText.AlphaSlider = u8"창 배경 알파";
+
+		// Triggerbot
+		TriggerText.FeatureName = u8" 트리거봇";
+		TriggerText.HotKeyList = u8"핫키";
+		TriggerText.Toggle = u8"항상 활성";
+		TriggerText.DelaySlider = u8"샷 딜레이";
+		TriggerText.FakeShotSlider = u8"촬영 시간";
+
+		// Crosshairs
+		CrosshairsText.FeatureName = u8" 십자선";
+		CrosshairsText.PresetList = u8"사전 설정";
+		CrosshairsText.ColorEditor = u8"십자선 색상";
+		CrosshairsText.Dot = u8"센터 도트";
+		CrosshairsText.DotSizeSlider = u8"도트 크기";
+		CrosshairsText.Outline = u8"개요";
+		CrosshairsText.Crossline = u8"크로스 라인";
+		CrosshairsText.hLengthSlider = u8"가로 길이";
+		CrosshairsText.vLengthSilder = u8"수직 길이";
+		CrosshairsText.GapSlider = u8"갭";
+		CrosshairsText.ThicknessSlider = u8"두께";
+		CrosshairsText.tStyle = u8"T 스타일";
+		CrosshairsText.Circle = u8"원";
+		CrosshairsText.RadiusSlider = u8"원 반경";
+		CrosshairsText.TargetCheck = u8"십자선 타겟팅";
+		CrosshairsText.TeamCheck = u8"팀체크";
+
+		// Misc
+		MiscText.FeatureName = u8" 기타";
+		MiscText.ThemeList = u8"주제";
+		MiscText.StyleList = u8"스타일";
+		MiscText.HeadshotLine = u8"헤드샷 라인";
+		MiscText.SpecCheck = u8"사양 속 치트";
+		MiscText.NoFlash = u8"No 플래시";
+		MiscText.HitSound = u8"히트 사운드";
+		MiscText.bmbTimer = u8"폭탄 타이머";
+		MiscText.SpecList = u8"사양 목록";
+		MiscText.Bhop = u8"버니홉";
+		MiscText.Watermark = u8"양수표";
+		MiscText.CheatList = u8"치트 목록";
+		MiscText.TeamCheck = u8"팀체크";
+		MiscText.AntiRecord = u8"방속 우회 ";
+
+		MiscText.LanguageList = u8"언어";
+
+		// Config Menu
+		ConfigText.FeatureName = u8" 구성";
+		ConfigText.Load = u8"선택 항목 로드";
+		ConfigText.Save = u8"선택 항목 저장";
+		ConfigText.Delete = u8"선택된 것을 지워 라";
+		ConfigText.Reset = u8"구성 재설정";
+		ConfigText.Create = u8"구성 만들기";
+		ConfigText.OpenFolder = u8"폴더 열기 ";
+		ConfigText.SeparateLine = u8"구성 저장";
+
+		// Readme Menu
+		ReadMeText.FeatureName = u8" 주의상황 ";
+		ReadMeText.LastUpdate = u8"마지막 업데이트: ";
+		ReadMeText.SourceButton = u8" 소스 코드";
+		ReadMeText.DiscordButton = u8" 디스코드에 참여하세요";
+		ReadMeText.OffsetsTitle = u8"오프셋:";
+	}
 
 	inline void ChangeLang(int LangIndex)
 	{
@@ -1086,6 +1342,12 @@ namespace Lang
 			break;
 		case 7:
 			Slovak();
+			break;
+		case 8:
+			French();
+			break;
+		case 9:
+			Korean();
 			break;
 		default:
 			English();

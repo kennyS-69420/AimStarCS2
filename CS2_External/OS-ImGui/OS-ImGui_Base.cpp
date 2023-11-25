@@ -38,7 +38,11 @@ namespace OSImGui
         ImFont* iconFont = fontAtlas->AddFontFromMemoryTTF((void*)faData, sizeof(faData), 16.f, &iconConfig, iconRanges);
 
         ImFontConfig WeaponFontConfig;
-        static const ImWchar WeaponCharRanges[] = { 0xE000, 0xE226, 0xE031, 0xE031 };
+        static const ImWchar WeaponCharRanges[] = 
+        { 
+            0xE000, 0xE226, 
+            0xE031, 0xE031 
+        };
         WeaponFontConfig.MergeMode = true;
         WeaponFontConfig.PixelSnapH = false;
         WeaponFontConfig.OversampleH = 5;
