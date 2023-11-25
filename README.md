@@ -5,6 +5,7 @@
 External Cheat for CS2
 
 **Detected:** *Your account will be banned without VAC Bypass*
+**Isnt working?** *Try installing* [***__C++ Runtimes__***](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)
 ***
 
 `I create a discord server` **->** [AimShit](https://discord.gg/Sw9ejh69GC)
