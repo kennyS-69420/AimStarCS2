@@ -7,7 +7,7 @@ External Cheat for CS2
 **Detected:** *Your account will be banned without VAC Bypass*
 ***
 
-`I create a discord server` **->** [AimShit](https://discord.gg/2RmQdFv7qA)
+`I create a discord server` **->** [AimShit](https://discord.gg/Sw9ejh69GC)
 
 <!--
 `Server destroyed bc this fkn orphan rebelled, we r making a new one plz wait`
