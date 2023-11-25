@@ -391,7 +391,7 @@ namespace Lang
 	inline void Polish()
 	{
 		Global.SwitchButton = u8"Włącz";
-		Global.FeatureSettings = u8"Settings";
+		Global.FeatureSettings = u8"Ustawienia";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -414,6 +414,8 @@ namespace Lang
 		ESPtext.Penis = u8"Pokaż Penis";
 		ESPtext.PenisLength = u8"Długość Penisa";
 		ESPtext.PenisSize = u8"Rozmiar Penisa";
+		ESPtext.MultiColor = u8"Wielokolorowy";
+		ESPtext.MultiColTip = u8"Działa tylko wtedy, gdy pudełko nie ma zaokrąglonych rogów.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -528,6 +530,8 @@ namespace Lang
 		ESPtext.Penis = u8"Показать пенис";
 		ESPtext.PenisLength = u8"Длина";
 		ESPtext.PenisSize = u8"Размер";
+		ESPtext.MultiColor = u8"Мульти-цвет";
+		ESPtext.MultiColTip = u8"Работает только когда обводка не имеет закругленные края.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Аимбот";
@@ -619,7 +623,7 @@ namespace Lang
 	inline void Danish()
 	{
 		Global.SwitchButton = u8"Slå til";
-		Global.FeatureSettings = u8"Settings";
+		Global.FeatureSettings = u8"Indstillinger";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -642,6 +646,9 @@ namespace Lang
 		ESPtext.Penis = u8"Vis Pik";
 		ESPtext.PenisLength = u8"Længde";
 		ESPtext.PenisSize = u8"Størrelse";
+		ESPtext.MultiColor = u8"Multi-farvet";
+		ESPtext.MultiColTip = u8"Virker kun, når boksen ikke har afrundede hjørner.";
+
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -733,7 +740,7 @@ namespace Lang
 	inline void Portuguese()
 	{
 		Global.SwitchButton = u8"Ativar";
-		Global.FeatureSettings = u8"Settings";
+		Global.FeatureSettings = u8"Definições";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -756,6 +763,8 @@ namespace Lang
 		ESPtext.Penis = u8"Mostrar Penis";
 		ESPtext.PenisLength = u8"Comprimento";
 		ESPtext.PenisSize = u8"Tamanho";
+		ESPtext.MultiColor = u8"Multicolorido";
+		ESPtext.MultiColTip = u8"Só funciona quando a caixa tem cantos não arredondados.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -844,11 +853,10 @@ namespace Lang
 	}
 
 	// Translated by @faster_bbc
-	// Translated by @faster_bbc
 	inline void Slovak()
 	{
 		Global.SwitchButton = u8"Zapnúť";
-		Global.FeatureSettings = u8"Settings";
+		Global.FeatureSettings = u8"Nastavenia";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -871,6 +879,8 @@ namespace Lang
 		ESPtext.Penis = u8"Penis/Pipik/Bakuľa";
 		ESPtext.PenisLength = u8"Dĺžka";
 		ESPtext.PenisSize = u8"Velkosť";
+		ESPtext.MultiColor = u8"Viacfarebné";
+		ESPtext.MultiColTip = u8"Funguje len vtedy, keď má rámček nezaoblené rohy.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbo";
@@ -1078,14 +1088,14 @@ namespace Lang
 	inline void Francais()
 	{
 		Global.SwitchButton = u8"Enable";
-		Global.FeatureSettings = u8"paramètres";
+		Global.FeatureSettings = u8"Paramètres";
 
 		// ESP
 		ESPtext.FeatureName = u8" BOITE";
 		ESPtext.Box = u8"Boite";
-		ESPtext.BoxRounding = u8"tour de boite";
-		ESPtext.FilledBox = u8"remplissage de boite";
-		ESPtext.FilledAlpha = u8"remplissage de boite Alpha";
+		ESPtext.BoxRounding = u8"Tour de boite";
+		ESPtext.FilledBox = u8"Remplissage de boite";
+		ESPtext.FilledAlpha = u8"Remplissage de boite Alpha";
 		ESPtext.Skeleton = u8"Squelette";
 		ESPtext.HeadBox = u8"Boite de tête";
 		ESPtext.EyeRay = u8"Regarde des yeux";
@@ -1093,8 +1103,8 @@ namespace Lang
 		ESPtext.Weapon = u8"Arme";
 		ESPtext.Distance = u8"Distance";
 		ESPtext.PlayerName = u8"Nom";
-		ESPtext.SnapLine = u8"line d'allé";
-		ESPtext.LinePosList = u8"position des lignes";
+		ESPtext.SnapLine = u8"Line d'allé";
+		ESPtext.LinePosList = u8"Position des lignes";
 		ESPtext.VisCheck = u8"Vérification visible";
 		ESPtext.Preview = u8"Fenêtre de prevision de boite";
 		ESPtext.CollapseHead = u8"SexyBoite";
