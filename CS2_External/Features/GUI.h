@@ -45,12 +45,12 @@ namespace GUI
 					ImGui::SameLine();
 					ImGui::ColorEdit4("##FilledBoxVisColor", reinterpret_cast<float*>(&ESPConfig::BoxFilledVisColor), ImGuiColorEditFlags_NoInputs);
 					ImGui::Checkbox(Lang::ESPtext.MultiColor, &ESPConfig::MultiColor);
+					ImGui::SameLine();
+					ImGui::ColorEdit4("##Color2", reinterpret_cast<float*>(&ESPConfig::FilledColor2), ImGuiColorEditFlags_NoInputs);
 					if (ESPConfig::MultiColor && ESPConfig::BoxRounding > 0.f)
 					{
 						ImGui::TextColored(ImColor(255, 59, 59, 255), Lang::ESPtext.MultiColTip);
 					}
-					ImGui::SameLine();
-					ImGui::ColorEdit4("##Color2", reinterpret_cast<float*>(&ESPConfig::FilledColor2), ImGuiColorEditFlags_NoInputs);
 					ImGui::EndPopup();
 				}	
 
@@ -304,10 +304,18 @@ namespace GUI
 				ImGui::SameLine();
 				ImGui::ColorEdit4("##BombTimerCol", reinterpret_cast<float*>(&MenuConfig::BombTimerCol), ImGuiColorEditFlags_NoInputs);
 				ImGui::Checkbox(Lang::MiscText.SpecList, &MenuConfig::SpecList);
+				if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled))
+				{
+					ImGui::SetTooltip("Broken");
+				}
 //				ImGui::Checkbox("Invincible", &MenuConfig::infinity);
 
 				ImGui::NextColumn();
 				ImGui::Checkbox(Lang::MiscText.Bhop, &MenuConfig::BunnyHop);
+				if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled))
+				{
+					ImGui::SetTooltip("Bhop is currently unavailable as Valve fixes a bug that force jump");
+				}
 				ImGui::Checkbox(Lang::MiscText.Watermark, &MenuConfig::WaterMark);
 				ImGui::Checkbox(Lang::MiscText.CheatList, &MenuConfig::CheatList);
 				ImGui::Checkbox(Lang::MiscText.TeamCheck, &MenuConfig::TeamCheck);
