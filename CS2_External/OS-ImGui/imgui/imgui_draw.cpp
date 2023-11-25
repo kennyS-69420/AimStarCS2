@@ -3909,16 +3909,18 @@ const ImWchar* ImFontAtlas::GetGlyphRangesAll()
         0x0400, 0x052F, // Cyrillic + Cyrillic Supplement
         0x0E00, 0x0E7F, // Thai
         0x0F00, 0x0FFF, // Tibetan
-        0x1100, 0x11FF, // Hangul Jamo (Korean)
+        0x1100, 0x11FF, // Korean (Hangul Jamo)
         0x1EA0, 0x1EF9, // Latin Extended
         0x2000, 0x206F, // General Punctuation
         0x2010, 0x205E, // Punctuations
         0x2DE0, 0x2DFF, // Cyrillic Extended-A
         0x3000, 0x30FF, // CJK Symbols and Punctuations, Hiragana, Katakana
-        0x3131, 0x3163, // Korean alphabets
+        0x3130, 0x318F, // Korean alphabets
         0x31F0, 0x31FF, // Katakana Phonetic Extensions
-        0xAC00, 0xD7A3, // Korean characters
+        0xAC00, 0xD7AF, // Korean characters
         0xA640, 0xA69F, // Cyrillic Extended-B
+        0xA960, 0xA97F, // Koean characters Extended-A
+        0xD7B0, 0xD7FF, // Koean characters Extended-B
         0xFF00, 0xFFEF, // Half-width characters
         0xFFFD, 0xFFFD, // Invalid
         0x4E00, 0x9FAF, // Chinese
