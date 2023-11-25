@@ -29,7 +29,7 @@ namespace MenuConfig
 	inline bool Bhop = false;
 
 	// 0: normal 1: dynamic 2: Flat
-	inline int  BoxType = 0;
+	inline int BoxType = 0;
 	// 0: Vertical 1: Horizontal
 	inline int  HealthBarType = 0;
 	// 0: Top 1: Center 2: Bottom
@@ -129,6 +129,7 @@ namespace ESPConfig
 	inline bool VisibleCheck = false;
 	inline bool FilledBox = false;
 	inline bool FilledVisBox = false;
+	inline bool MultiColor = false;
 	// 0: normal 1: Flat
 	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = 5.0f;
@@ -141,6 +142,7 @@ namespace ESPConfig
 	inline ImColor VisibleColor = ImColor(255, 196, 0, 255);
 	inline ImColor FilledColor = ImColor(255, 255, 255, 255);
 	inline ImColor BoxFilledVisColor = ImColor(0, 0, 255, 255);
+	inline ImColor FilledColor2 = ImColor(0, 255, 102, 255);
 
 	// Penis Config
 	inline bool ShowPenis = false;

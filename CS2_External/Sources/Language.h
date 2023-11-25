@@ -6,6 +6,7 @@ namespace Lang
 	struct
 	{
 		const char* SwitchButton;
+		const char* FeatureSettings;
 	} Global;
 
 	struct
@@ -30,6 +31,8 @@ namespace Lang
 		const char* Penis;
 		const char* PenisLength;
 		const char* PenisSize;
+		const char* MultiColor;
+		const char* MultiColTip;
 
 		const char* BoxType_Normal;
 		const char* BoxType_Edge;
@@ -157,6 +160,7 @@ namespace Lang
 	inline void English()
 	{
 		Global.SwitchButton = u8"Enable";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -179,6 +183,8 @@ namespace Lang
 		ESPtext.Penis = u8"Show Penis";
 		ESPtext.PenisLength = u8"Length";
 		ESPtext.PenisSize = u8"Size";
+		ESPtext.MultiColor = u8"Multi-Color";
+		ESPtext.MultiColTip = u8"Only work when the box has non-rounded corners.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" Aimbot";
@@ -270,6 +276,7 @@ namespace Lang
 	inline void German()
 	{
 		Global.SwitchButton = u8"Aktivieren";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -384,6 +391,7 @@ namespace Lang
 	inline void Polish()
 	{
 		Global.SwitchButton = u8"Włącz";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -497,6 +505,7 @@ namespace Lang
 	inline void Russian()
 	{
 		Global.SwitchButton = u8"Включить";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP (WH)";
@@ -610,6 +619,7 @@ namespace Lang
 	inline void Danish()
 	{
 		Global.SwitchButton = u8"Slå til";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -723,6 +733,7 @@ namespace Lang
 	inline void Portuguese()
 	{
 		Global.SwitchButton = u8"Ativar";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -836,6 +847,7 @@ namespace Lang
 	inline void Slovak()
 	{
 		Global.SwitchButton = u8"Zapnúť";
+		Global.FeatureSettings = u8"Settings";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -949,6 +961,7 @@ namespace Lang
 	inline void SimplifiedChinese()
 	{
 		Global.SwitchButton = u8"启用功能";
+		Global.FeatureSettings = u8"详细设置";
 
 		// ESP
 		ESPtext.FeatureName = u8" ESP";
@@ -971,6 +984,8 @@ namespace Lang
 		ESPtext.Penis = u8"显示牛子";
 		ESPtext.PenisLength = u8"牛子长度";
 		ESPtext.PenisSize = u8"牛子粗细";
+		ESPtext.MultiColor = u8"渐变色";
+		ESPtext.MultiColTip = u8"仅在圆角度为0时显示.";
 
 		// Aimbot
 		AimbotText.FeatureName = u8" 瞄准辅助";

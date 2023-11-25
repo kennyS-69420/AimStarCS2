@@ -34,25 +34,25 @@ namespace GUI
 					ImGui::SliderFloat(Lang::ESPtext.BoxRounding, &ESPConfig::BoxRounding, 0.0f, 15.0f, "%.1f", ImGuiSliderFlags_NoInput);
 
 				ImGui::Checkbox(Lang::ESPtext.FilledBox, &ESPConfig::FilledBox);
-				if (ImGui::IsItemClicked(1))
-				{
-					ImGui::OpenPopup("##Filledboxvis");
-				}
-				if (ImGui::BeginPopup("##Filledboxvis")) {
-					ImGui::TextUnformatted("Settings");
+				ImGui::SameLine();
+				if (ImGui::Button("..."))
+					ImGui::OpenPopup("##FilledboxSettings");
+				if (ImGui::BeginPopup("##FilledboxSettings")) {
+					ImGui::TextUnformatted(Lang::Global.FeatureSettings);
+					ImGui::ColorEdit4("Default Color", reinterpret_cast<float*>(&ESPConfig::FilledColor), ImGuiColorEditFlags_NoInputs);
+					ImGui::SliderFloat(Lang::ESPtext.FilledAlpha, &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
 					ImGui::Checkbox(Lang::ESPtext.VisCheck, &ESPConfig::FilledVisBox);
 					ImGui::SameLine();
 					ImGui::ColorEdit4("##FilledBoxVisColor", reinterpret_cast<float*>(&ESPConfig::BoxFilledVisColor), ImGuiColorEditFlags_NoInputs);
+					ImGui::Checkbox(Lang::ESPtext.MultiColor, &ESPConfig::MultiColor);
+					if (ESPConfig::MultiColor && ESPConfig::BoxRounding > 0.f)
+					{
+						ImGui::TextColored(ImColor(255, 59, 59, 255), Lang::ESPtext.MultiColTip);
+					}
+					ImGui::SameLine();
+					ImGui::ColorEdit4("##Color2", reinterpret_cast<float*>(&ESPConfig::FilledColor2), ImGuiColorEditFlags_NoInputs);
 					ImGui::EndPopup();
-				}
-
-				ImGui::SameLine();
-				ImGui::ColorEdit4("##FilledColor", reinterpret_cast<float*>(&ESPConfig::FilledColor), ImGuiColorEditFlags_NoInputs);
-				if (ESPConfig::FilledBox)
-				{
-					ImGui::SliderFloat(Lang::ESPtext.FilledAlpha, &ESPConfig::BoxAlpha, 0.0f, 1.0f, "%.2f", ImGuiSliderFlags_NoInput);
-				}
-					
+				}	
 
 				ImGui::Checkbox(Lang::ESPtext.Skeleton, &ESPConfig::ShowBoneESP);
 				ImGui::SameLine();
@@ -341,7 +341,7 @@ namespace GUI
 				Gui.OpenWebpageButton(TempText, "https://github.com/CowNowK/AimStarCS2");
 				ImGui::SameLine();
 				sprintf_s(TempText, "%s%s", ICON_FA_COMMENT_DOTS, Lang::ReadMeText.DiscordButton);
-				Gui.OpenWebpageButton(TempText, "https://discord.gg/MzbmSRaU3p");
+				Gui.OpenWebpageButton(TempText, "https://discord.gg/Sw9ejh69GC");
 				ImGui::NewLine();
 
 				ImGui::Text(Lang::ReadMeText.OffsetsTitle);
@@ -360,9 +360,9 @@ namespace GUI
 				ImGui::Text("LocalPlayerPawn:");
 				ImGui::SameLine();
 				ImGui::Text(std::to_string(Offset::LocalPlayerPawn).c_str());
-				ImGui::Text("ForceJump:");
+				ImGui::Text("PlantedC4:");
 				ImGui::SameLine();
-				ImGui::Text(std::to_string(Offset::ForceJump).c_str());
+				ImGui::Text(std::to_string(Offset::PlantedC4).c_str());
 
 				ImGui::EndTabItem();
 			}

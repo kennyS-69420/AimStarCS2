@@ -28,7 +28,7 @@ int main()
 	"- Use at your own risk\n"
 	"\n"
 	"#Contributors: \n"
-	"Shinyaluvs, Skarbor, KeysIsCool, Kenny, tokinaa, faster_bbc, vsantos1, 5mmod, gScream, Hazetick, styx\n"
+	"Shinyaluvs, Skarbor, KeysIsCool, Kenny, Cr1ppl3, tokinaa, faster_bbc, vsantos1, 5mmod, gScream, Hazetick, styx\n"
 	"\n"
 	);
 
