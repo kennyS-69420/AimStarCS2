@@ -12,8 +12,7 @@
 Open-Source External Cheat For CS2
 Releases posting every cs2 update
 
-I made a discord server, where you can get support and much more! Join to us!
-[**__Discord__**](https://discord.gg/Sw9ejh69GC)
+
 
 ## ⚠️ Notice
 **Detected:** *Your account will be banned without VAC Bypass*
